@@ -14,3 +14,8 @@
       (comment-or-uncomment-region
        (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
+
+(defun topher-named-shell ()
+  "Named Shell: Create a shell with the name of the current buffer."
+  (interactive)
+  (shell (concat "shell-" (buffer-name))))
