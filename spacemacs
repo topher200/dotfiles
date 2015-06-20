@@ -168,6 +168,7 @@ layers configuration."
  '(ahs-inhibit-face-list nil)
  '(evil-shift-width 2)
  '(evil-want-fine-undo nil)
+ '(large-file-warning-threshold 50000000)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
