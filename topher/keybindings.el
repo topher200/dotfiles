@@ -6,3 +6,4 @@
 
 ; evil mode defines
 (define-key evil-normal-state-map (kbd "Y") "y$")
+(define-key evil-normal-state-map (kbd "M-;") 'topher-comment-dwim-line)

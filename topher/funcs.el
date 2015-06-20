@@ -1,7 +1,7 @@
 ;; When no lines are selected, comment-dwim will comment out the line (instead
 ;; of commenting at the end).
 ;; Taken from http://www.emacswiki.org/emacs/CommentingCode
-(defun comment-dwim-line (&optional arg)
+(defun topher-comment-dwim-line (&optional arg)
   "Replacement for the comment-dwim command.
 
   If no region is selected and current line is not blank and we
@@ -14,4 +14,3 @@
       (comment-or-uncomment-region
        (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
-(global-set-key "\M-;" 'comment-dwim-line)
