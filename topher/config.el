@@ -14,3 +14,6 @@
 (add-hook 'html-mode-hook
           '(lambda ()
              (modify-syntax-entry ?_ "w" html-mode-syntax-table)))
+
+;; save the desktop periodically
+(add-hook 'projectile-idle-timer-hook 'desktop-save-in-desktop-dir)

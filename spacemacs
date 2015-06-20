@@ -166,6 +166,7 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(desktop-save-mode t)
  '(evil-shift-width 2)
  '(evil-want-fine-undo nil)
  '(large-file-warning-threshold 50000000)
