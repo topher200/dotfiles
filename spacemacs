@@ -173,6 +173,7 @@ layers configuration."
  '(evil-want-fine-undo nil)
  '(helm-candidate-number-limit 1000)
  '(large-file-warning-threshold 50000000)
+ '(python-fill-docstring-style (quote pep-257-nn))
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
