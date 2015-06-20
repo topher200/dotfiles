@@ -166,6 +166,7 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(evil-shift-width 2)
  '(evil-want-fine-undo nil)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
