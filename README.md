@@ -9,7 +9,9 @@ a .spacemacs file
 Run `setup.sh`
 
 ### Windows
-Windows doesn't like `ln -s` to make symbolic directory links. The command needs to be something more like
-`mklink /J d:\path\to\home\.emacs.d\private d:\path\to\this\dir`
+Windows doesn't like `ln -s` to make symbolic links. The commands needs to be something more like
 
-The .spacemacs file installation should work fine.
+`mklink /J c:\Users\<name>\.emacs.d\private d:\path\to\this\dir`
+`mklink c:\Users\<name>\.spacemacs d:\path\to\this\dir\spacemacs`
+
+These commands must be run from a Administrator command shell.
