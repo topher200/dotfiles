@@ -20,6 +20,7 @@
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
+     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      ;; (git :variables
      ;;      git-gutter-use-fringe t)
      ;; markdown
@@ -168,6 +169,7 @@ layers configuration."
  '(ahs-inhibit-face-list nil)
  '(desktop-save-mode t)
  '(evil-shift-width 2)
+ '(evil-snipe-override-mode t)
  '(evil-want-fine-undo nil)
  '(large-file-warning-threshold 50000000)
  '(ring-bell-function (quote ignore) t))
