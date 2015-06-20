@@ -171,6 +171,7 @@ layers configuration."
  '(evil-shift-width 2)
  '(evil-snipe-override-mode t)
  '(evil-want-fine-undo nil)
+ '(helm-candidate-number-limit 1000)
  '(large-file-warning-threshold 50000000)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
