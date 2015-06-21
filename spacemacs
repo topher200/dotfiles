@@ -175,7 +175,8 @@ layers configuration."
  '(large-file-warning-threshold 50000000)
  '(python-fill-docstring-style (quote pep-257-nn))
  '(python-indent-offset 2)
- '(ring-bell-function (quote ignore) t))
+ '(ring-bell-function (quote ignore) t)
+ '(truncate-lines t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
