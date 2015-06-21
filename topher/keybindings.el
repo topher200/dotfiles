@@ -14,3 +14,7 @@
 ; flycheck bindings
 (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
 (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)
+
+; comint-mode bindings
+(define-key comint-mode-map [up] 'comint-previous-input)
+(define-key comint-mode-map [down] 'comint-next-input)
