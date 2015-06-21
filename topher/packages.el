@@ -14,18 +14,20 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq topher-packages
     '(
-      ;; package tophers go here
+      flycheck
+      projectile
       ))
 
 ;; List of packages to exclude.
 (setq topher-excluded-packages '())
 
-;; For each package, define a function topher/init-<package-topher>
-;;
-;; (defun topher/init-my-package ()
-;;   "Initialize my package"
-;;   )
-;;
-;; Often the body of an initialize function uses `use-package'
-;; For more info on `use-package', see readme:
-;; https://github.com/jwiegley/use-package
+(defun topher/init-flycheck ()
+  "Add flycheck keybindings"
+  (use-package flycheck
+    :bind (("C-c n" . flycheck-next-error)
+           ("C-c p" . flycheck-previous-error))))
+
+(defun topher/init-projectile ()
+  "Remove projectile's awful default prefix"
+  (use-package projectile
+    :init (setq projectile-keymap-prefix (kbd "C-c C-p"))))
