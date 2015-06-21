@@ -12,5 +12,7 @@
 (define-key evil-normal-state-map (kbd "M-;") 'topher-comment-dwim-line)
 
 ; comint-mode bindings
-(define-key comint-mode-map [up] 'comint-previous-input)
-(define-key comint-mode-map [down] 'comint-next-input)
+(add-hook 'comint-mode-hook
+          (function (lambda ()
+                      (local-set-key [up] 'comint-previous-input)
+                      (local-set-key [down] 'comint-next-input))))
