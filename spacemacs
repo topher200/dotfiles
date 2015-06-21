@@ -173,6 +173,7 @@ layers configuration."
  '(evil-want-fine-undo nil)
  '(helm-candidate-number-limit 1000)
  '(large-file-warning-threshold 50000000)
+ '(projectile-keymap-prefix "^p")
  '(python-fill-docstring-style (quote pep-257-nn))
  '(python-indent-offset 2)
  '(ring-bell-function (quote ignore) t)
