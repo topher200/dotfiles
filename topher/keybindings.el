@@ -10,3 +10,7 @@
 (define-key evil-normal-state-map (kbd "C-k") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "Y") "y$")
 (define-key evil-normal-state-map (kbd "M-;") 'topher-comment-dwim-line)
+
+; flycheck bindings
+(define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
+(define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)
