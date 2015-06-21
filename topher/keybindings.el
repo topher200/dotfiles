@@ -12,8 +12,10 @@
 (define-key evil-normal-state-map (kbd "M-;") 'topher-comment-dwim-line)
 
 ; flycheck bindings
-(define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
-(define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)
+; TODO I'd love to use `flycheck-mode-map' instead of `global-map', but it
+; doesn't seem to be defined before we get here in emacs startup
+(define-key global-map (kbd "C-c n") 'flycheck-next-error)
+(define-key global-map (kbd "C-c p") 'flycheck-previous-error)
 
 ; comint-mode bindings
 (define-key comint-mode-map [up] 'comint-previous-input)
