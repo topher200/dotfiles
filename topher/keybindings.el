@@ -2,8 +2,8 @@
 (define-key global-map (kbd "C-<tab>") 'evil-window-next)
 (define-key global-map (kbd "C-S-<tab>") 'evil-window-prev)
 (define-key global-map (kbd "C-s") 'save-buffer)
-(define-key global-map (kbd "C-c C-s") 'topher-named-shell)
-(define-key global-map (kbd "C-c C-k") 'kill-this-buffer)
+(define-key global-map (kbd "C-c s") 'topher-named-shell)
+(define-key global-map (kbd "C-c k") 'kill-this-buffer)
 
 ; evil mode defines
 (define-key evil-normal-state-map (kbd "C-j") 'evil-scroll-down)
