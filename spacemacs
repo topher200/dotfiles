@@ -174,6 +174,7 @@ layers configuration."
  '(helm-candidate-number-limit 1000)
  '(large-file-warning-threshold 50000000)
  '(python-fill-docstring-style (quote pep-257-nn))
+ '(python-indent-offset 2)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
