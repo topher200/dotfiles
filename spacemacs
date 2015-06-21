@@ -171,6 +171,7 @@ layers configuration."
  '(evil-shift-width 2)
  '(evil-snipe-override-mode t)
  '(evil-want-fine-undo nil)
+ '(global-evil-search-highlight-persist nil)
  '(helm-candidate-number-limit 1000)
  '(large-file-warning-threshold 50000000)
  '(projectile-keymap-prefix "^p")
