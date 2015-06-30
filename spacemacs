@@ -171,6 +171,7 @@ layers configuration."
  '(evil-shift-width 2)
  '(evil-snipe-override-mode t)
  '(evil-want-fine-undo nil)
+ '(helm-ag-base-command "ag --nocolor --nogroup --line-numbers -S")
  '(helm-candidate-number-limit 1000)
  '(large-file-warning-threshold 50000000)
  '(python-fill-docstring-style (quote pep-257-nn))
