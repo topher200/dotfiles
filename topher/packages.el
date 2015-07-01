@@ -15,6 +15,7 @@
 (setq topher-packages
     '(
       flycheck
+      flycheck-google-cpplint
       projectile
       ))
 
@@ -26,6 +27,13 @@
   (use-package flycheck
     :bind (("C-c n" . flycheck-next-error)
            ("C-c p" . flycheck-previous-error))))
+
+(defun topher/init-flycheck-google-cpplint ()
+  "Tell the google style c++ checker to use cpplint"
+  (use-package flycheck-google-cpplint
+    :config
+    (flycheck-add-next-checker `c/c++-cppcheck `c/c++-googlelint)
+    (custom-set-variables '(flycheck-c/c++-googlelint-executable "cpplint"))))
 
 (defun topher/init-projectile ()
   "Remove projectile's awful default prefix"
