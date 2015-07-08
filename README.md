@@ -1,17 +1,21 @@
-# Personal private spacemacs
+# Private repository
 
-This repo contains my personal settings for spacemacs, including
-a .spacemacs file
+The content of this directory is ignored by Git. This is the default place
+where to store your private configuration layers.
 
-## Installation
+To create a new configuration layer:
 
-### Linux
-Run `setup.sh`
+    <SPC> : configuration-layer/create-layer RET
 
-### Windows
-Windows doesn't like `ln -s` to make symbolic links. The commands needs to be something more like
+Then enter the name of your configuration in the prompt.
 
-`mklink /J c:\Users\<name>\.emacs.d\private d:\path\to\this\dir`
-`mklink c:\Users\<name>\.spacemacs d:\path\to\this\dir\spacemacs`
+A directory named after the created configuration layer will be created here
+along with template files within it (packages.el and extensions.el, more info
+on the meaning of those files can be found in the [documentation][conf_layers]).
 
-These commands must be run from a Administrator command shell.
+Each created file has further guidance written in them.
+
+Once the configuration is done, restart Emacs to load, install and configure
+your layer.
+
+[conf_layers]: https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org#extensions-and-packages
