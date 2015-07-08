@@ -16,3 +16,6 @@
           (function (lambda ()
                       (local-set-key [up] 'comint-previous-input)
                       (local-set-key [down] 'comint-next-input))))
+
+;; add keybinding to find related file
+(define-key global-map (kbd "C-c f") 'ff-find-other-file)
