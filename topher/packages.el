@@ -16,6 +16,7 @@
     '(
       flycheck
       flycheck-google-cpplint
+      hippie-expand
       projectile
       ))
 
@@ -34,6 +35,12 @@
     :config
     (flycheck-add-next-checker `c/c++-cppcheck `c/c++-googlelint)
     (custom-set-variables '(flycheck-c/c++-googlelint-executable "cpplint"))))
+
+(defun topher/init-hippie-expand ()
+  "Add hippie-expand keybindings"
+  (use-package flycheck
+    :init
+    (define-key evil-insert-state-map (kbd "C-n") 'hippie-expand)))
 
 (defun topher/init-projectile ()
   "Remove projectile's awful default prefix"
