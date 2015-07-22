@@ -157,6 +157,9 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/private"))
+  ;; (require 'google-c-style)
+  ;; (add-hook 'c-mode-common-hook 'google-set-c-style)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
