@@ -178,6 +178,7 @@ layers configuration."
  '(evil-shift-width 2)
  '(evil-snipe-override-mode t)
  '(evil-want-fine-undo nil)
+ '(flycheck-c/c++-googlelint-executable "cpplint")
  '(global-evil-search-highlight-persist nil)
  '(helm-ag-base-command "ag --nocolor --nogroup --line-numbers -S")
  '(helm-candidate-number-limit 1000)
