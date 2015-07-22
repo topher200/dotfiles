@@ -5,6 +5,7 @@
 (define-key global-map (kbd "C-c s") 'topher-named-shell)
 (define-key global-map (kbd "C-c k") 'kill-this-buffer)
 (define-key global-map (kbd "C-c e") 'erase-buffer)
+(define-key global-map (kbd "C-c r") 'revert-buffer)
 
 ; evil mode defines
 (define-key evil-normal-state-map (kbd "C-j") 'evil-scroll-down)
