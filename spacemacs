@@ -187,6 +187,7 @@ layers configuration."
  '(python-fill-docstring-style (quote pep-257-nn))
  '(python-indent-offset 2)
  '(ring-bell-function (quote ignore) t)
+ '(show-paren-style (quote expression))
  '(truncate-lines t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
