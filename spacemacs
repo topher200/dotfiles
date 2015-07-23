@@ -183,6 +183,9 @@ layers configuration."
  '(global-flycheck-mode t)
  '(helm-ag-base-command "ag --nocolor --nogroup --line-numbers -S")
  '(helm-candidate-number-limit 1000)
+ '(hippie-expand-try-functions-list
+   (quote
+    (try-expand-dabbrev try-expand-dabbrev-visible try-expand-dabbrev-from-kill try-complete-file-name-partially try-expand-dabbrev-all-buffers try-complete-lisp-symbol-partially try-expand-line)))
  '(large-file-warning-threshold 50000000)
  '(projectile-keymap-prefix "^p")
  '(python-fill-docstring-style (quote pep-257-nn))
