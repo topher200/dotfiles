@@ -17,3 +17,11 @@
 (add-hook 'conf-space-mode-hook
           (lambda () (setq comment-start "; " comment-end "")))
 (add-to-list 'auto-mode-alist '("\\.ini$" . conf-windows-mode))
+
+;; Try to do case-sensitive matching with just hippie expand
+;; From http://stackoverflow.com/a/8723712/131159
+(defadvice hippie-expand (around hippie-expand-case-fold)
+  "Try to do case-sensitive matching (not effective with all functions)."
+  (let ((case-fold-search nil))
+    ad-do-it))
+(ad-activate 'hippie-expand)
