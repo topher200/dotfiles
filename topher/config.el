@@ -1,5 +1,6 @@
 ;; make evil jump words like Vim
-(defun underscores-in-words () (modify-syntax-entry ?_ "w" (syntax-table)))
+(defun underscores-in-words ()
+  (modify-syntax-entry ?_ "w" (syntax-table)))
 (add-hook 'python-mode-hook 'underscores-in-words)
 (add-hook 'shell-mode-hook 'underscores-in-words)
 (add-hook 'ruby-mode-hook 'underscores-in-words)
