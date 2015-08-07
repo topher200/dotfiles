@@ -31,9 +31,8 @@
 (defun topher/init-flycheck-google-cpplint ()
   "Tell the google style c++ checker to use cpplint"
   (use-package flycheck-google-cpplint
-    :config
-    (flycheck-add-next-checker `c/c++-cppcheck `c/c++-googlelint)
-    (custom-set-variables '(flycheck-c/c++-googlelint-executable "cpplint"))))
+    :init (setq flycheck-disabled-checkers '(c/c++-gcc))
+    :config (flycheck-add-next-checker 'c/c++-cppcheck 'c/c++-googlelint)))
 
 (defun topher/init-projectile ()
   "Remove projectile's awful default prefix"
