@@ -21,8 +21,7 @@
      ;; better-defaults
      emacs-lisp
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
-     ;; (git :variables
-     ;;      git-gutter-use-fringe t)
+     (git :variables git-gutter-use-fringe t)
      ;; markdown
      ;; org
      ;; shell
