@@ -25,7 +25,7 @@
      ;; markdown
      ;; org
      ;; shell
-     syntax-checking
+     (syntax-checking :variables syntax-checking-enable-tooltips nil)
      topher
      )
    ;; List of additional packages that will be installed wihout being
