@@ -175,6 +175,7 @@ layers configuration."
  '(evil-snipe-override-mode t)
  '(evil-want-fine-undo nil)
  '(flycheck-c/c++-googlelint-executable "cpplint")
+ '(flycheck-disabled-checkers (quote (c/c++-gcc)))
  '(global-evil-search-highlight-persist nil)
  '(global-flycheck-mode t)
  '(helm-ag-base-command "ag --nocolor --nogroup --line-numbers -S")
