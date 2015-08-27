@@ -33,7 +33,7 @@
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
-                                      go-mode
+                                      ido-completing-read+
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
@@ -187,6 +187,7 @@ layers configuration."
    (quote
     (try-expand-dabbrev try-expand-dabbrev-visible try-expand-dabbrev-from-kill try-complete-file-name-partially try-expand-dabbrev-all-buffers try-complete-lisp-symbol-partially try-expand-line)))
  '(large-file-warning-threshold 50000000)
+ '(magit-revert-buffers t)
  '(projectile-keymap-prefix "^p")
  '(python-fill-docstring-style (quote pep-257-nn))
  '(python-indent-offset 2)

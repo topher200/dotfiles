@@ -44,3 +44,9 @@
   "Remove projectile's awful default prefix"
   (use-package projectile
     :init (setq projectile-keymap-prefix (kbd "C-c C-p"))))
+
+(defun topher/magit ()
+  "Turn off magit warnings and dumb keybindings"
+  (use-package magit
+    :init (setq magit-revert-buffers t)
+    :config (define-key magit-mode-map (kbd "C-<tab>") 'evil-window-next)))
