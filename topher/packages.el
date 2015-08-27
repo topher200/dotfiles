@@ -16,6 +16,7 @@
     '(
       flycheck
       flycheck-google-cpplint
+      go-mode
       projectile
       ))
 
@@ -33,6 +34,11 @@
   (use-package flycheck-google-cpplint
     :init (setq flycheck-disabled-checkers '(c/c++-gcc))
     :config (flycheck-add-next-checker 'c/c++-cppcheck 'c/c++-googlelint)))
+
+(defun topher/init-go-mode ()
+  "Turn on go-mode's gofmt"
+  (use-package go-mode
+    :config (add-hook 'before-save-hook #'gofmt-before-save)))
 
 (defun topher/init-projectile ()
   "Remove projectile's awful default prefix"

@@ -180,6 +180,7 @@ layers configuration."
  '(flycheck-disabled-checkers (quote (c/c++-gcc)))
  '(global-evil-search-highlight-persist nil)
  '(global-flycheck-mode t)
+ '(gofmt-command "goimports")
  '(helm-ag-base-command "ag --nocolor --nogroup --line-numbers -S")
  '(helm-candidate-number-limit 1000)
  '(hippie-expand-try-functions-list
