@@ -193,7 +193,8 @@ layers configuration."
  '(ring-bell-function (quote ignore) t)
  '(show-paren-mode t)
  '(show-paren-style (quote parenthesis))
- '(truncate-lines t))
+ '(truncate-lines t)
+ '(warning-suppress-types (quote ((\(undo\ discard-info\))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
