@@ -16,6 +16,7 @@
     '(
       flycheck
       flycheck-google-cpplint
+      go-mode
       projectile
       ))
 
@@ -34,7 +35,18 @@
     :init (setq flycheck-disabled-checkers '(c/c++-gcc))
     :config (flycheck-add-next-checker 'c/c++-cppcheck 'c/c++-googlelint)))
 
+(defun topher/init-go-mode ()
+  "Turn on go-mode's gofmt"
+  (use-package go-mode
+    :config (add-hook 'before-save-hook #'gofmt-before-save)))
+
 (defun topher/init-projectile ()
   "Remove projectile's awful default prefix"
   (use-package projectile
     :init (setq projectile-keymap-prefix (kbd "C-c C-p"))))
+
+(defun topher/magit ()
+  "Turn off magit warnings and dumb keybindings"
+  (use-package magit
+    :init (setq magit-revert-buffers t)
+    :config (define-key magit-mode-map (kbd "C-<tab>") 'evil-window-next)))
