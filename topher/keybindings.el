@@ -13,7 +13,6 @@
 ; evil mode defines
 (define-key evil-normal-state-map (kbd "C-j") 'evil-scroll-down)
 (define-key evil-normal-state-map (kbd "C-k") 'evil-scroll-up)
-(define-key evil-normal-state-map (kbd "Y") "y$")
 (define-key evil-normal-state-map (kbd "M-;") 'topher-comment-dwim-line)
 (define-key evil-insert-state-map (kbd "C-n") 'hippie-expand)
 
