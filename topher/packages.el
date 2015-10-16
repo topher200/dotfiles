@@ -26,9 +26,12 @@
 (defun topher/init-flycheck ()
   "Add flycheck keybindings"
   (use-package flycheck
-    :bind (("C-c n" . flycheck-next-error)
-           ("C-c p" . flycheck-previous-error))
-    :config (add-hook 'python-mode-hook #'flycheck-mode)))
+    :bind
+    ("C-c n" . flycheck-next-error)
+    ("C-c p" . flycheck-previous-error)
+    :config
+    (add-hook 'python-mode-hook #'flycheck-mode)
+    (add-hook 'go-mode-hook #'flycheck-mode)))
 
 (defun topher/init-flycheck-google-cpplint ()
   "Tell the google style c++ checker to use cpplint"
