@@ -235,6 +235,7 @@ layers configuration. You are free to put any user code."
     (try-expand-dabbrev try-expand-dabbrev-visible try-expand-dabbrev-from-kill try-complete-file-name-partially try-expand-dabbrev-all-buffers try-complete-lisp-symbol-partially try-expand-line)))
  '(large-file-warning-threshold 50000000)
  '(magit-revert-buffers t)
+ '(ns-command-modifier (quote meta))
  '(projectile-keymap-prefix "^p")
  '(python-fill-docstring-style (quote pep-257-nn))
  '(python-indent-offset 2)
