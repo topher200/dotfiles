@@ -14,25 +14,12 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq topher-packages
     '(
-      flycheck
       flycheck-google-cpplint
       go-mode
-      projectile
       ))
 
 ;; List of packages to exclude.
 (setq topher-excluded-packages '())
-
-(defun topher/init-flycheck ()
-  (use-package flycheck
-    "Add flycheck keybindings"
-    :bind
-    ("C-c n" . flycheck-next-error)
-    ("C-c p" . flycheck-previous-error)
-    "Run flycheck on python and go"
-    :config
-    (add-hook 'python-mode-hook #'flycheck-mode)
-    (add-hook 'go-mode-hook #'flycheck-mode)))
 
 (defun topher/init-flycheck-google-cpplint ()
   "Tell the google style c++ checker to use cpplint"
@@ -44,11 +31,6 @@
   "Turn on go-mode's gofmt"
   (use-package go-mode
     :config (add-hook 'before-save-hook #'gofmt-before-save)))
-
-(defun topher/init-projectile ()
-  "Remove projectile's awful default prefix"
-  (use-package projectile
-    :init (setq projectile-keymap-prefix (kbd "C-c C-p"))))
 
 (defun topher/magit ()
   "Turn off magit warnings and dumb keybindings"

@@ -199,7 +199,17 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
-  )
+  (progn
+    (spacemacs|use-package-add-hook flycheck
+      :post-config
+      (progn
+        (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
+        (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)
+        (add-hook 'python-mode-hook 'flycheck-mode)
+        (add-hook 'go-mode-hook 'flycheck-mode)))
+    (spacemacs|use-package-add-hook projectile
+      :init
+      (setq projectile-keymap-prefix (kbd "C-c C-p")))))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
