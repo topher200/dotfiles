@@ -28,8 +28,10 @@ values."
      emacs-lisp
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      (git :variables git-gutter-use-fringe t)
+     go
      ;; markdown
      ;; org
+     python
      ;; shell
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      topher
@@ -204,9 +206,8 @@ user code."
       :post-config
       (progn
         (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
-        (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)
-        (add-hook 'python-mode-hook 'flycheck-mode)
-        (add-hook 'go-mode-hook 'flycheck-mode)))
+        (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)))
+
     (spacemacs|use-package-add-hook projectile
       :init
       (setq projectile-keymap-prefix (kbd "C-c C-p")))))
