@@ -24,11 +24,12 @@
 (setq topher-excluded-packages '())
 
 (defun topher/init-flycheck ()
-  "Add flycheck keybindings"
   (use-package flycheck
+    "Add flycheck keybindings"
     :bind
     ("C-c n" . flycheck-next-error)
     ("C-c p" . flycheck-previous-error)
+    "Run flycheck on python and go"
     :config
     (add-hook 'python-mode-hook #'flycheck-mode)
     (add-hook 'go-mode-hook #'flycheck-mode)))
