@@ -29,10 +29,12 @@ values."
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      (git :variables git-gutter-use-fringe t)
      go
+     html
+     javascript
      ;; markdown
      ;; org
      python
-     ;; shell
+     shell
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      topher
      )
