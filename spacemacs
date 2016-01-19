@@ -246,7 +246,7 @@ layers configuration. You are free to put any user code."
  '(hippie-expand-try-functions-list
    (quote
     (try-expand-dabbrev try-expand-dabbrev-visible try-expand-dabbrev-from-kill try-complete-file-name-partially try-expand-dabbrev-all-buffers try-complete-lisp-symbol-partially try-expand-line)))
- '(large-file-warning-threshold 50000000)
+ '(large-file-warning-threshold 500000000)
  '(magit-revert-buffers t)
  '(ns-command-modifier (quote meta))
  '(projectile-keymap-prefix "^p")
