@@ -295,6 +295,7 @@ layers configuration. You are free to put any user code."
  '(large-file-warning-threshold 500000000)
  '(magit-revert-buffers t)
  '(ns-command-modifier (quote meta))
+ '(persp-keymap-prefix [ignore])
  '(projectile-keymap-prefix "^p")
  '(python-fill-docstring-style (quote pep-257-nn))
  '(python-indent-offset 4)
