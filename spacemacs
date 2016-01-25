@@ -264,7 +264,10 @@ in `dotspacemacs/user-config'."
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
-  )
+  (progn
+    (define-key evil-normal-state-map (kbd "J") 'evil-scroll-down)
+    (define-key evil-normal-state-map (kbd "K") 'evil-scroll-up)
+    (define-key evil-normal-state-map (kbd "L") 'evil-join)))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
