@@ -11,16 +11,8 @@
   (lambda () (interactive) (revert-buffer t t)))
 
 ; evil mode defines
-(define-key evil-normal-state-map (kbd "C-j") 'evil-scroll-down)
-(define-key evil-normal-state-map (kbd "C-k") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "M-;") 'topher-comment-dwim-line)
 (define-key evil-insert-state-map (kbd "C-n") 'hippie-expand)
-
-; comint-mode bindings
-(add-hook 'comint-mode-hook
-          (function (lambda ()
-                      (local-set-key [up] 'comint-previous-input)
-                      (local-set-key [down] 'comint-next-input))))
 
 ;; add keybinding to find related file
 (define-key global-map (kbd "C-c f") 'ff-find-other-file)
