@@ -268,7 +268,9 @@ layers configuration. You are free to put any user code."
   (progn
     (define-key evil-normal-state-map (kbd "J") 'evil-scroll-down)
     (define-key evil-normal-state-map (kbd "K") 'evil-scroll-up)
-    (define-key evil-normal-state-map (kbd "L") 'evil-join)))
+    (define-key evil-normal-state-map (kbd "L") 'evil-join)
+    (setq comint-move-point-for-output nil)
+    ))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
