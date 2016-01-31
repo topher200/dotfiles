@@ -5,6 +5,7 @@
 (define-key global-map (kbd "C-c s") 'topher-named-shell)
 (define-key global-map (kbd "C-c k") 'kill-this-buffer)
 (define-key global-map (kbd "C-c e") 'erase-buffer)
+(define-key global-map (kbd "C-x C-S-f") 'helm-projectile-find-file-in-known-projects)
 
 ; revert buffer without confirmation
 (define-key global-map (kbd "C-c r")
