@@ -295,7 +295,7 @@ layers configuration. You are free to put any user code."
  '(global-flycheck-mode t)
  '(gofmt-command "goimports")
  '(helm-ag-base-command "ag --nocolor --nogroup --line-numbers -S")
- '(helm-candidate-number-limit 1000)
+ '(helm-candidate-number-limit 100)
  '(hippie-expand-try-functions-list
    (quote
     (try-expand-dabbrev try-expand-dabbrev-visible try-expand-dabbrev-from-kill try-complete-file-name-partially try-expand-dabbrev-all-buffers try-complete-lisp-symbol-partially try-expand-line)))
