@@ -284,6 +284,7 @@ layers configuration. You are free to put any user code."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(comint-input-ignoredups t)
  '(desktop-save-mode t)
  '(evil-shift-width 4)
  '(evil-snipe-override-mode t)
