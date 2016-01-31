@@ -45,6 +45,7 @@ values."
    dotspacemacs-additional-packages '(
                                       coffee-mode
                                       ido-completing-read+
+                                      logview
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
