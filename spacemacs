@@ -310,6 +310,7 @@ layers configuration. You are free to put any user code."
  '(show-paren-mode t)
  '(show-paren-style (quote parenthesis))
  '(truncate-lines t)
+ '(uniquify-strip-common-suffix nil)
  '(warning-suppress-types (quote ((\(undo\ discard-info\))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
