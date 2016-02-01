@@ -304,7 +304,7 @@ layers configuration. You are free to put any user code."
  '(ns-command-modifier (quote meta))
  '(persp-keymap-prefix [ignore])
  '(projectile-keymap-prefix "^p")
- '(python-fill-docstring-style (quote pep-257-nn))
+ '(python-fill-docstring-style (quote django))
  '(python-indent-offset 4)
  '(ring-bell-function (quote ignore) t)
  '(show-paren-mode t)
