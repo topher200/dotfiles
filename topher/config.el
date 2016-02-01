@@ -94,33 +94,40 @@
                           (and (= (point) str-start-pos))))
            (fill-paragraph-function))
       (save-restriction
-        (narrow-to-region str-start-pos str-end-pos)
-        (fill-paragraph justify))
-      (save-excursion
-        (when (and docstring-p python-fill-docstring-style)
-          ;; Add the number of newlines indicated by the selected style
-          ;; at the start of the docstring.
+        (save-excursion
           (goto-char (+ str-start-pos num-quotes))
           (delete-region (point) (progn
                                    (skip-syntax-forward "> ")
                                    (point)))
-          (and (car delimiters-style)
-               (or (newline (car delimiters-style)) t)
-               ;; Indent only if a newline is added.
-               (indent-according-to-mode))
-          ;; Add the number of newlines indicated by the selected style
-          ;; at the end of the docstring.
-          (goto-char (if (not (= str-end-pos (point-max)))
-                         (- str-end-pos num-quotes)
-                       str-end-pos))
-          (delete-region (point) (progn
-                                   (skip-syntax-backward "> ")
-                                   (point)))
-          (and (cdr delimiters-style)
-               ;; Add newlines only if string ends.
-               (not (= str-end-pos (point-max)))
-               (or (newline (cdr delimiters-style)) t)
-               ;; Again indent only if a newline is added.
-               (indent-according-to-mode))))) t))
+          (newline 1)
+          (indent-according-to-mode)
+          (insert "    ")
+          (narrow-to-region (point) str-end-pos)
+          (fill-paragraph justify))))))
+      ;; (save-excursion
+      ;;   (when (and docstring-p python-fill-docstring-style)
+      ;;     ;; Add the number of newlines indicated by the selected style
+      ;;     ;; at the start of the docstring.
+      ;;     (goto-char (+ str-start-pos num-quotes))
+      ;;     (delete-region (point) (progn
+      ;;                              (skip-syntax-forward "> ")
+      ;;                              (point)))
+      ;;     (and (car delimiters-style)
+      ;;          (or (newline (car delimiters-style)) t)
+      ;;          ;; Indent only if a newline is added.
+      ;;          (indent-according-to-mode))
+      ;;     ;; Add the number of newlines indicated by the selected style
+      ;;     ;; at the end of the docstring.
+      ;;     (goto-char (if (not (= str-end-pos (point-max)))
+      ;;                    (- str-end-pos num-quotes)
+      ;;                  str-end-pos))
+      ;;     (delete-region (point) (progn
+      ;;                              (skip-syntax-backward "> ")
+      ;;                              (point)))
+      ;;     (and (cdr delimiters-style)
+      ;;          ;; Add newlines only if string ends.
+      ;;          (not (= str-end-pos (point-max)))
+      ;;          (or (newline (cdr delimiters-style)) t)
+      ;;          ;; Again indent only if a newline is added.
+      ;;          (indent-according-to-mode))))) t))
 (with-eval-after-load 'python (after-load-python))
-;; (provide 'topher:after-load:python)
