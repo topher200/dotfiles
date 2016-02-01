@@ -300,7 +300,7 @@ layers configuration. You are free to put any user code."
    (quote
     (try-expand-dabbrev try-expand-dabbrev-visible try-expand-dabbrev-from-kill try-complete-file-name-partially try-expand-dabbrev-all-buffers try-complete-lisp-symbol-partially try-expand-line)))
  '(large-file-warning-threshold 500000000)
- '(magit-revert-buffers t)
+ '(magit-revert-buffers t t)
  '(ns-command-modifier (quote meta))
  '(persp-keymap-prefix [ignore])
  '(projectile-keymap-prefix "^p")
