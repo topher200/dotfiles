@@ -94,8 +94,7 @@
                           (python-nav-beginning-of-statement)
                           (and (= (point) str-start-pos))))
            (paragraph-start "[ \t\f]*\"*$\\|[ \t\f]*@[a-z]+:")
-           (paragraph-separate "[ \t\f]*\"*$")
-           (fill-paragraph-function))
+           (paragraph-separate "[ \t\f]*\"*$"))
       (save-excursion
         (goto-char (+ str-start-pos num-quotes))
         (delete-region (point) (progn
