@@ -93,6 +93,8 @@
                           ;; start on a line by themselves.
                           (python-nav-beginning-of-statement)
                           (and (= (point) str-start-pos))))
+           (paragraph-start "[ \t\f]*\"*$\\|[ \t\f]*@[a-z]+:")
+           (paragraph-separate "[ \t\f]*\"*$")
            (fill-paragraph-function))
       (save-excursion
         (goto-char (+ str-start-pos num-quotes))
@@ -101,9 +103,5 @@
                                  (point)))
         (newline-and-indent)
         (insert "    "))
-      (let (
-            (paragraph-start "[ \t\f]*\"*$")
-            (paragraph-separate "[ \t\f]*\"*$")
-            )
-        (fill-paragraph justify)))))
+      (fill-paragraph justify))))
 (with-eval-after-load 'python (after-load-python))
