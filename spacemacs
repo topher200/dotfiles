@@ -269,6 +269,7 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (progn
     (setq comint-move-point-for-output nil)
+    (setq ns-command-modifier (quote meta))
     ))
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -300,7 +301,6 @@ layers configuration. You are free to put any user code."
  '(large-file-warning-threshold 500000000)
  '(mac-command-modifier (quote meta))
  '(magit-revert-buffers t t)
- '(ns-command-modifier (quote meta))
  '(persp-keymap-prefix [ignore])
  '(projectile-keymap-prefix "^p")
  '(python-fill-docstring-style (quote django))
