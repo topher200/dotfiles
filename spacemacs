@@ -32,7 +32,7 @@ values."
      html
      javascript
      markdown
-     ;; org
+     (org :variables org-enable-github-support t)
      python
      shell
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
@@ -47,6 +47,7 @@ values."
                                       coffee-mode
                                       ido-completing-read+
                                       logview
+                                      org-trello
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
