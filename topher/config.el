@@ -7,6 +7,7 @@
 (add-hook 'c-mode-common-hook 'underscores-in-words)
 (add-hook 'html-mode-hook 'underscores-in-words)
 (add-hook 'json-mode-hook 'underscores-in-words)
+(add-hook 'sql-mode-hook 'underscores-in-words)
 
 ;; save the desktop periodically
 (add-hook 'projectile-idle-timer-hook 'desktop-save-in-desktop-dir)
