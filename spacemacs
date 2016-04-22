@@ -268,6 +268,8 @@ This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (progn
     (setq comint-move-point-for-output nil)
+    (setq python-fill-column 99)
+    (add-to-list 'warning-suppress-types '(undo discard-info))
     ))
 
 ;; Do not write anything past this comment. This is where Emacs will
