@@ -291,6 +291,7 @@ layers configuration. You are free to put any user code."
  '(evil-want-fine-undo nil)
  '(flycheck-c/c++-googlelint-executable "cpplint")
  '(flycheck-disabled-checkers (quote (javascript-jscs c/c++-gcc)))
+ '(flycheck-display-errors-delay 0.1)
  '(global-evil-search-highlight-persist nil)
  '(global-flycheck-mode t)
  '(gofmt-command "goimports")
