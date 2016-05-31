@@ -9,6 +9,8 @@
 (add-hook 'json-mode-hook 'underscores-in-words)
 (add-hook 'sql-mode-hook 'underscores-in-words)
 (add-hook 'web-mode-hook 'underscores-in-words)
+(add-hook 'perl-mode-hook 'underscores-in-words)
+(add-hook 'text-mode-hook 'underscores-in-words)
 
 ;; save the desktop periodically
 (add-hook 'projectile-idle-timer-hook 'desktop-save-in-desktop-dir)
