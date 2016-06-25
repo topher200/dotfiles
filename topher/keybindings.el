@@ -17,3 +17,8 @@
 
 ;; add keybinding to find related file
 (define-key global-map (kbd "C-c f") 'ff-find-other-file)
+
+;; Make insert mode text manipulation more like OSX
+(define-key evil-insert-state-map [M-backspace]
+  (lambda () (interactive) (kill-line 0)))
+(define-key evil-insert-state-map [A-backspace] 'backward-kill-word)
