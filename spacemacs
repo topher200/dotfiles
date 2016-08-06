@@ -31,7 +31,7 @@ values."
      go
      html
      javascript
-     ;; markdown
+     markdown
      ;; org
      python
      shell
