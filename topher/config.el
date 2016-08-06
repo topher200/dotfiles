@@ -2,7 +2,7 @@
 (defun underscores-in-words ()
   (modify-syntax-entry ?_ "w" (syntax-table)))
 (add-hook 'python-mode-hook 'underscores-in-words)
-(add-hook 'shell-mode-hook 'underscores-in-words)
+(add-hook 'sh-mode-hook 'underscores-in-words)
 (add-hook 'ruby-mode-hook 'underscores-in-words)
 (add-hook 'c-mode-common-hook 'underscores-in-words)
 (add-hook 'html-mode-hook 'underscores-in-words)
