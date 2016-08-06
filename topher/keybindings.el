@@ -6,6 +6,8 @@
 (define-key global-map (kbd "C-c k") 'kill-this-buffer)
 (define-key global-map (kbd "C-c e") 'erase-buffer)
 (define-key global-map (kbd "C-x C-S-f") 'helm-projectile-find-file-in-known-projects)
+(define-key global-map (kbd "C-c a") 'evil-numbers/inc-at-pt)
+(define-key global-map (kbd "C-c d") 'evil-numbers/dec-at-pt)
 
 ; revert buffer without confirmation
 (define-key global-map (kbd "C-c r")
