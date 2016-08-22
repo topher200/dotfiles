@@ -306,7 +306,7 @@ layers configuration. You are free to put any user code."
  '(projectile-keymap-prefix "^p")
  '(python-fill-docstring-style (quote django))
  '(python-indent-offset 4)
- '(ring-bell-function (quote ignore) t)
+ '(ring-bell-function (quote ignore))
  '(show-paren-mode t)
  '(show-paren-style (quote parenthesis))
  '(truncate-lines t)
