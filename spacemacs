@@ -270,6 +270,10 @@ layers configuration. You are free to put any user code."
     (setq comint-move-point-for-output nil)
     (setq python-fill-column 99)
     (add-to-list 'warning-suppress-types '(undo discard-info))
+
+    ;; robot-mode for Robot Framework
+    (load-file "robot-mode/robot-mode.el")
+    (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
     ))
 
 ;; Do not write anything past this comment. This is where Emacs will
