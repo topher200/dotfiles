@@ -50,6 +50,7 @@ values."
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
+                                    evil-escape  ;; 'fd' for escape? no thanks!
                                     flymake  ;; we're using flycheck instead
                                     flyspell  ;; annoying
                                     smartparens  ;; annoying
