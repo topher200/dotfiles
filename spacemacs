@@ -311,12 +311,13 @@ layers configuration. You are free to put any user code."
  '(projectile-keymap-prefix "^p")
  '(python-fill-docstring-style (quote django))
  '(python-indent-offset 4)
- '(ring-bell-function (quote ignore))
+ '(ring-bell-function (quote ignore) t)
  '(show-paren-mode t)
  '(show-paren-style (quote parenthesis))
  '(truncate-lines t)
  '(uniquify-strip-common-suffix nil)
- '(warning-suppress-types (quote ((\(undo\ discard-info\))))))
+ '(warning-suppress-types (quote ((\(undo\ discard-info\)))))
+ '(yaml-indent-offset 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
