@@ -273,7 +273,7 @@ layers configuration. You are free to put any user code."
     (add-to-list 'warning-suppress-types '(undo discard-info))
 
     ;; robot-mode for Robot Framework
-    (load-file "robot-mode/robot-mode.el")
+    (load-file "~/dev/spacemacs-private-layer/robot-mode/robot-mode.el")
     (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
     ))
 
