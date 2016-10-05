@@ -9,6 +9,10 @@
 (define-key global-map (kbd "C-c a") 'evil-numbers/inc-at-pt)
 (define-key global-map (kbd "C-c d") 'evil-numbers/dec-at-pt)
 
+; make the minimize and close shortcuts a no-op
+(define-key global-map (kbd "C-x C-z") nil)
+(define-key global-map (kbd "C-x C-c") nil)
+
 ; revert buffer without confirmation
 (define-key global-map (kbd "C-c r")
   (lambda () (interactive) (revert-buffer t t)))
