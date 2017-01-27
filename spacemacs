@@ -30,6 +30,7 @@ values."
      shell
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      topher
+     typescript
      yaml
      )
    ;; List of additional packages that will be installed without being
