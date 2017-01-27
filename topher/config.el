@@ -12,6 +12,7 @@
 (add-hook 'perl-mode-hook 'underscores-in-words)
 (add-hook 'text-mode-hook 'underscores-in-words)
 (add-hook 'robot-mode-hook 'underscores-in-words)
+(add-hook 'dockerfile-mode-hook 'underscores-in-words)
 
 ;; save the desktop periodically
 (add-hook 'projectile-idle-timer-hook 'desktop-save-in-desktop-dir)
