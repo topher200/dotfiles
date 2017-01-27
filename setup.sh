@@ -8,8 +8,8 @@ if ! [[ -e $HOME/.spacemacs ]]; then
 fi
 
 if ! [[ -L $HOME/.emacs.d/private ]] && [[ -d $HOME/.emacs.d/private ]]; then
-  echo "Make a backup of current private dir"
-	mv $HOME/.emacs.d/private $HOME/.emacs.d/private.bak
+  echo "Remove current private dir"
+	rm -r $HOME/.emacs.d/private
 fi
 
 if ! [[ -L $HOME/.emacs.d/private ]] ; then

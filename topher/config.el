@@ -26,6 +26,11 @@
           (lambda () (setq comment-start "; " comment-end "")))
 (add-to-list 'auto-mode-alist '("\\.ini$" . conf-windows-mode))
 
+(add-hook 'eyebrowse-pre-window-switch-hook
+          (lambda () (spacemacs/toggle-golden-ratio-off)))
+(add-hook 'eyebrowse-post-window-switch-hook
+          (lambda () (spacemacs/toggle-golden-ratio-on)))
+
 ;; Try to do case-sensitive matching with just hippie expand
 ;; From http://stackoverflow.com/a/8723712/131159
 (defadvice hippie-expand (around hippie-expand-case-fold)
