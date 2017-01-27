@@ -26,7 +26,6 @@ values."
      html
      javascript
      markdown
-     ;; org
      python
      shell
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
