@@ -84,7 +84,93 @@
       (fill-paragraph justify))))
 (with-eval-after-load 'python (after-load-python))
 
-;; use better error checking in balance-windows
+(defun balance-windows-2 (window horizontal)
+  "Subroutine of `balance-windows-1'.
+WINDOW must be a vertical combination (horizontal if HORIZONTAL
+is non-nil)."
+  (let* ((char-size (if window-resize-pixelwise
+			1
+		      (frame-char-size window horizontal)))
+	 (first (window-child window))
+	 (sub first)
+	 (number-of-children 0)
+	 (parent-size (window-new-pixel window))
+	 (total-sum parent-size)
+	 failed size sub-total sub-delta sub-amount rest)
+    (while sub
+      (setq number-of-children (1+ number-of-children))
+      (when (window-size-fixed-p sub horizontal)
+	(setq total-sum
+	      (- total-sum (window-size sub horizontal t)))
+	(set-window-new-normal sub 'ignore))
+      (setq sub (window-right sub)))
+
+    (setq failed t)
+    (while (and failed (> number-of-children 0))
+      (setq size (/ total-sum number-of-children))
+      (setq failed nil)
+      (setq sub first)
+      (while (and sub (not failed))
+	;; Ignore child windows that should be ignored or are stuck.
+	(unless (window--resize-child-windows-skip-p sub)
+	  (setq sub-total (window-size sub horizontal t))
+	  (setq sub-delta (- size sub-total))
+	  (setq sub-amount
+		(window-sizable sub sub-delta horizontal nil t))
+	  ;; Register the new total size for this child window.
+	  (set-window-new-pixel sub (+ sub-total sub-amount))
+	  (unless (= sub-amount sub-delta)
+	    (setq total-sum (- total-sum sub-total sub-amount))
+	    (setq number-of-children (1- number-of-children))
+	    ;; We failed and need a new round.
+	    (setq failed t)
+	    (set-window-new-normal sub 'skip)))
+	(setq sub (window-right sub))))
+
+    ;; How can we be sure that `number-of-children' is NOT zero here ?
+    (setq rest (% total-sum number-of-children))
+    ;; Fix rounding by trying to enlarge non-stuck windows by one line
+    ;; (column) until `rest' is zero.
+    (setq sub first)
+    (while (and sub (> rest 0))
+      (unless (window--resize-child-windows-skip-p window)
+	(set-window-new-pixel sub (min rest char-size) t)
+	(setq rest (- rest char-size)))
+      (setq sub (window-right sub)))
+
+    ;; Fix rounding by trying to enlarge stuck windows by one line
+    ;; (column) until `rest' equals zero.
+    (setq sub first)
+    (while (and sub (> rest 0))
+      (unless (eq (window-new-normal sub) 'ignore)
+	(set-window-new-pixel sub (min rest char-size) t)
+	(setq rest (- rest char-size)))
+      (setq sub (window-right sub)))
+
+    (setq sub first)
+    (while sub
+      ;; Record new normal sizes.
+      (set-window-new-normal
+       sub (/ (if (eq (window-new-normal sub) 'ignore)
+		  (window-size sub horizontal t)
+		(window-new-pixel sub))
+	      (float parent-size)))
+      ;; Recursively balance each window's child windows.
+      (balance-windows-1 sub horizontal)
+      (setq sub (window-right sub)))))
+
+(defun balance-windows-1 (window &optional horizontal)
+  "Subroutine of `balance-windows'."
+  (if (window-child window)
+      (let ((sub (window-child window)))
+	(if (window-combined-p sub horizontal)
+	    (balance-windows-2 window horizontal)
+	  (let ((size (window-new-pixel window)))
+	    (while sub
+	      (set-window-new-pixel sub size)
+	      (balance-windows-1 sub horizontal)
+	      (setq sub (window-right sub))))))))
+
 (defun balance-windows (&optional window-or-frame)
   "Balance the sizes of windows of WINDOW-OR-FRAME.
 WINDOW-OR-FRAME is optional and defaults to the selected frame.
