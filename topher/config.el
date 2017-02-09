@@ -88,3 +88,54 @@
         (insert "    "))
       (fill-paragraph justify))))
 (with-eval-after-load 'python (after-load-python))
+
+;; use better error checking in balance-windows
+(defun balance-windows (&optional window-or-frame)
+  "Balance the sizes of windows of WINDOW-OR-FRAME.
+WINDOW-OR-FRAME is optional and defaults to the selected frame.
+If WINDOW-OR-FRAME denotes a frame, balance the sizes of all
+windows of that frame.  If WINDOW-OR-FRAME denotes a window,
+recursively balance the sizes of all child windows of that
+window."
+  (interactive)
+  (let* ((window
+	  (cond
+	   ((or (not window-or-frame)
+		(frame-live-p window-or-frame))
+	    (frame-root-window window-or-frame))
+	   ((or (window-live-p window-or-frame)
+		(window-child window-or-frame))
+	    window-or-frame)
+	   (t
+	    (error "Not a window or frame %s" window-or-frame))))
+	 (frame (window-frame window)))
+    ;; Balance vertically.
+    (window--resize-reset (window-frame window))
+
+    (condition-case err
+        (balance-windows-1 window)
+      (arith-error (message
+                    "window.el is catching balance-windows-1 error: '%s'"
+                    (error-message-string err))))
+
+    ;; (balance-windows-1 window)
+
+    (when (window--resize-apply-p frame)
+      (window-resize-apply frame)
+      (window--pixel-to-total frame)
+      (run-window-configuration-change-hook frame))
+    ;; Balance horizontally.
+    (window--resize-reset (window-frame window) t)
+
+    (condition-case err
+        (balance-windows-1 window t)
+      (arith-error (message
+                    "window.el is catching balance-windows-1-horizontal error: '%s'"
+                    (error-message-string err))))
+
+    ;; (balance-windows-1 window t)
+
+    (when (window--resize-apply-p frame t)
+      (window-resize-apply frame t)
+      (window--pixel-to-total frame t)
+      (run-window-configuration-change-hook frame))))
