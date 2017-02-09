@@ -42,6 +42,7 @@ values."
      html
      javascript
      markdown
+     nginx
      python
      ruby
      shell
