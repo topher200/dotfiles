@@ -84,6 +84,66 @@
       (fill-paragraph justify))))
 (with-eval-after-load 'python (after-load-python))
 
+(defun after-load-eyebrowse ()
+  (defun eyebrowse--load-window-config (slot)
+    "Restore the window config from SLOT."
+    (-when-let (match (assq slot (eyebrowse--get 'window-configs)))
+      ;; KLUDGE: workaround for #36
+      ;; see also http://debbugs.gnu.org/cgi/bugreport.cgi?bug=20848
+      (when (version< emacs-version "25")
+        (delete-other-windows)
+        (set-window-dedicated-p nil nil))
+      ;; KLUDGE: workaround for visual-fill-column foolishly
+      ;; setting the split-window parameter
+      (let ((ignore-window-parameters t)
+            (window-config (eyebrowse--fixup-window-config (cadr match))))
+        ;; (with-demoted-errors
+            ;; (window-state-put window-config (frame-root-window) 'safe)
+            (window-state-put window-config (frame-root-window))
+          ;; )
+            )))
+
+  (defun golden-ratio (&optional arg)
+    "Resizes current window to the golden-ratio's size specs."
+    (interactive "p")
+    (unless (or (and (not golden-ratio-mode) (null arg))
+                (window-minibuffer-p)
+                (one-window-p)
+                (golden-ratio-exclude-major-mode-p)
+                (member (buffer-name)
+                        golden-ratio-exclude-buffer-names)
+                (and golden-ratio-exclude-buffer-regexp
+                  (loop for r in golden-ratio-exclude-buffer-regexp
+                          thereis (string-match r (buffer-name))))
+                (and golden-ratio-inhibit-functions
+                    (loop for fun in golden-ratio-inhibit-functions
+                          thereis (funcall fun))))
+      (let ((dims (golden-ratio--dimensions))
+            (golden-ratio-mode nil))
+        ;; Always disable `golden-ratio-mode' to avoid
+        ;; infinite loop in `balance-windows'.
+        (balance-windows)
+        (golden-ratio--resize-window dims)
+        (when golden-ratio-recenter
+          (scroll-right)
+          (condition-case err
+              recenter
+            (message "config.el is catching recenter error: '%s'"
+                     (error-message-string err)))
+          )))))
+(with-eval-after-load 'eyebrowse (after-load-eyebrowse))
+
+(add-hook 'eyebrowse-pre-window-switch-hook
+          (lambda ()
+            (setq using-golden-ratio golden-ratio-mode)
+            (spacemacs/toggle-golden-ratio-off)
+            ))
+(add-hook 'eyebrowse-post-window-switch-hook
+          (lambda ()
+            (if using-golden-ratio
+                (spacemacs/toggle-golden-ratio-on))
+            ))
+
 (defun balance-windows-2 (window horizontal)
   "Subroutine of `balance-windows-1'.
 WINDOW must be a vertical combination (horizontal if HORIZONTAL
