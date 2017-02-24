@@ -1,19 +1,7 @@
 ;; make evil jump words like Vim
 (defun underscores-in-words ()
   (modify-syntax-entry ?_ "w" (syntax-table)))
-(add-hook 'python-mode-hook 'underscores-in-words)
-(add-hook 'sh-mode-hook 'underscores-in-words)
-(add-hook 'ruby-mode-hook 'underscores-in-words)
-(add-hook 'c-mode-common-hook 'underscores-in-words)
-(add-hook 'html-mode-hook 'underscores-in-words)
-(add-hook 'json-mode-hook 'underscores-in-words)
-(add-hook 'sql-mode-hook 'underscores-in-words)
-(add-hook 'web-mode-hook 'underscores-in-words)
-(add-hook 'perl-mode-hook 'underscores-in-words)
-(add-hook 'text-mode-hook 'underscores-in-words)
-(add-hook 'robot-mode-hook 'underscores-in-words)
-(add-hook 'dockerfile-mode-hook 'underscores-in-words)
-(add-hook 'typescript-mode-hook 'underscores-in-words)
+(add-hook 'prog-mode-hook 'underscores-in-words)
 
 ;; save the desktop periodically
 (add-hook 'projectile-idle-timer-hook 'desktop-save-in-desktop-dir)
