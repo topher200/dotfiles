@@ -31,9 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ;; auto-completion
-     ;; dockerfile
      csv
+     dockerfile
      emacs-lisp
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      (git :variables git-gutter-use-fringe t)
