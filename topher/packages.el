@@ -14,18 +14,11 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq topher-packages
     '(
-      flycheck-google-cpplint
       go-mode
       ))
 
 ;; List of packages to exclude.
 (setq topher-excluded-packages '())
-
-(defun topher/init-flycheck-google-cpplint ()
-  "Tell the google style c++ checker to use cpplint"
-  (use-package flycheck-google-cpplint
-    :init (setq flycheck-disabled-checkers '(c/c++-gcc))
-    :config (flycheck-add-next-checker 'c/c++-cppcheck 'c/c++-googlelint)))
 
 (defun topher/magit ()
   "Turn off magit warnings and dumb keybindings"
