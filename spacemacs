@@ -31,10 +31,10 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     rust
      ;; auto-completion
      ;; dockerfile
      csv
+     dockerfile
      emacs-lisp
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      (git :variables git-gutter-use-fringe t)
@@ -46,6 +46,7 @@ values."
      nginx
      python
      ruby
+     rust
      shell
      sql
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
