@@ -329,6 +329,7 @@ you should place your code here."
     (setq comint-move-point-for-output nil)
     (setq python-fill-column 99)
     (add-to-list 'warning-suppress-types '(undo discard-info))
+    (yas-global-mode 1)
 
     ;; robot-mode for Robot Framework
     (load-file "~/dev/spacemacs-private-layer/robot-mode/robot-mode.el")
