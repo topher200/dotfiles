@@ -32,7 +32,7 @@ values."
    dotspacemacs-configuration-layers
    '(
      csv
-     dockerfile
+     docker
      emacs-lisp
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      (git :variables git-gutter-use-fringe t)
