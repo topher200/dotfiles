@@ -337,6 +337,23 @@ you should place your code here."
     ;; robot-mode for Robot Framework
     (load-file "~/dev/spacemacs-private-layer/robot-mode/robot-mode.el")
     (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
+
+    (defun spaceline-topher (&rest additional-segments)
+      "Install the modeline used by Spacemacs.
+
+      ADDITIONAL-SEGMENTS are inserted on the right, between `global' and
+      `buffer-position'."
+      (apply 'spaceline--theme
+             '((persp-name
+                workspace-number
+                window-number)
+               :fallback evil-state
+               :separator "|"
+               :face highlight-face)
+             '(buffer-modified buffer-size point-position line-column buffer-id remote-host)
+             additional-segments))
+    (apply #'spaceline-topher
+           spacemacs-spaceline-additional-segments)
     ))
 
 ;; Do not write anything past this comment. This is where Emacs will
