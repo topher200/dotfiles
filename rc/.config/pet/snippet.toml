@@ -1,0 +1,74 @@
+[[snippets]]
+  description = "aws1 readonly db"
+  command = "export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords"
+  output = ""
+
+[[snippets]]
+  description = "migrate all databases"
+  command = "cd /Users/t.brown/dev/wordstream/server/wordstream/src && python migrate_db.py upgrade --all ; cd /Users/t.brown/dev/wordstream"
+  output = ""
+
+[[snippets]]
+  description = "install all dependencies"
+  command = "wow && cd /Users/t.brown/dev/wordstream && python dependencies.py install dependencies.txt; python dependencies.py install dependencies-dev.txt; python dependencies.py install dependencies-ws.txt"
+  output = ""
+
+[[snippets]]
+  description = "post review to reviewboard"
+  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py && git push origin HEAD"
+  output = ""
+
+[[snippets]]
+  description = "post review to reviewboard tracking branch"
+  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py --tracking-branch=FIX_ME && git push origin HEAD"
+  output = ""
+
+[[snippets]]
+  description = "kill wordstream servers"
+  command = "kill-servers.sh"
+  output = ""
+
+[[snippets]]
+  description = "ssh into dev box aws buildbot"
+  command = "ssh dev-aws-two"
+  output = ""
+
+[[snippets]]
+  description = "download reports"
+  command = "wow ; cd /Users/t.brown/dev/wordstream/server/wordstream/src ; python -u update.py download_adwords_reports -c conf & ; python download_bing_ads_reports.py conf/ 1 & ; python download_facebook_reports.py conf & ; python download_facebook_leads.py conf & ; cd /Users/t.brown/dev/wordstream"
+  output = ""
+
+[[snippets]]
+  description = "sig kill emacs"
+  command = "pkill -SIGUSR2 Emacs"
+  output = ""
+
+[[snippets]]
+  description = "weather Boston"
+  command = "curl wttr.in/~Boston"
+  output = ""
+
+[[snippets]]
+  description = "ssh tracebacks prod"
+  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@34.205.81.12"
+  output = ""
+
+[[snippets]]
+  description = "what's my ip"
+  command = "curl ipinfo.io/ip"
+  output = ""
+
+[[snippets]]
+  description = "ssh wordy"
+  command = "ssh t.brown@wordy.wordstream-sandbox.com"
+  output = ""
+
+[[snippets]]
+  description = "cluster readonly db"
+  command = "export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d wordstream"
+  output = ""
+
+[[snippets]]
+  description = "scrub wordstream"
+  command = "cd /Users/t.brown/dev/wordstream/ ; rm -fr client/manager/src/static/gen/ ; rm -fr client/manager/src/static/.webassets-cache/ ; find . -name \"*.pyc\" -exec rm {} \\;\\n"
+  output = ""

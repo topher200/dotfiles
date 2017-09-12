@@ -1,0 +1,16 @@
+#!/bin/sh
+
+
+### print the branch name for easy access. if it's a PPC-##### branch name, we
+### strip out everything after the PPC-##### part
+
+# check to make sure we don't have a commit message already
+first_line=$(head -n1 $1)
+if [[ -n "$first_line" ]] ;
+then
+    exit 0
+fi
+
+# add our branch name
+output_text=$(git rev-parse --abbrev-ref HEAD | sed -E 's/^(PPC-[0-9]+).*$/\1/')
+sed -i "1s/^/\n# $output_text: /" "$1"

@@ -1,0 +1,5 @@
+bind main 9 !@bash -c "echo -n %(commit) | pbcopy"
+bind main B !git rebase -i %(commit)
+bind main T !@bash -c "git diff %(commit).. > diff.txt"
+bind main E !@bash -c "git reset --hard %(commit)"
+bind main V !@bash -c "git revert %(commit)"

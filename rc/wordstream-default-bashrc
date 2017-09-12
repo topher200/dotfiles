@@ -1,0 +1,25 @@
+export WORKON_HOME=~/.virtualenvs
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+
+export PATH="$HOME/.jenv/bin:$PATH"
+# eval "$(jenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+export PATH="/usr/local/lib/node_modules:$PATH"
+# source $(brew --prefix nvm)/nvm.sh
+
+export WS_REPO=~/dev/wordstream
+
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+alias remove_locks='rm /var/lib/wordstream/data/**/*.lock.lock'
+alias flush_memcached='echo ''''flush_all'''' | nc localhost 11211'
+
+alias staging='ssh tbrown@dev-aws-two.wordstream.com'
+alias demo='ssh tbrown@dev-aws-three.wordstream.com'
+alias perf-db3='ssh tbrown@perf-db3.wordstream.com'
+alias perf3='ssh tbrown@aws-perf3.wordstream.com'
+alias perf2='ssh tbrown@aws-perf2.wordstream.com'
+alias homer='ssh tbrown@dev.wordstream.com'

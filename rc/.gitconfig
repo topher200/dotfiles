@@ -1,0 +1,8 @@
+[push]
+	default = simple
+[init]
+	templatedir = ~/git-template
+[core]
+	excludesfile = /Users/t.brown/.gitignore_global
+[rerere]
+	enabled = true
