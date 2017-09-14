@@ -72,3 +72,23 @@
   description = "scrub wordstream"
   command = "cd /Users/t.brown/dev/wordstream/ ; rm -fr client/manager/src/static/gen/ ; rm -fr client/manager/src/static/.webassets-cache/ ; find . -name \"*.pyc\" -exec rm {} \\;\\n"
   output = ""
+
+[[snippets]]
+  description = "postgres logs"
+  command = "less +F /usr/local/var/postgres/server.log"
+  output = ""
+
+[[snippets]]
+  description = "find from root"
+  command = "find / -name \"*FIX_ME*\" 2>/dev/null"
+  output = ""
+
+[[snippets]]
+  description = "watchman logs"
+  command = "less +F /usr/local/var/run/watchman/t.brown-state/log"
+  output = ""
+
+[[snippets]]
+  description = "flush memcache (dogpile)"
+  command = "echo 'flush_all' | nc localhost 11211"
+  output = ""
