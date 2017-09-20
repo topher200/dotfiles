@@ -334,6 +334,11 @@ you should place your code here."
     (add-to-list 'warning-suppress-types '(undo discard-info))
     (yas-global-mode 1)
 
+    ;; turn off org mode's c-tab binding
+    (eval-after-load 'org
+      (progn
+        (define-key org-mode-map (kbd "<C-tab>") nil)))
+
     ;; robot-mode for Robot Framework
     (load-file "~/dev/spacemacs-private-layer/robot-mode/robot-mode.el")
     (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
