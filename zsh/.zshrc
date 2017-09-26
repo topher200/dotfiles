@@ -206,3 +206,6 @@ alias svr='supervisorctl -c ~/dev/bin/supervisor.conf restart'
 alias svra='supervisorctl -c ~/dev/bin/supervisor.conf restart all'
 alias svrm='supervisorctl -c ~/dev/bin/supervisor.conf restart manager'
 alias svre='supervisorctl -c ~/dev/bin/supervisor.conf restart engine'
+
+source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZSH_CUSTOM/zsh-autosuggestions/zsh-autosuggestions.zsh
