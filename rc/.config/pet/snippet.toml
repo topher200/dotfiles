@@ -20,7 +20,7 @@
 
 [[snippets]]
   description = "post review to reviewboard tracking branch"
-  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py --tracking-branch=FIX_ME && git push origin HEAD"
+  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py --tracking-branch FIX_ME && git push origin HEAD"
   output = ""
 
 [[snippets]]
@@ -91,4 +91,9 @@
 [[snippets]]
   description = "flush memcache (dogpile)"
   command = "echo 'flush_all' | nc localhost 11211"
+  output = ""
+
+[[snippets]]
+  description = "create wordstream watchman trigger"
+  command = "watchman -j <<-EOT\\n[\"trigger\", \"`pwd`\", {\\n   \"name\": \"python-files\",\\n   \"expression\": [\\n       \"allof\",\\n           [\"suffix\", \"py\"],\\n           [\"type\", \"f\"],\\n           [\"not\", [\"imatch\", \"flycheck*.py\"]],\\n           [\"not\", [\"iname\", \"*.#*\"]],\\n           [\"not\", [\"suffix\", \"pyc\"]]\\n       ],\\n   \"command\": [\"supervisorctl\", \"-c\", \"/Users/t.brown/dev/bin/supervisor.conf\", \"restart\", \"engine\", \"manager\"],\\n   \"append_files\": false\\n}]\\nEOT"
   output = ""
