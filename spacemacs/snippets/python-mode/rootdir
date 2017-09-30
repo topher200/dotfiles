@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: root-dir-const
+# key: rootdir
+# --
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))

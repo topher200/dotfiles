@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: assert-isinstance
+# key: assii
+# --
+@type $1: $2
+assert isinstance($1, $2), (type($1), $1)
