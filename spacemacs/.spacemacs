@@ -343,6 +343,9 @@ you should place your code here."
     (load-file "~/dev/spacemacs-private-layer/robot-mode/robot-mode.el")
     (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
 
+    ;; stop mule warnings
+    (define-coding-system-alias 'UTF-8 'utf-8)
+
     (defun spaceline-topher (&rest additional-segments)
       "Install the modeline used by Spacemacs.
 
