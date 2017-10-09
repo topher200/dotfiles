@@ -102,3 +102,13 @@
   description = "ssh staging"
   command = "ssh staging.wordstream.com"
   output = ""
+
+[[snippets]]
+  description = "copy last command"
+  command = "echo \"!!\" | pbcopy"
+  output = ""
+
+[[snippets]]
+  description = "clear git rerere cache"
+  command = "rm -rf .git/rr-cache"
+  output = ""
