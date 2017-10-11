@@ -340,7 +340,7 @@ you should place your code here."
         (define-key org-mode-map (kbd "<C-tab>") nil)))
 
     ;; robot-mode for Robot Framework
-    (load-file "~/dev/spacemacs-private-layer/robot-mode/robot-mode.el")
+    (load-file "~/.emacs.d/robot-mode/robot-mode.el")
     (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
 
     ;; stop mule warnings
