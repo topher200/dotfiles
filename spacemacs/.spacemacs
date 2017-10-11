@@ -317,6 +317,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
         (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
         (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)))
 
+    ;; stop mule warnings
+    (define-coding-system-alias 'UTF-8 'utf-8)
+    (set-language-environment "UTF-8")
+    (set-default-coding-systems 'utf-8)
+
     (spacemacs|use-package-add-hook projectile
       :init
       (setq projectile-keymap-prefix (kbd "C-c C-p")))))
@@ -342,9 +347,6 @@ you should place your code here."
     ;; robot-mode for Robot Framework
     (load-file "~/.emacs.d/robot-mode/robot-mode.el")
     (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
-
-    ;; stop mule warnings
-    (define-coding-system-alias 'UTF-8 'utf-8)
 
     (defun spaceline-topher (&rest additional-segments)
       "Install the modeline used by Spacemacs.
