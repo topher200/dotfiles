@@ -344,6 +344,9 @@ you should place your code here."
       (progn
         (define-key org-mode-map (kbd "<C-tab>") nil)))
 
+    ;; anadona mode is broken at the moment, turning it off
+    ; (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
+
     ;; robot-mode for Robot Framework
     (load-file "~/.emacs.d/robot-mode/robot-mode.el")
     (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
