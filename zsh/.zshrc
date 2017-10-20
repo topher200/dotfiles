@@ -208,6 +208,7 @@ alias svrm='supervisorctl -c ~/dev/bin/supervisor.conf restart manager'
 alias svre='supervisorctl -c ~/dev/bin/supervisor.conf restart engine'
 
 source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
 source $ZSH_CUSTOM/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
