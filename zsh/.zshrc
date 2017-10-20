@@ -52,7 +52,7 @@ ZSH_CUSTOM=~/zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    autojump
+    fasd
     git
     vi-mode
 )
