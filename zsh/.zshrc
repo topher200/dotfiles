@@ -57,6 +57,10 @@ plugins=(
     vi-mode
 )
 
+# fasd aliases
+alias j='fasd_cd -d'     # cd, same functionality as j in autojump
+alias jj='fasd_cd -d -i' # cd with interactive selection
+
 source $ZSH/oh-my-zsh.sh
 
 # set up git template directory
