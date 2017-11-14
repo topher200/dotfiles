@@ -50,7 +50,7 @@
 
 [[snippets]]
   description = "ssh tracebacks prod"
-  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@34.205.81.12"
+  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@tracebacks.wordstream-sandbox.com"
   output = ""
 
 [[snippets]]
@@ -116,4 +116,14 @@
 [[snippets]]
   description = "clear git rerere cache"
   command = "rm -rf .git/rr-cache"
+  output = ""
+
+[[snippets]]
+  description = "elastic search es proxy"
+  command = "ssh -i \"tbrown-key.pem\" ec2-user@ec2-34-200-239-251.compute-1.amazonaws.com"
+  output = ""
+
+[[snippets]]
+  description = "seashells broadcast online"
+  command = "!! | nc seashells.io 1337"
   output = ""
