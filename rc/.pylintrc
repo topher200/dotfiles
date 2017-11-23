@@ -64,7 +64,7 @@ disable=invalid-name,protected-access,fixme,too-many-branches,
         slots-on-old-class,too-many-nested-blocks,too-many-ancestors,
         abstract-method, pointless-string-statement, ungrouped-imports,
         misplaced-comparison-constant, superfluous-parens, no-self-argument, no-self-use,
-        line-too-long, bad-whitespace, logging-not-lazy, singleton-comparison
+        # line-too-long, bad-whitespace, logging-not-lazy, singleton-comparison
 
 
 [REPORTS]
