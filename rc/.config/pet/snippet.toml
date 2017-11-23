@@ -127,3 +127,13 @@
   description = "seashells broadcast online"
   command = "!! | nc seashells.io 1337"
   output = ""
+
+[[snippets]]
+  description = "kill all tmux sessions"
+  command = "tmux list-sessions | cut -d: -f 1 | xargs -I {} tmux kill-session -t {}"
+  output = ""
+
+[[snippets]]
+  description = "remove watchman"
+  command = "watchman watch-del ~/dev/wordstream"
+  output = ""
