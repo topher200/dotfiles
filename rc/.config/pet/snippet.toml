@@ -137,3 +137,13 @@
   description = "remove watchman"
   command = "watchman watch-del ~/dev/wordstream"
   output = ""
+
+[[snippets]]
+  description = "git filename changes since last commit"
+  command = "git --no-pager diff --name-only HEAD^"
+  output = ""
+
+[[snippets]]
+  description = "git force push branch"
+  command = "force-push-branch"
+  output = ""
