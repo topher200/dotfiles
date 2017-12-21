@@ -212,14 +212,14 @@ compctl -g '~/.itermocil/*(:t:r)' itermocil
 eval $(thefuck --alias)
 
 # add supervisor for WS
-alias sv='supervisorctl -c ~/dev/bin/supervisor.conf'
-alias svs='supervisorctl -c ~/dev/bin/supervisor.conf status'
-alias svu='supervisorctl -c ~/dev/bin/supervisor.conf update'
-alias svr='supervisorctl -c ~/dev/bin/supervisor.conf restart'
-alias svra='supervisorctl -c ~/dev/bin/supervisor.conf restart main:'
-alias svraa='supervisorctl -c ~/dev/bin/supervisor.conf restart all'
-alias svrm='supervisorctl -c ~/dev/bin/supervisor.conf restart main:manager'
-alias svre='supervisorctl -c ~/dev/bin/supervisor.conf restart main:engine'
+alias sv='supervisorctl -c ~/dev/bin/supervisord.conf'
+alias svs='supervisorctl -c ~/dev/bin/supervisord.conf status'
+alias svu='supervisorctl -c ~/dev/bin/supervisord.conf update'
+alias svr='supervisorctl -c ~/dev/bin/supervisord.conf restart'
+alias svra='supervisorctl -c ~/dev/bin/supervisord.conf restart app:'
+alias svraa='supervisorctl -c ~/dev/bin/supervisord.conf restart all'
+alias svrm='supervisorctl -c ~/dev/bin/supervisord.conf restart app:manager'
+alias svre='supervisorctl -c ~/dev/bin/supervisord.conf restart app:engine'
 
 # auto complete suggestions
 source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
