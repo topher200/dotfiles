@@ -226,7 +226,8 @@ source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
 source $ZSH_CUSTOM/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 # tmuxinator auto completions
 source $ZSH_CUSTOM/tmuxinator.zsh
+
+# load ssh remote shells in vi mode
+function sshv { ssh -t $1 "bash -i -o vi" }
