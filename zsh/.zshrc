@@ -69,6 +69,9 @@ alias jj='fasd_cd -d -i' # cd with interactive selection
 
 source $ZSH/oh-my-zsh.sh
 
+# don't share command history between non-closed shells
+unsetopt share_history
+
 # set up git template directory
 GIT_TEMPLATE_DIR=~/git_template
 
