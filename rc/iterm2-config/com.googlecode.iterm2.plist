@@ -7,7 +7,7 @@
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -239,11 +239,11 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>268 397 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 425 570 452 0 0 1440 877 </string>
+	<string>0 4 1440 873 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 425 570 452 0 0 1440 877 </string>
+	<string>1440 425 570 452 1440 -252 2048 1129 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>721 420 570 452 0 0 1440 877 </string>
+	<string>0 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>1 402 570 452 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_E3C27FA9-EEA5-4387-9E1F-E7819EB545F6</key>
@@ -1027,6 +1027,8 @@
 	<true/>
 	<key>NoSyncHaveShownPromoWithId_4</key>
 	<true/>
+	<key>NoSyncHaveUsedCopyMode</key>
+	<true/>
 	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
@@ -1138,7 +1140,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-11-14T19:39:02Z</date>
+	<date>2017-12-21T16:46:44Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
