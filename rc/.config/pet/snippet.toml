@@ -110,7 +110,7 @@
 
 [[snippets]]
   description = "copy last command"
-  command = "echo \"!!\" | pbcopy"
+  command = "echo \"\"\"!!\"\"\" | pbcopy"
   output = ""
 
 [[snippets]]
@@ -146,4 +146,19 @@
 [[snippets]]
   description = "git force push branch"
   command = "force-push-branch"
+  output = ""
+
+[[snippets]]
+  description = "tmux kill unattached sessions"
+  command = "tmux list-sessions | grep -v attached | cut -d: -f 1 | xargs -I {} tmux kill-session -t {}"
+  output = ""
+
+[[snippets]]
+  description = "psql get ad alert data by account"
+  command = "ACCOUNT_ID=144 ; psql -d adwords -c \"select * from alerts where alert_type = 'CREATE_AD_ALERT' and account_id = $ACCOUNT_ID and is_latest;\" | cat ; psql -d adwords -c \"select * from alerts_kv where alert_id in (select alert_id from alerts where is_latest and account_id = $ACCOUNT_ID and alert_type = 'CREATE_AD_ALERT') order by alert_id, key;\" | cat"
+  output = ""
+
+[[snippets]]
+  description = "open directory in finder"
+  command = "open ."
   output = ""
