@@ -57,9 +57,9 @@
 		<key>0x19-0x60000</key>
 		<dict>
 			<key>Action</key>
-			<integer>2</integer>
+			<integer>11</integer>
 			<key>Text</key>
-			<string></string>
+			<string>0x01 0x39</string>
 		</dict>
 		<key>0x57-0x120000</key>
 		<dict>
@@ -85,9 +85,9 @@
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
-			<integer>0</integer>
+			<integer>11</integer>
 			<key>Text</key>
-			<string></string>
+			<string>0x01 0x30</string>
 		</dict>
 		<key>0xf702-0x320000</key>
 		<dict>
