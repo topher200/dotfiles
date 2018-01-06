@@ -162,3 +162,8 @@
   description = "open directory in finder"
   command = "open ."
   output = ""
+
+[[snippets]]
+  description = "glances htop"
+  command = "glances --theme-white"
+  output = ""
