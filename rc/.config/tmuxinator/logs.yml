@@ -44,13 +44,32 @@ root: ~/dev/wordstream
 
 windows:
   - manager-engine:
-      layout: even-vertical
+      layout: tiled
       root: /var/log/wordstream
       panes:
         - shell:
+          - watch supervisorctl status
+        - shell:
           - cd .
+          - exit
         - manager-log:
           - less +F manager/debug.log
+        - manager-log-errors:
+          - supervisorctl tail -f app:manager stderr
+        - engine-log:
+          - less +F server/debug.log
+        - engine-log-errors:
+          - supervisorctl tail -f app:engine stderr
+  - manager:
+      layout: even-vertical
+      root: /var/log/wordstream
+      panes:
+        - manager-log:
+          - less +F manager/debug.log
+  - engine:
+      layout: even-vertical
+      root: /var/log/wordstream
+      panes:
         - engine-log:
           - less +F server/debug.log
   - reporting-swf-shell:
@@ -79,7 +98,7 @@ windows:
       panes:
         - shell:
           - cd .
-        - swarm-log
+        - swarm-log:
           - less +F update/debug.log
   - tag-manager-shell:
       layout: even-vertical
@@ -87,5 +106,5 @@ windows:
       panes:
         - shell:
           - cd .
-        - tag-manager-log
+        - tag-manager-log:
           - less +F update/debug.log
