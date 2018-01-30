@@ -225,6 +225,8 @@ alias svre='supervisorctl -c ~/dev/bin/supervisord.conf restart app:engine'
 source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
 source $ZSH_CUSTOM/zsh-autosuggestions/zsh-autosuggestions.zsh
+# speed up pasting. https://github.com/zsh-users/zsh-autosuggestions/issues/141
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=5
 
 # tmuxinator auto completions
 source $ZSH_CUSTOM/tmuxinator.zsh
