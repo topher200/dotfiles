@@ -29,10 +29,10 @@ windows:
         focus: true
       - name: swf-decider-log
         commands:
-          - less +F SWF-ADWORDS_QUICKSTART-DECIDER/debug.log
+          - less +F SWF-QUICKSTART-DECIDER/debug.log
       - name: swf-worker-log
         commands:
-          - less +F SWF-ADWORDS_QUICKSTART-ACTIVITY_WORKER/debug.log
+          - less +F SWF-QUICKSTART-ACTIVITY_WORKER/debug.log
   - layout: even-vertical
     root: /var/log/wordstream
     panes:

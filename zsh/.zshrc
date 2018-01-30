@@ -1,6 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# run tmux in all shells
+if which tmux >/dev/null 2>&1; then
+    # if not inside a tmux session, and if no session is started, start a new session
+    test -z "$TMUX" && ( tmux )
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -52,12 +58,19 @@ ZSH_CUSTOM=~/zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    autojump
+    fasd
     git
     vi-mode
 )
 
+# fasd aliases
+alias j='fasd_cd -d'     # cd, same functionality as j in autojump
+alias jj='fasd_cd -d -i' # cd with interactive selection
+
 source $ZSH/oh-my-zsh.sh
+
+# don't share command history between non-closed shells
+unsetopt share_history
 
 # set up git template directory
 GIT_TEMPLATE_DIR=~/git_template
@@ -81,8 +94,8 @@ alias gcaa="git commit -va --amend"
 alias gcaf="git commit -va -m \"fix\""
 alias gco="git checkout"
 alias gcom="git checkout master"
-alias gcoob="git checkout origin/buildbot"
 alias gcoom="git checkout origin/master"
+alias gcoum="git checkout upstream/master"
 alias gcopa="git checkout --patch"
 alias gcpa="git commit -v --patch"
 alias gd="git diff --color"
@@ -166,7 +179,7 @@ bindkey '^s' pet-select
 if [ -f ~/wordstream-default-bashrc ]; then
     source ~/wordstream-default-bashrc
 fi
-alias wow="workon wordstream;cd -"
+alias wow="workon wordstream"
 alias gcosdm="git checkout stable_db_migration"
 alias gcoosdm="git checkout origin/stable_db_migration"
 alias grosdm="git rebase origin/stable_db_migration"
@@ -199,10 +212,24 @@ compctl -g '~/.itermocil/*(:t:r)' itermocil
 eval $(thefuck --alias)
 
 # add supervisor for WS
-alias sv='supervisorctl -c ~/dev/bin/supervisor.conf'
-alias svs='supervisorctl -c ~/dev/bin/supervisor.conf status'
-alias svu='supervisorctl -c ~/dev/bin/supervisor.conf update'
-alias svr='supervisorctl -c ~/dev/bin/supervisor.conf restart'
-alias svra='supervisorctl -c ~/dev/bin/supervisor.conf restart all'
-alias svrm='supervisorctl -c ~/dev/bin/supervisor.conf restart manager'
-alias svre='supervisorctl -c ~/dev/bin/supervisor.conf restart engine'
+alias sv='supervisorctl -c ~/dev/bin/supervisord.conf'
+alias svs='supervisorctl -c ~/dev/bin/supervisord.conf status'
+alias svu='supervisorctl -c ~/dev/bin/supervisord.conf update'
+alias svr='supervisorctl -c ~/dev/bin/supervisord.conf restart'
+alias svra='supervisorctl -c ~/dev/bin/supervisord.conf restart app:'
+alias svraa='supervisorctl -c ~/dev/bin/supervisord.conf restart all'
+alias svrm='supervisorctl -c ~/dev/bin/supervisord.conf restart app:manager'
+alias svre='supervisorctl -c ~/dev/bin/supervisord.conf restart app:engine'
+
+# auto complete suggestions
+source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
+source $ZSH_CUSTOM/zsh-autosuggestions/zsh-autosuggestions.zsh
+# speed up pasting. https://github.com/zsh-users/zsh-autosuggestions/issues/141
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=5
+
+# tmuxinator auto completions
+source $ZSH_CUSTOM/tmuxinator.zsh
+
+# load ssh remote shells in vi mode
+function sshv { ssh -t $1 "bash -i -o vi" }

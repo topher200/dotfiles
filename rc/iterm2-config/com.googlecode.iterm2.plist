@@ -7,7 +7,7 @@
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>AnimateDimming</key>
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -16,12 +16,18 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>AutoHideTmuxClientSession</key>
 	<false/>
 	<key>CheckTestRelease</key>
 	<true/>
 	<key>ClosingHotkeySwitchesSpaces</key>
 	<true/>
+	<key>ClosingTmuxTabKillsTmuxWindows</key>
+	<true/>
+	<key>ClosingTmuxTabKillsTmuxWindows_selection</key>
+	<integer>1</integer>
 	<key>CommandSelection</key>
 	<true/>
 	<key>Control</key>
@@ -48,19 +54,12 @@
 	<real>1</real>
 	<key>GlobalKeyMap</key>
 	<dict>
-		<key>0x19-0x20000</key>
-		<dict>
-			<key>Action</key>
-			<integer>30</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
 		<key>0x19-0x60000</key>
 		<dict>
 			<key>Action</key>
-			<integer>2</integer>
+			<integer>11</integer>
 			<key>Text</key>
-			<string></string>
+			<string>0x01 0x39</string>
 		</dict>
 		<key>0x57-0x120000</key>
 		<dict>
@@ -69,38 +68,10 @@
 			<key>Text</key>
 			<string>Close</string>
 		</dict>
-		<key>0x64-0x40000</key>
-		<dict>
-			<key>Action</key>
-			<integer>8</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0x6a-0x40000</key>
-		<dict>
-			<key>Action</key>
-			<integer>6</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0x6b-0x40000</key>
-		<dict>
-			<key>Action</key>
-			<integer>7</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
 		<key>0x72-0x100000</key>
 		<dict>
 			<key>Action</key>
 			<integer>13</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0x75-0x40000</key>
-		<dict>
-			<key>Action</key>
-			<integer>9</integer>
 			<key>Text</key>
 			<string></string>
 		</dict>
@@ -114,9 +85,9 @@
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
-			<integer>0</integer>
+			<integer>11</integer>
 			<key>Text</key>
-			<string></string>
+			<string>0x01 0x30</string>
 		</dict>
 		<key>0xf702-0x320000</key>
 		<dict>
@@ -199,6 +170,8 @@
 	<integer>0</integer>
 	<key>HotkeyCode</key>
 	<integer>0</integer>
+	<key>HotkeyMigratedFromSingleToMulti</key>
+	<true/>
 	<key>HotkeyModifiers</key>
 	<integer>0</integer>
 	<key>IRMemory</key>
@@ -234,7 +207,7 @@
 	gAKACoAN0xAJChEVGVdOUy5rZXlzoxITFIADgASABaMWFxiABoAHgAiACVpJZGVudGlm
 	aWVyVVdpZHRoVkhpZGRlblEwI0BowAAAAAAACNIhIiMkWiRjbGFzc25hbWVYJGNsYXNz
 	ZXNcTlNEaWN0aW9uYXJ5oiMlWE5TT2JqZWN00xAJCicrGaMSExSAA4AEgAWjLC0YgAuA
-	DIAIgAlRMSNAdCAAAAAAANIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
+	DIAIgAlRMSNAdKAAAAAAANIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
 	TlNLZXllZEFyY2hpdmVy0Tg5VUFycmF5gAEACAARABoAIwAtADIANwBGAEwAUQBcAGMA
 	ZgBoAGoAbABzAHsAfwCBAIMAhQCJAIsAjQCPAJEAnACiAKkAqwC0ALUAugDFAM4A2wDe
 	AOcA7gDyAPQA9gD4APwA/gEAAQIBBAEGAQ8BFAEjAScBLwFBAUQBSgAAAAAAAAIBAAAA
@@ -258,19 +231,19 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>269 398 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
-	<string>2156 464 616 174 1440 -252 2048 1129 </string>
+	<string>412 528 616 174 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 364 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 139 606 456 0 0 1440 877 </string>
+	<string>269 139 606 469 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>269 375 796 473 0 0 1440 877 </string>
+	<string>268 397 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1 30 1438 843 0 0 1440 877 </string>
+	<string>0 4 1440 873 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1 28 1438 843 0 0 1440 877 </string>
+	<string>1440 425 570 452 1440 -252 2048 1129 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>1 29 1438 839 0 0 1440 877 </string>
+	<string>0 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>1 402 570 452 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_E3C27FA9-EEA5-4387-9E1F-E7819EB545F6</key>
@@ -1044,11 +1017,17 @@
 			<string>/Users/t.brown</string>
 		</dict>
 	</array>
+	<key>NoSyncAutoBurialReveal</key>
+	<true/>
+	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
+	<true/>
 	<key>NoSyncConfirmBeta</key>
 	<true/>
 	<key>NoSyncDisablePromotions</key>
 	<true/>
 	<key>NoSyncHaveShownPromoWithId_4</key>
+	<true/>
+	<key>NoSyncHaveUsedCopyMode</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
 	<true/>
@@ -1057,7 +1036,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>EBB3CFF1-14CD-4E91-8E55-871DBFDE1157</string>
 	<key>NoSyncLastTipTime</key>
-	<real>488412518.84484297</real>
+	<real>532393457.43692702</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1077,6 +1056,7 @@
 		<string>0001</string>
 		<string>0002</string>
 		<string>0003</string>
+		<string>0003</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1085,7 +1065,7 @@
 	<key>OpenBookmark</key>
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PassOnControlClick</key>
@@ -1160,7 +1140,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-06-23T14:49:02Z</date>
+	<date>2017-12-21T16:46:44Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -1205,10 +1185,12 @@
 	<string>/-+\~_.</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.15</string>
+	<string>3.1.5.beta.2</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

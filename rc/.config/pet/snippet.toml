@@ -20,7 +20,7 @@
 
 [[snippets]]
   description = "post review to reviewboard tracking branch"
-  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py --tracking-branch=FIX_ME && git push origin HEAD"
+  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py --tracking-branch origin/FIX_ME && git push origin HEAD"
   output = ""
 
 [[snippets]]
@@ -50,7 +50,7 @@
 
 [[snippets]]
   description = "ssh tracebacks prod"
-  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@34.205.81.12"
+  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@tracebacks.wordstream-sandbox.com"
   output = ""
 
 [[snippets]]
@@ -91,4 +91,79 @@
 [[snippets]]
   description = "flush memcache (dogpile)"
   command = "echo 'flush_all' | nc localhost 11211"
+  output = ""
+
+[[snippets]]
+  description = "create wordstream watchman trigger app"
+  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",  \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:\\\"],  \\\"append_files\\\": false}]\""
+  output = ""
+
+[[snippets]]
+  description = "create wordstream watchman trigger all including background"
+  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",  \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"all\\\"],  \\\"append_files\\\": false}]\""
+  output = ""
+
+[[snippets]]
+  description = "ssh staging"
+  command = "ssh staging.wordstream.com"
+  output = ""
+
+[[snippets]]
+  description = "copy last command"
+  command = "echo \"\"\"!!\"\"\" | pbcopy"
+  output = ""
+
+[[snippets]]
+  description = "clear git rerere cache"
+  command = "rm -rf .git/rr-cache"
+  output = ""
+
+[[snippets]]
+  description = "elastic search es proxy"
+  command = "ssh -i \"tbrown-key.pem\" ec2-user@ec2-34-200-239-251.compute-1.amazonaws.com"
+  output = ""
+
+[[snippets]]
+  description = "seashells broadcast online"
+  command = "!! | nc seashells.io 1337"
+  output = ""
+
+[[snippets]]
+  description = "kill all tmux sessions"
+  command = "tmux list-sessions | cut -d: -f 1 | xargs -I {} tmux kill-session -t {}"
+  output = ""
+
+[[snippets]]
+  description = "remove watchman"
+  command = "watchman watch-del ~/dev/wordstream"
+  output = ""
+
+[[snippets]]
+  description = "git filename changes since last commit"
+  command = "git --no-pager diff --name-only HEAD^"
+  output = ""
+
+[[snippets]]
+  description = "git force push branch"
+  command = "force-push-branch"
+  output = ""
+
+[[snippets]]
+  description = "tmux kill unattached sessions"
+  command = "tmux list-sessions | grep -v attached | cut -d: -f 1 | xargs -I {} tmux kill-session -t {}"
+  output = ""
+
+[[snippets]]
+  description = "psql get ad alert data by account"
+  command = "ACCOUNT_ID=144 ; psql -d adwords -c \"select * from alerts where alert_type = 'CREATE_AD_ALERT' and account_id = $ACCOUNT_ID and is_latest;\" | cat ; psql -d adwords -c \"select * from alerts_kv where alert_id in (select alert_id from alerts where is_latest and account_id = $ACCOUNT_ID and alert_type = 'CREATE_AD_ALERT') order by alert_id, key;\" | cat"
+  output = ""
+
+[[snippets]]
+  description = "open directory in finder"
+  command = "open ."
+  output = ""
+
+[[snippets]]
+  description = "glances htop"
+  command = "glances --theme-white"
   output = ""

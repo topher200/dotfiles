@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: __repr__ for an enum class
+# key: reprenum
+# --
+def __repr__(self):
+    return '<{}.{} object, value {!r}>'.format(
+        self.__module__,
+        type(self).__name__,
+        self.name,
+    )

@@ -19,3 +19,6 @@ set backspace=indent,eol,start
 
 " enable vim to edit crontab on osx. see http://stackoverflow.com/a/21194148
 autocmd FileType crontab setlocal nowritebackup
+
+" status line always
+:set laststatus=2
