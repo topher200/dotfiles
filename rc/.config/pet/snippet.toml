@@ -69,7 +69,7 @@
   output = ""
 
 [[snippets]]
-  description = "scrub wordstream"
+  description = "scrub/clean wordstream js and pyc file caches"
   command = "cd /Users/t.brown/dev/wordstream/ ; rm -fr client/manager/src/static/gen/ ; rm -fr client/manager/src/static/.webassets-cache/ ; find . -name \"*.pyc\" -exec rm {} \\;\\n"
   output = ""
 
@@ -166,4 +166,14 @@
 [[snippets]]
   description = "glances htop"
   command = "glances --theme-white"
+  output = ""
+
+[[snippets]]
+  description = "ssh stats-from-logs proxy server"
+  command = "ssh ec2-user@ec2-34-200-239-251.compute-1.amazonaws.com"
+  output = ""
+
+[[snippets]]
+  description = "start supervisor"
+  command = "supervisord -c ~/dev/bin/supervisord.conf"
   output = ""
