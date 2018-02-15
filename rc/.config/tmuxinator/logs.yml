@@ -55,11 +55,11 @@ windows:
         - manager-log:
           - less +F manager/debug.log
         - manager-log-errors:
-          - supervisorctl tail -f app:manager stderr
+          - while sleep 1; do supervisorctl tail -f app:manager stderr; done
         - engine-log:
           - less +F server/debug.log
         - engine-log-errors:
-          - supervisorctl tail -f app:engine stderr
+          - while sleep 1; do supervisorctl tail -f app:engine stderr; done
   - manager:
       layout: even-vertical
       root: /var/log/wordstream
