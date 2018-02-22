@@ -50,7 +50,7 @@
 
 [[snippets]]
   description = "ssh tracebacks prod"
-  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@tracebacks.wordstream-sandbox.com"
+  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.77.134"
   output = ""
 
 [[snippets]]
