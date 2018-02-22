@@ -134,11 +134,6 @@
   output = ""
 
 [[snippets]]
-  description = "elastic search es proxy"
-  command = "ssh -i \"tbrown-key.pem\" ec2-user@ec2-34-200-239-251.compute-1.amazonaws.com"
-  output = ""
-
-[[snippets]]
   description = "seashells broadcast online"
   command = "!! | nc seashells.io 1337"
   output = ""
@@ -180,10 +175,15 @@
 
 [[snippets]]
   description = "ssh stats-from-logs proxy server"
-  command = "ssh ec2-user@ec2-34-200-239-251.compute-1.amazonaws.com"
+  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.74.71"
   output = ""
 
 [[snippets]]
   description = "start supervisor"
   command = "supervisord -c ~/dev/bin/supervisord.conf"
+  output = ""
+
+[[snippets]]
+  description = "list directories and their sizes, sorted and human readable"
+  command = "du -h | sort -g"
   output = ""
