@@ -107,4 +107,4 @@ windows:
         - shell:
           - cd .
         - tag-manager-log:
-          - less +F update/debug.log
+          - less +F tag_manager/debug.log
