@@ -72,6 +72,9 @@ source $ZSH/oh-my-zsh.sh
 # don't share command history between non-closed shells
 unsetopt share_history
 
+# just run commands with '!!' (like 'sudo !!'), don't try to verify
+setopt no_histverify
+
 # set up git template directory
 GIT_TEMPLATE_DIR=~/git_template
 
