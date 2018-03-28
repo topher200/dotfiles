@@ -499,7 +499,7 @@ you should place your code here."
    ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
  '(xterm-color-names-bright
    ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"])
- '(yaml-indent-offset 4)
+ '(yaml-indent-offset 2)
  '(yas-snippet-dirs (quote ("/Users/t.brown/.emacs.d/private/snippets"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
