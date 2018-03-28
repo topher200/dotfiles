@@ -49,15 +49,40 @@ windows:
       panes:
         - shell:
           - workon assertion-context
-  - kube-logs:
+  - default-logs:
       root: ~/dev/assertion-context
-      layout: '65ea,204x48,0,0[204x18,0,0{102x18,0,0[102x8,0,0,62,102x9,0,9,63],101x18,103,0,64},204x29,0,19,65]'
+      layout: even-vertical
       panes:
         - nodes:
           - watch "kubectl get nodes"
         - services:
           - watch "kubectl get svc"
-        - top:
-          - watch "kubectl top node && kubectl top pod && kubectl top pod --namespace kube-system"
         - pods:
-          - watch "kubectl get pods --show-all -o wide && kubectl get pods --namespace kube-system --show-all -o wide"
+          - watch "kubectl get pods --show-all -o wide"
+        - exit:
+          - exit
+  - jaeger:
+      root: ~/dev/assertion-context
+      layout: even-vertical
+      panes:
+        - services:
+          - watch "kubectl get svc --namespace jaeger-infra"
+        - pods:
+          - watch "kubectl top pods --namespace jaeger-infra"
+        - pods:
+          - watch "kubectl get pods --namespace jaeger-infra -o wide"
+        - exit:
+          - exit
+  - kube-system:
+      root: ~/dev/assertion-context
+      layout: even-vertical
+      panes:
+        - services:
+          - watch "kubectl get svc --namespace kube-system"
+        - top:
+          - watch "kubectl top node && kubectl top pod --namespace kube-system"
+  - kube-proxy:
+      root: ~/dev/assertion-context
+      panes:
+        - proxy:
+          - kubectl proxy
