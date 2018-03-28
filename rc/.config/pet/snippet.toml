@@ -1,6 +1,6 @@
 [[snippets]]
   description = "aws1 readonly db"
-  command = "export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords"
+  command = "tmux rename-window 'psql-readonly-aws1' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords"
   output = ""
 
 [[snippets]]
@@ -50,7 +50,7 @@
 
 [[snippets]]
   description = "ssh tracebacks prod"
-  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.77.134"
+  command = "tmux rename-window 'ssh-tracebacks' && ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.77.134"
   output = ""
 
 [[snippets]]
@@ -60,12 +60,12 @@
 
 [[snippets]]
   description = "ssh wordy"
-  command = "ssh t.brown@wordy.wordstream-sandbox.com"
+  command = "tmux rename-window 'ssh-wordy' && ssh t.brown@wordy.wordstream-sandbox.com"
   output = ""
 
 [[snippets]]
   description = "cluster readonly db"
-  command = "export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d wordstream"
+  command = "tmux rename-window 'psql-readonly-cluster' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d wordstream"
   output = ""
 
 [[snippets]]
@@ -120,7 +120,7 @@
 
 [[snippets]]
   description = "ssh staging"
-  command = "ssh staging.wordstream.com"
+  command = "tmux rename-window 'ssh-staging' && ssh staging.wordstream.com"
   output = ""
 
 [[snippets]]
@@ -175,7 +175,7 @@
 
 [[snippets]]
   description = "ssh stats-from-logs proxy server"
-  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.74.71"
+  command = "tmux rename-window 'ssh-stats-from-logs-proxy' && ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.74.71"
   output = ""
 
 [[snippets]]
