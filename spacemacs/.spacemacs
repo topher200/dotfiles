@@ -469,7 +469,7 @@ you should place your code here."
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(truncate-lines t)
- '(uniquify-strip-common-suffix nil)
+ '(uniquify-strip-common-suffix t)
  '(vc-annotate-background nil)
  '(vc-annotate-background-mode nil)
  '(vc-annotate-color-map
