@@ -410,6 +410,7 @@ you should place your code here."
  '(flycheck-c/c++-googlelint-executable "cpplint")
  '(flycheck-disabled-checkers (quote (javascript-jscs c/c++-gcc)))
  '(flycheck-display-errors-delay 0.1)
+ '(flycheck-python-pylint-executable "~/.virtualenvs/wordstream/bin/pylint")
  '(global-evil-search-highlight-persist nil)
  '(global-flycheck-mode t)
  '(gofmt-command "goimports")
