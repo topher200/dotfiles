@@ -35,7 +35,7 @@
 
 [[snippets]]
   description = "download reports"
-  command = "wow ; cd /Users/t.brown/dev/wordstream/server/wordstream/src ; python -u update.py download_adwords_reports -c conf & ; python download_bing_ads_reports.py conf/ 1 & ; python download_facebook_reports.py conf & ; python download_facebook_leads.py conf & ; python update update_spend_stats -c conf & ; cd /Users/t.brown/dev/wordstream"
+  command = "wow ; cd /Users/t.brown/dev/wordstream/server/wordstream/src ; python -u update.py download_adwords_reports -c conf & ; python download_bing_ads_reports.py conf/ 1 & ; python download_facebook_reports.py conf & ; python download_facebook_leads.py conf & ; python update.py update_spend_stats -c conf & ; cd /Users/t.brown/dev/wordstream"
   output = ""
 
 [[snippets]]
