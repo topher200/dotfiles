@@ -240,3 +240,6 @@ source $ZSH_CUSTOM/tmuxinator.zsh
 
 # load ssh remote shells in vi mode
 function sshv { ssh -t $1 "bash -i -o vi" }
+
+# add git-extras autocomplete
+source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
