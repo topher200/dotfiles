@@ -49,7 +49,12 @@ windows:
       panes:
         - shell:
           - workon assertion-context
-  - default-logs:
+  - default-pods:
+      root: ~/dev/assertion-context
+      layout: even-vertical
+      panes:
+          - watch "kubectl get pods -o wide"
+  - default-nodes_svcs:
       root: ~/dev/assertion-context
       layout: even-vertical
       panes:
@@ -57,10 +62,6 @@ windows:
           - watch "kubectl get nodes"
         - services:
           - watch "kubectl get svc"
-        - pods:
-          - watch "kubectl get pods -o wide"
-        - exit:
-          - exit
   - jaeger:
       root: ~/dev/assertion-context
       layout: even-vertical
@@ -86,7 +87,7 @@ windows:
       panes:
         - proxy:
           - kubectl proxy
-  - kube-proxy:
+  - ipython:
       root: ~/dev/assertion-context
       panes:
         - ipython:
