@@ -5,7 +5,7 @@
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
-init-hook='import sys; sys.path.append("/Users/t.brown/dev/wordstream/python_shared/wsframework/src")'
+init-hook='import sys; sys.path.insert(-1, "/Users/t.brown/dev/wordstream/python_shared/wsframework/src")'
 
 # Add files or directories to the blacklist. They should be base names, not
 # paths.
