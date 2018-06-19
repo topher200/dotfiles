@@ -99,11 +99,6 @@
   output = ""
 
 [[snippets]]
-  description = "create wordstream watchman trigger all including background"
-  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",    \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],                                                \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"all\\\"],  \\\"append_files\\\": false}]\""
-  output = ""
-
-[[snippets]]
   description = "create wordstream watchman trigger engine"
   command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"engine-python\\\",   \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"server\\\",        \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:engine\\\"],  \\\"append_files\\\": false}]\""
   output = ""
@@ -201,4 +196,14 @@
 [[snippets]]
   description = "get kubernetes dashboard token"
   command = "kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') | awk '{print $2}' | tail -n 1 | tee >(pbcopy)"
+  output = ""
+
+[[snippets]]
+  description = "memcache dump"
+  command = "memcached-tool localhost:11211 dump"
+  output = ""
+
+[[snippets]]
+  description = "merge release branches"
+  command = "merge-release-branches.sh"
   output = ""
