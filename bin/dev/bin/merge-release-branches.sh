@@ -11,7 +11,7 @@ printf '\n--- starting merges now. everything commit below this point should pri
 branches=`git ls-remote origin |
           grep refs/heads |
           grep 'refs/heads/release-[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}$' |
-          sed -e 's/^.*refs/heads//'`
+          sed -e 's/^.*refs\/heads\//origin\//'`
 for branch in $branches; do
     echo "trying to merge commit id $branch"
     git merge $branch
