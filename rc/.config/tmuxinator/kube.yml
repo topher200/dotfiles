@@ -58,17 +58,17 @@ windows:
         - services:
           - watch "kubectl get svc"
         - pods:
-          - watch "kubectl get pods --show-all -o wide"
+          - watch "kubectl get pods -o wide"
         - exit:
           - exit
   - jaeger:
       root: ~/dev/assertion-context
       layout: even-vertical
       panes:
-        - services:
-          - watch "kubectl get svc --namespace jaeger-infra"
         - pods:
           - watch "kubectl top pods --namespace jaeger-infra"
+        - services:
+          - watch "kubectl get svc --namespace jaeger-infra"
         - pods:
           - watch "kubectl get pods --namespace jaeger-infra -o wide"
         - exit:
@@ -86,3 +86,9 @@ windows:
       panes:
         - proxy:
           - kubectl proxy
+  - kube-proxy:
+      root: ~/dev/assertion-context
+      panes:
+        - ipython:
+          - workon assertion-context
+          - ipython

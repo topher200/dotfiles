@@ -100,3 +100,9 @@ windows:
       panes:
         - tag-manager-log:
           - less +F tag_manager/debug.log
+  - pages-shell:
+      layout: even-vertical
+      root: /var/log/wordstream
+      panes:
+        - pages-log:
+          - less +F pages/debug.log
