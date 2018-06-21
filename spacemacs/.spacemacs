@@ -63,6 +63,7 @@ values."
                                       coffee-mode
                                       ido-completing-read+
                                       logview
+                                      protobuf-mode
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
