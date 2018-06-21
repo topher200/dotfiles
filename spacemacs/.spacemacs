@@ -660,11 +660,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil t)
- '(ahs-default-range (quote ahs-range-whole-buffer) t)
- '(ahs-idle-interval 0.25 t)
+ '(ahs-case-fold-search nil)
+ '(ahs-default-range (quote ahs-range-whole-buffer))
+ '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil t)
+ '(ahs-inhibit-face-list nil)
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
@@ -687,7 +687,6 @@ This function is called at the very end of Spacemacs initialization."
  '(global-evil-search-highlight-persist nil)
  '(global-flycheck-mode t)
  '(gofmt-command "goimports")
- '(golden-ratio-recenter t)
  '(helm-ag-base-command
    "ag --nocolor --nogroup --line-numbers --smart-case --width 200")
  '(helm-ag-use-agignore t)
