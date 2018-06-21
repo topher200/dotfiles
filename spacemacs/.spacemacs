@@ -557,7 +557,6 @@ you should place your code here."
  '(global-evil-search-highlight-persist nil)
  '(global-flycheck-mode t)
  '(gofmt-command "goimports")
- '(golden-ratio-recenter t)
  '(helm-ag-base-command
    "ag --nocolor --nogroup --line-numbers --smart-case --width 200")
  '(helm-ag-use-agignore t)
