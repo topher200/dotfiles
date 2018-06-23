@@ -33,7 +33,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -69,23 +69,27 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
+   ;; To use a local version of a package, use the `:location' property:
+   ;; '(your-package :location "~/path/to/your-package/")
+   ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
                                       coffee-mode
                                       ido-completing-read+
                                       logview
                                       protobuf-mode
                                       )
+
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(
                                     evil-escape  ;; 'fd' for escape? no thanks!
-                                    flymake  ;; we're using flycheck instead
                                     flyspell  ;; annoying
                                     smartparens  ;; annoying
                                     eyebrowse ;; breaking golden ratio?
                                     )
+
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and deletes any unused
@@ -291,7 +295,8 @@ It should only modify the values of Spacemacs settings."
    ;; Size (in MB) above which spacemacs will prompt to open the large file
    ;; literally to avoid performance issues. Opening a file literally means that
    ;; no major mode or minor modes are active. (default is 1)
-   dotspacemacs-large-file-size 10
+   dotspacemacs-large-file-size 1
+
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -344,13 +349,14 @@ It should only modify the values of Spacemacs settings."
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 100
+   dotspacemacs-active-transparency 90
+
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-inactive-transparency 96
+   dotspacemacs-inactive-transparency 90
 
-   ;; If non nil show the titles of transient states. (default t)
+   ;; If non-nil show the titles of transient states. (default t)
    dotspacemacs-show-transient-state-title t
 
    ;; If non-nil show the color guide hint for transient state keys. (default t)
@@ -459,70 +465,69 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-pretty-docs nil))
 
 (defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init', before layer configuration
-executes.
- This function is mostly useful for variables that need to be set
-before packages are loaded. If you are unsure, you should try in setting them in
-`dotspacemacs/user-config' first."
-  (progn
-    (spacemacs|use-package-add-hook flycheck
-      :post-config
-      (progn
-        (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
-        (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)))
+  "Initialization for user code:
+This function is called immediately after `dotspacemacs/init', before layer
+configuration.
+It is mostly for variables that should be set before packages are loaded.
+If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  )
 
-    ;; stop mule warnings
-    (define-coding-system-alias 'UTF-8 'utf-8)
-    (set-language-environment "UTF-8")
-    (set-default-coding-systems 'utf-8)
-
-    (spacemacs|use-package-add-hook projectile
-      :init
-      (setq projectile-keymap-prefix (kbd "C-c C-p")))))
+(defun dotspacemacs/user-load ()
+  "Library to load while dumping.
+This function is called while dumping Spacemacs configuration. You can
+`require' or `load' the libraries of your choice that will be included
+in the dump."
+  )
 
 (defun dotspacemacs/user-config ()
-  "Configuration function for user code.
-This function is called at the very end of Spacemacs initialization after
-layers configuration.
-This is the place where most of your configurations should be done. Unless it is
-explicitly specified that a variable should be set before a package is loaded,
-you should place your code here."
-  (progn
-    (setq comint-move-point-for-output nil)
-    (setq python-fill-column 99)
-    (add-to-list 'warning-suppress-types '(undo discard-info))
+  "Configuration for user code:
+This function is called at the very end of Spacemacs startup, after layer
+configuration.
+Put your configuration code here, except for variables that should be set
+before packages are loaded."
     (yas-global-mode 1)
+    (setq python-fill-column 99)
+
+    ;; robot-mode for Robot Framework
+    (load-file "~/.emacs.d/robot-mode/robot-mode.el")
+    (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
 
     ;; turn off org mode's c-tab binding
     (eval-after-load 'org
       (progn
         (define-key org-mode-map (kbd "<C-tab>") nil)))
 
-    ;; anadona mode is broken at the moment, turning it off
-    ; (remove-hook 'python-mode-hook 'spacemacs//init-eldoc-python-mode)
-
-    ;; robot-mode for Robot Framework
-    (load-file "~/.emacs.d/robot-mode/robot-mode.el")
-    (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
-
-    (defun spaceline-topher (&rest additional-segments)
-      "Install the modeline used by Spacemacs.
-
-      ADDITIONAL-SEGMENTS are inserted on the right, between `global' and
-      `buffer-position'."
-      (apply 'spaceline--theme
-             '((persp-name
-                workspace-number
-                window-number)
-               :fallback evil-state
-               :separator "|"
-               :face highlight-face)
-             '(buffer-modified buffer-size point-position line-column buffer-id remote-host)
-             additional-segments))
-    (apply #'spaceline-topher
-           spacemacs-spaceline-additional-segments)
-    ))
+    ;; flycheck bindings for next/previous errors
+    (spacemacs|use-package-add-hook flycheck
+      :post-config
+      (progn
+        (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
+        (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup")
+ '(helm-grep-ag-command
+   "/usr/local/bin/ag --line-numbers -S --hidden --color --nogroup %s %s %s")
+ '(ns-command-modifier (quote meta))
+ '(package-selected-packages
+   (quote
+    (yaml-mode xterm-color web-mode web-beautify toml-mode tide typescript-mode tern tagedit sql-indent smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restclient-helm rbenv rake racer pug-mode protobuf-mode ob-restclient restclient ob-http nginx-mode multi-term mmm-mode minitest markdown-toc magit-svn magit-gitflow logview datetime extmap livid-mode skewer-mode json-navigator hierarchy js2-refactor yasnippet multiple-cursors js2-mode js-doc impatient-mode htmlize simple-httpd ido-completing-read+ helm-gitignore helm-css-scss haml-mode godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc go-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-rust flycheck-pos-tip pos-tip flycheck evil-snipe evil-magit magit git-commit ghub with-editor eshell-z eshell-prompt-extras esh-help emmet-mode dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat csv-mode coffee-mode chruby cargo markdown-mode rust-mode bundler inf-ruby yapfify ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless move-text macrostep lorem-ipsum live-py-mode link-hint indent-guide importmagic hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump diminish define-word cython-mode counsel-projectile column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent ace-window ace-link ace-jump-helm-line))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
