@@ -14,7 +14,6 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq topher-packages
     '(
-      go-mode
       ))
 
 ;; List of packages to exclude.
