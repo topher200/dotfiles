@@ -517,6 +517,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-enforce-column 100)
+ '(desktop-save-mode t)
+ '(evil-shift-width 4)
+ '(flycheck-display-errors-delay 0.05)
  '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup")
  '(helm-ag-use-agignore t)
  '(helm-grep-ag-command
@@ -529,7 +533,10 @@ This function is called at the very end of Spacemacs initialization."
  '(package-selected-packages
    (quote
     (yaml-mode xterm-color web-mode web-beautify toml-mode tide typescript-mode tern tagedit sql-indent smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restclient-helm rbenv rake racer pug-mode protobuf-mode ob-restclient restclient ob-http nginx-mode multi-term mmm-mode minitest markdown-toc magit-svn magit-gitflow logview datetime extmap livid-mode skewer-mode json-navigator hierarchy js2-refactor yasnippet multiple-cursors js2-mode js-doc impatient-mode htmlize simple-httpd ido-completing-read+ helm-gitignore helm-css-scss haml-mode godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc go-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-rust flycheck-pos-tip pos-tip flycheck evil-snipe evil-magit magit git-commit ghub with-editor eshell-z eshell-prompt-extras esh-help emmet-mode dockerfile-mode docker json-mode tablist magit-popup docker-tramp json-snatcher json-reformat csv-mode coffee-mode chruby cargo markdown-mode rust-mode bundler inf-ruby yapfify ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org symon string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless move-text macrostep lorem-ipsum live-py-mode link-hint indent-guide importmagic hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump diminish define-word cython-mode counsel-projectile column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent ace-window ace-link ace-jump-helm-line)))
- '(python-fill-docstring-style (quote django)))
+ '(projectile-enable-caching t)
+ '(python-fill-docstring-style (quote django))
+ '(whitespace-line-column 100)
+ '(yas-snippet-dirs (quote ("/Users/t.brown/.emacs.d/private/snippets"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
