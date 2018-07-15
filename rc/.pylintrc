@@ -64,7 +64,7 @@ disable=invalid-name,protected-access,fixme,too-many-branches,
         slots-on-old-class,too-many-nested-blocks,too-many-ancestors,
         abstract-method, pointless-string-statement, ungrouped-imports,
         misplaced-comparison-constant, superfluous-parens, no-self-argument, no-self-use,
-        not-callable, not-an-iterable,
+        not-callable, not-an-iterable, deprecated-lambda,
         # line-too-long, bad-whitespace, logging-not-lazy, singleton-comparison,
         # not-callable seems to be broken on the version of pylint i'm running. investigate later
 
