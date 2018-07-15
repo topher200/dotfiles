@@ -521,6 +521,7 @@ This function is called at the very end of Spacemacs initialization."
  '(desktop-save-mode t)
  '(evil-shift-width 4)
  '(flycheck-display-errors-delay 0.05)
+ '(golden-ratio-recenter t)
  '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup")
  '(helm-ag-use-agignore t)
  '(helm-grep-ag-command
