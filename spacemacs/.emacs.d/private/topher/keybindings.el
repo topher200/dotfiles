@@ -1,5 +1,7 @@
 ; global keybindings
 (define-key global-map (kbd "C-<tab>") 'evil-window-next)
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-<tab>") 'evil-window-next))
 (define-key global-map (kbd "C-S-<tab>") 'evil-window-prev)
 (define-key global-map (kbd "C-s") 'save-buffer)
 (define-key global-map (kbd "C-c s") 'topher-named-shell)
