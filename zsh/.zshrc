@@ -233,3 +233,9 @@ source $ZSH_CUSTOM/tmuxinator.zsh
 
 # load ssh remote shells in vi mode
 function sshv { ssh -t $1 "bash -i -o vi" }
+
+# add fzf
+export FZF_DEFAULT_COMMAND='ag'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_TMUX=1
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
