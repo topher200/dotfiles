@@ -19,7 +19,7 @@
 
 ; evil mode defines
 (define-key evil-normal-state-map (kbd "M-;") 'topher-comment-dwim-line)
-(define-key evil-normal-state-map (kbd "Q") (kbd "@q"))
+(define-key evil-normal-state-map (kbd "Q") (kbd "@a"))
 (define-key evil-insert-state-map (kbd "C-n") 'hippie-expand)
 
 ;; add keybinding to find related file

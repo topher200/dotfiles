@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-### setup
+### setup. NOTE: this is destructive (deletes data) to the following git repo
 cd ~/dev/wordstream2
 
 # generate a custom .pylintrc that points to our /wordstream repo checkout
@@ -24,15 +24,30 @@ fi
 
 
 ### run pylint
+git fetch
 # check out sha #1 and run pylint
-git checkout "$SHA_1"
+git clean -fd
+git checkout -f "$SHA_1"
 git pull --rebase 2> /dev/null
-pylint --output-format parseable server/wordstream/src/wordstream --errors-only --rcfile ~/.pylintrc-wordstream2 > ~/pylint-start
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable server/wordstream/src/wordstream                    --errors-only --rcfile ~/.pylintrc-wordstream2 >  ~/pylint-start
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable python_shared/webapp_framework/src/webapp_framework --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-start
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable python_shared/wsframework/src/base_api              --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-start
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable python_shared/wsframework/src/utils                 --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-start
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable python_shared/wsframework/src/wsframework           --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-start
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable client/manager/src/m1                               --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-start
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable client/manager/src/manager                          --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-start
 
 # check out sha #2 and run pylint
-git checkout "$SHA_2"
+git clean -fd
+git checkout -f "$SHA_2"
 git pull --rebase 2> /dev/null
-pylint --output-format parseable server/wordstream/src/wordstream --errors-only --rcfile ~/.pylintrc-wordstream2 > ~/pylint-end
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable server/wordstream/src/wordstream                    --errors-only --rcfile ~/.pylintrc-wordstream2 >  ~/pylint-end
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable python_shared/webapp_framework/src/webapp_framework --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-end
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable python_shared/wsframework/src/base_api              --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-end
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable python_shared/wsframework/src/utils                 --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-end
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable python_shared/wsframework/src/wsframework           --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-end
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable client/manager/src/m1                               --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-end
+~/.virtualenvs/pylinter/bin/pylint --output-format parseable client/manager/src/manager                          --errors-only --rcfile ~/.pylintrc-wordstream2 >> ~/pylint-end
 ###
 
 

@@ -72,6 +72,9 @@ source $ZSH/oh-my-zsh.sh
 # don't share command history between non-closed shells
 unsetopt share_history
 
+# just run commands with '!!' (like 'sudo !!'), don't try to verify
+setopt no_histverify
+
 # set up git template directory
 GIT_TEMPLATE_DIR=~/git_template
 
@@ -98,8 +101,13 @@ alias gcoom="git checkout origin/master"
 alias gcoum="git checkout upstream/master"
 alias gcopa="git checkout --patch"
 alias gcpa="git commit -v --patch"
-alias gd="git diff --color"
-alias gds="git diff --staged --color"
+alias gd="git --no-pager diff"
+alias gdp="git --paginate diff"
+alias gds="git diff --staged"
+alias gdsdm="git diff stable_db_migration..."
+alias gdosdm="git diff origin/stable_db_migration..."
+alias gdm="git diff master..."
+alias gdom="git diff origin/master..."
 alias gf="git fetch"
 alias gk="gitk"
 alias gkm="gitk master"
@@ -233,6 +241,9 @@ source $ZSH_CUSTOM/tmuxinator.zsh
 
 # load ssh remote shells in vi mode
 function sshv { ssh -t $1 "bash -i -o vi" }
+
+# add git-extras autocomplete
+source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 
 # add fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'

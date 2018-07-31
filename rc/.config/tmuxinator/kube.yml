@@ -1,7 +1,7 @@
 # ~/.tmuxinator/wordstream.yml
 
-name: logs
-root: ~/dev/wordstream
+name: kube
+root: ~/dev/assertion-context
 
 # Optional tmux socket
 # socket_name: foo
@@ -43,66 +43,53 @@ root: ~/dev/wordstream
 # post: tmux -CC attach -t wordstream
 
 windows:
-  - manager-engine:
+  - kube-main:
+      root: ~/dev/assertion-context
       layout: tiled
-      root: /var/log/wordstream
       panes:
         - shell:
-          - watch supervisorctl status
-        - shell:
-          - cd .
+          - workon assertion-context
+  - default-pods:
+      root: ~/dev/assertion-context
+      layout: even-vertical
+      panes:
+          - watch "kubectl get pods -o wide"
+  - default-nodes_svcs:
+      root: ~/dev/assertion-context
+      layout: even-vertical
+      panes:
+        - nodes:
+          - watch "kubectl get nodes"
+        - services:
+          - watch "kubectl get svc"
+  - jaeger:
+      root: ~/dev/assertion-context
+      layout: even-vertical
+      panes:
+        - pods:
+          - watch "kubectl top pods --namespace jaeger-infra"
+        - services:
+          - watch "kubectl get svc --namespace jaeger-infra"
+        - pods:
+          - watch "kubectl get pods --namespace jaeger-infra -o wide"
+        - exit:
           - exit
-        - manager-log:
-          - less +F manager/debug.log
-        - manager-log-errors:
-          - while sleep 1; do supervisorctl tail -f app:manager stderr; done
-        - engine-log:
-          - less +F server/debug.log
-        - engine-log-errors:
-          - while sleep 1; do supervisorctl tail -f app:engine stderr; done
-  - manager:
+  - kube-system:
+      root: ~/dev/assertion-context
       layout: even-vertical
-      root: /var/log/wordstream
       panes:
-        - manager-log:
-          - less +F manager/debug.log
-  - engine:
-      layout: even-vertical
-      root: /var/log/wordstream
+        - services:
+          - watch "kubectl get svc --namespace kube-system"
+        - top:
+          - watch "kubectl top node && kubectl top pod --namespace kube-system"
+  - kube-proxy:
+      root: ~/dev/assertion-context
       panes:
-        - engine-log:
-          - less +F server/debug.log
-  - reporting-swf-shell:
-      layout: even-vertical
-      root: /var/log/wordstream
+        - proxy:
+          - kubectl proxy
+  - ipython:
+      root: ~/dev/assertion-context
       panes:
-        - swf-decider-log:
-          - less +F SWF-REPORTING-DECIDER/debug.log
-        - swf-worker-log:
-          - less +F SWF-REPORTING-ACTIVITY_WORKER/debug.log
-  - quickstart-swf-shell:
-      layout: even-vertical
-      root: /var/log/wordstream
-      panes:
-        - swf-decider-log:
-          - less +F SWF-QUICKSTART-DECIDER/debug.log
-        - swf-worker-log:
-          - less +F SWF-QUICKSTART-ACTIVITY_WORKER/debug.log
-  - swarm-shell:
-      layout: even-vertical
-      root: /var/log/wordstream
-      panes:
-        - swarm-log:
-          - less +F update/debug.log
-  - tag-manager-shell:
-      layout: even-vertical
-      root: /var/log/wordstream
-      panes:
-        - tag-manager-log:
-          - less +F tag_manager/debug.log
-  - pages-shell:
-      layout: even-vertical
-      root: /var/log/wordstream
-      panes:
-        - pages-log:
-          - less +F pages/debug.log
+        - ipython:
+          - workon assertion-context
+          - ipython

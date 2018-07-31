@@ -1,6 +1,6 @@
 [[snippets]]
   description = "aws1 readonly db"
-  command = "export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords"
+  command = "tmux rename-window 'psql-readonly-aws1' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords"
   output = ""
 
 [[snippets]]
@@ -30,12 +30,12 @@
 
 [[snippets]]
   description = "ssh into dev box aws buildbot"
-  command = "ssh dev-aws-two"
+  command = "tmux rename-window 'ssh-dev-aws-two' && ssh dev-aws-two.wordstream.com"
   output = ""
 
 [[snippets]]
   description = "download reports"
-  command = "wow ; cd /Users/t.brown/dev/wordstream/server/wordstream/src ; python -u update.py download_adwords_reports -c conf & ; python download_bing_ads_reports.py conf/ 1 & ; python download_facebook_reports.py conf & ; python download_facebook_leads.py conf & ; cd /Users/t.brown/dev/wordstream"
+  command = "wow ; cd /Users/t.brown/dev/wordstream/server/wordstream/src ; python -u update.py download_adwords_reports -c conf & ; python download_bing_ads_reports.py conf/ 1 & ; python download_facebook_reports.py conf & ; python download_facebook_leads.py conf & ; python update.py update_spend_stats -c conf & ; cd /Users/t.brown/dev/wordstream"
   output = ""
 
 [[snippets]]
@@ -50,26 +50,26 @@
 
 [[snippets]]
   description = "ssh tracebacks prod"
-  command = "ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@tracebacks.wordstream-sandbox.com"
+  command = "tmux rename-window 'ssh-tracebacks' && ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.77.134"
   output = ""
 
 [[snippets]]
   description = "what's my ip"
-  command = "curl ipinfo.io/ip"
+  command = "curl v4.ifconfig.co"
   output = ""
 
 [[snippets]]
   description = "ssh wordy"
-  command = "ssh t.brown@wordy.wordstream-sandbox.com"
+  command = "tmux rename-window 'ssh-wordy' && ssh t.brown@wordy.wordstream-sandbox.com"
   output = ""
 
 [[snippets]]
   description = "cluster readonly db"
-  command = "export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d wordstream"
+  command = "tmux rename-window 'psql-readonly-cluster' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d wordstream"
   output = ""
 
 [[snippets]]
-  description = "scrub wordstream"
+  description = "scrub/clean wordstream js and pyc file caches"
   command = "cd /Users/t.brown/dev/wordstream/ ; rm -fr client/manager/src/static/gen/ ; rm -fr client/manager/src/static/.webassets-cache/ ; find . -name \"*.pyc\" -exec rm {} \\;\\n"
   output = ""
 
@@ -94,18 +94,28 @@
   output = ""
 
 [[snippets]]
-  description = "create wordstream watchman trigger app"
-  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",  \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:\\\"],  \\\"append_files\\\": false}]\""
+  description = "create wordstream watchman trigger whole app"
+  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",    \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"python_shared\\\", \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:\\\"],  \\\"append_files\\\": false}]\""
   output = ""
 
 [[snippets]]
-  description = "create wordstream watchman trigger all including background"
-  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",  \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"all\\\"],  \\\"append_files\\\": false}]\""
+  description = "create wordstream watchman trigger engine"
+  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"engine-python\\\",   \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"server\\\",        \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:engine\\\"],  \\\"append_files\\\": false}]\""
+  output = ""
+
+[[snippets]]
+  description = "create wordstream watchman trigger manager"
+  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"manager-python\\\",  \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"client\\\",        \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:manager\\\"],  \\\"append_files\\\": false}]\""
+  output = ""
+
+[[snippets]]
+  description = "remove watchman"
+  command = "watchman watch-del ~/dev/wordstream"
   output = ""
 
 [[snippets]]
   description = "ssh staging"
-  command = "ssh staging.wordstream.com"
+  command = "tmux rename-window 'ssh-staging' && ssh staging.wordstream.com"
   output = ""
 
 [[snippets]]
@@ -119,11 +129,6 @@
   output = ""
 
 [[snippets]]
-  description = "elastic search es proxy"
-  command = "ssh -i \"tbrown-key.pem\" ec2-user@ec2-34-200-239-251.compute-1.amazonaws.com"
-  output = ""
-
-[[snippets]]
   description = "seashells broadcast online"
   command = "!! | nc seashells.io 1337"
   output = ""
@@ -131,11 +136,6 @@
 [[snippets]]
   description = "kill all tmux sessions"
   command = "tmux list-sessions | cut -d: -f 1 | xargs -I {} tmux kill-session -t {}"
-  output = ""
-
-[[snippets]]
-  description = "remove watchman"
-  command = "watchman watch-del ~/dev/wordstream"
   output = ""
 
 [[snippets]]
@@ -166,4 +166,49 @@
 [[snippets]]
   description = "glances htop"
   command = "glances --theme-white"
+  output = ""
+
+[[snippets]]
+  description = "ssh stats-from-logs proxy server"
+  command = "tmux rename-window 'ssh-stats-from-logs-proxy' && ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.74.71"
+  output = ""
+
+[[snippets]]
+  description = "start supervisor"
+  command = "supervisord -c ~/dev/bin/supervisord.conf"
+  output = ""
+
+[[snippets]]
+  description = "list directories and their sizes, sorted and human readable"
+  command = "du -h | sort -g"
+  output = ""
+
+[[snippets]]
+  description = "re-run failed jira issue updates"
+  command = "cat jira-issues.txt | cut -d '/' -f 8 | sort | uniq | vipe | awk '{$1=$1; print}' | tr '\\n' '\\0' | xargs -0 -I {} curl -XPUT http://tracebacks.wordstream-sandbox.com/api/update_jira_db -d '{\"issue_key\": \"{}\"}' --header \"Content-Type: application/json\""
+  output = ""
+
+[[snippets]]
+  description = "kubernetes access web via proxy"
+  command = "curl 127.0.0.1:8001/api/v1/namespaces/default/services/web/proxy/"
+  output = ""
+
+[[snippets]]
+  description = "get kubernetes dashboard token"
+  command = "kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') | awk '{print $2}' | tail -n 1 | tee >(pbcopy)"
+  output = ""
+
+[[snippets]]
+  description = "memcache dump"
+  command = "memcached-tool localhost:11211 dump"
+  output = ""
+
+[[snippets]]
+  description = "merge release branches"
+  command = "merge-release-branches.sh"
+  output = ""
+
+[[snippets]]
+  description = "delete all profile locks"
+  command = "cd /var/lib/wordstream/data && find . -name \"profile.lock.lock\" -delete"
   output = ""
