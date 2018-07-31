@@ -63,10 +63,6 @@ plugins=(
     vi-mode
 )
 
-# fasd aliases
-alias j='fasd_cd -d'     # cd, same functionality as j in autojump
-alias jj='fasd_cd -d -i' # cd with interactive selection
-
 source $ZSH/oh-my-zsh.sh
 
 # don't share command history between non-closed shells
@@ -250,5 +246,9 @@ source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 # add fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_TMUX=1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+j() {
+    [ $# -gt 0 ] && fasd_cd -d "$*" && return
+    local dir
+    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
