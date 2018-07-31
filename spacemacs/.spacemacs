@@ -301,7 +301,7 @@ It should only modify the values of Spacemacs settings."
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
    ;; (default 'cache)
-   dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-auto-save-file-location 'nil
 
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
@@ -470,6 +470,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+
+  ;; workaround for https://github.com/syl20bnr/spacemacs/issues/10906
+  ;; (setq exec-path (append exec-path (list (expand-file-name "/usr/local/bin"))))
   )
 
 (defun dotspacemacs/user-load ()
@@ -517,6 +520,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(backup-directory-alist (quote (("." . "/tmp"))))
  '(column-enforce-column 100)
  '(desktop-save-mode t)
  '(evil-shift-width 4)
