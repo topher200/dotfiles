@@ -6,3 +6,5 @@ if [ -f /etc/bashrc ]; then
 fi
 
 set -o vi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

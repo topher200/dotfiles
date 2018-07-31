@@ -246,3 +246,9 @@ function sshv { ssh -t $1 "bash -i -o vi" }
 
 # add git-extras autocomplete
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
+# add fzf
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_TMUX=1
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
