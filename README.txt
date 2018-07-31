@@ -12,3 +12,11 @@ Installation instructions:
 - install with `brew bundle install`
 - check packages with `brew bundle check`
 - freeze with `brew bundle dump`
+
+# gem packages
+- bropages
+- tmuxinator
+
+# npm packages
+- yaml2json
+- eslint
