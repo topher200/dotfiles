@@ -4,8 +4,9 @@ import itertools
 
 print('''  Imported common imports:
 import datetime
-import re
 import itertools
+import six
+import re
 ''')
 
 di = {'a': 1, 'b': 2, 'c': 3}
