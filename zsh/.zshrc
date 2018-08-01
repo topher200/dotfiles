@@ -173,7 +173,7 @@ function petme() {
 }
 # search pets
 function pet-select() {
-    BUFFER=$(pet search --query "$LBUFFER")
+    BUFFER=$(pet search --color --query "$LBUFFER")
     CURSOR=$#BUFFER
     zle redisplay
 }
@@ -246,6 +246,7 @@ source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
 # add fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_TMUX=1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 j() {
     [ $# -gt 0 ] && fasd_cd -d "$*" && return
