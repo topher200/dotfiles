@@ -212,3 +212,8 @@
   description = "delete all profile locks"
   command = "cd /var/lib/wordstream/data && find . -name \"profile.lock.lock\" -delete"
   output = ""
+
+[[snippets]]
+  description = "compile protos"
+  command = "~/dev/wordstream/compile_protos.sh"
+  output = ""
