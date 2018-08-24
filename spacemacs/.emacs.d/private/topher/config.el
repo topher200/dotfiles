@@ -10,10 +10,6 @@
 ;; save the desktop periodically
 (add-hook 'projectile-idle-timer-hook 'desktop-save-in-desktop-dir)
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/private"))
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-
 ;; Use "; " to comment out .ini files
 (add-hook 'conf-space-mode-hook
           (lambda () (setq comment-start "; " comment-end "")))
