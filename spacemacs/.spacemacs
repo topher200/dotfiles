@@ -496,9 +496,9 @@ before packages are loaded."
     (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
 
     ;; turn off org mode's c-tab binding
-    (eval-after-load 'org
-      (progn
-        (define-key org-mode-map (kbd "<C-tab>") nil)))
+    (add-hook 'org-mode-hook
+     (lambda ()
+      (define-key org-mode-map (kbd "<C-tab>") nil)))
 
     ;; flycheck bindings for next/previous errors
     (spacemacs|use-package-add-hook flycheck
