@@ -43,7 +43,7 @@ root: ~/dev/wordstream
 # post: tmux -CC attach -t wordstream
 
 windows:
-  - manager-engine:
+  - supervisor:
       layout: tiled
       root: /var/log/wordstream
       panes:
@@ -60,6 +60,14 @@ windows:
           - less +F server/debug.log
         - engine-log-errors:
           - while sleep 1; do supervisorctl tail -f app:engine stderr; done
+  - manager-engine:
+      layout: even-vertical
+      root: /var/log/wordstream
+      panes:
+        - manager-log:
+          - less +F manager/debug.log
+        - engine-log:
+          - less +F server/debug.log
   - manager:
       layout: even-vertical
       root: /var/log/wordstream
