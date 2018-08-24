@@ -10,7 +10,7 @@
 
 [[snippets]]
   description = "install all dependencies"
-  command = "wow && cd /Users/t.brown/dev/wordstream && python dependencies.py install dependencies.txt; python dependencies.py install dependencies-dev.txt; python dependencies.py install dependencies-ws.txt"
+  command = "wow && cd /Users/t.brown/dev/wordstream && python dependencies.py install dependencies.txt; python dependencies.py install dependencies-dev.txt; python dependencies.py install dependencies-ws.txt; pip install -U pylint"
   output = ""
 
 [[snippets]]
