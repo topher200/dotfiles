@@ -217,3 +217,18 @@
   description = "compile protos"
   command = "~/dev/wordstream/compile_protos.sh"
   output = ""
+
+[[snippets]]
+  description = "run pdb version of Manager server"
+  command = "sv stop app:manager && cd ~/dev/wordstream/client/manager/src && ~/.virtualenvs/wordstream/bin/python server.py"
+  output = ""
+
+[[snippets]]
+  description = "run pdb version of Engine server"
+  command = "sv stop app:engine && cd ~/dev/wordstream/server/wordstream/src && ~/.virtualenvs/wordstream/bin/python server.py"
+  output = ""
+
+[[snippets]]
+  description = "format json from the clipboard"
+  command = "pbpaste | jq . | pbcopy"
+  output = ""
