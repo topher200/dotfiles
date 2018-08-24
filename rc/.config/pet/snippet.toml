@@ -170,7 +170,7 @@
 
 [[snippets]]
   description = "ssh stats-from-logs proxy server"
-  command = "tmux rename-window 'ssh-stats-from-logs-proxy' && ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.74.71"
+  command = "tmux rename-window 'ssh-stats-from-logs-proxy' && ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@***REMOVED***"
   output = ""
 
 [[snippets]]
