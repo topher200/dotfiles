@@ -33,3 +33,5 @@
 (define-key evil-insert-state-map [A-backspace] 'backward-kill-word)
 
 (define-key global-map (kbd "C-c i") 'add-import)
+
+(spacemacs/set-leader-keys "SPC" 'helm-M-x)
