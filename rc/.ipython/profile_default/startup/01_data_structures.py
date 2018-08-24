@@ -1,12 +1,15 @@
+import collections
 import datetime
-import re
 import itertools
+import re
+import six
 
 print('''  Imported common imports:
+import collections
 import datetime
 import itertools
-import six
 import re
+import six
 ''')
 
 di = {'a': 1, 'b': 2, 'c': 3}
