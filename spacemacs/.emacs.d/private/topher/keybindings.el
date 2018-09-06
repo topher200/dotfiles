@@ -32,6 +32,11 @@
   (lambda () (interactive) (kill-line 0)))
 (define-key evil-insert-state-map [A-backspace] 'backward-kill-word)
 
+;; run my 'add import' function on command
 (define-key global-map (kbd "C-c i") 'add-import)
 
+;; open my notes file on request
+(spacemacs/set-leader-keys "o n" (lambda() (interactive)(find-file "~/notes.org")))
+
+;; work around bug that was making the 'SPC SPC' command go away
 (spacemacs/set-leader-keys "SPC" 'helm-M-x)
