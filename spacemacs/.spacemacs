@@ -513,6 +513,7 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-shift-width 4)
  '(flycheck-display-errors-delay 0.05)
  '(golden-ratio-recenter t)
+ '(helm-ag-use-agignore t)
  '(hippie-expand-try-functions-list
    (quote
     (try-expand-dabbrev try-expand-dabbrev-visible try-expand-dabbrev-from-kill try-complete-file-name-partially try-complete-file-name try-expand-dabbrev-all-buffers try-expand-all-abbrevs)))
