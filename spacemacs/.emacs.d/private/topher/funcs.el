@@ -41,4 +41,4 @@
         (class-to-find (thing-at-point 'word)))
     (save-excursion
       (goto-char 0)
-      (insert (shell-command-to-string (format "%s %s" "find_imports.sh" class-to-find))))))
+      (insert (shell-command-to-string (format "%s %s" "~/dev/bin/find_imports.sh" class-to-find))))))
