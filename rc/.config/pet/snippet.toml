@@ -95,7 +95,7 @@
 
 [[snippets]]
   description = "create wordstream watchman trigger whole app"
-  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",    \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"python_shared\\\", \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:\\\"],  \\\"append_files\\\": false}]\""
+  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",    \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"python_shared\\\", \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"all\\\"],  \\\"append_files\\\": false}]\""
   output = ""
 
 [[snippets]]
