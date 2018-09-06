@@ -39,15 +39,14 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     helm
-     ;; auto-completion
+     auto-completion
      ;; dockerfile
      csv
      docker
      emacs-lisp
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      (git :variables git-gutter-use-fringe t)
-     go
+     (go :variables gofmt-command "goimports" go-format-before-save t)
      helm
      html
      javascript
