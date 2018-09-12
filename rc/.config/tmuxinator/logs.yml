@@ -49,16 +49,10 @@ windows:
       panes:
         - shell:
           - watch supervisorctl status
-        - shell:
-          - cd .
         - manager-log:
           - less +F manager/debug.log
-        - shell:
-          - exit
         - engine-log:
           - less +F server/debug.log
-        - shell:
-          - exit
   - manager:
       layout: even-vertical
       root: /var/log/supervisord/
