@@ -94,21 +94,6 @@
   output = ""
 
 [[snippets]]
-  description = "create wordstream watchman trigger whole app"
-  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"python-files\\\",    \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"python_shared\\\", \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"all\\\"],  \\\"append_files\\\": false}]\""
-  output = ""
-
-[[snippets]]
-  description = "create wordstream watchman trigger engine"
-  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"engine-python\\\",   \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"server\\\",        \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:engine\\\"],  \\\"append_files\\\": false}]\""
-  output = ""
-
-[[snippets]]
-  description = "create wordstream watchman trigger manager"
-  command = "watchman -j <<< \"[\\\"trigger\\\", \\\"`pwd`\\\", {  \\\"name\\\": \\\"manager-python\\\",  \\\"expression\\\": [      \\\"allof\\\",          [\\\"suffix\\\", \\\"py\\\"],          [\\\"type\\\", \\\"f\\\"],          [\\\"not\\\", [\\\"imatch\\\", \\\"flycheck*.py\\\"]],          [\\\"not\\\", [\\\"iname\\\", \\\"*.#*\\\"]],          [\\\"not\\\", [\\\"suffix\\\", \\\"pyc\\\"]]      ],  \\\"relative_root\\\": \\\"client\\\",        \\\"command\\\": [\\\"supervisorctl\\\", \\\"-c\\\", \\\"/Users/t.brown/dev/bin/supervisord.conf\\\", \\\"restart\\\", \\\"app:manager\\\"],  \\\"append_files\\\": false}]\""
-  output = ""
-
-[[snippets]]
   description = "remove watchman"
   command = "watchman watch-del ~/dev/wordstream"
   output = ""
