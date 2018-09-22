@@ -205,12 +205,12 @@
 
 [[snippets]]
   description = "run pdb version of Manager server"
-  command = "sv stop app:manager && cd ~/dev/wordstream/client/manager/src && ~/.virtualenvs/wordstream/bin/python server.py"
+  command = "sv stop app:manager && cd ~/dev/wordstream/client/manager/src && tmux rename-window 'zsh-pdb-manager' && ~/.virtualenvs/wordstream/bin/python server.py"
   output = ""
 
 [[snippets]]
   description = "run pdb version of Engine server"
-  command = "sv stop app:engine && cd ~/dev/wordstream/server/wordstream/src && ~/.virtualenvs/wordstream/bin/python server.py"
+  command = "sv stop app:engine && cd ~/dev/wordstream/server/wordstream/src && tmux rename-window 'zsh-pdb-engine' && ~/.virtualenvs/wordstream/bin/python server.py"
   output = ""
 
 [[snippets]]
