@@ -69,18 +69,18 @@ windows:
       layout: even-vertical
       root: /var/log/supervisord/
       panes:
-        - swf-decider-log:
-          - less +F SWF-REPORTING-DECIDER/debug.log
         - swf-worker-log:
           - less +F SWF-REPORTING-ACTIVITY_WORKER/debug.log
+        - swf-decider-log:
+          - less +F SWF-REPORTING-DECIDER/debug.log
   - quickstart-swf-shell:
       layout: even-vertical
       root: /var/log/supervisord/
       panes:
-        - swf-decider-log:
-          - less +F SWF-QUICKSTART-DECIDER/debug.log
         - swf-worker-log:
           - less +F SWF-QUICKSTART-ACTIVITY_WORKER/debug.log
+        - swf-decider-log:
+          - less +F SWF-QUICKSTART-DECIDER/debug.log
   - swarm-shell:
       layout: even-vertical
       root: /var/log/supervisord/
