@@ -81,6 +81,7 @@ source /usr/local/etc/bash_completion.d/tig-completion.bash
 alias gap="git add -p"
 alias gau="git add -u"
 alias gb="git branch"
+alias glb="git branch --sort=committerdate | tail -n 15"
 alias gbb="git bisect bad"
 alias gbg="git bisect good"
 alias gbr="git bisect reset"
@@ -137,14 +138,6 @@ alias gstp="git stash pop"
 alias gstpa="git stash --patch"
 alias gsts="git stash show -v"
 alias gsu="git submodule update --init"
-
-# list branches, sorting by time of last commit
-function glb {
-    for k in `git branch|sed s/^..//`
-    do
-        echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" "$k"`\\t"$k"
-    done | sort
-}
 
 # Delete the current branch you're on, leaving you on a deteched HEAD
 function gdcb {
