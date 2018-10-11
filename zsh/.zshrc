@@ -68,6 +68,9 @@ source $ZSH/oh-my-zsh.sh
 # don't share command history between non-closed shells
 unsetopt share_history
 
+# don't autojump into directories
+unsetopt autocd
+
 # just run commands with '!!' (like 'sudo !!'), don't try to verify
 setopt no_histverify
 
