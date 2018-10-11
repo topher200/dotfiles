@@ -1,16 +1,11 @@
 [[snippets]]
-  description = "aws1 readonly db"
-  command = "tmux rename-window 'psql-readonly-aws1' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords"
-  output = ""
-
-[[snippets]]
   description = "migrate all databases"
   command = "cd /Users/t.brown/dev/wordstream/server/wordstream/src && python migrate_db.py upgrade --all ; cd /Users/t.brown/dev/wordstream"
   output = ""
 
 [[snippets]]
   description = "install all dependencies"
-  command = "wow && cd /Users/t.brown/dev/wordstream && python dependencies.py install dependencies.txt; python dependencies.py install dependencies-dev.txt; python dependencies.py install dependencies-ws.txt; pip install -U pylint"
+  command = "wow && cd /Users/t.brown/dev/wordstream && python dependencies.py install dependencies.txt; python dependencies.py install dependencies-dev.txt; python dependencies.py install dependencies-ws.txt; pip install -U pylint; pip install psycopg2 --upgrade"
   output = ""
 
 [[snippets]]
@@ -29,8 +24,13 @@
   output = ""
 
 [[snippets]]
-  description = "ssh into dev box aws buildbot"
+  description = "ssh into dev box aws-two buildbot"
   command = "tmux rename-window 'ssh-dev-aws-two' && ssh dev-aws-two.wordstream.com"
+  output = ""
+
+[[snippets]]
+  description = "ssh into demo box aws-three buildbot"
+  command = "tmux rename-window 'ssh-dev-aws-three' && ssh dev-aws-three.wordstream.com"
   output = ""
 
 [[snippets]]
@@ -64,8 +64,18 @@
   output = ""
 
 [[snippets]]
+  description = "aws1 readonly db"
+  command = "tmux rename-window 'psql-readonly-aws1' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords"
+  output = ""
+
+[[snippets]]
   description = "cluster readonly db"
   command = "tmux rename-window 'psql-readonly-cluster' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d wordstream"
+  output = ""
+
+[[snippets]]
+  description = "account_service readonly db account-service"
+  command = "tmux rename-window 'psql-readonly-account_service' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d account_service"
   output = ""
 
 [[snippets]]
@@ -216,4 +226,9 @@
 [[snippets]]
   description = "format json from the clipboard"
   command = "pbpaste | jq . | pbcopy"
+  output = ""
+
+[[snippets]]
+  description = "python dictionary to json"
+  command = "pbpaste | xargs -0 python -c 'import ast, json, sys ; out = ast.literal_eval(sys.argv[1]) ; print json.dumps(out)' | jq . | pbcopy"
   output = ""
