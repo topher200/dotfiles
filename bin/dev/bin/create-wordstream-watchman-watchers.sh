@@ -5,7 +5,7 @@ watchman -j <<-EOT
     "trigger", "`pwd`", {
         "name": "python_shared",
         "relative_root": "python_shared",
-        "command": ["supervisorctl", "-c", "/Users/t.brown/dev/bin/supervisord.conf", "restart", "all"],
+        "command": ["supervisorctl", "-c", "/Users/t.brown/dev/bin/supervisord.conf", "restart", "app:"],
         "append_files": false,
         "expression": [
             "allof",
