@@ -493,6 +493,9 @@ before packages are loaded."
       (progn
         (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
         (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)))
+
+    ;; remove importmagic from python mode
+    (remove-hook 'python-mode-hook 'importmagic-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
