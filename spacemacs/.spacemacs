@@ -475,7 +475,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-    (yas-global-mode 1)
+    (global-company-mode)
     (setq python-fill-column 99)
 
     ;; robot-mode for Robot Framework
