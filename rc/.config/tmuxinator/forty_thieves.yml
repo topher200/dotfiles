@@ -50,11 +50,15 @@ windows:
   - run-solver:
       layout: main-vertical
       panes:
-        - echo "make run-solvercmd"
+        - #make run-solvercmd
   - run-server:
       layout: main-vertical
       panes:
-        - echo "make run-webcmd"
+        - #make run-webcmd
+  - prometheus:
+      layout: main-vertical
+      panes:
+        - #prometheus --config.file prometheus/prometheus.yml
   - test:
       layout: main-vertical
       panes:
@@ -63,3 +67,7 @@ windows:
       layout: main-vertical
       panes:
         - cd ~/dev/go/src/github.com/topher200/deck
+  - psql:
+      layout: main-vertical
+      panes:
+        - psql -d forty_thieves
