@@ -528,7 +528,7 @@ This function is called at the very end of Spacemacs initialization."
  '(projectile-enable-caching t)
  '(python-fill-docstring-style (quote django))
  '(whitespace-line-column 100)
- '(yas-snippet-dirs (quote ("/Users/t.brown/.emacs.d/private/snippets"))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
