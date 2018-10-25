@@ -232,3 +232,8 @@
   description = "python dictionary to json"
   command = "pbpaste | xargs -0 python -c 'import ast, json, sys ; out = ast.literal_eval(sys.argv[1]) ; print json.dumps(out)' | jq . | pbcopy"
   output = ""
+
+[[snippets]]
+  description = "create wordstream watchman supervisor monitor"
+  command = "create-wordstream-watchman-watchers.sh"
+  output = ""
