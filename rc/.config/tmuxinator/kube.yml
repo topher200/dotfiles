@@ -62,16 +62,16 @@ windows:
           - watch "kubectl get nodes"
         - services:
           - watch "kubectl get svc"
-  - jaeger:
+  - istio:
       root: ~/dev/assertion-context
       layout: even-vertical
       panes:
         - pods:
-          - watch "kubectl top pods --namespace jaeger-infra"
+          - watch "kubectl top pods --namespace istio-system"
         - services:
-          - watch "kubectl get svc --namespace jaeger-infra"
+          - watch "kubectl get svc --namespace istio-system"
         - pods:
-          - watch "kubectl get pods --namespace jaeger-infra -o wide"
+          - watch "kubectl get pods --namespace istio-system -o wide"
         - exit:
           - exit
   - kube-system:
@@ -82,11 +82,30 @@ windows:
           - watch "kubectl get svc --namespace kube-system"
         - top:
           - watch "kubectl top node && kubectl top pod --namespace kube-system"
+  - monitoring:
+      root: ~/dev/assertion-context
+      layout: even-vertical
+      panes:
+        - services:
+          - watch "kubectl get svc --namespace monitoring"
+        - top:
+          - watch "kubectl top node && kubectl top pod --namespace monitoring"
   - kube-proxy:
       root: ~/dev/assertion-context
+      layout: even-vertical
       panes:
         - proxy:
           - kubectl proxy
+        - prometheus:
+            - "echo prometheus: http://localhost:9090"
+            - kubectl --namespace monitoring port-forward svc/prometheus-k8s 9090
+        - grafana:
+            - "echo grafana: http://localhost:3000"
+            - kubectl --namespace monitoring port-forward svc/grafana 3000
+        - alert-manager:
+            - "echo alert-manager: http://localhost:9093"
+            - kubectl --namespace monitoring port-forward svc/alertmanager-main 9093
+
   - ipython:
       root: ~/dev/assertion-context
       panes:
