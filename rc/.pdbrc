@@ -1,1 +1,11 @@
+from pprint import pprint
+
+# re-list, even if we've already listed
 alias ll u;;d;;l
+
+# Next and list, and step and list.
+alias nl n;;l
+alias sl s;;l
+
+# print locals
+alias pl pprint(locals())
