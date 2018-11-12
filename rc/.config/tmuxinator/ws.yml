@@ -57,3 +57,10 @@ windows:
       layout: main-vertical
       panes:
         - psql
+  - postgres-aws-readonly:
+      layout: main-vertical
+      panes:
+        - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords
+        - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws2.wordstream.com -d adwords
+        - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws3.wordstream.com -d adwords
+        - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws4.wordstream.com -d adwords
