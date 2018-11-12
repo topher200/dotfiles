@@ -23,3 +23,15 @@
 \set COMP_KEYWORD_CASE upper
 \pset pager off
 \unset QUIET
+
+
+-- from https://github.com/okbob/pspg
+-- first, 'brew install pspg'
+\pset linestyle unicode
+-- \pset border 2
+\pset pager
+\x off
+-- Switch pagers with :x and :xx commands
+\set x '\\setenv PAGER less'
+\set xx '\\setenv PAGER \'pspg -bX --no-mouse\''
+:xx
