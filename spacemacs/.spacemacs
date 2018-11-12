@@ -51,6 +51,7 @@ This function should only modify configuration layer settings."
      html
      javascript
      markdown
+     (multiple-cursors :variables multiple-cursors-backend 'evil-mc)
      nginx
      python
      restclient
