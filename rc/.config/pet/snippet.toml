@@ -237,3 +237,8 @@
   description = "create wordstream watchman supervisor monitor"
   command = "create-wordstream-watchman-watchers.sh"
   output = ""
+
+[[snippets]]
+  description = "exec web kubernetes"
+  command = "kubectl get pods | grep web | head -n 1 | grep Running | cut -f 1 -d ' ' | xargs -o -I{} kubectl exec -it {} /bin/bash"
+  output = ""
