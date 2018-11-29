@@ -248,3 +248,16 @@ export NO_PROXY='*'
 
 # add istio bin
 export PATH="$PATH:/Users/t.brown/dev/github/istio-1.0.2/bin"
+
+# add nnn (cli file manager)
+export NNN_TMPFILE="/tmp/nnn"
+export NNN_USE_EDITOR=1
+n()
+{
+        nnn "$@"
+
+        if [ -f $NNN_TMPFILE ]; then
+                . $NNN_TMPFILE
+                rm $NNN_TMPFILE
+        fi
+}
