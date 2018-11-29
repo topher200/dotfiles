@@ -1,10 +1,13 @@
-
--- Official docs: http://www.postgresql.org/docs/9.3/static/app-psql.html
--- Unofficial docs: http://robots.thoughtbot.com/improving-the-command-line-postgres-experience
-
 -- Don't display the "helpful" message on startup.
 \set QUIET 1
+
+\set VERBOSITY verbose
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+-- nulls show as [NULL] (instead of being blank)
 \pset null '[NULL]'
+\unset QUIET
 
 -- http://www.postgresql.org/docs/9.3/static/app-psql.html#APP-PSQL-PROMPTING
 \set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
@@ -15,23 +18,13 @@
 -- Show how long each query takes to execute
 \timing
 
--- Use best available output format
-\x auto
-\set VERBOSITY verbose
-\set HISTFILE ~/.psql_history- :DBNAME
-\set HISTCONTROL ignoredups
-\set COMP_KEYWORD_CASE upper
-\pset pager off
-\unset QUIET
-
-
 -- from https://github.com/okbob/pspg
--- first, 'brew install pspg'
+-- before this works, you must install pspg with 'brew install pspg'
 \pset linestyle unicode
--- \pset border 2
-\pset pager
+\pset border 2
+\pset pager on
 \x off
--- Switch pagers with :x and :xx commands
+-- Switch between pagers with :x (not fancy) and :xx (fancy) commands
 \set x '\\setenv PAGER less'
 \set xx '\\setenv PAGER \'pspg -bX --no-mouse\''
 :xx
