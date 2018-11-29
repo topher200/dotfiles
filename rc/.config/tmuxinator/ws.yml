@@ -58,9 +58,14 @@ windows:
       panes:
         - psql
   - postgres-aws-readonly:
-      layout: main-vertical
+      layout: even-vertical
       panes:
-        - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords
-        - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws2.wordstream.com -d adwords
-        - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws3.wordstream.com -d adwords
-        - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws4.wordstream.com -d adwords
+        - aws1:
+            - tmux set synchronize-panes on
+            - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords
+        - aws2:
+            - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws2.wordstream.com -d adwords
+        - aws3:
+            - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws3.wordstream.com -d adwords
+        - aws4:
+            - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws4.wordstream.com -d adwords
