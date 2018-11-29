@@ -40,6 +40,7 @@ brew "git-cola"
 brew "git-extras"
 brew "glib-networking"
 brew "gnu-sed", args: ["with-default-names"]
+brew "grafana", restart_service: true
 brew "libtool"
 brew "gron"
 brew "gtk+3"
@@ -74,9 +75,10 @@ brew "nginx"
 brew "node"
 brew "nvm"
 brew "perl"
-brew "phantomjs"
 brew "postgresql", restart_service: true
+brew "prometheus"
 brew "protobuf"
+brew "pspg"
 brew "putty"
 brew "redis", restart_service: true
 brew "ripgrep"
