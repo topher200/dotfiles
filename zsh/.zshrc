@@ -58,7 +58,7 @@ ZSH_CUSTOM=~/zsh-custom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    fasd
+    autojump
     git
     vi-mode
 )
@@ -242,17 +242,6 @@ function sshv { ssh -t $1 "bash -i -o vi" }
 
 # add git-extras autocomplete
 source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
-
-# add fzf
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_TMUX=1
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-j() {
-    [ $# -gt 0 ] && fasd_cd -d "$*" && return
-    local dir
-    dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
-}
 
 # python/aws interaction requires `no_proxy`
 export NO_PROXY='*'
