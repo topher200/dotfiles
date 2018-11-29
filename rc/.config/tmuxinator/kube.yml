@@ -60,20 +60,10 @@ windows:
       panes:
         - nodes:
           - watch "kubectl get nodes"
+        - top-nodes:
+          - watch "kubectl top nodes"
         - services:
           - watch "kubectl get svc"
-  - istio:
-      root: ~/dev/assertion-context
-      layout: even-vertical
-      panes:
-        - pods:
-          - watch "kubectl top pods --namespace istio-system"
-        - services:
-          - watch "kubectl get svc --namespace istio-system"
-        - pods:
-          - watch "kubectl get pods --namespace istio-system -o wide"
-        - exit:
-          - exit
   - kube-system:
       root: ~/dev/assertion-context
       layout: even-vertical
@@ -81,7 +71,7 @@ windows:
         - services:
           - watch "kubectl get svc --namespace kube-system"
         - top:
-          - watch "kubectl top node && kubectl top pod --namespace kube-system"
+          - watch "kubectl get pod --namespace kube-system -o wide"
   - monitoring:
       root: ~/dev/assertion-context
       layout: even-vertical
@@ -89,23 +79,30 @@ windows:
         - services:
           - watch "kubectl get svc --namespace monitoring"
         - top:
-          - watch "kubectl top node && kubectl top pod --namespace monitoring"
-  - kube-proxy:
+          - watch "kubectl get pod --namespace monitoring -o wide"
+  - jaeger-infra:
       root: ~/dev/assertion-context
       layout: even-vertical
       panes:
-        - proxy:
-          - kubectl proxy
+        - services:
+          - watch "kubectl get svc --namespace jaeger-infra"
+        - top:
+          - watch "kubectl get pod --namespace jaeger-infra -o wide"
+  - kube-proxies:
+      root: ~/dev/assertion-context
+      layout: even-vertical
+      panes:
+        - dashboard:
+            - tmux set synchronize-panes on
+            - "echo dashboard: https://localhost:8443/ && kubectl --namespace kube-system port-forward $(kubectl get pods --namespace kube-system -l 'app=kubernetes-dashboard,release=kubernetes-dashboard' -o jsonpath='{.items[0].metadata.name}') 8443:8443"
         - prometheus:
-            - "echo prometheus: http://localhost:9090"
-            - kubectl --namespace monitoring port-forward svc/prometheus-k8s 9090
+            - "echo prometheus: http://localhost:9090 && kubectl --namespace monitoring port-forward svc/prometheus-k8s 9090"
         - grafana:
-            - "echo grafana: http://localhost:3000"
-            - kubectl --namespace monitoring port-forward svc/grafana 3000
+            - "echo grafana: http://localhost:3000 && kubectl --namespace monitoring port-forward svc/grafana 3000"
         - alert-manager:
-            - "echo alert-manager: http://localhost:9093"
-            - kubectl --namespace monitoring port-forward svc/alertmanager-main 9093
-
+            - "echo alert-manager: http://localhost:9093 && kubectl --namespace monitoring port-forward svc/alertmanager-main 9093"
+        - jaeger:
+            - "echo jaeger: http://localhost:16686 && kubectl port-forward -n jaeger-infra $(kubectl get pod -n jaeger-infra -l component=query -o jsonpath='{.items[0].metadata.name}') 16686:16686"
   - ipython:
       root: ~/dev/assertion-context
       panes:
