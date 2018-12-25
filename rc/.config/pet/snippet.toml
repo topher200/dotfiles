@@ -242,3 +242,8 @@
   description = "exec web kubernetes"
   command = "kubectl get pods | grep web | head -n 1 | grep Running | cut -f 1 -d ' ' | xargs -o -I{} kubectl exec -it {} /bin/bash"
   output = ""
+
+[[snippets]]
+  description = "list users of port 8000"
+  command = "lsof -nP -i4TCP:8000"
+  output = ""
