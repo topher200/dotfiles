@@ -21,7 +21,7 @@
 -- from https://github.com/okbob/pspg
 -- before this works, you must install pspg with 'brew install pspg'
 \pset linestyle unicode
-\pset border 2
+\pset border 1
 \pset pager on
 \x off
 -- Switch between pagers with :x (not fancy) and :xx (fancy) commands
