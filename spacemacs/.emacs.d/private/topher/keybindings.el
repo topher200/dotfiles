@@ -38,5 +38,8 @@
 ;; open my notes file on request
 (spacemacs/set-leader-keys "o n" (lambda() (interactive)(find-file "~/notes.org")))
 
+;; open a junk buffer on request
+(spacemacs/set-leader-keys "o j" (lambda() (interactive)(spacemacs/open-junk-file)))
+
 ;; work around bug that was making the 'SPC SPC' command go away
 (spacemacs/set-leader-keys "SPC" 'helm-M-x)
