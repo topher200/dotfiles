@@ -27,6 +27,9 @@
 ;; add keybinding to find related file
 (define-key global-map (kbd "C-c f") 'ff-find-other-file)
 
+;; run yas on 'C-c y'
+(define-key yas-minor-mode-map (kbd "C-c y") #'yas-expand)
+
 ;; Make insert mode text manipulation more like OSX
 (define-key evil-insert-state-map [M-backspace]
   (lambda () (interactive) (kill-line 0)))

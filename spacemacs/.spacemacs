@@ -476,27 +476,29 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-    (global-company-mode)
-    (setq python-fill-column 99)
+  (setq python-fill-column 99)
 
-    ;; robot-mode for Robot Framework
-    (load-file "~/.emacs.d/robot-mode/robot-mode.el")
-    (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
+  ;; set up company and yas
+  (global-company-mode)
 
-    ;; turn off org mode's c-tab binding
-    (add-hook 'org-mode-hook
-     (lambda ()
-      (define-key org-mode-map (kbd "<C-tab>") nil)))
+  ;; robot-mode for Robot Framework
+  (load-file "~/.emacs.d/robot-mode/robot-mode.el")
+  (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
 
-    ;; flycheck bindings for next/previous errors
-    (spacemacs|use-package-add-hook flycheck
-      :post-config
-      (progn
-        (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
-        (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)))
+  ;; turn off org mode's c-tab binding
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (define-key org-mode-map (kbd "<C-tab>") nil)))
 
-    ;; remove importmagic from python mode
-    (remove-hook 'python-mode-hook 'importmagic-mode)
+  ;; flycheck bindings for next/previous errors
+  (spacemacs|use-package-add-hook flycheck
+    :post-config
+    (progn
+      (define-key flycheck-mode-map (kbd "C-c n") 'flycheck-next-error)
+      (define-key flycheck-mode-map (kbd "C-c p") 'flycheck-previous-error)))
+
+  ;; remove importmagic from python mode
+  (remove-hook 'python-mode-hook 'importmagic-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
