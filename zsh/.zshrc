@@ -205,6 +205,37 @@ hot-fix-patch() {
     } > /tmp/patch_file_$(date +"%Y%m%d").patch
 }
 
+hot-fix-patch-migrators() {
+    case "$3" in
+	      "manager")
+	          SERVER_PATH="wordstream_manager"
+	          ;;
+	      "pages")
+	          SERVER_PATH="wordstream_pages"
+	          ;;
+	      *)
+	          SERVER_PATH="wordstream"
+	          ;;
+    esac
+    { git diff --no-ext-diff $1 $2 -- \
+          server/wordstream/src/account_service/data/ddl \
+          server/wordstream/src/adcenter_repo \
+          server/wordstream/src/adwords_repo \
+          server/wordstream/src/engine/data/call_tracking/ddl \
+          server/wordstream/src/cluster_repo/versions \
+          server/wordstream/src/engine/data/free_tools/ddl \
+          server/wordstream/src/engine/data/landing_pages/ddl \
+          server/wordstream/src/engine/data/facebook/ddl \
+          server/wordstream/src/engine/data/reporting/ddl \
+          server/tag_manager/src/tm0/data/google/tag_manager/ddl \
+          server/kwresearch/src/kwresearch_repo \
+          | perl -p -e \
+	                                        'BEGIN {$server_path=shift @ARGV;}
+         s@(?<=[ab])/server/([^/]+)/src@/opt/\1@g;
+	 s@(?<=[ab])/client/(manager|pages)/src@/opt/wordstream_\1@g;
+	 s@(?<=[ab])/python_shared/(wsframework|webapp_framework)/src@/opt/$server_path@g;' -- $SERVER_PATH
+    } > /tmp/patch_file_$(date +"%Y%m%d").patch
+}
 # itermocil autocompletion
 compctl -g '~/.itermocil/*(:t:r)' itermocil
 
