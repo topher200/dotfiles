@@ -88,6 +88,7 @@ This function should only modify configuration layer settings."
                                     flyspell  ;; annoying
                                     smartparens  ;; annoying
                                     eyebrowse ;; breaking golden ratio?
+                                    auto-highlight-symbol ;; super annoying re-implmentation of '*'
                                     )
 
    ;; Defines the behaviour of Spacemacs when installing packages.
