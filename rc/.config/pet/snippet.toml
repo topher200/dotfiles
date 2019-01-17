@@ -10,12 +10,12 @@
 
 [[snippets]]
   description = "post review to reviewboard"
-  command = "cd /Users/t.brown/dev/wordstream/ && git push origin HEAD && python -u utils/review.py"
+  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py && git push origin HEAD"
   output = ""
 
 [[snippets]]
   description = "post review to reviewboard tracking branch"
-  command = "cd /Users/t.brown/dev/wordstream/ && git push origin HEAD && python -u utils/review.py --tracking-branch origin/FIX_ME"
+  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py --tracking-branch origin/FIX_ME && git push origin HEAD"
   output = ""
 
 [[snippets]]
