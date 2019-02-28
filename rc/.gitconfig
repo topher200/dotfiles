@@ -4,5 +4,10 @@
 	templatedir = ~/git-template
 [core]
 	excludesfile = /Users/t.brown/.gitignore_global
+	editor = vim
+	bare = false
 [rerere]
 	enabled = true
+[user]
+	name = Topher Brown
+	email = t.brown@wordstream.com
