@@ -55,7 +55,7 @@
 
 [[snippets]]
   description = "what's my ip"
-  command = "curl v4.ifconfig.co"
+  command = "curl v4.ifconfig.co | pbcopy"
   output = ""
 
 [[snippets]]
