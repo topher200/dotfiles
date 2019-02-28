@@ -154,6 +154,11 @@ export PATH=/usr/local/bin:$PATH
 # add my binaries to path
 export PATH=$PATH:~/dev/bin
 
+# python pyenv
+export PATH="/Users/t.brown/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 # python virtualenv
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
@@ -180,6 +185,9 @@ if [ -f ~/wordstream-default-bashrc ]; then
     source ~/wordstream-default-bashrc
 fi
 alias wow="workon wordstream"
+export WS_REPO="/Users/t.brown/dev/wordstream"
+alias ws='cd $WS_REPO'
+alias wsps='cd $WS_REPO/server/wordstream/src'
 alias gcosdm="git checkout stable_db_migration"
 alias gcoosdm="git checkout origin/stable_db_migration"
 alias grosdm="git rebase origin/stable_db_migration"
@@ -286,3 +294,19 @@ n()
                 rm $NNN_TMPFILE
         fi
 }
+
+export PYTHONWARNINGS=ignore:DEPRECATION
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+__pyenv_version_ps1 ()
+{
+    local ret=$?;
+    if [ -n "${PYENV_VIRTUAL_ENV}" ]; then
+        echo -n "(${PYENV_VIRTUAL_ENV##*/}) "
+    fi
+    return $?
+}
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+PS1="\$(__pyenv_version_ps1)${PS1}"
