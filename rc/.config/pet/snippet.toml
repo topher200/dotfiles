@@ -19,11 +19,6 @@
   output = ""
 
 [[snippets]]
-  description = "kill wordstream servers"
-  command = "kill-servers.sh"
-  output = ""
-
-[[snippets]]
   description = "ssh into dev box aws-two buildbot"
   command = "tmux rename-window 'ssh-dev-aws-two' && ssh dev-aws-two.wordstream.com"
   output = ""
@@ -49,18 +44,8 @@
   output = ""
 
 [[snippets]]
-  description = "ssh tracebacks prod"
-  command = "tmux rename-window 'ssh-tracebacks' && ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@172.31.77.134"
-  output = ""
-
-[[snippets]]
   description = "what's my ip"
   command = "curl v4.ifconfig.co | pbcopy"
-  output = ""
-
-[[snippets]]
-  description = "ssh wordy"
-  command = "tmux rename-window 'ssh-wordy' && ssh t.brown@wordy.wordstream-sandbox.com"
   output = ""
 
 [[snippets]]
@@ -246,4 +231,14 @@
 [[snippets]]
   description = "list users of port 8000"
   command = "lsof -nP -i4TCP:8000"
+  output = ""
+
+[[snippets]]
+  description = "print swarm queue"
+  command = "aws sqs get-queue-attributes --queue-url https://queue.amazonaws.com/450035922800/tbrown-swarm --attribute-names All"
+  output = ""
+
+[[snippets]]
+  description = "kill server.py wordstream processes"
+  command = "ps aux | grep -v grep | grep -e 'server.py' -e 'swf.py' -e 'swarm.py' | tr -s ' ' | cut -f 2 -d ' ' | xargs kill"
   output = ""
