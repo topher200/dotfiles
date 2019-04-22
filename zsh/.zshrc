@@ -151,6 +151,11 @@ export PATH=$PATH:$GOPATH/bin
 # add ruby bin location to path. otherwise we use OSX's (ewww)
 export PATH=/usr/local/bin:$PATH
 
+# add ruby gems to path
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+
 # add my binaries to path
 export PATH=$PATH:~/dev/bin
 
