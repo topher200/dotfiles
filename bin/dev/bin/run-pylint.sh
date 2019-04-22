@@ -58,8 +58,8 @@ diff ~/pylint-start ~/pylint-end > ~/pylint-diff
 
 # print the diff of the two when you take out line numbers
 diff --ignore-all-space \
-    <(sed -r s/[0-9]\+:/XXX:/ ~/pylint-start) \
-    <(sed -r s/[0-9]\+:/XXX:/ ~/pylint-end) \
+    <(sed -E s/[0-9]\+:/XXX:/ ~/pylint-start) \
+    <(sed -E s/[0-9]\+:/XXX:/ ~/pylint-end) \
     > ~/pylint-super-diff
 
 cat ~/pylint-super-diff
