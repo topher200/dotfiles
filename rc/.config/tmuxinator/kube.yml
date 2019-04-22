@@ -109,3 +109,8 @@ windows:
         - ipython:
           - workon assertion-context
           - ipython
+  - badcorp:
+      root: ~/dev/assertion-context
+      panes:
+        - badcorp:
+          - workon assertion-context
