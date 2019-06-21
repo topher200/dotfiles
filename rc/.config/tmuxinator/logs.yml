@@ -65,6 +65,12 @@ windows:
       panes:
         - engine-log:
           - less +F server/debug.log
+  - swf-shell:
+      layout: even-vertical
+      root: ~/wordstream/log
+      panes:
+        - swf-worker-log:
+          - less +F SWF/debug.log
   - reporting-swf-shell:
       layout: even-vertical
       root: ~/wordstream/log
@@ -93,12 +99,6 @@ windows:
       panes:
         - tag-manager-log:
           - less +F tag_manager/debug.log
-  - pages-shell:
-      layout: even-vertical
-      root: ~/wordstream/log
-      panes:
-        - pages-log:
-          - less +F pages/debug.log
   - activity-monitor:
       layout: even-vertical
       root: ~/wordstream/log

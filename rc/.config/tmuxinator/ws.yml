@@ -74,3 +74,9 @@ windows:
       panes:
         - cluster:
             - export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d wordstream
+  - static-assets:
+      layout: main-vertical
+      panes:
+        - workon wordstream
+        - cd client/manager
+        - npm run develop
