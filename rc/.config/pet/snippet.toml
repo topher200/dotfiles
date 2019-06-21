@@ -160,7 +160,7 @@
 
 [[snippets]]
   description = "list directories and their sizes, sorted and human readable"
-  command = "du -h | sort -g"
+  command = "du -h | sort -h"
   output = ""
 
 [[snippets]]
@@ -241,4 +241,24 @@
 [[snippets]]
   description = "kill server.py wordstream processes"
   command = "ps aux | grep -v grep | grep -e 'server.py' -e 'swf.py' -e 'swarm.py' | tr -s ' ' | cut -f 2 -d ' ' | xargs kill"
+  output = ""
+
+[[snippets]]
+  description = "elasticsearch low disk space reset"
+  command = "curl -XPUT -H \"Content-Type: application/json\" http://localhost:9200/_all/_settings -d '{\"index.blocks.read_only_allow_delete\": null}'\\n"
+  output = ""
+
+[[snippets]]
+  description = "seedbox ssh"
+  command = "ssh root:***REMOVED***@***REMOVED*** -p 2222"
+  output = ""
+
+[[snippets]]
+  description = "kill all running docker containers"
+  command = "docker ps -q | xargs docker kill"
+  output = ""
+
+[[snippets]]
+  description = "run wordstream static js html server"
+  command = "cd /Users/t.brown/dev/wordstream/client/manager && nvm use 8.15.1 && npm run develop"
   output = ""
