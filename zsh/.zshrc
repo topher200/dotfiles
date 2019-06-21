@@ -315,3 +315,6 @@ __pyenv_version_ps1 ()
 }
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 PS1="\$(__pyenv_version_ps1)${PS1}"
+
+export NVM_DIR="/Users/t.brown/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
