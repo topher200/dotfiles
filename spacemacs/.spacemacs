@@ -500,6 +500,9 @@ before packages are loaded."
 
   ;; remove importmagic from python mode
   (remove-hook 'python-mode-hook 'importmagic-mode)
+
+  ;; turn on pyenv
+  (pyvenv-workon "exp")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
