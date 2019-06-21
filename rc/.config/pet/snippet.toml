@@ -70,7 +70,7 @@
 
 [[snippets]]
   description = "postgres logs"
-  command = "less +F /usr/local/var/postgres/server.log"
+  command = "less +F /usr/local/var/log/postgres.log"
   output = ""
 
 [[snippets]]
