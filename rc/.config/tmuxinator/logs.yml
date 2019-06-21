@@ -48,7 +48,7 @@ windows:
       root: ~/wordstream/log
       panes:
         - shell:
-          - watch supervisorctl status
+          - watch supervisorctl -s http://localhost:9002 status
         - manager-log:
           - less +F manager/debug.log
         - engine-log:
