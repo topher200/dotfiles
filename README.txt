@@ -20,3 +20,4 @@ Installation instructions:
 # npm packages
 - yaml2json
 - eslint
+- pure-prompt
