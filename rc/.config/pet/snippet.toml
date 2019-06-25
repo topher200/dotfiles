@@ -250,7 +250,7 @@
 
 [[snippets]]
   description = "seedbox ssh"
-  command = "ssh root:***REMOVED***@***REMOVED*** -p 2222"
+  command = "echo ***REMOVED*** | pbcopy && ssh root@***REMOVED*** -p 2222"
   output = ""
 
 [[snippets]]

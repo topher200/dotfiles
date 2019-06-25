@@ -74,6 +74,9 @@ GIT_TEMPLATE_DIR=~/git_template
 # tig aliases
 source /usr/local/etc/bash_completion.d/tig-completion.bash
 
+# general aliases
+alias ll='ls -alh'
+
 # git aliases
 alias gap="git add -p"
 alias gau="git add -u"
