@@ -7,7 +7,7 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="jreese"
+ZSH_THEME=""
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -32,7 +32,7 @@ DISABLE_AUTO_TITLE="true"
 ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="false"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -54,7 +54,7 @@ ZSH_CUSTOM=~/zsh-custom
 plugins=(
     autojump
     git
-    vi-mode
+    httpie
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -305,16 +305,21 @@ export PYTHONWARNINGS=ignore:DEPRECATION
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-__pyenv_version_ps1 ()
-{
-    local ret=$?;
-    if [ -n "${PYENV_VIRTUAL_ENV}" ]; then
-        echo -n "(${PYENV_VIRTUAL_ENV##*/}) "
-    fi
-    return $?
-}
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-PS1="\$(__pyenv_version_ps1)${PS1}"
-
 export NVM_DIR="/Users/t.brown/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# __pyenv_version_ps1 ()
+# {
+#     local ret=$?;
+#     if [ -n "${PYENV_VIRTUAL_ENV}" ]; then
+#         echo -n "(${PYENV_VIRTUAL_ENV##*/}) "
+#     fi
+#     return $?
+# }
+# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# PS1="\$(__pyenv_version_ps1)${PS1}"
+
+autoload -U promptinit; promptinit
+PURE_GIT_UNTRACKED_DIRTY=0
+prompt pure
+set -o vi
