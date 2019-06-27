@@ -172,22 +172,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 source /usr/local/bin/virtualenvwrapper.sh
 
-### pet (command line snippet manager)
-# save previous command to pet
-function petme() {
-    PREV=$(fc -lrn | head -n 1)
-    sh -c "pet new `printf %q "$PREV"`"
-}
-# search pets
-function pet-select() {
-    BUFFER=$(pet search --color --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle redisplay
-}
-zle -N pet-select
-stty -ixon
-bindkey '^s' pet-select
-
 # wordstream specfic stuffs
 if [ -f ~/wordstream-default-bashrc ]; then
     source ~/wordstream-default-bashrc
@@ -311,18 +295,25 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export NVM_DIR="/Users/t.brown/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# __pyenv_version_ps1 ()
-# {
-#     local ret=$?;
-#     if [ -n "${PYENV_VIRTUAL_ENV}" ]; then
-#         echo -n "(${PYENV_VIRTUAL_ENV##*/}) "
-#     fi
-#     return $?
-# }
-# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-# PS1="\$(__pyenv_version_ps1)${PS1}"
-
+# add 'pure-prompt'
 autoload -U promptinit; promptinit
 PURE_GIT_UNTRACKED_DIRTY=0
 prompt pure
 set -o vi
+
+### pet (command line snippet manager)
+# save previous command to pet
+function petme() {
+    PREV=$(fc -lrn | head -n 1)
+    sh -c "pet new `printf %q "$PREV"`"
+}
+# search pets
+function pet-select() {
+    BUFFER=$(pet search --color --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle redisplay
+}
+zle -N pet-select
+stty -ixon
+bindkey '^s' pet-select
+### end pet (command line snippet manager)
