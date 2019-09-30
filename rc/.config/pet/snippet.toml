@@ -1,6 +1,6 @@
 [[snippets]]
   description = "migrate all databases"
-  command = "cd /Users/t.brown/dev/wordstream/server/wordstream/src && python migrate_db.py upgrade --all ; cd /Users/t.brown/dev/wordstream"
+  command = "wow && cd /Users/t.brown/dev/wordstream/server/wordstream/src && python migrate_db.py upgrade --all ; cd /Users/t.brown/dev/wordstream"
   output = ""
 
 [[snippets]]
@@ -261,4 +261,14 @@
 [[snippets]]
   description = "run wordstream static js html server"
   command = "cd /Users/t.brown/dev/wordstream/client/manager && nvm use 8.15.1 && npm run develop"
+  output = ""
+
+[[snippets]]
+  description = "elasticsearch bastion box"
+  command = "ssh tbrown@172.30.1.246"
+  output = ""
+
+[[snippets]]
+  description = "digital ocean youtube-dl seedbox"
+  command = "ssh root@***REMOVED***"
   output = ""
