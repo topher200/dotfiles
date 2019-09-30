@@ -59,6 +59,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# create .zsh_functions dir (https://github.com/jwilm/alacritty/blob/master/INSTALL.md#zsh)
+mkdir -p ${ZDOTDIR:-~}/.zsh_functions
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
 # don't share command history between non-closed shells
 unsetopt share_history
 
@@ -152,12 +156,7 @@ export GOPATH=~/dev/go
 export PATH=$PATH:$GOPATH/bin
 
 # add ruby bin location to path. otherwise we use OSX's (ewww)
-export PATH=/usr/local/bin:$PATH
-
-# add ruby gems to path
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
+export PATH=/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH
 
 # add my binaries to path
 export PATH=$PATH:~/dev/bin
@@ -298,8 +297,17 @@ export NVM_DIR="/Users/t.brown/nvm"
 # add 'pure-prompt'
 autoload -U promptinit; promptinit
 PURE_GIT_UNTRACKED_DIRTY=0
+PURE_GIT_PULL=0
+PURE_CMD_MAX_EXEC_TIME=1
+zstyle ':prompt:pure:virtualenv' color green
 prompt pure
-set -o vi
+# set -o vi
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+# 'v' enters VI mode, from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
 
 ### pet (command line snippet manager)
 # save previous command to pet
