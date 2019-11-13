@@ -272,3 +272,8 @@
   description = "digital ocean youtube-dl seedbox"
   command = "ssh root@***REMOVED***"
   output = ""
+
+[[snippets]]
+  description = "local js server logs"
+  command = "less /usr/local/var/log/jslocalserver.log"
+  output = ""
