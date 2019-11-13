@@ -45,7 +45,7 @@ root: ~/dev/wordstream
 windows:
   - supervisor:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - shell:
           - watch supervisorctl -s http://localhost:9002 status
@@ -55,25 +55,25 @@ windows:
           - less +F server/debug.log
   - manager:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - manager-log:
           - less +F manager/debug.log
   - engine:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - engine-log:
           - less +F server/debug.log
   - swf-shell:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - swf-worker-log:
           - less +F SWF/debug.log
   - reporting-swf-shell:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - swf-worker-log:
           - less +F SWF-REPORTING-ACTIVITY_WORKER/debug.log
@@ -81,7 +81,7 @@ windows:
           - less +F SWF-REPORTING-DECIDER/debug.log
   - quickstart-swf-shell:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - swf-worker-log:
           - less +F SWF-QUICKSTART-ACTIVITY_WORKER/debug.log
@@ -89,19 +89,19 @@ windows:
           - less +F SWF-QUICKSTART-DECIDER/debug.log
   - swarm-shell:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - swarm-log:
           - less +F update/debug.log
   - tag-manager-shell:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - tag-manager-log:
           - less +F tag_manager/debug.log
   - activity-monitor:
       layout: even-vertical
-      root: ~/wordstream/log
+      root: ~/appdata/wordstream/log
       panes:
         - htop:
           - htop
