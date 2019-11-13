@@ -26,7 +26,7 @@ def main():
     if "HEAD" in branch_name:
         print "can't operate on HEAD (got branch {})".format(branch_name)
         return
-    if "PPC" not in branch_name:
+    if "PPC" not in branch_name and "ppc" not in branch_name:
         print "must operate on PPC branch (not {})".format(branch_name)
         return
 
