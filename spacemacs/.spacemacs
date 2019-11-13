@@ -33,7 +33,11 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(php
+   '(perl5
+     lua
+     haskell
+     systemd
+     php
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -42,6 +46,7 @@ This function should only modify configuration layer settings."
      auto-completion
      ;; dockerfile
      csv
+     deft
      docker
      emacs-lisp
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
@@ -519,6 +524,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote (("." . "/tmp"))))
  '(column-enforce-column 100)
+ '(deft-directory "/Users/t.brown/Dropbox/notes/")
+ '(deft-new-file-format "%Y-%m-%d")
  '(desktop-save-mode t)
  '(evil-shift-width 4)
  '(flycheck-display-errors-delay 0.05)
