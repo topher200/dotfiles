@@ -487,10 +487,6 @@ before packages are loaded."
   ;; set up company and yas
   (global-company-mode)
 
-  ;; robot-mode for Robot Framework
-  (load-file "~/.emacs.d/robot-mode/robot-mode.el")
-  (add-to-list 'auto-mode-alist '("\\.robot$" . robot-mode))
-
   ;; turn off org mode's c-tab binding
   (add-hook 'org-mode-hook
             (lambda ()
