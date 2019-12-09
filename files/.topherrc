@@ -1,4 +1,4 @@
-### COMMAND LINE ALIASES
+### COMMAND LINE ALIASES ###
 # general aliases
 alias ll='ls -alh'
 
@@ -71,10 +71,10 @@ function gdcb {
     git checkout $current_rev
     git branch -D $branch_name
 }
-### END COMMAND LINE ALIASES
+### END COMMAND LINE ALIASES ###
 
 
-### PATHING
+### PATHING ###
 # go pathing
 export GOPATH=~/dev/go
 export PATH=$PATH:$GOPATH/bin
@@ -84,5 +84,36 @@ export PATH=/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH
 
 # add my binaries to path
 export PATH=$PATH:~/bin
+### END PATHING ###
 
-### END PATHING
+### INSTALL AND CONFIGURE APPLICATIONS ###
+# enable thefuck (command line command fixer)
+eval $(thefuck --alias)
+
+# tig aliases
+source /usr/local/etc/bash_completion.d/tig-completion.bash
+
+# load ssh remote shells in vi mode
+function sshv { ssh -t $1 "bash -i -o vi" }
+
+# python/aws interaction requires `no_proxy`
+export NO_PROXY='*'
+
+# add nnn (cli file manager)
+export NNN_TMPFILE="/tmp/nnn"
+export NNN_USE_EDITOR=1
+n()
+{
+    nnn "$@"
+
+    if [ -f $NNN_TMPFILE ]; then
+        . $NNN_TMPFILE
+        rm $NNN_TMPFILE
+    fi
+}
+### END INSTALL AND CONFIGURE APPLICATIONS ###
+
+### SOURCE AUTOCOMPLETIONS ###
+# add git-extras autocomplete
+source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
+### END SOURCE AUTOCOMPLETIONS ###

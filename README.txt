@@ -8,7 +8,12 @@ Installation instructions:
 1. install 'make'
 1. 'make install'
 
-# brew packages
+# install stuff
+
+## linux
+- thefuck
+
+## macos: brew packages
 - cd macos
 - update: './regenerate-brewfile.sh'
 - install with `brew bundle install`

@@ -72,18 +72,6 @@ unsetopt autocd
 # just run commands with '!!' (like 'sudo !!'), don't try to verify
 setopt no_histverify
 
-# set up git template directory
-GIT_TEMPLATE_DIR=~/git_template
-
-# tig aliases
-source /usr/local/etc/bash_completion.d/tig-completion.bash
-
-# itermocil autocompletion
-compctl -g '~/.itermocil/*(:t:r)' itermocil
-
-# install thefuck
-eval $(thefuck --alias)
-
 # auto complete suggestions
 source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
@@ -93,39 +81,6 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=5
 
 # tmuxinator auto completions
 source $ZSH_CUSTOM/tmuxinator.zsh
-
-# load ssh remote shells in vi mode
-function sshv { ssh -t $1 "bash -i -o vi" }
-
-# add git-extras autocomplete
-source /usr/local/opt/git-extras/share/git-extras/git-extras-completion.zsh
-
-# python/aws interaction requires `no_proxy`
-export NO_PROXY='*'
-
-# add istio bin
-export PATH="$PATH:/Users/t.brown/dev/github/istio-1.0.2/bin"
-
-# add nnn (cli file manager)
-export NNN_TMPFILE="/tmp/nnn"
-export NNN_USE_EDITOR=1
-n()
-{
-        nnn "$@"
-
-        if [ -f $NNN_TMPFILE ]; then
-                . $NNN_TMPFILE
-                rm $NNN_TMPFILE
-        fi
-}
-
-export PYTHONWARNINGS=ignore:DEPRECATION
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-export NVM_DIR="/Users/t.brown/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # add 'pure-prompt'
 autoload -U promptinit; promptinit
