@@ -24,3 +24,7 @@ Installation instructions:
 - update: 'npm -g list --depth 0'
 - yaml2json
 - pure-prompt
+
+# install spacemacs
+- git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
+(requires deleting the .emacs dir created by 'stow')
