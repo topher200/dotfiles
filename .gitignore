@@ -1,2 +1,4 @@
 files/.config/htop/htoprc
-files/.tmux/plugins
+files/.tmux/plugins/
+files/.config/pulse/
+files/.config/systemd/
