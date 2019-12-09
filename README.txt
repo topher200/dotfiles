@@ -11,7 +11,7 @@ Installation instructions:
 # install stuff
 
 ## linux
-- thefuck
+- make install-packages-linux
 
 ## macos: brew packages
 - cd macos
