@@ -1,7 +1,7 @@
 .PHONY: install
 install:
-	stow -R files
+	stow -R -v files
 
 .PHONY: uninstall
 uninstall:
-	stow -D files
+	stow -D -v files
