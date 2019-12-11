@@ -1,6 +1,7 @@
 # install packages
 sudo apt install -y \
      autojump \
+     fzf \
      stow \
      tig
 
