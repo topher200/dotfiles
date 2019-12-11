@@ -83,6 +83,7 @@ export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=5
 source $ZSH_CUSTOM/tmuxinator.zsh
 
 # add 'pure-prompt'
+fpath+=("$ZSH_CUSTOM/pure")
 autoload -U promptinit; promptinit
 PURE_GIT_UNTRACKED_DIRTY=0
 PURE_GIT_PULL=0

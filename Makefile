@@ -3,7 +3,7 @@ stow-dotfiles:
 	stow --restow -v files
 
 .PHONY: install-full
-install-full: install-spacemacs stow-dotfiles install-packages-linux install-npm-packages
+install-full: install-spacemacs stow-dotfiles install-packages-linux
 
 .PHONY: stow-dotfiles-force
 stow-dotfiles-force:
@@ -19,9 +19,3 @@ stow-uninstall:
 .PHONY: install-packages-linux
 install-packages-linux:
 	./linux/install-packages.sh
-
-.PHONY: install-npm-packages
-install-npm-packages:
-	npm install --global \
-		pure-prompt \
-		yaml2json

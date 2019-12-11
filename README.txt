@@ -25,9 +25,9 @@ Installation instructions:
 - bropages
 - tmuxinator
 
-# npm packages
-- update: 'npm -g list --depth 0'
-
 # install spacemacs
 - git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
 (requires deleting the .emacs dir created by 'stow')
+
+# updates
+we have a clone of 'pure-prompt' in the zsh-custom directory. update with `https://github.com/sindresorhus/pure`
