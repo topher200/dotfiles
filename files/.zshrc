@@ -115,6 +115,9 @@ stty -ixon
 bindkey '^s' pet-select
 ### end pet (command line snippet manager)
 
+# include my non-shell-specific code
+source $HOME/.topherrc
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/topher/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/topher/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
