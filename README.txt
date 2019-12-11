@@ -6,9 +6,9 @@ managed by GNU stow
 Installation instructions:
 1. install 'stow' (`brew install stow`)
 1. install 'make'
-1. 'make install'
+1. 'make install-full'
 
-# install stuff
+# manually installing stuff
 
 ## linux
 - make install-packages-linux
@@ -27,8 +27,6 @@ Installation instructions:
 
 # npm packages
 - update: 'npm -g list --depth 0'
-- yaml2json
-- pure-prompt
 
 # install spacemacs
 - git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
