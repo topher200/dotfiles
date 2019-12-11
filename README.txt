@@ -29,4 +29,6 @@ Installation instructions:
 (requires deleting the .emacs dir created by 'stow')
 
 # updates
-we have a clone of 'pure-prompt' in the zsh-custom directory. update with `https://github.com/sindresorhus/pure`
+## zsh-custom git repo clones
+- https://github.com/sindresorhus/pure
+- https://github.com/mafredri/zsh-async.git
