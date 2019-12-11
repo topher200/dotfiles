@@ -9,5 +9,5 @@ sudo apt install -y python3-dev python3-pip python3-setuptools
 sudo pip3 install thefuck
 
 # pet snippet manager
-wget https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.deb /tmp/pet.deb
+wget https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.deb -O /tmp/pet.deb
 sudo dpkg -i pet.deb
