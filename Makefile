@@ -1,3 +1,6 @@
+.PHONY: install
+install: stow-dotfiles install-npm-packages
+
 .PHONY: stow-dotfiles
 stow-dotfiles:
 	stow --restow -v files
@@ -13,3 +16,9 @@ uninstall-stow:
 .PHONY: install-packages-linux
 install-packages-linux:
 	./linux/install-packages.sh
+
+.PHONY: install-npm-packages
+install-npm-packages:
+	npm install \
+		pure-prompt \
+		yaml2json
