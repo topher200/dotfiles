@@ -32,3 +32,6 @@ Installation instructions:
 ## zsh-custom git repo clones
 - https://github.com/sindresorhus/pure
 - https://github.com/mafredri/zsh-async.git
+
+## tmux plugins
+- git clone https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm
