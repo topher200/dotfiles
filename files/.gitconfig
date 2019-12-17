@@ -1,7 +1,5 @@
 [push]
 	default = simple
-[init]
-	templatedir = ~/git-template
 [core]
 	excludesfile = /Users/t.brown/.gitignore_global
 	editor = vim
