@@ -1,0 +1,12 @@
+[ui]
+merge = internal:merge3
+paginate = False
+
+[committemplate]
+changeset = {desc}\n\n
+	HG: Enter commit message.  Lines beginning with 'HG:' are removed.
+	HG: {extramsg}
+	HG: ------------------------ >8 ------------------------
+	HG: Do not touch the line above.
+	HG: Everything below will be removed.
+	{diff()}
