@@ -93,9 +93,6 @@ eval $(thefuck --alias)
 # load ssh remote shells in vi mode
 function sshv { ssh -t $1 "bash -i -o vi" }
 
-# python/aws interaction requires `no_proxy`
-export NO_PROXY='*'
-
 # add nnn (cli file manager)
 export NNN_TMPFILE="/tmp/nnn"
 export NNN_USE_EDITOR=1
