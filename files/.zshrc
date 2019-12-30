@@ -100,6 +100,9 @@ bindkey '^R' history-incremental-search-backward
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
+# backspace always deletes a char, even in insert mode. from https://unix.stackexchange.com/a/368576
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
 
 ### pet (command line snippet manager)
 # save previous command to pet
