@@ -123,3 +123,8 @@ if [ -f '/Users/topher/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/topher/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/topher/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# enable 'kitty' terminal emulator
+autoload -Uz compinit
+compinit
+kitty + complete setup zsh | source /dev/stdin
