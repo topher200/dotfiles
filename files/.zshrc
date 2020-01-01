@@ -125,10 +125,10 @@ bindkey '^s' pet-select
 source $HOME/.topherrc
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/topher/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/topher/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/topher/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/topher/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
 # enable 'kitty' terminal emulator
 if command -v kitty > /dev/null; then
