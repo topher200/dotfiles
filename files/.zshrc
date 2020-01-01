@@ -131,6 +131,10 @@ if [ -f '/Users/topher/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 if [ -f '/Users/topher/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/topher/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 # enable 'kitty' terminal emulator
-autoload -Uz compinit
-compinit
-kitty + complete setup zsh | source /dev/stdin
+if command -v kitty > /dev/null; then
+    autoload -Uz compinit
+    compinit
+    kitty + complete setup zsh | source /dev/stdin
+fi
+
+source $ZSH_CUSTOM/zsh-async/async.zsh
