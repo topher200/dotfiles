@@ -1,9 +1,11 @@
 # install packages
 sudo apt install -y \
-     autojump \
-     fzf \
-     stow \
-     tig
+    autojump \
+    fzf \
+    silversearcher-ag \
+    stow \
+    tig \
+    zsh
 
 # install python packages
 sudo apt install -y python3-dev python3-pip python3-setuptools
