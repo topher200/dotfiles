@@ -22,3 +22,15 @@ autocmd FileType crontab setlocal nowritebackup
 
 " status line always
 :set laststatus=2
+
+" install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" install plugins
+call plug#begin('~/.vim/plugged')
+Plug 'psf/black'
+call plug#end()
