@@ -282,3 +282,8 @@
   description = "ssh dev environment"
   command = "gcloud beta compute --project \"topher-dev-env\" ssh --zone \"us-west1-a\" \"dev-env\""
   output = ""
+
+[[snippets]]
+  description = "connect to new tmux session, creating it if it doesn't exist"
+  command = "tmux new-sess -A -s work"
+  output = ""
