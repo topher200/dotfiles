@@ -8,7 +8,8 @@ sudo apt install -y \
     zsh
 
 # install python packages
-sudo apt install -y python3-dev python3-pip python3-setuptools
+sudo apt install -y python3-dev python3-pip python3-setuptools python3-venv
+
 sudo pip3 install thefuck
 
 # pet snippet manager
