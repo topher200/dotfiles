@@ -38,3 +38,6 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'psf/black'
 call plug#end()
+
+" run 'black' on save
+autocmd BufWritePre *.py execute ':Black'
