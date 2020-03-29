@@ -23,6 +23,10 @@ autocmd FileType crontab setlocal nowritebackup
 " status line always
 :set laststatus=2
 
+" make Ctrl-s save (by calling ':w<enter>')
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>a
+
 " install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
