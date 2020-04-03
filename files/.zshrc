@@ -120,6 +120,9 @@ stty -ixon
 bindkey '^s' pet-select
 ### end pet (command line snippet manager)
 
+# make fzf use ag instead of its default (find)
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
 # include my non-shell-specific code
 source $HOME/.topherrc
 
