@@ -1,4 +1,9 @@
 [[snippets]]
+  description = "open vim file with fzf"
+  command = "vim -o `fzf`"
+  output = ""
+
+[[snippets]]
   description = "migrate all databases"
   command = "wow && cd /Users/t.brown/dev/wordstream/server/wordstream/src && python migrate_db.py upgrade --all ; cd /Users/t.brown/dev/wordstream"
   output = ""
