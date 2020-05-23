@@ -1,4 +1,5 @@
 --download-archive /home/youtube-dl/youtube-dl-archive
+--format bestvideo[height<=?720]+bestaudio/best
 --cookies /home/youtube-dl/cookies.txt
 --mark-watched
 --restrict-filenames
