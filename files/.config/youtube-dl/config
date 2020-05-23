@@ -2,7 +2,7 @@
 --cookies /home/youtube-dl/cookies.txt
 --mark-watched
 --restrict-filenames
---output '/mnt/volume_sfo2_02/Dropbox/youtube-dl/%(uploader)s/%(title)s.%(ext)s'
+--output '/home/youtube-dl/downloads/%(uploader)s/%(title)s.%(ext)s'
 --abort-on-error
 --newline
 --no-continue
