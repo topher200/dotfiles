@@ -1,5 +1,5 @@
 --download-archive /home/youtube-dl/youtube-dl-archive
---cookies /mnt/volume_sfo2_02/Dropbox/cookies.txt
+--cookies /home/youtube-dl/cookies.txt
 --mark-watched
 --restrict-filenames
 --output '/mnt/volume_sfo2_02/Dropbox/youtube-dl/%(uploader)s/%(title)s.%(ext)s'
