@@ -279,6 +279,11 @@
   output = ""
 
 [[snippets]]
+  description = "hg diff less with color"
+  command = "hg d --color on | less"
+  output = ""
+
+[[snippets]]
   description = "local js server logs"
   command = "less /usr/local/var/log/jslocalserver.log"
   output = ""
