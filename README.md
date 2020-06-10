@@ -28,10 +28,14 @@ Installation instructions:
 - git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
 (requires deleting the .emacs dir created by 'stow')
 
+# install fzf
+- https://github.com/junegunn/fzf#using-git
+- git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+- ~/.fzf/install
+
 # updates
 ## zsh-custom git repo clones
 - https://github.com/sindresorhus/pure
-- https://github.com/mafredri/zsh-async.git
 
 ## tmux plugins
 - git clone https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm

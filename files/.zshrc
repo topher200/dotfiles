@@ -122,6 +122,8 @@ bindkey '^s' pet-select
 
 # make fzf use ag instead of its default (find)
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+# add fzf keybindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # include my non-shell-specific code
 source $HOME/.topherrc
