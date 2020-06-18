@@ -37,7 +37,12 @@ endif
 " install plugins
 call plug#begin('~/.vim/plugged')
 Plug 'psf/black'
+Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
 " run 'black' on save
 autocmd BufWritePre *.py execute ':Black'
+
+" solarized
+set background=dark
+colorscheme solarized8
