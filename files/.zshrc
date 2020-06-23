@@ -122,8 +122,22 @@ bindkey '^s' pet-select
 
 # make fzf use ag instead of its default (find)
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
+# use fzf-tmux
+export FZF_TMUX_OPTS='-d 30%'
 # add fzf keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# custom fuzzy completion for "hg co" command
+# https://github.com/junegunn/fzf/wiki/Examples-(completion)#zsh-complete-hg-updatehg-merge
+_fzf_complete_hg() {
+    ARGS="$@"
+    _fzf_complete --reverse --ansi -- "$@" < <(
+        hg xl --color=on
+    )
+}
+_fzf_complete_hg_post() {
+    perl -ne 'print "$1\n" if / (\d+):/'
+}
 
 # include my non-shell-specific code
 source $HOME/.topherrc
