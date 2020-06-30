@@ -6,6 +6,7 @@ set incsearch
 set tabstop=2
 set shiftwidth=4
 set softtabstop=4
+set hlsearch " highlight matches in search
 syntax enable
 
 " Use system keyboard
