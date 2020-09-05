@@ -13,12 +13,14 @@ sudo pip3 install \
     thefuck
 
 # pet snippet manager
-wget https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.deb -O /tmp/pet.deb
-sudo dpkg -i /tmp/pet.deb
+if [ ! -f /tmp/pet.deb ]; then
+    wget https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.deb -O /tmp/pet.deb
+    sudo dpkg -i /tmp/pet.deb
+fi
 
 # install fzf, from https://github.com/junegunn/fzf#using-git
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install --bin
 
 # set shell to zsh
 chsh -s `which zsh`
