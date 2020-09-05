@@ -4,8 +4,12 @@ dotfiles repo
 managed by GNU stow
 
 Installation instructions:
-1. install 'make'
-1. 'make install-full'
+```
+sudo apt-get install make
+git clone github.com:topher200/dotfiles
+cd dotfiles
+make install-full
+```
 
 # manually installing stuff
 
