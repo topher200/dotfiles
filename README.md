@@ -11,6 +11,23 @@ cd dotfiles
 make install-full
 ```
 
+### install fzf
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+From https://github.com/junegunn/fzf#using-git
+
+### install spacemacs
+```
+rm -r ~/.emacs.d # deleting the .emacs dir created by 'stow'
+git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
+```
+
+### gem packages
+- bropages
+- tmuxinator
+
 ### How to create a new user
 This isn't quite related to dotfiles, but w/e.
 ```
@@ -21,7 +38,7 @@ sudo su - torrentscraper
 # install https://github.com/topher200/dotfiles
 ```
 
-# manually installing stuff
+# Manually installing stuff instead
 
 ## linux
 - make install-packages-linux
@@ -33,27 +50,12 @@ sudo su - torrentscraper
 - check packages with `brew bundle check`
 - freeze with `brew bundle dump`
 
-# gem packages
-- update: 'gem list'
-- bropages
-- tmuxinator
-
-# install spacemacs
-```
-rm -r ~/.emacs.d # deleting the .emacs dir created by 'stow'
-git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
-```
-
-# install fzf
-```
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-```
-From https://github.com/junegunn/fzf#using-git
-
 # updates
 ## zsh-custom git repo clones
 - https://github.com/sindresorhus/pure
+
+## gem packages
+- update with `gem list`
 
 ## tmux plugins
 ```
