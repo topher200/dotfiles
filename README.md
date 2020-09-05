@@ -11,13 +11,6 @@ cd dotfiles
 make install-full
 ```
 
-### install fzf
-```
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-```
-From https://github.com/junegunn/fzf#using-git
-
 ### install spacemacs
 ```
 rm -r ~/.emacs.d # deleting the .emacs dir created by 'stow'

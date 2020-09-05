@@ -9,12 +9,16 @@ sudo apt install -y \
 
 # install python packages
 sudo apt install -y python3-dev python3-pip python3-setuptools python3-venv
-
-sudo pip3 install thefuck
+sudo pip3 install \
+    thefuck
 
 # pet snippet manager
 wget https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.deb -O /tmp/pet.deb
 sudo dpkg -i /tmp/pet.deb
+
+# install fzf, from https://github.com/junegunn/fzf#using-git
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 # set shell to zsh
 chsh -s `which zsh`
