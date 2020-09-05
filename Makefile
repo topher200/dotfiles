@@ -1,5 +1,5 @@
 .PHONY: install
-install-full: install-spacemacs stow install-packages-linux
+install-full: install-spacemacs stow install-packages
 
 .PHONY: stow
 stow:
@@ -16,6 +16,6 @@ stow-uninstall:
 .PHONY: install-spacemacs
 	git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
 
-.PHONY: install-packages-linux
-install-packages-linux:
-	./linux/install-packages.sh
+.PHONY: install-packages
+install-packages:
+	./install-packages.sh
