@@ -39,17 +39,23 @@ sudo su - torrentscraper
 - tmuxinator
 
 # install spacemacs
-- git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
-(requires deleting the .emacs dir created by 'stow')
+```
+rm -r ~/.emacs.d # deleting the .emacs dir created by 'stow'
+git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
+```
 
 # install fzf
-- https://github.com/junegunn/fzf#using-git
-- git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-- ~/.fzf/install
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+From https://github.com/junegunn/fzf#using-git
 
 # updates
 ## zsh-custom git repo clones
 - https://github.com/sindresorhus/pure
 
 ## tmux plugins
-- git clone https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm
+```
+git clone https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm
+```
