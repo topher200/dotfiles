@@ -1,12 +1,12 @@
-.PHONY: stow-dotfiles
-stow-dotfiles:
+.PHONY: install
+install-full: install-spacemacs stow install-packages-linux
+
+.PHONY: stow
+stow:
 	stow --restow -v files
 
-.PHONY: install-full
-install-full: install-spacemacs stow-dotfiles install-packages-linux
-
-.PHONY: stow-dotfiles-force
-stow-dotfiles-force:
+.PHONY: stow-force
+stow-force:
 	stow --restow --adopt -v files
 
 .PHONY: stow-uninstall

@@ -39,18 +39,6 @@ sudo su - $NEWUSER
 # install https://github.com/topher200/dotfiles
 ```
 
-# Manually installing stuff instead
-
-## linux
-- make install-packages-linux
-
-## macos: brew packages
-- cd macos
-- update: './regenerate-brewfile.sh'
-- install with `brew bundle install`
-- check packages with `brew bundle check`
-- freeze with `brew bundle dump`
-
 # updates
 ## zsh-custom git repo clones
 - https://github.com/sindresorhus/pure
