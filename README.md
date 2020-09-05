@@ -6,7 +6,7 @@ managed by GNU stow
 Installation instructions:
 ```
 sudo apt-get install make
-git clone github.com:topher200/dotfiles
+git clone git@github.com:topher200/dotfiles.git # requires .ssh keys
 cd dotfiles
 make install-full
 ```
