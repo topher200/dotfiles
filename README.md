@@ -3,12 +3,22 @@ dotfiles repo
 # dotfiles
 managed by GNU stow
 
-Installation instructions:
+## Installation instructions
 ```
 sudo apt-get install make
 git clone git@github.com:topher200/dotfiles.git # requires .ssh keys
 cd dotfiles
 make install-full
+```
+
+### How to create a new user
+This isn't quite related to dotfiles, but w/e.
+```
+sudo useradd --create-home -G sudo -s /usr/bin/zsh torrentscraper
+sudo passwd torrentscraper
+sudo su - torrentscraper
+# 'q' to not create .zshrc file
+# install https://github.com/topher200/dotfiles
 ```
 
 # manually installing stuff
