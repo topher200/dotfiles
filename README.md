@@ -31,9 +31,10 @@ git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
 ### How to create a new user
 This isn't quite related to dotfiles, but w/e.
 ```
-sudo useradd --create-home -G sudo -s /usr/bin/zsh torrentscraper
-sudo passwd torrentscraper
-sudo su - torrentscraper
+NEWUSER=topher
+sudo useradd --create-home -G sudo -s /usr/bin/zsh $NEWUSER
+sudo passwd $NEWUSER
+sudo su - $NEWUSER
 # 'q' to not create .zshrc file
 # install https://github.com/topher200/dotfiles
 ```
