@@ -1,5 +1,5 @@
 --download-archive /home/youtube-dl/youtube-dl-archive
---format bestvideo[height<=?720]+bestaudio/best
+--format bestvideo[height<=?720][fps<=?30]+bestaudio/best
 --cookies /home/youtube-dl/cookies.txt
 --mark-watched
 --restrict-filenames
@@ -8,3 +8,5 @@
 --newline
 --no-continue
 --playlist-reverse
+--no-progress
+--quiet
