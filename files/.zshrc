@@ -54,6 +54,7 @@ plugins=(
     autojump
     git
     httpie
+    safe-paste
 )
 
 source $ZSH/oh-my-zsh.sh
