@@ -2,4 +2,5 @@ files/.config/htop/htoprc
 files/.config/pulse/
 files/.config/systemd/
 files/.tmux/plugins/
-
+files/.tmux/resurrect/
+files/.ipython/profile_default/history.sqlite
