@@ -20,7 +20,7 @@ fi
 
 # install fzf, from https://github.com/junegunn/fzf#using-git
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --bin
+~/.fzf/install --completion --no-update-rc --no-key-bindings
 
 # set shell to zsh
 chsh -s `which zsh`
