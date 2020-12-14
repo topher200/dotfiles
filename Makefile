@@ -1,5 +1,5 @@
-.PHONY: install
-install-full: install-spacemacs stow install-packages
+.PHONY: install-full
+install-full: stow install-packages
 
 .PHONY: stow
 stow:
