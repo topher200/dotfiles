@@ -294,6 +294,11 @@
   output = ""
 
 [[snippets]]
+  description = "open dotfiles tmux window"
+  command = "tmux new-window -c ~/dotfiles -n dotfiles -t 10 'ls -al && zsh'"
+  output = ""
+
+[[snippets]]
   description = "connect to new tmux session, creating it if it doesn't exist"
   command = "tmux new-sess -A -s work"
   output = ""
