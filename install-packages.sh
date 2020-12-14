@@ -22,5 +22,8 @@ fi
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --completion --no-update-rc --no-key-bindings
 
+# install vim plugins
+vim +PlugInstall +qall
+
 # set shell to zsh
 chsh -s `which zsh`
