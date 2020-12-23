@@ -3,7 +3,7 @@
 # quit the script immediately on error
 set -e
 
-echo 'WARNING! this will push HEAD to github (secrets!) AND THEN force push to google. <enter> to proceed'
+echo 'WARNING! you should be on the "github" branch HEAD. this will push HEAD to github (watch for secrets!) AND THEN force push to google. <enter> to proceed'
 git log --oneline --decorate=full | head
 read -n 1
 
