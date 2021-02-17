@@ -15,8 +15,9 @@ stow-uninstall:
 
 .PHONY: install-spacemacs
 install-spacemacs:
-	rm -r ~/.emacs.d # deleting the .emacs dir created by 'stow'
+	# rm -r ~/.emacs.d # deleting the .emacs dir created by 'stow'
 	git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
+	make stow
 
 .PHONY: install-packages
 install-packages:
