@@ -5,6 +5,7 @@ sudo apt install -y \
     silversearcher-ag \
     stow \
     tig \
+    unp \
     zsh
 
 # install python packages
