@@ -33,12 +33,3 @@
     (grep (concat "grep -n \"^ *\\(def\\|class\\) [A-Za-z0-9_]*\" "
                   (buffer-name) "")))
    (t (message "Don't know how to do TOC for this buffer!"))))
-
-(defun add-import ()
-  "Search the codebase for the import for the class at point. Insert into header"
-  (interactive)
-  (let (
-        (class-to-find (thing-at-point 'word)))
-    (save-excursion
-      (goto-char 0)
-      (insert (shell-command-to-string (format "%s %s" "~/dev/bin/find_imports.sh" class-to-find))))))
