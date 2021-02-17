@@ -18,7 +18,6 @@ git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
 ```
 
 ### gem packages
-- bropages
 - tmuxinator
 
 ### How to create a new user
