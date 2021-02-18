@@ -21,10 +21,6 @@ set backspace=indent,eol,start
 " enable vim to edit crontab on osx. see http://stackoverflow.com/a/21194148
 autocmd FileType crontab setlocal nowritebackup
 
-" stop inserting comments automatically
-" https://vim.fandom.com/wiki/Disable_automatic_comment_insertion
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
 " status line always
 :set laststatus=2
 
@@ -44,6 +40,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'psf/black'
 Plug 'lifepillar/vim-solarized8'
 call plug#end()
+
+" stop inserting comments automatically
+" https://vim.fandom.com/wiki/Disable_automatic_comment_insertion
+" this must come after plugins or it gets overridden.
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " run 'black' on save
 autocmd BufWritePre *.py execute ':Black'
