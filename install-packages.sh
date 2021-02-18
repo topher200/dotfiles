@@ -2,6 +2,7 @@
 sudo apt install -y \
     autojump \
     fzf \
+    httpie \
     silversearcher-ag \
     stow \
     tig \
