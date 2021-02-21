@@ -3,6 +3,7 @@ sudo apt install -y \
     autojump \
     fzf \
     httpie \
+    pspg \
     silversearcher-ag \
     stow \
     tig \

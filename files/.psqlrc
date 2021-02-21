@@ -19,7 +19,6 @@
 \timing
 
 -- from https://github.com/okbob/pspg
--- before this works, you must install pspg with 'brew install pspg'
 \pset linestyle unicode
 \pset border 1
 \pset pager on
