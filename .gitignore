@@ -1,3 +1,6 @@
+*.swp
+*__pycache__*
+
 files/.config/htop/htoprc
 files/.config/pulse/
 files/.config/systemd/
