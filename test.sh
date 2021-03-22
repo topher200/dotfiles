@@ -12,6 +12,8 @@ for f in $(find . -type f \
     -not -iwholename '*.git*' \
     -not -iwholename './files/.oh-my-zsh/*' \
     -not -iwholename './files/.tmux/plugins/*' \
+    -not -iwholename './files/bin/dropbox_uploader.sh' \
+    -not -iwholename './files/bin/ftwind' \
     -not -iwholename './files/zsh-custom/*' \
     | sort -u); do
 
