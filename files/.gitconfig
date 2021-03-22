@@ -1,7 +1,7 @@
 [push]
 	default = simple
 [commit]
-  verbose = 1
+  verbose = 2
 [core]
 	editor = vim
 	bare = false
