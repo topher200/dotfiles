@@ -28,6 +28,20 @@ autocmd FileType crontab setlocal nowritebackup
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
 
+" allow sudo even if we forgot to open vim with 'sudo vim'
+cmap w!! w !sudo tee > /dev/null %
+
+" Keep undo history across sessions by storing it in a file
+let vimDir = '$HOME/.vim'
+if has('persistent_undo')
+    let TheUndoDir = expand(vimDir . '/undo')
+    " Create dirs
+    call system('mkdir ' . vimDir)
+    call system('mkdir ' . TheUndoDir)
+    let &undodir = TheUndoDir
+    set undofile
+endif
+
 " install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs

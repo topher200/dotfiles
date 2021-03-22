@@ -15,6 +15,7 @@
   # camep = commit --amend --edit --patch
   cp = commit --patch
   d = diff
+  p = push
   s = status
 [push]
 	default = simple
