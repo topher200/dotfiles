@@ -10,12 +10,10 @@ ERRORS=()
 # define excludes here:
 for f in $(find . -type f \
     -not -iwholename '*.git*' \
-    -not -iwholename './tpm*' \
-    -not -iwholename "./oh-my-zsh-custom*" \
-    -not -iwholename "./nanorc-folder*" \
-    -not -iwholename "./powerline*" \
-    -not -iwholename "./xinitrc*" \
-    -not -iwholename "./fzf*" | sort -u); do
+    -not -iwholename './files/.oh-my-zsh/*' \
+    -not -iwholename './files/.tmux/plugins/*' \
+    -not -iwholename './files/zsh-custom/*' \
+    | sort -u); do
 
 
 if file "$f" | grep --quiet shell; then
@@ -32,7 +30,7 @@ if [ ${#ERRORS[@]} -eq 0 ]; then
     echo "No errors, hooray"
 else
     echo "These files failed shellcheck: "
-    printf '%s\n' "${ERRORS[@]}"
+    printf '  %s\n' "${ERRORS[@]}"
     exit 1
 fi
 

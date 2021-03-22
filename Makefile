@@ -3,7 +3,7 @@ install-full: install-packages stow
 
 .PHONY: test
 test:
-	shellcheck files/.topherrc
+	./test.sh
 
 .PHONY: stow
 stow:
