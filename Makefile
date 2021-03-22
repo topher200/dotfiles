@@ -1,13 +1,13 @@
+.PHONY: stow
+stow:
+	stow --restow -v files
+
 .PHONY: install-full
 install-full: install-packages stow
 
 .PHONY: test
 test:
 	./test.sh
-
-.PHONY: stow
-stow:
-	stow --restow -v files
 
 .PHONY: stow-force
 stow-force:
