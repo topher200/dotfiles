@@ -1,11 +1,10 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /Users/t.brown/.gitignore_global
 	editor = vim
 	bare = false
 [rerere]
 	enabled = true
 [user]
 	name = Topher Brown
-	email = topherb@google.com
+	email = topher@memfault.com
