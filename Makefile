@@ -1,5 +1,5 @@
 .PHONY: install-full
-install-full: stow install-packages
+install-full: install-packages stow
 
 .PHONY: stow
 stow:
