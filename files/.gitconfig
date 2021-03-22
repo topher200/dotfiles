@@ -1,3 +1,13 @@
+[alias]
+  am = commit --amend
+  ama = commit --amend --all
+  ame = commit --amend --edit
+  amea = commit --amend --edit --all
+  ap = add --patch
+  c = commit
+  ca = commit --all
+  cp = commit --patch
+  s = status
 [push]
 	default = simple
 [commit]
