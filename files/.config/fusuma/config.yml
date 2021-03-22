@@ -1,0 +1,25 @@
+swipe:
+  3:
+    left:
+      command: "xdotool key alt+Right" # History forward 
+    right:
+      command: "xdotool key alt+Left" # History back
+    up:
+      command: "xdotool key ctrl+Shift+Tab"
+    down:
+      command: "xdotool key ctrl+Tab"
+  4:
+    left:
+      command: "xdotool key ctrl+alt+Right"
+    right:
+      command: "xdotool key ctrl+alt+Left"
+    up:
+      command: "xdotool key ctrl+alt+Down"
+    down:
+      command: "xdotool key ctrl+alt+Up"
+pinch:
+  in:
+    command: "xdotool key super"
+  out:
+    command: "xdotool key super"
+    
