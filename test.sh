@@ -31,7 +31,8 @@ done
 if [ ${#ERRORS[@]} -eq 0 ]; then
     echo "No errors, hooray"
 else
-    echo "These files failed shellcheck: ${ERRORS[*]}"
+    echo "These files failed shellcheck: "
+    printf '%s\n' "${ERRORS[@]}"
     exit 1
 fi
 
