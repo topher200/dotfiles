@@ -141,7 +141,7 @@ _fzf_complete_hg_post() {
 }
 
 # include my non-shell-specific code
-source $HOME/.topherrc
+source "$HOME"/.topherrc
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi

@@ -75,13 +75,6 @@ function gdcb {
 
 
 ### PATHING ###
-# go pathing
-export GOPATH=~/dev/go
-export PATH=$PATH:$GOPATH/bin
-
-# add ruby bin location to path. otherwise we use OSX's (ewww)
-export PATH=/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:$PATH
-
 # add my binaries to path
 export PATH=$PATH:~/bin
 ### END PATHING ###
@@ -92,17 +85,4 @@ eval $(thefuck --alias)
 
 # load ssh remote shells in vi mode
 function sshv { ssh -t $1 "bash -i -o vi" }
-
-# add nnn (cli file manager)
-export NNN_TMPFILE="/tmp/nnn"
-export NNN_USE_EDITOR=1
-n()
-{
-    nnn "$@"
-
-    if [ -f $NNN_TMPFILE ]; then
-        . $NNN_TMPFILE
-        rm $NNN_TMPFILE
-    fi
-}
 ### END INSTALL AND CONFIGURE APPLICATIONS ###
