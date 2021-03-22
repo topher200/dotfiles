@@ -55,6 +55,7 @@ plugins=(
     git
     httpie
     safe-paste
+    thefuck
 )
 
 source $ZSH/oh-my-zsh.sh

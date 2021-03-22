@@ -80,9 +80,6 @@ export PATH=$PATH:~/bin
 ### END PATHING ###
 
 ### INSTALL AND CONFIGURE APPLICATIONS ###
-# enable thefuck (command line command fixer)
-eval $(thefuck --alias)
-
 # load ssh remote shells in vi mode
 function sshv { ssh -t $1 "bash -i -o vi" }
 ### END INSTALL AND CONFIGURE APPLICATIONS ###
