@@ -81,5 +81,7 @@ export PATH=$PATH:~/bin
 
 ### INSTALL AND CONFIGURE APPLICATIONS ###
 # load ssh remote shells in vi mode
-function sshv { ssh -t $1 "bash -i -o vi" }
+function sshv() {
+    ssh -t $1 "bash -i -o vi"
+}
 ### END INSTALL AND CONFIGURE APPLICATIONS ###
