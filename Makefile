@@ -1,6 +1,10 @@
 .PHONY: install-full
 install-full: install-packages stow
 
+.PHONY: test
+test:
+	shellcheck files/.topherrc
+
 .PHONY: stow
 stow:
 	stow --restow -v files

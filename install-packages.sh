@@ -5,6 +5,7 @@ sudo apt install -y \
     fzf \
     httpie \
     pspg \
+    shellcheck \
     silversearcher-ag \
     stow \
     tig \
