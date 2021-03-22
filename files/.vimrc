@@ -53,6 +53,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'psf/black'
 Plug 'lifepillar/vim-solarized8'
+Plug 'roxma/vim-paste-easy'
 call plug#end()
 
 " stop inserting comments automatically
