@@ -1,13 +1,18 @@
 [alias]
   a = add
   aa = add --all
-  am = commit --amend
-  ama = commit --amend --all
-  ame = commit --amend --edit
-  amea = commit --amend --edit --all
+  # am = commit --amend
+  # ama = commit --amend --all
+  # ame = commit --amend --edit
+  # amea = commit --amend --edit --all
   ap = add --patch
   c = commit
   ca = commit --all
+  cam = commit --amend
+  cama = commit --amend --all
+  # camea = commit --amend --edit --all
+  camp = commit --amend --patch
+  # camep = commit --amend --edit --patch
   cp = commit --patch
   d = diff
   s = status
