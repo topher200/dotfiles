@@ -1,12 +1,14 @@
 # install packages
 sudo apt install -y \
     autojump \
+    curl \
     fzf \
     httpie \
     pspg \
     silversearcher-ag \
     stow \
     tig \
+    tmux \
     unp \
     zsh
 
