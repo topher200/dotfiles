@@ -1,5 +1,3 @@
-# ~/.tmuxinator/wordstream.yml
-
 name: forty_thieves
 root: ~/dev/go/src/github.com/topher200/forty-thieves
 

@@ -4,41 +4,6 @@
   output = ""
 
 [[snippets]]
-  description = "migrate all databases"
-  command = "wow && cd /Users/t.brown/dev/wordstream/server/wordstream/src && python migrate_db.py upgrade --all ; cd /Users/t.brown/dev/wordstream"
-  output = ""
-
-[[snippets]]
-  description = "install all dependencies"
-  command = "wow && cd /Users/t.brown/dev/wordstream && python dependencies.py install dependencies.txt; python dependencies.py install dependencies-dev.txt; python dependencies.py install dependencies-ws.txt; pip install -U pylint; pip install psycopg2 --upgrade"
-  output = ""
-
-[[snippets]]
-  description = "post review to reviewboard"
-  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py && git push origin HEAD"
-  output = ""
-
-[[snippets]]
-  description = "post review to reviewboard tracking branch"
-  command = "cd /Users/t.brown/dev/wordstream/ && python -u utils/review.py --tracking-branch origin/FIX_ME && git push origin HEAD"
-  output = ""
-
-[[snippets]]
-  description = "ssh into dev box aws-two buildbot"
-  command = "tmux rename-window 'ssh-dev-aws-two' && ssh dev-aws-two.wordstream.com"
-  output = ""
-
-[[snippets]]
-  description = "ssh into demo box aws-three buildbot"
-  command = "tmux rename-window 'ssh-dev-aws-three' && ssh dev-aws-three.wordstream.com"
-  output = ""
-
-[[snippets]]
-  description = "download reports"
-  command = "wow ; cd /Users/t.brown/dev/wordstream/server/wordstream/src ; python -u update.py download_adwords_reports -c conf & ; python download_bing_ads_reports.py conf/ 1 & ; python download_facebook_reports.py conf & ; python download_facebook_leads.py conf & ; python update.py update_spend_stats -c conf & ; cd /Users/t.brown/dev/wordstream"
-  output = ""
-
-[[snippets]]
   description = "sig kill emacs"
   command = "pkill -SIGUSR2 Emacs"
   output = ""
@@ -54,26 +19,6 @@
   output = ""
 
 [[snippets]]
-  description = "aws1 readonly db"
-  command = "tmux rename-window 'psql-readonly-aws1' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.aws1.wordstream.com -d adwords"
-  output = ""
-
-[[snippets]]
-  description = "cluster readonly db"
-  command = "tmux rename-window 'psql-readonly-cluster' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d wordstream"
-  output = ""
-
-[[snippets]]
-  description = "account_service readonly db account-service"
-  command = "tmux rename-window 'psql-readonly-account_service' && export PGPASSWORD='***REMOVED***'; psql -U tbrown -h readonly.cluster.wordstream.com -d account_service"
-  output = ""
-
-[[snippets]]
-  description = "scrub/clean wordstream js and pyc file caches"
-  command = "cd /Users/t.brown/dev/wordstream/ ; rm -fr client/manager/src/static/gen/ ; rm -fr client/manager/src/static/.webassets-cache/ ; find . -name \"*.pyc\" -exec rm {} \\;\\n"
-  output = ""
-
-[[snippets]]
   description = "postgres logs"
   command = "less +F /usr/local/var/log/postgres.log"
   output = ""
@@ -84,26 +29,6 @@
   output = ""
 
 [[snippets]]
-  description = "watchman logs"
-  command = "less +F /usr/local/var/run/watchman/t.brown-state/log"
-  output = ""
-
-[[snippets]]
-  description = "flush memcache (dogpile)"
-  command = "echo 'flush_all' | nc localhost 11211"
-  output = ""
-
-[[snippets]]
-  description = "remove watchman"
-  command = "watchman watch-del ~/dev/wordstream"
-  output = ""
-
-[[snippets]]
-  description = "ssh staging"
-  command = "tmux rename-window 'ssh-staging' && ssh staging.wordstream.com"
-  output = ""
-
-[[snippets]]
   description = "copy last command"
   command = "echo \"\"\"!!\"\"\" | pbcopy"
   output = ""
@@ -111,11 +36,6 @@
 [[snippets]]
   description = "clear git rerere cache"
   command = "rm -rf .git/rr-cache"
-  output = ""
-
-[[snippets]]
-  description = "seashells broadcast online"
-  command = "!! | nc seashells.io 1337"
   output = ""
 
 [[snippets]]
@@ -139,11 +59,6 @@
   output = ""
 
 [[snippets]]
-  description = "psql get ad alert data by account"
-  command = "ACCOUNT_ID=144 ; psql -d adwords -c \"select * from alerts where alert_type = 'CREATE_AD_ALERT' and account_id = $ACCOUNT_ID and is_latest;\" | cat ; psql -d adwords -c \"select * from alerts_kv where alert_id in (select alert_id from alerts where is_latest and account_id = $ACCOUNT_ID and alert_type = 'CREATE_AD_ALERT') order by alert_id, key;\" | cat"
-  output = ""
-
-[[snippets]]
   description = "open directory in finder"
   command = "open ."
   output = ""
@@ -159,58 +74,8 @@
   output = ""
 
 [[snippets]]
-  description = "start supervisor"
-  command = "supervisord -c ~/dev/bin/supervisord.conf"
-  output = ""
-
-[[snippets]]
   description = "list directories and their sizes, sorted and human readable"
   command = "du -h | sort -h"
-  output = ""
-
-[[snippets]]
-  description = "re-run failed jira issue updates"
-  command = "cat jira-issues.txt | cut -d '/' -f 8 | sort | uniq | vipe | awk '{$1=$1; print}' | tr '\\n' '\\0' | xargs -0 -I {} curl -XPUT http://tracebacks.wordstream-sandbox.com/api/update_jira_db -d '{\"issue_key\": \"{}\"}' --header \"Content-Type: application/json\""
-  output = ""
-
-[[snippets]]
-  description = "kubernetes access web via proxy"
-  command = "curl 127.0.0.1:8001/api/v1/namespaces/default/services/web/proxy/"
-  output = ""
-
-[[snippets]]
-  description = "get kubernetes dashboard token"
-  command = "kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') | awk '{print $2}' | tail -n 1 | tee >(pbcopy)"
-  output = ""
-
-[[snippets]]
-  description = "memcache dump"
-  command = "memcached-tool localhost:11211 dump"
-  output = ""
-
-[[snippets]]
-  description = "merge release branches"
-  command = "merge-release-branches.sh"
-  output = ""
-
-[[snippets]]
-  description = "delete all profile locks"
-  command = "cd /var/lib/wordstream/data && find . -name \"profile.lock.lock\" -delete"
-  output = ""
-
-[[snippets]]
-  description = "compile protos"
-  command = "~/dev/wordstream/compile_protos.sh"
-  output = ""
-
-[[snippets]]
-  description = "run pdb version of Manager server"
-  command = "sv stop app:manager && cd ~/dev/wordstream/client/manager/src && tmux rename-window 'zsh-pdb-manager' && ~/.virtualenvs/wordstream/bin/python server.py"
-  output = ""
-
-[[snippets]]
-  description = "run pdb version of Engine server"
-  command = "sv stop app:engine && cd ~/dev/wordstream/server/wordstream/src && tmux rename-window 'zsh-pdb-engine' && ~/.virtualenvs/wordstream/bin/python server.py"
   output = ""
 
 [[snippets]]
@@ -224,28 +89,8 @@
   output = ""
 
 [[snippets]]
-  description = "create wordstream watchman supervisor monitor"
-  command = "create-wordstream-watchman-watchers.sh"
-  output = ""
-
-[[snippets]]
-  description = "exec web kubernetes"
-  command = "kubectl get pods | grep web | head -n 1 | grep Running | cut -f 1 -d ' ' | xargs -o -I{} kubectl exec -it {} /bin/bash"
-  output = ""
-
-[[snippets]]
   description = "list users of port 8000"
   command = "lsof -nP -i4TCP:8000"
-  output = ""
-
-[[snippets]]
-  description = "print swarm queue"
-  command = "aws sqs get-queue-attributes --queue-url https://queue.amazonaws.com/450035922800/tbrown-swarm --attribute-names All"
-  output = ""
-
-[[snippets]]
-  description = "kill server.py wordstream processes"
-  command = "ps aux | grep -v grep | grep -e 'server.py' -e 'swf.py' -e 'swarm.py' | tr -s ' ' | cut -f 2 -d ' ' | xargs kill"
   output = ""
 
 [[snippets]]
@@ -254,23 +99,13 @@
   output = ""
 
 [[snippets]]
-  description = "seedbox ssh"
+  description = "seedbox ssh. deprecated?"
   command = "echo ***REMOVED*** | pbcopy && ssh root@***REMOVED*** -p 2222"
   output = ""
 
 [[snippets]]
   description = "kill all running docker containers"
   command = "docker ps -q | xargs docker kill"
-  output = ""
-
-[[snippets]]
-  description = "run wordstream static js html server"
-  command = "cd /Users/t.brown/dev/wordstream/client/manager && nvm use 8.15.1 && npm run develop"
-  output = ""
-
-[[snippets]]
-  description = "elasticsearch bastion box"
-  command = "ssh tbrown@172.30.1.246"
   output = ""
 
 [[snippets]]
@@ -284,12 +119,7 @@
   output = ""
 
 [[snippets]]
-  description = "local js server logs"
-  command = "less /usr/local/var/log/jslocalserver.log"
-  output = ""
-
-[[snippets]]
-  description = "ssh dev environment"
+  description = "ssh topher personal GCP dev environment"
   command = "gcloud beta compute --project \"topher-dev-env\" ssh --zone \"us-west1-a\" \"dev-env\""
   output = ""
 
