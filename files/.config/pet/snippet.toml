@@ -137,3 +137,8 @@
   description = "open dotfiles tmux window"
   command = "tmux new-window -c ~/dotfiles -n dotfiles -t 10 'ls -al && zsh'"
   output = ""
+
+[[snippets]]
+  description = "conda update environment packages"
+  command = "conda env update --file ~/dev/memfault/environment.yml"
+  output = ""
