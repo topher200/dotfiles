@@ -175,3 +175,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# memfault
+export GEMFURY_DEPLOY_TOKEN=***REMOVED***
