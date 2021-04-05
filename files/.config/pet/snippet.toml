@@ -99,18 +99,13 @@
   output = ""
 
 [[snippets]]
-  description = "seedbox ssh. deprecated?"
-  command = "echo ***REMOVED*** | pbcopy && ssh root@***REMOVED*** -p 2222"
-  output = ""
-
-[[snippets]]
   description = "kill all running docker containers"
   command = "docker ps -q | xargs docker kill"
   output = ""
 
 [[snippets]]
   description = "digital ocean youtube-dl seedbox"
-  command = "ssh root@***REMOVED***"
+  command = "ssh ***REMOVED***"
   output = ""
 
 [[snippets]]
@@ -134,11 +129,16 @@
   output = ""
 
 [[snippets]]
-  description = "open dotfiles tmux window"
-  command = "tmux new-window -c ~/dotfiles -n dotfiles -t 10 'ls -al && zsh'"
+  description = "conda update environment packages"
+  command = "conda env update --file ~/dev/memfault/environment.yml"
   output = ""
 
 [[snippets]]
-  description = "conda update environment packages"
-  command = "conda env update --file ~/dev/memfault/environment.yml"
+  description = "docker start www memfault project"
+  command = "inv dc.svc"
+  output = ""
+
+[[snippets]]
+  description = "swap keyboard config"
+  command = "/usr/local/bin/keyboard"
   output = ""
