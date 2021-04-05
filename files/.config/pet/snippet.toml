@@ -142,3 +142,13 @@
   description = "swap keyboard config"
   command = "/usr/local/bin/keyboard"
   output = ""
+
+[[snippets]]
+  description = "turn on memfault directory conda inv usage"
+  command = "conda activate memfault"
+  output = ""
+
+[[snippets]]
+  description = "start session memfault"
+  command = "j mem && conda activate memfault"
+  output = ""
