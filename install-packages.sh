@@ -11,6 +11,7 @@ sudo apt install -y \
     stow \
     tig \
     tmux \
+    tree \
     unp \
     zsh
 
