@@ -158,6 +158,7 @@ if command -v kitty > /dev/null; then
 fi
 
 source $ZSH_CUSTOM/zsh-async/async.zsh
+source $ZSH_CUSTOM/invoke-completion.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
