@@ -59,11 +59,6 @@
   output = ""
 
 [[snippets]]
-  description = "open directory in finder"
-  command = "open ."
-  output = ""
-
-[[snippets]]
   description = "glances htop"
   command = "glances --theme-white"
   output = ""
@@ -144,11 +139,11 @@
   output = ""
 
 [[snippets]]
-  description = "turn on memfault directory conda inv usage"
-  command = "conda activate memfault"
+  description = "start session memfault"
+  command = "cd ~/dev/memfault && conda activate memfault"
   output = ""
 
 [[snippets]]
-  description = "start session memfault"
-  command = "j mem && conda activate memfault"
+  description = "open window for current directory"
+  command = "nautilus . &"
   output = ""
