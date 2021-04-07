@@ -147,3 +147,8 @@
   description = "open window for current directory"
   command = "nautilus . &"
   output = ""
+
+[[snippets]]
+  description = "upload android bugreport"
+  command = "***REMOVED***"
+  output = ""
