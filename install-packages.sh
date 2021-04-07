@@ -5,6 +5,7 @@ sudo apt install -y \
     fzf \
     htop \
     httpie \
+    jq \
     pspg \
     shellcheck \
     silversearcher-ag \
