@@ -78,7 +78,9 @@ export LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 mkdir -p ${ZDOTDIR:-~}/.zsh_functions
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-# don't share command history between non-closed shells
+# all terminals save to the history file
+setopt inc_append_history
+# but don't reload from the history file in the middle of a session
 unsetopt share_history
 
 # don't autojump into directories
