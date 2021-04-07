@@ -70,7 +70,6 @@ fi
 
 source $ZSH_CUSTOM/zsh-async/async.zsh
 source $ZSH_CUSTOM/invoke-completion.sh
-source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 # make sure our locale can handle unicode chars in prompt
 export LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
@@ -141,6 +140,8 @@ export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_TMUX_OPTS='-d 30%'
 # add fzf keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+setopt globdots
+source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 # include my non-shell-specific code
 source "$HOME"/.topherrc
@@ -173,3 +174,16 @@ export MEMFAULT_PASSWORD=asdf
 export MEMFAULT_ORG=acme-inc
 
 enable-fzf-tab
+FZF_TAB_COMMAND=(
+    fzf
+    --ansi   # Enable ANSI color support, necessary for showing groups
+    --expect='$continuous_trigger' # For continuous completion
+    '--color=hl:$(( $#headers == 0 ? 108 : 255 ))'
+    --nth=2,3 --delimiter='\x00'  # Don't search prefix
+    --layout=reverse --height=100%  # Full height
+    --tiebreak=begin -m --bind=tab:down,btab:up,change:top,ctrl-space:toggle --cycle
+    '--query=$query'   # $query will be expanded to query string at runtime.
+    '--header-lines=$#headers' # $#headers will be expanded to lines of headers at runtime
+)
+zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
+
