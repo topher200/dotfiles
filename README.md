@@ -34,6 +34,7 @@ sudo su - $NEWUSER
 # updates
 ## zsh-custom git repo clones
 - https://github.com/sindresorhus/pure
+- `git clone https://github.com/Aloxaf/fzf-tab files/.oh-my-zsh/custom`
 
 ## gem packages
 - update with `gem list`
