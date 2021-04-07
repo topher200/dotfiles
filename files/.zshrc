@@ -61,6 +61,17 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# enable 'kitty' terminal emulator
+if command -v kitty > /dev/null; then
+    autoload -Uz compinit
+    compinit
+    kitty + complete setup zsh | source /dev/stdin
+fi
+
+source $ZSH_CUSTOM/zsh-async/async.zsh
+source $ZSH_CUSTOM/invoke-completion.sh
+source $ZSH_CUSTOM/plugins/fzf-tab/fzf-tab.plugin.zsh
+
 # make sure our locale can handle unicode chars in prompt
 export LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
@@ -140,16 +151,6 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloa
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
-# enable 'kitty' terminal emulator
-if command -v kitty > /dev/null; then
-    autoload -Uz compinit
-    compinit
-    kitty + complete setup zsh | source /dev/stdin
-fi
-
-source $ZSH_CUSTOM/zsh-async/async.zsh
-source $ZSH_CUSTOM/invoke-completion.sh
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/topher/dev/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -170,3 +171,5 @@ export GEMFURY_DEPLOY_TOKEN=***REMOVED***
 export MEMFAULT_EMAIL=user@example.com
 export MEMFAULT_PASSWORD=asdf
 export MEMFAULT_ORG=acme-inc
+
+enable-fzf-tab
