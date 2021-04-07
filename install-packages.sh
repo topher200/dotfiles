@@ -21,6 +21,11 @@ sudo apt install -y python3-dev python3-pip python3-setuptools python3-venv
 sudo pip3 install \
     thefuck
 
+# install node packages
+sudo apt install -y npm
+sudo npm install \
+    tldr
+
 # pet snippet manager
 if [ ! -f /tmp/pet.deb ]; then
     wget https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.deb -O /tmp/pet.deb
