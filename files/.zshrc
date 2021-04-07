@@ -178,3 +178,6 @@ unset __conda_setup
 
 # memfault
 export GEMFURY_DEPLOY_TOKEN=***REMOVED***
+export MEMFAULT_EMAIL=user@example.com
+export MEMFAULT_PASSWORD=asdf
+export MEMFAULT_ORG=acme-inc
