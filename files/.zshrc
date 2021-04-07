@@ -53,6 +53,7 @@ ZSH_CUSTOM=~/zsh-custom
 plugins=(
     autojump
     git
+    github
     httpie
     safe-paste
     thefuck
