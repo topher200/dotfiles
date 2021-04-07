@@ -13,6 +13,7 @@
   # camea = commit --amend --edit --all
   camp = commit --amend --patch
   # camep = commit --amend --edit --patch
+  cop = checkout --patch
   cp = commit --patch
   d = diff
   p = push
