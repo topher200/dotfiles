@@ -189,3 +189,4 @@ FZF_TAB_COMMAND=(
 )
 zstyle ':fzf-tab:*' command $FZF_TAB_COMMAND
 
+cd ~/dev/memfault && conda activate memfault
