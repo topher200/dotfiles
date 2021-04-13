@@ -91,7 +91,9 @@ setopt no_histverify
 
 # auto complete suggestions
 source $ZSH_CUSTOM/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export ZSH_AUTOSUGGEST_STRATEGY='match_prev_cmd'
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=bold,underline"
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
 source $ZSH_CUSTOM/zsh-autosuggestions/zsh-autosuggestions.zsh
 # speed up pasting. https://github.com/zsh-users/zsh-autosuggestions/issues/141
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=5
