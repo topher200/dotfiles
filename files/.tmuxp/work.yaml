@@ -1,0 +1,27 @@
+session_name: work
+windows:
+- focus: 'true'
+  options: {}
+  panes:
+  - shell_command: pwd
+  start_directory: /home/topher/dev/memfault
+- options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command: pwd
+  start_directory: /home/topher/dev/memfault
+  window_name: test
+- options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command: inv dev
+  start_directory: /home/topher/dev/memfault
+  window_name: inv-dev
+  window_index: 4
+- options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command: inv dc.svc
+  start_directory: /home/topher/dev/memfault
+  window_name: inv-dc.svc
+  window_index: 5
