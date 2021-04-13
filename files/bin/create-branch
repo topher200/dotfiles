@@ -1,0 +1,24 @@
+#!/bin/python3
+
+DRY_RUN = False
+
+import subprocess
+
+clipboard = subprocess.run("xsel", shell=True, check=True, text=True, capture_output=True).stdout
+clipboard = clipboard.strip().lower()
+
+if len(clipboard) < 5 or not clipboard.startswith("mflt"):
+    raise Exception(f"Can't create branch for given text '{clipboard}'")
+    exit(1)
+
+branch_name = f'topher/{clipboard.replace(" ", "-")}'
+
+if DRY_RUN:
+    print(branch_name)
+    exit(0)
+
+res = subprocess.run(
+    f"git checkout -b {branch_name}", shell=True, check=True, text=True, capture_output=True
+)
+print(res.stdout)
+exit(0)
