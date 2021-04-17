@@ -5,6 +5,7 @@ sudo apt install -y \
     fzf \
     htop \
     httpie \
+    moreutils \
     jq \
     pspg \
     shellcheck \
