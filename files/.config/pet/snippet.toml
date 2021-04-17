@@ -15,7 +15,7 @@
 
 [[snippets]]
   description = "what's my ip"
-  command = "curl v4.ifconfig.co | pbcopy"
+  command = "curl v4.ifconfig.co | xsel"
   output = ""
 
 [[snippets]]
@@ -30,7 +30,7 @@
 
 [[snippets]]
   description = "copy last command"
-  command = "echo \"\"\"!!\"\"\" | pbcopy"
+  command = "echo \"\"\"!!\"\"\" | xsel"
   output = ""
 
 [[snippets]]
@@ -75,12 +75,12 @@
 
 [[snippets]]
   description = "format json from the clipboard"
-  command = "pbpaste | jq . | pbcopy"
+  command = "pbpaste | jq . | xsel"
   output = ""
 
 [[snippets]]
   description = "python dictionary to json"
-  command = "pbpaste | xargs -0 python -c 'import ast, json, sys ; out = ast.literal_eval(sys.argv[1]) ; print json.dumps(out)' | jq . | pbcopy"
+  command = "pbpaste | xargs -0 python -c 'import ast, json, sys ; out = ast.literal_eval(sys.argv[1]) ; print json.dumps(out)' | jq . | xsel"
   output = ""
 
 [[snippets]]
@@ -159,8 +159,8 @@
   output = ""
 
 [[snippets]]
-  description = "upload gist and copy url to clipboard"
-  command = "echo 'asdf' | gh gist create - | tee xsel"
+  description = "rerun last command. upload stdout to gist and copy url to clipboard"
+  command = "!! | gh gist create - | tee xsel"
   output = ""
 
 [[snippets]]
@@ -171,4 +171,19 @@
 [[snippets]]
   description = "run black on changed modified files"
   command = "black $(git ls-files -m)"
+  output = ""
+
+[[snippets]]
+  description = "create gist from clipboard"
+  command = "xsel -o --clipboard | gh gist create - | tee xsel"
+  output = ""
+
+[[snippets]]
+  description = "delete git branches which are deleted on remote"
+  command = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | vipe | xargs git branch -D"
+  output = ""
+
+[[snippets]]
+  description = "create pull request"
+  command = "git push -u origin HEAD && gh pr create --fill --draft"
   output = ""
