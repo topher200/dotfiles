@@ -1,5 +1,4 @@
-if [ "$PWD"=="~" ];
-then
+if [[ "$PWD" == "/home/topher" ]]; then
     # memfault
     export GEMFURY_DEPLOY_TOKEN=***REMOVED***
     export MEMFAULT_EMAIL=user@example.com

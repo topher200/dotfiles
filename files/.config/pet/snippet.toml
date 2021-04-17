@@ -115,7 +115,7 @@
 
 [[snippets]]
   description = "open dotfiles tmux window"
-  command = "tmux new-window -c ~/dotfiles -n dotfiles -t 10 'ls -al && zsh'"
+  command = "tmux new-window -c ~/dotfiles -n dotfiles -t 10 'git status && zsh'"
   output = ""
 
 [[snippets]]
