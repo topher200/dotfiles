@@ -11,7 +11,7 @@ if len(clipboard) < 5 or not clipboard.startswith("mflt"):
     raise Exception(f"Can't create branch for given text '{clipboard}'")
     exit(1)
 
-branch_name = f'topher/{clipboard.replace(" ", "-")}'
+branch_name = f'topher/{clipboard.replace(" ", "-").replace(".", "")}'
 
 if DRY_RUN:
     print(branch_name)
