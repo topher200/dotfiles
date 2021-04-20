@@ -6,14 +6,6 @@ swipe:
     right:
       command: "xdotool key alt+Left" # History back
       threshold: 0.5
-    up:
-      command: "xdotool key ctrl+Shift+Tab"
-      interval: 0.25
-      threshold: 0.25
-    down:
-      command: "xdotool key ctrl+Tab"
-      interval: 0.25
-      threshold: 0.25
   4:
     left:
       command: "xdotool key ctrl+alt+Right"
@@ -23,9 +15,3 @@ swipe:
       command: "xdotool key ctrl+alt+Down"
     down:
       command: "xdotool key ctrl+alt+Up"
-pinch:
-  in:
-    command: "xdotool key super"
-  out:
-    command: "xdotool key super"
-    
