@@ -52,7 +52,6 @@ ZSH_CUSTOM=~/zsh-custom
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     autojump
-    git
     github
     httpie
     safe-paste

@@ -2,6 +2,7 @@
   a = add
   aa = add --all
   ap = add --patch
+  au = add --update
   b = !git --no-pager branch
   c = commit
   ca = commit --all
