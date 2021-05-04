@@ -59,16 +59,6 @@
   output = ""
 
 [[snippets]]
-  description = "glances htop"
-  command = "glances --theme-white"
-  output = ""
-
-[[snippets]]
-  description = "ssh stats-from-logs proxy server"
-  command = "tmux rename-window 'ssh-stats-from-logs-proxy' && ssh -i ~/.ssh/tbrown-sandbox.pem ec2-user@***REMOVED***"
-  output = ""
-
-[[snippets]]
   description = "list directories and their sizes, sorted and human readable"
   command = "du -h | sort -h"
   output = ""
@@ -174,13 +164,18 @@
   output = ""
 
 [[snippets]]
-  description = "create gist from clipboard"
+  description = "create gist from clipboard TODO: tee creates a file, incorrect behavior"
   command = "xsel -o --clipboard | gh gist create - | tee xsel"
   output = ""
 
 [[snippets]]
   description = "delete git branches which are deleted on remote"
   command = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | vipe | xargs git branch -D"
+  output = ""
+
+[[snippets]]
+  description = "resolve kitty ssh error on previous command. 'unknown terminal'"
+  command = "kitty +kitten ssh !!"
   output = ""
 
 [[snippets]]
