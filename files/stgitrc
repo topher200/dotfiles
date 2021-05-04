@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Aliases
 alias sd='stg delete'
 alias sdt='stg delete --top'
@@ -13,8 +15,56 @@ alias spu='stg push'
 alias sr='stg refresh'
 alias sra='stg add -A && stg refresh'
 alias sri='stg refresh -i'
-alias srp='git add --patch && stg refresh -i'
+alias srpa='git add --patch && stg refresh -i'
 alias ss='stg series --description'
 alias sst='stg status'
 alias sfl='stg float'
 alias stb='git checkout stgit-topher'
+
+# Create a new *-WIP patch with all outstanding changes
+swip() {
+    # Add all files to index
+    stg add -A
+    stg rm "$(git ls-files --deleted)" 2> /dev/null
+
+    # Save off patch names
+    CUR_PATCH=$(stg top)
+    WIP_PATCH="$CUR_PATCH-WIP"
+
+    if [[ "$CUR_PATCH" == *-WIP ]]
+    then
+        echo "Adding changes to $WIP_PATCH"
+    else
+        echo "Creating and adding changes to $WIP_PATCH"
+        stg new "$WIP_PATCH" -m "--wip--"
+    fi
+
+    # Add changes to patch
+    stg refresh
+}
+
+# Unload the *-WIP patch and reset all changes
+swipp() {
+    CUR_PATCH="stg top"
+    if [[ "$CUR_PATCH" == *-WIP ]]
+    then
+        stg delete "$CUR_PATCH" --spill
+        git reset
+    else
+        echo "No WIP patch to pop"
+    fi
+}
+
+# Stash local changes, then pop
+sstpo() {
+    swip
+    stg pop
+    swipp
+}
+
+# Stash local changes, then push
+sstpu() {
+    git stash
+    stg push
+    git stash pop
+}
