@@ -4,6 +4,9 @@
   ap = add --patch
   au = add --update
   b = !git --no-pager branch
+  bb = bisect bad
+  bg = bisect good
+  br = bisect reset
   c = commit
   ca = commit --all
   cam = commit --amend --no-edit
@@ -20,12 +23,19 @@
   d = diff
   f = fetch
   p = push
-  s = status
   poh = push origin HEAD
+  rea = rebase --abort
+  rec = rebase --continue
   rem = rebase master
   reom = rebase origin/master
   remi = rebase master -i
   reomi = rebase origin/master -i
+  s = status
+  st = stash
+  std = stash drop
+  stp = stash pop
+  stpa = stash --patch
+  sts = stash show --patch
 [push]
 	default = simple
 [commit]
