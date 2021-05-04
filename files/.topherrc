@@ -1,6 +1,9 @@
 ### COMMAND LINE ALIASES ###
 # general aliases
 alias ll='ls -alh'
+alias g='git'
+# don't use a pager if less than a screen
+export LESS="-F -X $LESS"
 
 # git aliases
 # alias gap="git add -p"
