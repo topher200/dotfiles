@@ -6,3 +6,6 @@ if [[ "$PWD" == "/home/topher" ]]; then
     export MEMFAULT_ORG=acme-inc
     cd ~/dev/memfault && conda activate memfault
 fi
+
+# pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
+export INVOKE_RUN_ECHO=1
