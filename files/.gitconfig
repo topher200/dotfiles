@@ -21,6 +21,8 @@
   cop = checkout --patch
   cp = commit --patch
   d = diff
+  dh = diff HEAD^
+  dnp = !git --no-pager diff
   f = fetch
   p = push
   poh = push origin HEAD
