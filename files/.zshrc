@@ -148,6 +148,9 @@ setopt globdots
 # include my non-shell-specific code
 source "$HOME"/.topherrc
 
+export EDITOR=vim
+export VISUAL=vim
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
 
