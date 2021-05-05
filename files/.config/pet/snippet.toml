@@ -119,8 +119,8 @@
   output = ""
 
 [[snippets]]
-  description = "docker start www memfault project"
-  command = "inv dc.svc"
+  description = "memfault gh pull request with stgit"
+  command = "inv stg.pull-request"
   output = ""
 
 [[snippets]]
