@@ -10,7 +10,7 @@ alias spoa='stg pop --all'
 alias spos='stg pop spill'
 alias spu='stg push'
 alias sr='stg refresh'
-alias sra='stg add -A && stg refresh'
+alias sra='stg refresh --force'
 alias sre='stg-rebase-i'
 alias srem='stg rebase master'
 alias sreom='stg rebase origin/master'
@@ -21,6 +21,15 @@ alias ss='stg series --description'
 alias sspl='stg refresh --spill && git reset .'
 alias sst='stg status'
 alias stb='git checkout stgit-topher'
+
+# create a template file with a diff
+sn() {
+    cat ~/.gitmessage.memfault > "$(git rev-parse --git-dir)/patchdescr.tmpl"
+    echo "\n" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
+    git status >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
+    git diff >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
+    stg new
+}
 
 # Create a new *-WIP patch with all outstanding changes
 swip() {
@@ -46,7 +55,7 @@ swip() {
 
 # Unload the *-WIP patch and reset all changes
 swipp() {
-    CUR_PATCH="stg top"
+    CUR_PATCH=$(stg top)
     if [[ "$CUR_PATCH" == *-WIP ]]
     then
         stg delete "$CUR_PATCH" --spill
@@ -57,14 +66,14 @@ swipp() {
 }
 
 # Stash local changes, then pop
-sstpo() {
-    swip
+spof() {
+    git stash
     stg pop
-    swipp
+    git stash pop
 }
 
 # Stash local changes, then push
-sstpu() {
+spuf() {
     git stash
     stg push
     git stash pop
