@@ -5,6 +5,8 @@ alias g='git'
 alias agh='ag --hidden'
 # don't use a pager if less than a screen
 export LESS="-F -X $LESS"
+# remove extra '$' from commands
+alias '$'=''
 
 # Delete the current branch you're on, leaving you on a deteched HEAD
 function gdcb {
