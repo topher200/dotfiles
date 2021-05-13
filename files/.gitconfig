@@ -27,6 +27,7 @@
   f = fetch
   p = push
   poh = push origin HEAD
+  pl = pull
   rea = rebase --abort
   rec = rebase --continue
   rem = rebase master
