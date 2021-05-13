@@ -534,7 +534,13 @@ prompt_pure_async_callback() {
 			[[ -n $info[top] ]] && [[ -z $prompt_pure_vcs_info[top] ]] && prompt_pure_async_refresh
 
 			# Always update branch, top-level and stash.
-			prompt_pure_vcs_info[branch]=$info[branch]
+			# TOPHER: add stgit patch output
+			local stgit_patch=$(stg top 2>/dev/null)
+			if [[ -n $stgit_patch ]]; then
+				prompt_pure_vcs_info[branch]=$stgit_patch@$info[branch]
+			else
+				prompt_pure_vcs_info[branch]=$info[branch]
+			fi
 			prompt_pure_vcs_info[top]=$info[top]
 			prompt_pure_vcs_info[action]=$info[action]
 
