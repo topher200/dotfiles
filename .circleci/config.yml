@@ -5,11 +5,9 @@ jobs:
       docker:
         - image: ubuntu:latest
       steps:
-        - run:
-            name: install make
-            command: apt update && apt install make
-        - run:
-            command: make install
+        - apt update && apt install make
+        - checkout
+        - make install
 workflows:
   version: 2
   build:
