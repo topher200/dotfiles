@@ -5,9 +5,6 @@ jobs:
         - image: ubuntu:latest
       steps:
         - run:
-            name: install make
-            command: sudo apt install make
-        - run:
             name: make install
             command: make install
 workflows:
