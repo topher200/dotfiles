@@ -25,6 +25,8 @@ alias stb='git checkout stgit-topher'
 # create a template file with a diff
 sn() {
     cat ~/.gitmessage.memfault > "$(git rev-parse --git-dir)/patchdescr.tmpl"
+    echo "#------------------------------------------------" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
+    echo "#---------------------------------------------------------------------" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     echo "\n" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     git status >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     git diff >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
