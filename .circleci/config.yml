@@ -1,7 +1,8 @@
 version: 2.1
       
 orbs:
-  shellcheck: circleci/shellcheck@0.0.1
+  shellcheck: circleci/shellcheck@2.2.4
+
 
 jobs:
   build:
