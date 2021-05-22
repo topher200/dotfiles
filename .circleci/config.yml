@@ -5,7 +5,11 @@ jobs:
       docker:
         - image: ubuntu:latest
       steps:
-        - run: apt update && apt install make
+        # install sudo and bash: https://github.com/dwyl/learn-circleci/issues/12
+        - run: apt-get install -y sudo
+        - run: ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
+
+        - run: sudo apt install -y make
         - checkout
         - run: make install
 workflows:
