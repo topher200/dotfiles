@@ -15,12 +15,7 @@
 
 [[snippets]]
   description = "what's my ip"
-  command = "curl v4.ifconfig.co | xsel"
-  output = ""
-
-[[snippets]]
-  description = "postgres logs"
-  command = "less +F /usr/local/var/log/postgres.log"
+  command = "curl v4.ifconfig.co | tee >(xsel -b)"
   output = ""
 
 [[snippets]]
@@ -30,7 +25,7 @@
 
 [[snippets]]
   description = "copy last command"
-  command = "echo \"\"\"!!\"\"\" | xsel"
+  command = "echo \"\"\"!!\"\"\" | tee >(xsel -b)"
   output = ""
 
 [[snippets]]
@@ -46,11 +41,6 @@
 [[snippets]]
   description = "git filename changes since last commit"
   command = "git --no-pager diff --name-only HEAD^"
-  output = ""
-
-[[snippets]]
-  description = "git force push branch"
-  command = "force-push-branch"
   output = ""
 
 [[snippets]]
@@ -181,4 +171,34 @@
 [[snippets]]
   description = "create pull request"
   command = "git push -u origin HEAD && gh pr create --fill --draft"
+  output = ""
+
+[[snippets]]
+  description = "redis proxy to app.redsmin.com"
+  command = "docker run -it --rm --name redsmin-proxy --network memfault_default -e REDSMIN_KEY=609056fb544e0c0f655afcdd -e REDIS_URI=\"redis://172.18.0.2:6379\" redsmin/proxy"
+  output = ""
+
+[[snippets]]
+  description = "rdb connect to celery worker debug"
+  command = "telnet localhost 6899 || telnet localhost 6900 || telnet localhost 6901 || telnet localhost 6902 || telnet localhost 6903 || telnet localhost 6904 || telnet localhost 6905"
+  output = ""
+
+[[snippets]]
+  description = "run the same 'ag' but looking for hidden files"
+  command = "ag workflow_dis --hidden"
+  output = ""
+
+[[snippets]]
+  description = "aws login root"
+  command = "aws-vault login topher-root"
+  output = ""
+
+[[snippets]]
+  description = "aws login prod"
+  command = "aws-vault login topher-prod"
+  output = ""
+
+[[snippets]]
+  description = "delete .tmp temp branches from git"
+  command = "g b | grep \\\\.tmp | vipe | xargs git branch -D "
   output = ""
