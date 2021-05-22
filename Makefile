@@ -2,8 +2,8 @@
 stow:
 	stow --restow -v files
 
-.PHONY: install-full
-install-full: install-packages stow
+.PHONY: install
+install: install-packages stow
 
 .PHONY: test
 test:

@@ -9,11 +9,6 @@
   output = ""
 
 [[snippets]]
-  description = "weather Boston"
-  command = "curl wttr.in/~Boston"
-  output = ""
-
-[[snippets]]
   description = "what's my ip"
   command = "curl v4.ifconfig.co | tee >(xsel -b)"
   output = ""
@@ -89,11 +84,6 @@
   output = ""
 
 [[snippets]]
-  description = "ssh topher personal GCP dev environment"
-  command = "gcloud beta compute --project \"topher-dev-env\" ssh --zone \"us-west1-a\" \"dev-env\""
-  output = ""
-
-[[snippets]]
   description = "open dotfiles tmux window"
   command = "tmux new-window -c ~/dotfiles -n dotfiles -t 10 'git status && zsh'"
   output = ""
@@ -131,11 +121,6 @@
 [[snippets]]
   description = "upload android bugreport"
   command = "***REMOVED***"
-  output = ""
-
-[[snippets]]
-  description = "run e2e test"
-  command = "inv e2e.api --glob-pattern www/tests/e2e/test_chunks.py::test_chunks_compressed_heartbeat_event_upload"
   output = ""
 
 [[snippets]]
