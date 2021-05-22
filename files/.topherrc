@@ -28,4 +28,8 @@ export PATH=$PATH:~/bin
 function sshv() {
     ssh -t $1 "bash -i -o vi"
 }
+
+# install go
+export GOPATH="$HOME/dev/go"
+PATH="$GOPATH/bin:$PATH"
 ### END INSTALL AND CONFIGURE APPLICATIONS ###
