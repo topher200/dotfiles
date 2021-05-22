@@ -10,7 +10,7 @@ jobs:
       steps:
         - run:
             name: install make
-            command: apt install make
+            command: apt update && apt install make
         - run:
             command: make install
 workflows:
