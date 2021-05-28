@@ -1,18 +1,17 @@
 version: 2.1
-      
+
 jobs:
   build:
-      docker:
-        - image: ubuntu:latest
-      steps:
-        - run: apt update
-        # install sudo and bash: https://github.com/dwyl/learn-circleci/issues/12
-        - run: apt install -y sudo
-        - run: ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
+    docker:
+      - image: ubuntu:20.10
+    steps:
+      # install sudo and bash: https://github.com/dwyl/learn-circleci/issues/12
+      - run: apt update && apt install -y sudo
+      - run: ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
 
-        - run: sudo apt install -y make
-        - checkout
-        - run: make install
+      - run: sudo apt install -y make
+      - checkout
+      - run: make install
 workflows:
   version: 2
   build:
