@@ -1,6 +1,6 @@
 .PHONY: stow
 stow:
-	stow --restow -v files
+	stow --restow -v --target ~ files
 
 .PHONY: install
 install: install-packages stow
@@ -26,3 +26,8 @@ install-spacemacs:
 .PHONY: install-packages
 install-packages:
 	./install-packages.sh
+
+.PHONY: docker
+docker:
+	docker build --tag dotfiles .
+	docker run --rm -it dotfiles /bin/bash
