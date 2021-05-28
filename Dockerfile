@@ -6,7 +6,8 @@ RUN ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al 
 
 RUN sudo apt-get install -y make
 
-WORKDIR /dotfiles
+USER topher
+WORKDIR /home/topher/dotfiles
 
 COPY install-packages.sh ./
 COPY Makefile ./
