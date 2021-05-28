@@ -3,7 +3,7 @@
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
 export DEBIAN_FRONTEND=noninteractive
-sudo apt install -y \
+sudo apt-get install -y \
     autojump \
     curl \
     fzf \
@@ -22,12 +22,12 @@ sudo apt install -y \
     zsh
 
 # install python packages
-sudo apt install -y python3-dev python3-pip python3-setuptools python3-venv
+sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
 sudo pip3 install \
     thefuck
 
 # install node packages
-sudo apt install -y npm
+sudo apt-get install -y npm
 sudo npm install \
     tldr
 
@@ -45,7 +45,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 vim +PlugInstall +qall
 
 # install fusuma
-sudo apt install -y \
+sudo apt-get install -y \
     libinput-tools \
     ruby \
     xdotool
