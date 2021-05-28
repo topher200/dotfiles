@@ -19,6 +19,8 @@ sudo apt-get install -y \
     tmux \
     tree \
     unp \
+    vim \
+    wget \
     zsh
 
 # install python packages
