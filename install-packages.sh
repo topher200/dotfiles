@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
 export DEBIAN_FRONTEND=noninteractive
@@ -51,4 +53,4 @@ sudo gem install fusuma
 # NEXT: add fusuma to startup programs
 
 # set shell to zsh
-chsh -s `which zsh`
+chsh -s $(which zsh)
