@@ -25,7 +25,7 @@ sudo apt-get install -y \
     zsh
 
 # install Linuxbrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+yes "" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
