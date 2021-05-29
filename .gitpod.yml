@@ -1,6 +1,9 @@
 image:
   file: Dockerfile
 
+tasks:
+  - command: sudo su - topher -c 'tmux new-sess -A -s dev'
+
 github:
   prebuilds:
     master: true
