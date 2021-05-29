@@ -64,18 +64,8 @@
   output = ""
 
 [[snippets]]
-  description = "elasticsearch low disk space reset"
-  command = "curl -XPUT -H \"Content-Type: application/json\" http://localhost:9200/_all/_settings -d '{\"index.blocks.read_only_allow_delete\": null}'\\n"
-  output = ""
-
-[[snippets]]
   description = "kill all running docker containers"
   command = "docker ps -q | xargs docker kill"
-  output = ""
-
-[[snippets]]
-  description = "digital ocean youtube-dl seedbox"
-  command = "ssh ***REMOVED***"
   output = ""
 
 [[snippets]]
@@ -119,18 +109,8 @@
   output = ""
 
 [[snippets]]
-  description = "upload android bugreport"
-  command = "***REMOVED***"
-  output = ""
-
-[[snippets]]
   description = "rerun last command. upload stdout to gist and copy url to clipboard"
   command = "!! | gh gist create - | tee xsel"
-  output = ""
-
-[[snippets]]
-  description = "connect to local docker memfault database"
-  command = "PGPASSWORD=memfault psql -h localhost -p 5432 -U memfault memfault_db"
   output = ""
 
 [[snippets]]
@@ -165,7 +145,7 @@
 
 [[snippets]]
   description = "rdb connect to celery worker debug"
-  command = "telnet localhost 6899 || telnet localhost 6900 || telnet localhost 6901 || telnet localhost 6902 || telnet localhost 6903 || telnet localhost 6904 || telnet localhost 6905"
+  command = "telnet localhost 6899 || telnet localhost 6900"
   output = ""
 
 [[snippets]]
