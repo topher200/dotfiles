@@ -19,11 +19,11 @@ WORKDIR /home/topher/dotfiles
 
 RUN sudo apt-get install -y make
 
-COPY install-packages.sh ./
-COPY Makefile ./
+COPY --chown=topher install-packages.sh ./
+COPY --chown=topher Makefile ./
 RUN make install-packages
 
-COPY files files
+COPY --chown=topher files files
 RUN make stow
 
 CMD bash
