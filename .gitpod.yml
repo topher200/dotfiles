@@ -3,8 +3,10 @@ image:
 
 tasks:
   - command: |
+      sudo cp .gitconfig /etc/gitconfig
       sudo su - topher
       tmux new-sess -A -s dev
+      cd dotfiles
 
 github:
   prebuilds:
