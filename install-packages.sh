@@ -55,4 +55,4 @@ sudo gem install fusuma
 # NEXT: add fusuma to startup programs
 
 # set shell to zsh
-chsh -s $(which zsh)
+sudo chsh -s "$(which zsh)" "$(whoami)"
