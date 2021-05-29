@@ -24,7 +24,7 @@ COPY --chown=topher Makefile ./
 RUN make install-packages
 
 COPY --chown=topher . /home/topher/dotfiles
-RUN chown topher -R /home/topher/dotfiles
+RUN chown topher -R -f /home/topher/dotfiles
 # hidden files are ignored by COPY by default
 COPY --chown=topher .circleci /home/topher/dotfiles/.circleci
 COPY --chown=topher .dockerignore /home/topher/dotfiles/.
