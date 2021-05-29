@@ -47,13 +47,5 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # install vim plugins
 vim +PlugInstall +qall
 
-# install fusuma
-sudo apt-get install -y \
-    libinput-tools \
-    ruby \
-    xdotool
-sudo gem install fusuma
-# NEXT: add fusuma to startup programs
-
 # set shell to zsh
 sudo chsh -s "$(which zsh)" "$(whoami)"
