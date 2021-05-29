@@ -6,8 +6,8 @@ RUN ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al 
 
 RUN sudo apt-get install -y make
 
-USER topher
-WORKDIR /home/topher/dotfiles
+USER gitpod
+WORKDIR /home/gitpod/dotfiles
 
 COPY install-packages.sh ./
 COPY Makefile ./
