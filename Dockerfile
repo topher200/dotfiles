@@ -6,11 +6,11 @@ RUN ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al 
 
 # add gitpod user; sudo access with no password required
 # https://dev.to/emmanuelnk/using-sudo-without-password-prompt-as-non-root-docker-user-52bg
-RUN adduser --disabled-password --gecos '' gitpod
-RUN adduser gitpod sudo
+RUN adduser --disabled-password --gecos '' topher
+RUN adduser topher sudo
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-USER gitpod
-WORKDIR /home/gitpod/dotfiles
+USER topher
+WORKDIR /home/topher/dotfiles
 
 RUN sudo apt-get install -y make
 
