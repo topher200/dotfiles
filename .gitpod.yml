@@ -2,7 +2,9 @@ image:
   file: Dockerfile
 
 tasks:
-  - command: sudo su - topher -c 'tmux new-sess -A -s dev'
+  - command: |
+      sudo su - topher
+      tmux new-sess -A -s dev
 
 github:
   prebuilds:
