@@ -1,6 +1,5 @@
 if [[ "$PWD" == "/home/topher" ]]; then
-    # memfault
-    export GEMFURY_DEPLOY_TOKEN=***REMOVED***
+    # let's switch to memfault
     export MEMFAULT_EMAIL=user@example.com
     export MEMFAULT_PASSWORD=asdf
     export MEMFAULT_ORG=acme-inc
