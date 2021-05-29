@@ -1,5 +1,7 @@
 *.swp
 *__pycache__*
+node_modules
+package-lock.json
 
 files/.config/htop/htoprc
 files/.config/pulse/
