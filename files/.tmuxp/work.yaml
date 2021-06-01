@@ -15,20 +15,9 @@ windows:
     automatic-rename: 'off'
   panes:
   - shell_command: inv dev
-  start_directory: /home/topher/dev/memfault
-  window_name: inv-dev
-  window_index: 4
-- options:
-    automatic-rename: 'off'
-  panes:
   - shell_command: inv ingress.dev
-  start_directory: /home/topher/dev/memfault
-  window_name: inv ingress.dev
-  window_index: 5
-- options:
-    automatic-rename: 'off'
-  panes:
   - shell_command: inv dc.svc
+  layout: even-vertical
   start_directory: /home/topher/dev/memfault
-  window_name: inv-dc.svc
-  window_index: 6
+  window_name: servers
+  window_index: 4
