@@ -167,3 +167,8 @@
   description = "delete .tmp temp branches from git"
   command = "g b | grep \\\\.tmp | vipe | xargs git branch -D "
   output = ""
+
+[[snippets]]
+  description = "run rebase interactive stgit"
+  command = "/home/topher/dev/stgit/contrib/stg-rebase-interactive"
+  output = ""
