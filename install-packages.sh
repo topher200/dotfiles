@@ -27,6 +27,8 @@ sudo apt-get install -y \
 # install Linuxbrew
 yes "" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/topher/.zprofile
+brew install \
+    neovim
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
