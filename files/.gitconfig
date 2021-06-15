@@ -71,3 +71,7 @@
   hidden = red_foreground
 [pull]
 	ff = only
+[diff]
+    guitool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
