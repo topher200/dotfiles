@@ -3,10 +3,12 @@
 alias ll='ls -alh'
 alias g='git'
 alias agh='ag --hidden'
+alias vim=nvim
 # don't use a pager if less than a screen
 export LESS="-F -X $LESS"
 # remove extra '$' from commands
 alias '$'=''
+
 
 # Delete the current branch you're on, leaving you on a deteched HEAD
 function gdcb {
