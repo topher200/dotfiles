@@ -172,3 +172,13 @@
   description = "run rebase interactive stgit"
   command = "/home/topher/dev/stgit/contrib/stg-rebase-interactive"
   output = ""
+
+[[snippets]]
+  description = "start memfault servers in tmux panes"
+  command = "tmuxp load work"
+  output = ""
+
+[[snippets]]
+  description = "update python dependencies"
+  command = "invoke poetry.lock poetry.export "
+  output = ""
