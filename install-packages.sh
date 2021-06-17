@@ -8,6 +8,7 @@ sudo apt-get install -y \
     bat \
     curl \
     docker \
+    exa \
     fzf \
     htop \
     httpie \
@@ -15,6 +16,7 @@ sudo apt-get install -y \
     neovim \
     jq \
     pspg \
+    ripgrep \
     shellcheck \
     silversearcher-ag \
     stow \
