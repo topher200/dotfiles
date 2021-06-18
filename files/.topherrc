@@ -1,6 +1,5 @@
 ### COMMAND LINE ALIASES ###
 # general aliases
-alias ll='ls -alh'
 alias g='git'
 alias agh='ag --hidden'
 # application aliases
@@ -8,8 +7,8 @@ alias cat=batcat
 alias vim=nvim
 alias rg='rg --smart-case'
 alias rgh="rg --smart-case --hidden -g '!.git/'"
-alias ls "exa"
-alias ll "exa -ll"
+alias ls="exa"
+alias ll="exa -ll"
 # don't use a pager if less than a screen
 export LESS="-F -X $LESS"
 # remove extra '$' from commands
