@@ -104,6 +104,7 @@ source $ZSH_CUSTOM/tmuxinator.zsh
 fpath+=("$ZSH_CUSTOM/pure")
 autoload -U promptinit; promptinit
 PURE_CMD_MAX_EXEC_TIME=1
+PURE_PROMPT_SYMBOL=$
 zstyle ':prompt:pure:virtualenv' color green
 zstyle :prompt:pure:git:stash show yes
 prompt pure
