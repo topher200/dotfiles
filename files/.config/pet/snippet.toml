@@ -182,3 +182,8 @@
   description = "update python dependencies"
   command = "invoke poetry.lock poetry.export "
   output = ""
+
+[[snippets]]
+  description = "sqlformat to reformat postgres queries"
+  command = "sqlformat bugreports-per-day-query.before.sql -r -o bugreports-per-day-query.before.sql"
+  output = ""

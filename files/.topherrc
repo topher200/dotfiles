@@ -4,6 +4,7 @@ alias g='git'
 alias agh='ag --hidden'
 # application aliases
 alias cat=batcat
+alias catp='batcat -p'
 alias vim=nvim
 alias rg='rg --smart-case'
 alias rgh="rg --smart-case --hidden -g '!.git/'"
