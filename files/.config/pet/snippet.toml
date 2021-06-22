@@ -10,7 +10,7 @@
 
 [[snippets]]
   description = "what's my ip"
-  command = "curl v4.ifconfig.co | tee >(xsel -b)"
+  command = "curl v4.ifconfig.co | tee >(xsel)"
   output = ""
 
 [[snippets]]
@@ -50,12 +50,12 @@
 
 [[snippets]]
   description = "format json from the clipboard"
-  command = "pbpaste | jq . | xsel"
+  command = "xsel -o | jq . | xsel"
   output = ""
 
 [[snippets]]
   description = "python dictionary to json"
-  command = "pbpaste | xargs -0 python -c 'import ast, json, sys ; out = ast.literal_eval(sys.argv[1]) ; print json.dumps(out)' | jq . | xsel"
+  command = "xsel | xargs -0 python -c 'import ast, json, sys ; out = ast.literal_eval(sys.argv[1]) ; print json.dumps(out)' | jq . | tee >(xsel)"
   output = ""
 
 [[snippets]]
@@ -110,7 +110,7 @@
 
 [[snippets]]
   description = "rerun last command. upload stdout to gist and copy url to clipboard"
-  command = "!! | gh gist create - | tee xsel"
+  command = "!! | gh gist create - | tee >(xsel)"
   output = ""
 
 [[snippets]]
@@ -119,8 +119,8 @@
   output = ""
 
 [[snippets]]
-  description = "create gist from clipboard TODO: tee creates a file, incorrect behavior"
-  command = "xsel -o --clipboard | gh gist create - | tee xsel"
+  description = "create gist from clipboard"
+  command = "xsel -o | gh gist create - | tee >(xsel)"
   output = ""
 
 [[snippets]]

@@ -4,7 +4,7 @@ DRY_RUN = False
 
 import subprocess
 
-clipboard = subprocess.run("xsel", shell=True, check=True, text=True, capture_output=True).stdout
+clipboard = subprocess.run("xsel --clipboard", shell=True, check=True, text=True, capture_output=True).stdout
 clipboard = clipboard.strip().lower()
 
 if len(clipboard) < 5 or not clipboard.startswith("mflt"):
