@@ -40,6 +40,7 @@ sudo pip3 install \
 # install node packages
 sudo apt-get install -y npm
 sudo npm install \
+    sql-formatter \
     tldr
 
 # pet snippet manager
