@@ -5,6 +5,7 @@ alias sd='stg delete'
 alias sdt='stg delete --top'
 alias se='stg edit --diff'
 alias sfl='stg float'
+alias sn='stg new'
 alias spo='stg pop'
 alias spoa='stg pop --all'
 alias spos='stg pop spill'
@@ -26,7 +27,7 @@ alias sst='stg status'
 alias stb='git checkout stgit-topher'
 
 # create a template file with a diff
-sn() {
+snm() {
     cat ~/.gitmessage.memfault > "$(git rev-parse --git-dir)/patchdescr.tmpl"
     echo "#------------------------------------------------" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     echo "#---------------------------------------------------------------------" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
@@ -34,6 +35,16 @@ sn() {
     git status >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     git diff >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     stg new
+}
+
+sna() {
+    sn
+    sr
+}
+
+snma() {
+    snm
+    sr
 }
 
 # Create a new *-WIP patch with all outstanding changes
