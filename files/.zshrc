@@ -174,4 +174,3 @@ unset __conda_setup
 
 source ~/stgitrc
 source ~/memfaultrc
-if [ -f "$HOME/secretsrc" ]; then . "$HOME/secretsrc"; fi
