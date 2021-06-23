@@ -1,4 +1,4 @@
-if [[ "$PWD" == "/home/topher" ]]; then
+if [[ "$PWD" == "/home/topher" && -d "/home/topher/dev/memfault" ]]; then
     # let's switch to memfault
     export MEMFAULT_EMAIL=user@example.com
     export MEMFAULT_PASSWORD=asdf
