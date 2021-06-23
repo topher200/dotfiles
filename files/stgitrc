@@ -35,6 +35,7 @@ snm() {
     git status >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     git diff >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     stg new
+    rm "$(git rev-parse --git-dir)/patchdescr.tmpl"
 }
 
 sna() {
