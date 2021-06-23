@@ -1,4 +1,5 @@
-dotfiles repo
+# Topher's dotfiles repo
+
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/topher200/dotfiles)
 
 # dotfiles
