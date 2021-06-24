@@ -38,12 +38,12 @@ snm() {
     rm "$(git rev-parse --git-dir)/patchdescr.tmpl"
 }
 
-sna() {
-    sn
+snr() {
+    sn $*
     sr
 }
 
-snma() {
+snmr() {
     snm
     sr
 }
@@ -67,7 +67,7 @@ swip() {
     fi
 
     # Add changes to patch
-    stg refresh
+    stg refresh --no-verify
 }
 
 # Unload the *-WIP patch and reset all changes
