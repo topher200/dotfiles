@@ -41,6 +41,4 @@ COPY --chown=topher .git /home/topher/dotfiles/.git
 
 RUN make stow
 
-ENV force_rebuild=20210627.01
-
 CMD bash
