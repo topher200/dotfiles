@@ -1,15 +1,7 @@
 image: topher200/dotfiles:latest
 
 tasks:
-  - command: |
-      sudo cp /home/gitpod/.gitconfig /etc/gitconfig
-      sudo su - topher
-      rm -r dotfiles
-      git clone git@github.com:topher200/dotfiles
-      cd dotfiles
-      make stow
-      tmux new-sess -A -s dev
-      cd dotfiles
+  - command: ./scripts/gitpod-startup.sh
 
 github:
   prebuilds:
