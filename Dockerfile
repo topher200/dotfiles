@@ -37,7 +37,6 @@ COPY --chown=topher .circleci /home/topher/dotfiles/.circleci
 COPY --chown=topher .dockerignore /home/topher/dotfiles/.dockerignore
 COPY --chown=topher .gitignore /home/topher/dotfiles/.gitignore
 COPY --chown=topher .gitpod.yml /home/topher/dotfiles/.gitpod.yml
-COPY --chown=topher .git /home/topher/dotfiles/.git
 
 RUN make stow
 
