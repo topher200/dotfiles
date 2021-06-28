@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 # copy gitpod's gitconfig so that we can use their auto-generated credentials
 sudo cp /home/gitpod/.gitconfig /etc/gitconfig
