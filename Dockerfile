@@ -40,4 +40,6 @@ COPY --chown=topher .gitpod.yml /home/topher/dotfiles/.gitpod.yml
 
 RUN make stow
 
+ENV DockerfileForceBump=true
+
 CMD bash
