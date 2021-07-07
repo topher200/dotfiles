@@ -173,3 +173,6 @@ unset __conda_setup
 source "$HOME"/.topherrc
 source "$HOME"/stgitrc
 source "$HOME"/memfaultrc
+if [[ -f "$HOME"/Dropbox/secretsrc ]]; then
+    source "$HOME"/Dropbox/secretsrc
+fi
