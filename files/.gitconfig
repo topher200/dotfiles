@@ -57,6 +57,7 @@
 [stgit]
   # Behave as if the --keep option is always passed
   autokeep = yes
+  autostash = yes
   # Extra options to pass to "git diff" (extend/override with
 	# -O/--diff-opts). For example, -M turns on rename detection.
   diff-opts = -M
