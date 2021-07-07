@@ -145,9 +145,6 @@ export FZF_TMUX_OPTS='-d 30%'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 setopt globdots
 
-# include my non-shell-specific code
-source "$HOME"/.topherrc
-
 export EDITOR=nvim
 export VISUAL=nvim
 
@@ -172,5 +169,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-source ~/stgitrc
-source ~/memfaultrc
+# include my non-shell-specific code
+source "$HOME"/.topherrc
+source "$HOME"/stgitrc
+source "$HOME"/memfaultrc

@@ -1,9 +1,14 @@
+export MEMFAULT_EMAIL=user@example.com
+export MEMFAULT_PASSWORD=asdf
+export MEMFAULT_ORG=acme-inc
+
 if [[ "$PWD" == "/home/topher" && -d "/home/topher/dev/memfault" ]]; then
-    # let's switch to memfault
-    export MEMFAULT_EMAIL=user@example.com
-    export MEMFAULT_PASSWORD=asdf
-    export MEMFAULT_ORG=acme-inc
-    cd ~/dev/memfault && conda activate memfault
+    cd ~/dev/memfault
+fi
+
+if [[ "$PWD" == "/home/topher/dev/memfault" ]]; then
+    echo 'activating conda environment'
+    conda activate memfault
 fi
 
 # pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
