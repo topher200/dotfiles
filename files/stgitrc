@@ -26,6 +26,7 @@ alias sspl='stg refresh --spill && git reset .'
 alias ssqua='stg squash $(stg series --applied --noprefix)'
 alias sst='stg status'
 alias stb='git checkout stgit-topher'
+alias sts='stg show'
 alias su='stg undo'
 alias suh='stg undo --hard'
 
