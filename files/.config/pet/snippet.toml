@@ -182,3 +182,8 @@
   description = "sqlformat to reformat postgres queries"
   command = "sqlformat bugreports-per-day-query.before.sql -r -o bugreports-per-day-query.before.sql"
   output = ""
+
+[[snippets]]
+  description = "Push current stg patch to remote github pull request PR"
+  command = "git push topher200 HEAD:$(stg top)"
+  output = ""
