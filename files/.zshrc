@@ -154,25 +154,11 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloa
 # The next line enables shell command completion for gcloud.
 if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/topher/dev/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/topher/dev/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/topher/dev/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/topher/dev/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 # include my non-shell-specific code
 source "$HOME"/.topherrc
 source "$HOME"/stgitrc
-source "$HOME"/memfaultrc
 if [[ -f "$HOME"/Dropbox/secretsrc ]]; then
     source "$HOME"/Dropbox/secretsrc
 fi
+source "$HOME"/condarc
+source "$HOME"/memfaultrc

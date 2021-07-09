@@ -6,10 +6,10 @@ if [[ "$PWD" == "/home/topher" && -d "/home/topher/dev/memfault" ]]; then
     cd ~/dev/memfault
 fi
 
-if [[ "$PWD" == "/home/topher/dev/memfault" ]]; then
+# if [[ "$PWD" == "/home/topher/dev/memfault" ]]; then
     echo 'activating conda environment'
     conda activate memfault
-fi
+# fi
 
 # pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
 export INVOKE_RUN_ECHO=1
