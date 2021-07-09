@@ -7,7 +7,7 @@ install: install-packages stow
 
 .PHONY: test
 test:
-	./test.sh
+	./test/run_shellcheck.sh
 
 .PHONY: stow-force
 stow-force:
