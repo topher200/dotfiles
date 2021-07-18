@@ -12,6 +12,7 @@ alias spos='stg pop spill'
 alias spu='stg push'
 alias sr='stg refresh'
 alias sra='git add . && stg refresh'
+alias sranv='git add . && stg refresh --no-verify'
 alias sre='stg edit --diff'
 alias srem='stg rebase master'
 alias sreom='stg rebase origin/master'
@@ -22,6 +23,7 @@ alias srnv='stg refresh --no-verify'
 alias spr='inv stg.pull-request'
 alias spro='inv stg.pull-request --onto'
 alias ss='stg series --description'
+alias ssk='stg sink'
 alias sspl='stg refresh --spill && git reset .'
 alias ssqua='stg squash $(stg series --applied --noprefix)'
 alias sst='stg status'
@@ -33,11 +35,6 @@ alias suh='stg undo --hard'
 # create a template file with a diff
 snm() {
     cat ~/.gitmessage.memfault > "$(git rev-parse --git-dir)/patchdescr.tmpl"
-    echo "#------------------------------------------------" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
-    echo "#---------------------------------------------------------------------" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
-    echo "\n" >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
-    git status >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
-    git diff >> "$(git rev-parse --git-dir)/patchdescr.tmpl"
     stg new
     rm "$(git rev-parse --git-dir)/patchdescr.tmpl"
 }
