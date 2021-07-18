@@ -187,3 +187,8 @@
   description = "Push current stg patch to remote github pull request PR"
   command = "git push topher200 HEAD:$(stg top)"
   output = ""
+
+[[snippets]]
+  description = "list all flask routes"
+  command = "flask routes"
+  output = ""
