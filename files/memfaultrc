@@ -19,3 +19,7 @@ export AWS_PROFILE=prod
 # https://www.notion.so/memfault/Platform-Tooling-5facd1d8941945c08e82a549e192885e
 alias chamberprod='aws-vault exec topher-prod -- chamber'
 export AWS_VAULT_SECRET_SERVICE_COLLECTION_NAME=login
+
+# terraform
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/terraform/1.0.2/bin/terraform terraform
