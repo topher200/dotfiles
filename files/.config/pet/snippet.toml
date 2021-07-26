@@ -179,11 +179,6 @@
   output = ""
 
 [[snippets]]
-  description = "sqlformat to reformat postgres queries"
-  command = "sqlformat bugreports-per-day-query.before.sql -r -o bugreports-per-day-query.before.sql"
-  output = ""
-
-[[snippets]]
   description = "Push current stg patch to remote github pull request PR"
   command = "git push topher200 HEAD:$(stg top)"
   output = ""
@@ -191,4 +186,24 @@
 [[snippets]]
   description = "list all flask routes"
   command = "flask routes"
+  output = ""
+
+[[snippets]]
+  description = "set staging and prod SHAs for Heroku deploy"
+  command = "STAGING_SHA=$(git rev-parse --short=9 $(heroku releases --app memfault-staging | grep Deploy | head -n 1 | perl -wne '/Deploy (\\S+)/ and print $1')) && PROD_SHA=$(git rev-parse --short=9 $(heroku releases --app memfault-prod | grep Deploy | head -n 1 | perl -wne '/Deploy (\\S+)/ and print $1')) && echo 'STAGING_SHA: '$STAGING_SHA && echo 'PROD_SHA   : '$PROD_SHA"
+  output = ""
+
+[[snippets]]
+  description = "update submodules and patches from master"
+  command = "inv stg.frups"
+  output = ""
+
+[[snippets]]
+  description = "postgres cleanup query from docker logs strip from clipboard"
+  command = "xsel -b --output | sed -e 's/.*statement:\\s*//' -e 's/.*db_1\\s*|\\s*//' - | tee >(xsel -b)"
+  output = ""
+
+[[snippets]]
+  description = "reformat postgres sql query from clipboard"
+  command = "xsel -b --output | sqlformat --reindent --indent_columns - | tee >(xsel -b)"
   output = ""
