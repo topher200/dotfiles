@@ -16,6 +16,7 @@ windows:
   panes:
   - shell_command: inv dev
   - shell_command: inv ingress.dev
+  - shell_command: inv dc.test-svc
   - shell_command: inv dc.svc
   layout: even-vertical
   start_directory: /home/topher/dev/memfault
