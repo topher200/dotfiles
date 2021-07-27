@@ -6,20 +6,20 @@ if [[ "$PWD" == "/home/topher" && -d "/home/topher/dev/memfault" ]]; then
     cd ~/dev/memfault
 fi
 
-# if [[ "$PWD" == "/home/topher/dev/memfault" ]]; then
+if [[ "$PWD" == "/home/topher/dev/memfault" ]]; then
     echo 'activating conda environment'
     conda activate memfault
-# fi
 
-# pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
-export INVOKE_RUN_ECHO=1
+    # pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
+    export INVOKE_RUN_ECHO=1
 
-# aws alias
-export AWS_PROFILE=prod
-# https://www.notion.so/memfault/Platform-Tooling-5facd1d8941945c08e82a549e192885e
-alias chamberprod='aws-vault exec topher-prod -- chamber'
-export AWS_VAULT_SECRET_SERVICE_COLLECTION_NAME=login
+    # aws alias
+    export AWS_PROFILE=prod
+    # https://www.notion.so/memfault/Platform-Tooling-5facd1d8941945c08e82a549e192885e
+    alias chamberprod='aws-vault exec topher-prod -- chamber'
+    export AWS_VAULT_SECRET_SERVICE_COLLECTION_NAME=login
 
-# terraform
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/terraform/1.0.2/bin/terraform terraform
+    # terraform
+    autoload -U +X bashcompinit && bashcompinit
+    complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/terraform/1.0.2/bin/terraform terraform
+fi
