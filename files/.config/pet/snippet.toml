@@ -207,3 +207,8 @@
   description = "reformat postgres sql query from clipboard"
   command = "xsel -b --output | sqlformat --reindent --indent_columns - | tee >(xsel -b)"
   output = ""
+
+[[snippets]]
+  description = "bash print exit code success=0"
+  command = "echo $?"
+  output = ""
