@@ -223,6 +223,13 @@ prompt_pure_precmd() {
 		export VIRTUAL_ENV_DISABLE_PROMPT=12
 	fi
 
+	# Nix package manager integration. If used from within 'nix shell' - shell name is shown like so:
+	# ~/Projects/flake-utils-plus master
+	# flake-utils-plus ❯
+	if [[ -n $IN_NIX_SHELL ]]; then
+		psvar[12]="${name:-nix-shell}"
+	fi
+
 	# Make sure VIM prompt is reset.
 	prompt_pure_reset_prompt_symbol
 
@@ -699,7 +706,7 @@ prompt_pure_state_setup() {
 	[[ $UID -eq 0 ]] && username='%F{$prompt_pure_colors[user:root]}%n%f'"$hostname"
 
 	typeset -gA prompt_pure_state
-	prompt_pure_state[version]="1.13.0"
+	prompt_pure_state[version]="1.17.0"
 	prompt_pure_state+=(
 		username "$username"
 		prompt	 "${PURE_PROMPT_SYMBOL:-❯}"
