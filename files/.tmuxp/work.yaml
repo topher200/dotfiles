@@ -5,13 +5,16 @@ windows:
   panes:
   - shell_command: pwd
   start_directory: /home/topher/dev/memfault
-- options:
+- window_name: test
+  window_index: 2
+  options:
     automatic-rename: 'off'
   panes:
   - shell_command: pwd
   start_directory: /home/topher/dev/memfault
-  window_name: test
-- options:
+- window_name: servers
+  window_index: 4
+  options:
     automatic-rename: 'off'
   panes:
   - shell_command: inv dev
@@ -20,5 +23,12 @@ windows:
   - shell_command: inv dc.svc
   layout: even-vertical
   start_directory: /home/topher/dev/memfault
-  window_name: servers
-  window_index: 4
+- window_name: local-psql
+  window_index: 5
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command: inv db.psql
+  - shell_command: inv db.timescale-psql
+  layout: even-horizontal
+  start_directory: /home/topher/dev/memfault
