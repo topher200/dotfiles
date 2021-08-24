@@ -189,11 +189,6 @@
   output = ""
 
 [[snippets]]
-  description = "set staging and prod SHAs for Heroku deploy"
-  command = "STAGING_SHA=$(git rev-parse --short=9 $(heroku releases --app memfault-staging | grep Deploy | head -n 1 | perl -wne '/Deploy (\\S+)/ and print $1')) && PROD_SHA=$(git rev-parse --short=9 $(heroku releases --app memfault-prod | grep Deploy | head -n 1 | perl -wne '/Deploy (\\S+)/ and print $1')) && echo 'STAGING_SHA: '$STAGING_SHA && echo 'PROD_SHA   : '$PROD_SHA"
-  output = ""
-
-[[snippets]]
   description = "update submodules and patches from master"
   command = "inv stg.frups"
   output = ""
@@ -211,4 +206,14 @@
 [[snippets]]
   description = "bash print exit code success=0"
   command = "echo $?"
+  output = ""
+
+[[snippets]]
+  description = "set local heroku environment vars for release deployment"
+  command = "PROD_SHA=$(git rev-parse --short=9 $(heroku releases --app memfault-prod | grep Deploy | head -n 1 | perl -wne '/Deploy (\S+)/ and print $1')) && echo 'STAGING_SHA: '$STAGING_SHA && echo 'PROD_SHA   : '$PROD_SHA && STAGING_SHA=$(git rev-parse --short=9 $(heroku releases --app memfault-staging | grep Deploy | head -n 1 | perl -wne '/Deploy (\S+)/ and print $1'))"
+  output = ""
+
+[[snippets]]
+  description = "take over a PR from github stgit"
+  command = "echo 'gh pr diff 4636 | stg import'"
   output = ""
