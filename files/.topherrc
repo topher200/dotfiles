@@ -1,6 +1,7 @@
 ### COMMAND LINE ALIASES ###
 # general aliases
 alias g='git'
+alias gs='git status'
 alias agh='ag --hidden'
 # application aliases
 alias cat='batcat -p'
