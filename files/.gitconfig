@@ -74,5 +74,6 @@
 	ff = only
 [diff]
     guitool = vscode
+    tool = nvimdiff
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
