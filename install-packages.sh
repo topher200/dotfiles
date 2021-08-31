@@ -3,7 +3,7 @@
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
 export DEBIAN_FRONTEND=noninteractive
-sudo apt-get update && sudo apt-get install --ignore-missing -y \
+sudo apt-get update && sudo apt-get install -y \
     autojump \
     bat \
     curl \
