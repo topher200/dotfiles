@@ -222,3 +222,8 @@
   description = "take over a PR from github stgit"
   command = "echo 'gh pr diff 4636 | stg import'"
   output = ""
+
+[[snippets]]
+  description = "run terraform validate in all subdirectories"
+  command = "find . -type d -execdir sh -c \"pwd && terraform init && terraform validate\" \\;"
+  output = ""
