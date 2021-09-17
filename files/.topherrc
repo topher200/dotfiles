@@ -27,18 +27,9 @@ function gdcb {
 ### END COMMAND LINE ALIASES ###
 
 
-### PATHING ###
-# add my binaries to path
-export PATH=$PATH:~/bin
-### END PATHING ###
-
 ### INSTALL AND CONFIGURE APPLICATIONS ###
 # load ssh remote shells in vi mode
 function sshv() {
     ssh -t $1 "bash -i -o vi"
 }
-
-# install go
-export GOPATH="$HOME/dev/go"
-PATH="$GOPATH/bin:$PATH"
 ### END INSTALL AND CONFIGURE APPLICATIONS ###
