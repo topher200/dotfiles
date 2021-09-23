@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
 export DEBIAN_FRONTEND=noninteractive
