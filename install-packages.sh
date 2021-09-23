@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo add-apt-repository ppa:nateshmbhat/rm-trash
+sudo add-apt-repository -y ppa:nateshmbhat/rm-trash
 
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
