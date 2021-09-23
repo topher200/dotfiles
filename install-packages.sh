@@ -49,6 +49,11 @@ if [ ! -f /tmp/pet.deb ]; then
     sudo dpkg -i /tmp/pet.deb
 fi
 
+# install viddy, from https://github.com/sachaos/viddy
+if [ ! -f /usr/local/bin/viddy ]; then
+    wget -O viddy.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.0/viddy_0.3.0_Linux_x86_64.tar.gz && tar xvf viddy.tar.gz && mv viddy /usr/local/bin
+fi
+
 # install fzf, from https://github.com/junegunn/fzf#using-git
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --completion --no-update-rc --no-key-bindings
