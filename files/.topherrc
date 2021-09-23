@@ -32,4 +32,7 @@ function gdcb {
 function sshv() {
     ssh -t $1 "bash -i -o vi"
 }
+
+# install broot
+source /home/topher/.config/broot/launcher/bash/br
 ### END INSTALL AND CONFIGURE APPLICATIONS ###

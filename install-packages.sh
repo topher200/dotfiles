@@ -1,11 +1,16 @@
 #!/bin/bash
 
+# add repo for 'broot'
+echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
+sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update && sudo apt-get install -y \
     autojump \
     bat \
+    broot \
     curl \
     docker \
     exa \
