@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# add repo for 'broot'
-echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
-sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+sudo add-apt-repository ppa:nateshmbhat/rm-trash
 
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
@@ -22,6 +20,7 @@ sudo apt-get update && sudo apt-get install -y \
     jq \
     pspg \
     ripgrep \
+    rm-trash \
     shellcheck \
     silversearcher-ag \
     stow \
@@ -32,6 +31,13 @@ sudo apt-get update && sudo apt-get install -y \
     vim \
     wget \
     zsh
+
+# install 'broot'
+echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
+sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+
+sudo apt-get update && sudo apt-get install -y \
+    broot
 
 # install Linuxbrew
 yes "" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
