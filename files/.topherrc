@@ -15,7 +15,7 @@ alias xsel="xsel --clipboard"
 export LESS="-F -X $LESS"
 # remove extra '$' from commands
 alias '$'=''
-
+alias '$ '=''
 
 # Delete the current branch you're on, leaving you on a deteched HEAD
 function gdcb {
