@@ -12,6 +12,8 @@ alias spu='stg push'
 alias sr='stg refresh'
 alias sra='git add . && stg refresh'
 alias sranv='git add . && stg refresh --no-verify'
+# refresh all changes in 'staged' files
+alias srs='git add $(git diff --name-only --staged) && stg refresh'
 alias sre='stg edit --diff'
 alias srem='stg rebase master'
 alias sreom='stg rebase origin/master'
