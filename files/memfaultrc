@@ -21,5 +21,5 @@ if [[ "$PWD" == "/home/topher/dev/memfault" ]]; then
 
     # terraform
     autoload -U +X bashcompinit && bashcompinit
-    complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/terraform/1.0.2/bin/terraform terraform
+    complete -o nospace -C /home/topher/dev/miniforge3/envs/memfault/bin/terraform terraform
 fi
