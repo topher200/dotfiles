@@ -227,3 +227,8 @@
   description = "run terraform validate in all subdirectories"
   command = "find . -type d -execdir sh -c \"pwd && terraform init && terraform validate\" \\;"
   output = ""
+
+[[snippets]]
+  description = "absorb commits changes"
+  command = "git add . && git absorb --base $(stg id stgit-topher:{base}) ; stg repair && git restore --staged ."
+  output = ""
