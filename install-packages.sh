@@ -10,7 +10,6 @@ sudo apt-get update && sudo apt-get install -y \
     bat \
     curl \
     docker \
-    exa \
     fzf \
     htop \
     httpie \
@@ -53,12 +52,19 @@ fi
 
 # install viddy, from https://github.com/sachaos/viddy
 if [ ! -f /usr/local/bin/viddy ]; then
-    wget -O viddy.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.0/viddy_0.3.0_Linux_x86_64.tar.gz && tar xvf viddy.tar.gz && mv viddy /usr/local/bin
+    wget -O /tmp/viddy.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.0/viddy_0.3.0_Linux_x86_64.tar.gz && pushd /tmp && tar xvf /tmp/viddy.tar.gz && mv /tmp/viddy /usr/local/bin && popd
+fi
+
+# install exa, (not available on Ubuntu 20.04)
+if [ ! -f /usr/local/bin/exa ]; then
+    wget -O /tmp/exa.zip https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip && pushd /tmp && unp exa.zip && sudo mv bin/exa /usr/local/bin && popd
 fi
 
 # install fzf, from https://github.com/junegunn/fzf#using-git
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --completion --no-update-rc --no-key-bindings
+if [ ! -d ~/.fzf ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --completion --no-update-rc --no-key-bindings
+fi
 
 # install vim plugins
 vim +PlugInstall +qall
