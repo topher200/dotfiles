@@ -84,7 +84,10 @@ if ! exists stg; then
     wget https://github.com/stacked-git/stgit/releases/download/v1.4/stgit-1.4.tar.gz -O /tmp/stgit.tar.gz
     pushd /tmp
     unp stgit.tar.gz
-    sudo cp stgit-1.4/stg /usr/local/bin
+    pushd stgit-1.4
+    make all
+    sudo make prefix=/usr/local install
+    popd
     popd
 fi
 # install vim plugins
