@@ -10,6 +10,7 @@ sudo apt-get update && sudo apt-get install -y \
     bat \
     curl \
     docker \
+    file \
     fzf \
     htop \
     httpie \
