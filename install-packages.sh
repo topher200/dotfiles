@@ -20,6 +20,7 @@ sudo apt-get update && sudo apt-get install -y \
     ripgrep \
     shellcheck \
     silversearcher-ag \
+    stgit \
     stow \
     tig \
     tmux \
