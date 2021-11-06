@@ -121,7 +121,7 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloa
 if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
 # include my non-shell-specific code
-source "$HOME"/.topherrc
+source "$HOME"/topherrc
 source "$HOME"/stgitrc
 if [[ -f "$HOME"/Dropbox/secretsrc ]]; then
     source "$HOME"/Dropbox/secretsrc
