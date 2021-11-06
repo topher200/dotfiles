@@ -9,7 +9,7 @@ alias vim=nvim
 alias rg='rg --smart-case --no-messages'
 alias rgh="rg --smart-case  --no-messages --hidden -g '!.git/'"
 alias ls="exa"
-alias ll="exa -ll"
+alias ll="exa -al"
 alias xsel="xsel --clipboard"
 # don't use a pager if less than a screen
 export LESS="-F -X $LESS"
