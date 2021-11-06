@@ -20,7 +20,6 @@ sudo apt-get update && sudo apt-get install -y \
     ripgrep \
     shellcheck \
     silversearcher-ag \
-    stgit \
     stow \
     tig \
     tmux \
@@ -45,6 +44,11 @@ sudo npm install \
     sql-formatter \
     tldr
 
+exists()
+{
+  command -v "$1" >/dev/null 2>&1
+}
+
 # pet snippet manager
 if [ ! -f /tmp/pet.deb ]; then
     wget https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.deb -O /tmp/pet.deb
@@ -53,12 +57,20 @@ fi
 
 # install viddy, from https://github.com/sachaos/viddy
 if [ ! -f /usr/local/bin/viddy ]; then
-    wget -O /tmp/viddy.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.0/viddy_0.3.0_Linux_x86_64.tar.gz && pushd /tmp && tar xvf /tmp/viddy.tar.gz && mv /tmp/viddy /usr/local/bin && popd
+    wget -O /tmp/viddy.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.0/viddy_0.3.0_Linux_x86_64.tar.gz
+    pushd /tmp
+    tar xvf /tmp/viddy.tar.gz
+    sudo mv /tmp/viddy /usr/local/bin
+    popd
 fi
 
 # install exa, (not available on Ubuntu 20.04)
 if [ ! -f /usr/local/bin/exa ]; then
-    wget -O /tmp/exa.zip https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip && pushd /tmp && unp exa.zip && sudo mv bin/exa /usr/local/bin && popd
+    wget -O /tmp/exa.zip https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip
+    pushd /tmp
+    unp exa.zip
+    sudo mv bin/exa /usr/local/bin
+    popd
 fi
 
 # install fzf, from https://github.com/junegunn/fzf#using-git
@@ -67,6 +79,14 @@ if [ ! -d ~/.fzf ]; then
     ~/.fzf/install --completion --no-update-rc --no-key-bindings
 fi
 
+# download stgit from git repo, since the version in ubuntu is out of date
+if ! exists stg; then
+    wget https://github.com/stacked-git/stgit/releases/download/v1.4/stgit-1.4.tar.gz -O /tmp/stgit.tar.gz
+    pushd /tmp
+    unp stgit.tar.gz
+    sudo cp stgit-1.4/stg /usr/local/bin
+    popd
+fi
 # install vim plugins
 vim +PlugInstall +qall
 
