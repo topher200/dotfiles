@@ -14,6 +14,7 @@ for f in $(find . -type f \
     -not -iwholename './files/.tmux/plugins/*' \
     -not -iwholename './files/bin/dropbox_uploader.sh' \
     -not -iwholename './files/bin/ftwind' \
+    -not -iwholename './files/bin/vimv' \
     -not -iwholename './files/zsh-custom/*' \
     -not -iwholename './node_modules/*'\
     | sort -u); do

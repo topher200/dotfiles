@@ -32,6 +32,8 @@ sudo apt-get update && sudo apt-get install -y \
 
 # install Linuxbrew
 yes "" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# We want this to output $PATH without expansion
+# shellcheck disable=SC2016
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/topher/.zprofile
 
 # install python packages
@@ -59,19 +61,19 @@ fi
 # install viddy, from https://github.com/sachaos/viddy
 if [ ! -f /usr/local/bin/viddy ]; then
     wget -O /tmp/viddy.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.0/viddy_0.3.0_Linux_x86_64.tar.gz
-    pushd /tmp
+    pushd /tmp || exit
     tar xvf /tmp/viddy.tar.gz
     sudo mv /tmp/viddy /usr/local/bin
-    popd
+    popd || exit
 fi
 
 # install exa, (not available on Ubuntu 20.04)
 if [ ! -f /usr/local/bin/exa ]; then
     wget -O /tmp/exa.zip https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip
-    pushd /tmp
+    pushd /tmp || exit
     unp exa.zip
     sudo mv bin/exa /usr/local/bin
-    popd
+    popd || exit
 fi
 
 # install fzf, from https://github.com/junegunn/fzf#using-git
@@ -83,13 +85,13 @@ fi
 # download stgit from git repo, since the version in ubuntu is out of date
 if ! exists stg; then
     wget https://github.com/stacked-git/stgit/releases/download/v1.4/stgit-1.4.tar.gz -O /tmp/stgit.tar.gz
-    pushd /tmp
+    pushd /tmp || exit
     unp stgit.tar.gz
-    pushd stgit-1.4
+    pushd stgit-1.4 || exit
     make all
     sudo make prefix=/usr/local install
-    popd
-    popd
+    popd || exit
+    popd || exit
 fi
 # install vim plugins
 vim +PlugInstall +qall
