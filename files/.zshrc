@@ -41,8 +41,8 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 unsetopt inc_append_history
 unsetopt inc_append_history_time
 setopt sharehistory
-bindkey "${key[Up]}" up-line-or-local-history
-bindkey "${key[Down]}" down-line-or-local-history
+bindkey "<Up>" up-line-or-local-history
+bindkey "<Down>" down-line-or-local-history
 up-line-or-local-history() {
     zle set-local-history 1
     zle up-line-or-history
@@ -55,6 +55,8 @@ down-line-or-local-history() {
     zle set-local-history 0
 }
 zle -N down-line-or-local-history
+bindkey "<C-Up>" up-line-or-history    # [CTRL] + Cursor up, global history
+bindkey "<C-Down>" down-line-or-history  # [CTRL] + Cursor down, global history
 
 # clean up extra spaces in history commands
 setopt hist_reduce_blanks
