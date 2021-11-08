@@ -36,10 +36,29 @@ export LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 mkdir -p ${ZDOTDIR:-~}/.zsh_functions
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
-# all terminals save to the history file
-setopt inc_append_history
-# but don't reload from the history file in the middle of a session
-unsetopt share_history
+# move up and down in local history, but ctrl-r uses global history
+# https://superuser.com/questions/446594/separate-up-arrow-lookback-for-local-and-global-zsh-history
+unsetopt inc_append_history
+unsetopt inc_append_history_time
+setopt sharehistory
+bindkey "${key[Up]}" up-line-or-local-history
+bindkey "${key[Down]}" down-line-or-local-history
+up-line-or-local-history() {
+    zle set-local-history 1
+    zle up-line-or-history
+    zle set-local-history 0
+}
+zle -N up-line-or-local-history
+down-line-or-local-history() {
+    zle set-local-history 1
+    zle down-line-or-history
+    zle set-local-history 0
+}
+zle -N down-line-or-local-history
+
+# clean up extra spaces in history commands
+setopt hist_reduce_blanks
+unsetopt hist_ignore_space
 
 # don't autojump into directories
 unsetopt autocd
