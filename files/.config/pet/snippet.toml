@@ -232,3 +232,18 @@
   description = "absorb commits changes"
   command = "git add . && git absorb --base $(stg id stgit-topher:{base}) ; stg repair && git restore --staged ."
   output = ""
+
+[[snippets]]
+  description = "start slapdash"
+  command = "python slapdash_impersonate.py"
+  output = ""
+
+[[snippets]]
+  description = "run prowler security groups unused"
+  command = "se"
+  output = ""
+
+[[snippets]]
+  description = "terraform fmt changed files"
+  command = "terraform fmt $(git diff --name-only HEAD^)"
+  output = ""
