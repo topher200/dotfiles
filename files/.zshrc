@@ -124,8 +124,8 @@ export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_TMUX_OPTS='-d 30%'
 # add fzf keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# source /usr/share/doc/fzf/examples/key-bindings.zsh
+# source /usr/share/doc/fzf/examples/completion.zsh
 
 setopt globdots
 
