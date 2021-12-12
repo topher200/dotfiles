@@ -1,4 +1,5 @@
-image: topher200/dotfiles:latest
+image:
+  file: Dockerfile
 
 tasks:
   - command: ./scripts/gitpod-startup.sh
