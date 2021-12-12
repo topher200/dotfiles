@@ -2,9 +2,9 @@ FROM gitpod/workspace-full
 
 # configure locals
 RUN sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y locales
-RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
-    dpkg-reconfigure --frontend=noninteractive locales && \
-    update-locale LANG=en_US.UTF-8
+RUN sudo sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    sudo dpkg-reconfigure --frontend=noninteractive locales && \
+    sudo update-locale LANG=en_US.UTF-8
 ENV LANG en_US.UTF-8
 
 # add my user user; sudo access with no password required
