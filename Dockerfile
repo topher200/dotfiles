@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM gitpod/workspace-full
 
 # configure locals
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y locales
@@ -39,7 +39,5 @@ COPY --chown=topher .gitignore /home/topher/dotfiles/.gitignore
 COPY --chown=topher .gitpod.yml /home/topher/dotfiles/.gitpod.yml
 
 RUN make stow
-
-ENV DockerfileForceBump=true
 
 CMD bash
