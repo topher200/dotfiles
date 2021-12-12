@@ -1,4 +1,4 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-base
 
 # configure locals
 RUN sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y locales
