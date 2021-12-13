@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -Eeuo pipefail
+set -Eeuox pipefail
 
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.

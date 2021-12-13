@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# verbose
-set -x
-set -euo pipefail
+set -Eeuox pipefail
 
 exists() {
     command -v "$1" >/dev/null 2>&1
