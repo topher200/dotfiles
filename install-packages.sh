@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# TODO: update this to fail loudly on errors
-set -x
+set -Eeuo pipefail
 
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
