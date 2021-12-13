@@ -20,14 +20,6 @@ COPY --chown=topher install-packages.sh ./
 COPY --chown=topher Makefile ./
 RUN make install-packages
 
-COPY --chown=topher . /home/topher/dotfiles
-RUN sudo chown topher -R -f /home/topher/dotfiles
-# hidden files are ignored by COPY by default
-COPY --chown=topher .circleci /home/topher/dotfiles/.circleci
-COPY --chown=topher .dockerignore /home/topher/dotfiles/.dockerignore
-COPY --chown=topher .gitignore /home/topher/dotfiles/.gitignore
-COPY --chown=topher .gitpod.yml /home/topher/dotfiles/.gitpod.yml
-
 # TODO: this is failing when running in gitpod. commenting out for now
 # RUN make stow
 
