@@ -247,3 +247,8 @@
   description = "terraform fmt changed files"
   command = "terraform fmt $(git diff --name-only HEAD^)"
   output = ""
+
+[[snippets]]
+  description = "run autoflake remove unused imports"
+  command = "autoflake --in-place --remove-all-unused-imports example.py"
+  output = ""
