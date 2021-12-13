@@ -1,3 +1,4 @@
+# TODO: make this inherit from ubuntu?
 FROM gitpod/workspace-full
 
 # configure locals

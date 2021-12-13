@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# TODO: update this to fail loudly on errors
 set -x
 
 # install packages
