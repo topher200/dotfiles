@@ -32,8 +32,9 @@ sudo apt-get update && sudo apt-get install -y \
     zsh
 
 # install Linuxbrew
-yes "" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# We want this to output $PATH without expansion
+git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew
+mkdir /home/linuxbrew/.linuxbrew/bin
+ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin
 # shellcheck disable=SC2016
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/topher/.zprofile
 
