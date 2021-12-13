@@ -21,8 +21,8 @@
   copa = checkout --patch
   cpa = commit --patch
   d = diff
-  dd = diff HEAD^
   dh = diff HEAD^
+  dhs = diff HEAD^ --stat
   dnp = !git --no-pager diff
   f = fetch
   p = push
