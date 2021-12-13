@@ -28,6 +28,6 @@ COPY --chown=topher .dockerignore /home/topher/dotfiles/.dockerignore
 COPY --chown=topher .gitignore /home/topher/dotfiles/.gitignore
 COPY --chown=topher .gitpod.yml /home/topher/dotfiles/.gitpod.yml
 
-RUN make stow
+# RUN make stow
 
 CMD bash
