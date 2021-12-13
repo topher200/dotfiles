@@ -13,4 +13,4 @@ sudo su -c 'git clone https://github.com/topher200/dotfiles /home/topher/dotfile
 sudo su -c 'make -C /home/topher/dotfiles stow' -- topher
 
 # startup a new tmux session as 'topher'
-sudo su -c 'tmux new-sess -A -s work' -- topher
+sudo su - topher
