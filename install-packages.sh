@@ -27,6 +27,7 @@ sudo apt-get update && sudo apt-get install -y \
     tmux \
     tree \
     unp \
+    unzip \
     vim \
     wget \
     zsh
@@ -36,7 +37,7 @@ git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/
 mkdir /home/linuxbrew/.linuxbrew/bin
 ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin
 # shellcheck disable=SC2016
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/topher/.zprofile
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
@@ -49,9 +50,8 @@ sudo npm install \
     sql-formatter \
     tldr
 
-exists()
-{
-  command -v "$1" >/dev/null 2>&1
+exists() {
+    command -v "$1" >/dev/null 2>&1
 }
 
 # pet snippet manager
