@@ -20,3 +20,4 @@ jobs:
         with:
           push: true
           tags: topher200/dotfiles:latest
+          file: ./.gitpod.Dockerfile          
