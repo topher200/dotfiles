@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# TODO: update this to fail loudly on errors
-set -x
+set -Eeuox pipefail
 
 # install packages
 # stop 'tzdata' from prompting for timezone. this can be removed when CircleCI passes without it.
@@ -36,8 +35,10 @@ sudo apt-get update && sudo apt-get install -y \
 git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew
 mkdir /home/linuxbrew/.linuxbrew/bin
 ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin
-# shellcheck disable=SC2016
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
+if [ -d /home/topher ]; then
+    # shellcheck disable=SC2016
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
+fi
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
