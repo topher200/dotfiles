@@ -144,5 +144,7 @@ source "$HOME"/stgitrc
 if [[ -f "$HOME"/Dropbox/secretsrc ]]; then
     source "$HOME"/Dropbox/secretsrc
 fi
-# source "$HOME"/condarc
+if [[ -f "$HOME"/condarc ]]; then
+    source "$HOME"/condarc
+fi
 source "$HOME"/memfaultrc
