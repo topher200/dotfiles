@@ -15,5 +15,4 @@ github:
     addComment: true
     # add a label once the prebuild is ready to pull requests (defaults to false)
     addLabel: true
-    # add a label once the prebuild is ready to pull requests (defaults to false)
-    addLabel: prebuilt-in-gitpod
+    # addLabel: prebuilt-in-gitpod
