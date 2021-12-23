@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ubuntu:20.10
+      - image: ubuntu:21.10
     steps:
       # install sudo and bash: https://github.com/dwyl/learn-circleci/issues/12
       - run: apt update && apt install -y sudo
@@ -19,7 +19,7 @@ jobs:
             - .
   test:
     docker:
-      - image: ubuntu:20.10
+      - image: ubuntu:21.10
     steps:
       # install sudo and bash: https://github.com/dwyl/learn-circleci/issues/12
       - run: apt update && apt install -y sudo
