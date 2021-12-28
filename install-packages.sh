@@ -2,9 +2,10 @@
 
 set -Eeuox pipefail
 
-# install packages.
-# TZ and DEBIAN_FRONTEND are to stop 'tzdata' from prompting for timezone during install
-sudo apt-get update && TZ="America/New_York" DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
+# install packages
+# timezone copy and DEBIAN_FRONTEND are to stop 'tzdata' from prompting for timezone during install
+ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     autojump \
     bat \
     curl \
