@@ -31,13 +31,21 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     wget \
     zsh
 
+exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
 # install Linuxbrew
-git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew
-mkdir /home/linuxbrew/.linuxbrew/bin
-ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin
-if [ -d /home/topher ]; then
-    # shellcheck disable=SC2016
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
+# if [ ! -d /home/linuxbrew/.linuxbrew/Homebrew ]; then
+# fi
+if ! exists brew; then
+    git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew
+    mkdir /home/linuxbrew/.linuxbrew/bin
+    ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin
+    if [ -d /home/topher ]; then
+        # shellcheck disable=SC2016
+        echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
+    fi
 fi
 
 # install python packages
@@ -50,10 +58,6 @@ sudo apt-get install -y npm
 sudo npm install \
     sql-formatter \
     tldr
-
-exists() {
-    command -v "$1" >/dev/null 2>&1
-}
 
 # pet snippet manager
 if [ ! -f /tmp/pet.deb ]; then

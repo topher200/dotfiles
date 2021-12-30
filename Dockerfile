@@ -1,4 +1,3 @@
-# TODO: make this inherit from ubuntu?
 FROM gitpod/workspace-full
 
 # add my user user; sudo access with no password required
