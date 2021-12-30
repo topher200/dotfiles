@@ -18,7 +18,6 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     neovim \
     jq \
     pspg \
-    ripgrep \
     shellcheck \
     silversearcher-ag \
     stow \
@@ -81,12 +80,6 @@ if [ ! -f /usr/local/bin/exa ]; then
     unp exa.zip
     sudo mv bin/exa /usr/local/bin
     popd || exit
-fi
-
-# install fzf, from https://github.com/junegunn/fzf#using-git
-if [ ! -d ~/.fzf ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --completion --no-update-rc --no-key-bindings
 fi
 
 # download stgit from git repo, since the version in ubuntu is out of date
