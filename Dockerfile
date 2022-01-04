@@ -1,8 +1,11 @@
-FROM gitpod/workspace-full
+FROM gitpod/workspace-base:latest
 
 # add my user user; sudo access with no password required
 # https://dev.to/emmanuelnk/using-sudo-without-password-prompt-as-non-root-docker-user-52bg
 RUN sudo adduser --disabled-password --gecos '' topher
+# overwrite gitpod's home setting
+ENV HOME=/home/topher
+RUN usermod --home /home/topher topher
 RUN sudo adduser topher sudo
 USER topher
 WORKDIR /home/topher/dotfiles

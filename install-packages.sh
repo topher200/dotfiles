@@ -7,7 +7,6 @@ set -Eeuox pipefail
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     autojump \
-    bat \
     curl \
     docker \
     file \
@@ -30,17 +29,16 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     wget \
     zsh
 
+# workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
+sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
+
 exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
 # install Linuxbrew
-# if [ ! -d /home/linuxbrew/.linuxbrew/Homebrew ]; then
-# fi
 if ! exists brew; then
-    git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew
-    mkdir /home/linuxbrew/.linuxbrew/bin
-    ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin
+    mkdir ~/.cache && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     if [ -d /home/topher ]; then
         # shellcheck disable=SC2016
         echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
