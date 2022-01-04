@@ -2,7 +2,7 @@
 # general aliases
 alias g='git'
 alias gs='git status'
-alias agh='ag --hidden'
+alias agh='ag --hidden --ignore .git'
 # application aliases
 alias cat='batcat -p'
 alias vim=nvim
