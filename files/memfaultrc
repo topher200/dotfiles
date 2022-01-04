@@ -2,15 +2,13 @@ export MEMFAULT_EMAIL=user@example.com
 export MEMFAULT_PASSWORD=asdf
 export MEMFAULT_ORG=acme-inc
 
+alias cam='conda deactivate && conda deactivate && conda deactivate && conda activate memfaultpy38'
+
 if [[ "$PWD" == "/home/topher" && -d "/home/topher/dev/memfault" ]]; then
     cd ~/dev/memfault
 fi
 
 if [[ "$PWD" == "/home/topher/dev/memfault" ]]; then
-    echo 'activating conda environment'
-    conda activate memfault
-    export PYTHONPATH="/home/topher/dev/memfault:$PYTHONPATH"
-
     # pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
     export INVOKE_RUN_ECHO=1
 
