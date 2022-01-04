@@ -74,7 +74,7 @@
   output = ""
 
 [[snippets]]
-  description = "open dotfiles tmux window"
+  description = "make this a dotfiles tmux window"
   command = "tmux rename-window dotfiles && tmux move-window -t 10 && cd ~/dotfiles && git status"
   output = ""
 
