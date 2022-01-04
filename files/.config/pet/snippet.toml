@@ -234,11 +234,6 @@
   output = ""
 
 [[snippets]]
-  description = "start slapdash"
-  command = "python slapdash_impersonate.py"
-  output = ""
-
-[[snippets]]
   description = "run prowler security groups unused"
   command = "se"
   output = ""
