@@ -89,6 +89,7 @@ zstyle :prompt:pure:git:stash show yes
 prompt pure
 # set -o vi
 bindkey -v
+# this bindkey is overriden later by fzf
 bindkey '^R' history-incremental-search-backward
 # 'v' enters VI mode, from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
 autoload -Uz edit-command-line
@@ -124,8 +125,8 @@ export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_TMUX_OPTS='-d 30%'
 # add fzf keybindings
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# source /usr/share/doc/fzf/examples/key-bindings.zsh
-# source /usr/share/doc/fzf/examples/completion.zsh
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 
 setopt globdots
 
