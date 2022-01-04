@@ -7,7 +7,6 @@ set -Eeuox pipefail
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     autojump \
-    bat \
     curl \
     docker \
     file \
@@ -18,7 +17,6 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     neovim \
     jq \
     pspg \
-    ripgrep \
     shellcheck \
     silversearcher-ag \
     stow \
@@ -31,13 +29,20 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     wget \
     zsh
 
+# workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
+sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
+
+exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
 # install Linuxbrew
-git clone --depth 1 https://github.com/Homebrew/brew /home/linuxbrew/.linuxbrew/Homebrew
-mkdir /home/linuxbrew/.linuxbrew/bin
-ln -s /home/linuxbrew/.linuxbrew/Homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin
-if [ -d /home/topher ]; then
-    # shellcheck disable=SC2016
-    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
+if ! exists brew; then
+    mkdir ~/.cache && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if [ -d /home/topher ]; then
+        # shellcheck disable=SC2016
+        echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
+    fi
 fi
 
 # install python packages
@@ -50,10 +55,6 @@ sudo apt-get install -y npm
 sudo npm install \
     sql-formatter \
     tldr
-
-exists() {
-    command -v "$1" >/dev/null 2>&1
-}
 
 # pet snippet manager
 if [ ! -f /tmp/pet.deb ]; then
@@ -77,12 +78,6 @@ if [ ! -f /usr/local/bin/exa ]; then
     unp exa.zip
     sudo mv bin/exa /usr/local/bin
     popd || exit
-fi
-
-# install fzf, from https://github.com/junegunn/fzf#using-git
-if [ ! -d ~/.fzf ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --completion --no-update-rc --no-key-bindings
 fi
 
 # download stgit from git repo, since the version in ubuntu is out of date
