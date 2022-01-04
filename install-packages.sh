@@ -80,17 +80,6 @@ if [ ! -f /usr/local/bin/exa ]; then
     popd || exit
 fi
 
-# download stgit from git repo, since the version in ubuntu is out of date
-if ! exists stg; then
-    wget https://github.com/stacked-git/stgit/releases/download/v1.4/stgit-1.4.tar.gz -O /tmp/stgit.tar.gz
-    pushd /tmp || exit
-    unp stgit.tar.gz
-    pushd stgit-1.4 || exit
-    make all
-    sudo make prefix=/usr/local install
-    popd || exit
-    popd || exit
-fi
 # install vim plugins
 vim +PlugInstall +qall
 

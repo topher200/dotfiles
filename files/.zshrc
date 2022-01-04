@@ -141,7 +141,6 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/D
 
 # include my non-shell-specific code
 source "$HOME"/topherrc
-source "$HOME"/stgitrc
 if [[ -f "$HOME"/Dropbox/secretsrc ]]; then
     source "$HOME"/Dropbox/secretsrc
 fi
