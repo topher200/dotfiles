@@ -37,13 +37,6 @@ exists() {
 }
 
 # install Linuxbrew
-if ! exists brew; then
-    mkdir ~/.cache && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    if [ -d /home/topher ]; then
-        # shellcheck disable=SC2016
-        echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>/home/topher/.zprofile
-    fi
-fi
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
