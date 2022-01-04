@@ -137,6 +137,11 @@ prompt_pure_preprompt_render() {
 	# Set the path.
 	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
 
+    # TOPHER: adding conda here
+	if [[ -n $CONDA_DEFAULT_ENV ]]; then
+        preprompt_parts+=("${CONDA_DEFAULT_ENV//[$'\t\r\n']}")
+	fi
+
 	# Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
 	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
@@ -212,9 +217,9 @@ prompt_pure_precmd() {
 	# index of psvar (12) here to avoid collisions with user defined entries.
 	psvar[12]=
 	# Check if a Conda environment is active and display its name.
-  # TOPHER: removing 'conda' environment
+    # TOPHER: removed 'conda' environment here
 	# if [[ -n $CONDA_DEFAULT_ENV ]]; then
-	#	psvar[12]="${CONDA_DEFAULT_ENV//[$'\t\r\n']}"
+		# psvar[12]="${CONDA_DEFAULT_ENV//[$'\t\r\n']}"
 	# fi
 	# When VIRTUAL_ENV_DISABLE_PROMPT is empty, it was unset by the user and
 	# Pure should take back control.

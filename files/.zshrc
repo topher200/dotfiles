@@ -84,7 +84,7 @@ PURE_CMD_MAX_EXEC_TIME=1
 PURE_PROMPT_SYMBOL=$
 PURE_PROMPT_VICMD_SYMBOL=$
 PURE_GIT_UNTRACKED_DIRTY=0
-zstyle ':prompt:pure:virtualenv' color green
+zstyle :prompt:pure:virtualenv color green
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 # set -o vi
