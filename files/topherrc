@@ -17,7 +17,7 @@ export LESS="-F -X $LESS"
 alias '$'=''
 alias '$ '=''
 
-# Delete the current branch you're on, leaving you on a deteched HEAD
+# Delete the current branch you're on, leaving you on a detached HEAD
 function gdcb {
     branch_name=`git symbolic-ref HEAD --short`
     current_rev=`git rev-parse HEAD`
