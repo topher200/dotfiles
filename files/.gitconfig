@@ -44,6 +44,7 @@
 	default = simple
 [commit]
   verbose = 1
+	template = /home/topher/.memfault-git-commit-template
 [core]
 	editor = vim
 	bare = false
