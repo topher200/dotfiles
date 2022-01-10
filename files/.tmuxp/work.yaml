@@ -3,24 +3,24 @@ windows:
 - focus: 'true'
   options: {}
   panes:
-  - shell_command: pwd
+  - shell_command: cam
   start_directory: /home/topher/dev/memfault
 - window_name: test
   window_index: 2
   options:
     automatic-rename: 'off'
   panes:
-  - shell_command: pwd
+  - shell_command: cam
   start_directory: /home/topher/dev/memfault
 - window_name: servers
   window_index: 4
   options:
     automatic-rename: 'off'
   panes:
-  - shell_command: inv dev
-  - shell_command: inv ingress.dev
-  - shell_command: inv dc.test-svc
-  - shell_command: inv dc.svc
+  - shell_command: cam && inv dev
+  - shell_command: cam && inv ingress.dev
+  - shell_command: cam && inv dc.test-svc
+  - shell_command: cam && inv dc.svc
   layout: even-vertical
   start_directory: /home/topher/dev/memfault
 - window_name: local-psql
@@ -28,7 +28,7 @@ windows:
   options:
     automatic-rename: 'off'
   panes:
-  - shell_command: inv db.psql
-  - shell_command: inv db.timescale-psql
+  - shell_command: cam && inv db.psql
+  - shell_command: cam && inv db.timescale-psql
   layout: even-horizontal
   start_directory: /home/topher/dev/memfault
