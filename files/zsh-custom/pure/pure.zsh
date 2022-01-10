@@ -231,8 +231,10 @@ prompt_pure_precmd() {
 	# Nix package manager integration. If used from within 'nix shell' - shell name is shown like so:
 	# ~/Projects/flake-utils-plus master
 	# flake-utils-plus ❯
-	if [[ -n $IN_NIX_SHELL ]]; then
-		psvar[12]="${name:-nix-shell}"
+	if zstyle -T ":prompt:pure:environment:nix-shell" show; then
+		if [[ -n $IN_NIX_SHELL ]]; then
+			psvar[12]="${name:-nix-shell}"
+		fi
 	fi
 
 	# Make sure VIM prompt is reset.
@@ -704,14 +706,14 @@ prompt_pure_state_setup() {
 	# Show `username@host` if logged in through SSH.
 	[[ -n $ssh_connection ]] && username='%F{$prompt_pure_colors[user]}%n%f'"$hostname"
 
-	# Show `username@host` if inside a container.
-	prompt_pure_is_inside_container && username='%F{$prompt_pure_colors[user]}%n%f'"$hostname"
+	# Show `username@host` if inside a container and not in GitHub Codespaces.
+	[[ -z "${CODESPACES}" ]] && prompt_pure_is_inside_container && username='%F{$prompt_pure_colors[user]}%n%f'"$hostname"
 
 	# Show `username@host` if root, with username in default color.
 	[[ $UID -eq 0 ]] && username='%F{$prompt_pure_colors[user:root]}%n%f'"$hostname"
 
 	typeset -gA prompt_pure_state
-	prompt_pure_state[version]="1.17.0"
+	prompt_pure_state[version]="1.18.0"
 	prompt_pure_state+=(
 		username "$username"
 		prompt	 "${PURE_PROMPT_SYMBOL:-❯}"

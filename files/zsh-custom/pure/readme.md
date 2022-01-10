@@ -71,16 +71,16 @@ Can be installed with `npm` or manually. Requires Git 2.15.2+ and ZSH 5.2+. Olde
 
 ### npm
 
-```console
-$ npm install --global pure-prompt
+```sh
+npm install --global pure-prompt
 ```
 
 That's it. Skip to [Getting started](#getting-started).
 
 ### [Homebrew](https://brew.sh)
 
-```console
-$ brew install pure
+```sh
+brew install pure
 ```
 
 ### Manually
@@ -131,6 +131,10 @@ Showing git stash status as part of the prompt is not activated by default. To a
 You can set Pure to only `git fetch` the upstream branch of the current local branch. In some cases, this can result in faster updates for Git arrows, but for most users, it's better to leave this setting disabled. You can enable it with:
 
 `zstyle :prompt:pure:git:fetch only_upstream yes`
+
+`nix-shell` integration adds the shell name to the prompt when used from within a nix shell. It is enabled by default, you can disable it with:
+
+`zstyle :prompt:pure:environment:nix-shell show no`
 
 ## Colors
 
