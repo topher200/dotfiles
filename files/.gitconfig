@@ -9,6 +9,7 @@
   br = bisect reset
   c = commit
   ca = commit --all
+  canv = commit --all --no-verify
   cam = commit --amend --no-edit
   camnv = commit --amend --no-edit --no-verify
   cama = commit --amend --all --no-edit
