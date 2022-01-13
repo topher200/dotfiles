@@ -20,7 +20,7 @@
 
 [[snippets]]
   description = "copy last command"
-  command = "echo \"\"\"!!\"\"\" | tee >(xsel -b)"
+  command = "echo \"\"\"!!\"\"\" | ansi2txt | tee >(xsel -b)"
   output = ""
 
 [[snippets]]
@@ -105,7 +105,7 @@
 
 [[snippets]]
   description = "rerun last command. upload stdout to gist and copy url to clipboard"
-  command = "!! | gh gist create - | tee >(xsel)"
+  command = "!! | ansi2txt | gh gist create - | tee >(xsel)"
   output = ""
 
 [[snippets]]
@@ -115,7 +115,7 @@
 
 [[snippets]]
   description = "create gist from clipboard"
-  command = "xsel -o | gh gist create - | tee >(xsel)"
+  command = "xsel -o | ansi2txt | gh gist create - | tee >(xsel)"
   output = ""
 
 [[snippets]]
