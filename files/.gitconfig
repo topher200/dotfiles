@@ -83,3 +83,5 @@
     tool = nvimdiff
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+	conflictStyle = zdiff3
