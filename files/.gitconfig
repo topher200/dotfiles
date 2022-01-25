@@ -16,10 +16,10 @@
   camanv = commit --amend --all --no-edit --no-verify
   came = commit --amend --edit
   camenv = commit --amend --edit --no-verify
-  camea = commit --amend --edit --all
-  cameanv = commit --amend --edit --all --no-verify
+  camae = commit --amend --all --edit
+  camaenv = commit --amend --edit --all --no-verify
   campa = commit --amend --patch --no-edit
-  camepa = commit --amend --edit --patch
+  campae = commit --amend --edit --patch
   co = checkout
   com = checkout master
   coom = checkout origin/master

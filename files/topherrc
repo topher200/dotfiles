@@ -2,6 +2,7 @@
 # general aliases
 alias g='git'
 alias gs='git status'
+alias glb="git branch --sort=committerdate | tail -n 15"
 alias agh='ag --hidden --ignore .git'
 # application aliases
 alias cat='batcat -p'
