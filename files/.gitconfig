@@ -84,4 +84,5 @@
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-	conflictStyle = zdiff3
+    # TODO: update to zdiff3 when we're on Git 2.35
+	conflictStyle = diff3
