@@ -1,8 +1,10 @@
-# defaults:
-# quit: 'q'
-# quit-alt1: '<c-c>' # alternative/alias of quit
-# return: '<esc>' # return to previous menu, will quit if there's nowhere to return
-# quitWithoutChangingDirectory: 'Q'
+# full config list: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
+
+quitOnTopLevelReturn: true
+
+git:
+  disableForcePushing: true
+  parseEmoji: true
 
 keybinding:
   universal:
