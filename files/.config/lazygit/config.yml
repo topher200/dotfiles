@@ -1,3 +1,9 @@
+# defaults:
+# quit: 'q'
+# quit-alt1: '<c-c>' # alternative/alias of quit
+# return: '<esc>' # return to previous menu, will quit if there's nowhere to return
+# quitWithoutChangingDirectory: 'Q'
+
 keybinding:
   universal:
     quit: '<esc>'
