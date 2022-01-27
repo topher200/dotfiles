@@ -1,12 +1,6 @@
 .PHONY: stow
 stow:
-	# temp adding --adopt to grab any existing files; existing files were
-	# causing issues when running `make stow` during the prebuild in
-	# .gitpod.Dockerfile. we probably want this to be a '--force' (which doesn't
-	# seem to exist!). i'm afraid this solution might cause some files to be not
-	# correctly overridden (ie we get a system zshrc)... might have to solve
-	# that problem later
-	stow --restow -v --adopt --target ~ files
+	stow --restow -v --target ~ files
 
 .PHONY: install
 install: install-packages stow
