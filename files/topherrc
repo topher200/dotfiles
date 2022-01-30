@@ -2,16 +2,17 @@
 # general aliases
 alias g='git'
 alias gs='git status'
-alias glb="git branch --sort=committerdate | tail -n 15"
+alias glb="git branch --sort=committerdate | grep -v 'dura-' | tail -n 15"
 alias agh='ag --hidden --ignore .git'
 # application aliases
 alias cat='batcat -p'
 alias vim=nvim
-alias rg='rg --smart-case --no-messages'
-alias rgh="rg --smart-case  --no-messages --hidden -g '!.git/'"
+alias gg=lazygit
 alias lg=lazygit
 alias ls="exa"
 alias ll="exa -al"
+alias rg='rg --smart-case --no-messages'
+alias rgh="rg --smart-case  --no-messages --hidden -g '!.git/'"
 alias xsel="xsel --clipboard"
 # don't use a pager if less than a screen
 export LESS="-F -X $LESS"

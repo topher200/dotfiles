@@ -28,6 +28,8 @@
   d = diff
   dh = diff HEAD^
   dhs = diff HEAD^ --stat
+  dm = diff master
+  dom = diff master
   dnp = !git --no-pager diff
   f = fetch
   p = push
