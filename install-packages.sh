@@ -39,6 +39,7 @@ exists() {
 
 # install Linuxbrew
 # brew install jesseduffield/lazygit/lazygit
+# brew install jesseduffield/lazydocker/lazydocker
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
