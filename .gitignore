@@ -12,3 +12,4 @@ files/.config/systemd/
 files/.tmux/plugins/
 files/.tmux/resurrect/
 files/.ipython/profile_default/history.sqlite
+files/.config/lazygit/state.yml

@@ -12,6 +12,7 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     curl \
     docker \
     file \
+    flameshot \
     fzf \
     htop \
     httpie \
