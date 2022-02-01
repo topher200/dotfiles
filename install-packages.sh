@@ -7,6 +7,7 @@ set -Eeuox pipefail
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     autojump \
+    build-essential \
     colorized-logs \
     curl \
     docker \
