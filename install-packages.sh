@@ -87,6 +87,11 @@ if [ ! -f /usr/local/bin/exa ]; then
     popd || exit
 fi
 
+# install oh-my-zsh
+if [ ! -f /usr/local/bin/exa ]; then
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
 # install vim plugins
 vim +PlugInstall +qall
 
