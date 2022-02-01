@@ -39,8 +39,6 @@ sudo su - $NEWUSER
 - https://github.com/sindresorhus/pure
   - `rm -r files/zsh-custom/pure && git clone https://github.com/sindresorhus/pure files/zsh-custom/pure --depth 1 && rm -rf files/zsh-custom/pure/.git`
 
-- `git clone https://github.com/Aloxaf/fzf-tab files/.oh-my-zsh/custom`
-
 ## gem packages
 - update with `gem list`
 
