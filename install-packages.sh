@@ -46,6 +46,7 @@ fi
 brew install gcc
 brew install jesseduffield/lazygit/lazygit
 brew install jesseduffield/lazydocker/lazydocker
+brew install pre-commit
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
