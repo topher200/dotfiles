@@ -40,9 +40,10 @@ command_exists() {
 # install Linuxbrew
 if ! command_exists brew ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 brew install jesseduffield/lazygit/lazygit
 brew install jesseduffield/lazydocker/lazydocker
-fi
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
