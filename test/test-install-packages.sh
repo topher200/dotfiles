@@ -14,3 +14,4 @@ fail_if_not_exists() {
 }
 
 fail_if_not_exists brew
+fail_if_not_exists lazygit
