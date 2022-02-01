@@ -38,8 +38,11 @@ exists() {
 }
 
 # install Linuxbrew
-# brew install jesseduffield/lazygit/lazygit
-# brew install jesseduffield/lazydocker/lazydocker
+if [ ! exists brew ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install jesseduffield/lazygit/lazygit
+brew install jesseduffield/lazydocker/lazydocker
+fi
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
