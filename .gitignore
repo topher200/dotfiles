@@ -4,10 +4,10 @@ node_modules
 package-lock.json
 
 files/.config/htop/htoprc
+files/.config/lazygit/state.yml
 files/.config/nvim/.netrwhist
 files/.config/pulse/
 files/.config/systemd/
 files/.tmux/plugins/
 files/.tmux/resurrect/
 files/.ipython/profile_default/history.sqlite
-
