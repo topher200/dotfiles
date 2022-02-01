@@ -37,4 +37,3 @@ else
     printf '  %s\n' "${ERRORS[@]}"
     exit 1
 fi
-
