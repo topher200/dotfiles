@@ -13,4 +13,4 @@ fail_if_not_exists() {
     fi
 }
 
-# fail_if_not_exists stg
+fail_if_not_exists brew
