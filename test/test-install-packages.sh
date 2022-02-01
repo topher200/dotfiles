@@ -13,5 +13,7 @@ fail_if_not_exists() {
     fi
 }
 
-fail_if_not_exists brew
 fail_if_not_exists lazygit
+
+# our test environment might not add brew to our path
+fail_if_not_exists /home/linuxbrew/.linuxbrew/bin/brew
