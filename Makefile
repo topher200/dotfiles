@@ -7,6 +7,7 @@ install: install-packages stow
 
 .PHONY: test
 test:
+	pre-commit run --all-files
 	./test/run_shellcheck.sh
 	./test/test-install-packages.sh
 
