@@ -80,4 +80,4 @@ fi
 vim +PlugInstall +qall
 
 # set shell to zsh
-sudo chsh -s "$(which zsh)" "$(whoami)"
+sudo chsh -s "$(command -v zsh)" "$(whoami)"
