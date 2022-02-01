@@ -11,6 +11,9 @@ cd dotfiles
 make install
 ```
 
+### Install tmux plugins
+- Prefix + I (`ctrl-a I`)
+
 ### install spacemacs
 ```
 rm -r ~/.emacs.d # deleting the .emacs dir created by 'stow'
