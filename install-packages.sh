@@ -47,16 +47,12 @@ brew install gcc
 brew install jesseduffield/lazygit/lazygit
 brew install jesseduffield/lazydocker/lazydocker
 brew install pre-commit
-
-# TODO: try enabling this, not sure if it will pass CI or work in gitpod. to
-# test, see if CI passes AND launch gitpod and see if pre-commmit hooks are
-# present on 'git commit'
-# pre-commit install
+brew install thefuck
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
-sudo pip3 install \
-    thefuck
+# sudo pip3 install \
+    # thefuck
 
 # install node packages
 sudo apt-get install -y npm

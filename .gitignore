@@ -1,6 +1,7 @@
 *.swp
 *__pycache__*
 node_modules
+package.json
 package-lock.json
 
 files/.config/htop/htoprc
