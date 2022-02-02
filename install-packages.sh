@@ -50,6 +50,7 @@ brew install jesseduffield/lazydocker/lazydocker
 brew install pre-commit
 brew install thefuck
 brew install tmuxp
+brew install tldr
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
@@ -59,8 +60,7 @@ sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
 # install node packages
 sudo apt-get install -y npm
 sudo npm install \
-    sql-formatter \
-    tldr
+    sql-formatter
 
 # pet snippet manager
 if [ ! -f /tmp/pet.deb ]; then
