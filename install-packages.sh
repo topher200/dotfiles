@@ -51,6 +51,7 @@ brew install pre-commit
 brew install thefuck
 brew install tmuxp
 brew install tldr
+brew install screenplaydev/tap/graphite
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
