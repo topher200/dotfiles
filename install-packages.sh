@@ -3,6 +3,8 @@
 set -Eeuox pipefail
 
 # install packages
+# use the latest version of git (important for git 2.35)
+sudo add-apt-repository ppa:git-core/ppa -y
 # timezone copy and DEBIAN_FRONTEND are to stop 'tzdata' from prompting for timezone during install
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
@@ -34,6 +36,9 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 
 # workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
 sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
+
+sudo apt-get update
+sudo apt-get install git -y
 
 command_exists() {
     command -v "$1" >/dev/null 2>&1
