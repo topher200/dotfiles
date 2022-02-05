@@ -15,7 +15,6 @@ plugins=(
     httpie
     poetry
     safe-paste
-    thefuck
 )
 source $ZSH/oh-my-zsh.sh
 
