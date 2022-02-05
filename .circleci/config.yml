@@ -13,8 +13,8 @@ jobs:
       - checkout
       - run: make install
       - run:
-        shell: /bin/zsh
-        command: make test
+          command: make test
+          shell: /bin/zsh
 workflows:
   version: 2
   build_and_test:
