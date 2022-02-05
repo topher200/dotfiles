@@ -10,6 +10,10 @@ test:
 	./test/run_shellcheck.sh
 	./test/test-install-packages.sh
 
+.PHONY: lint
+lint:
+	pre-commit run --all-files
+
 .PHONY: stow-force
 stow-force:
 	stow --restow --adopt -v files

@@ -1,7 +1,7 @@
 swipe:
   3:
     left:
-      command: "xdotool key alt+Right" # History forward 
+      command: "xdotool key alt+Right" # History forward
       threshold: 0.5
     right:
       command: "xdotool key alt+Left" # History back
