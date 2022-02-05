@@ -4,11 +4,11 @@ export MEMFAULT_ORG=acme-inc
 
 alias cam='conda deactivate && conda deactivate && conda deactivate && conda activate memfault'
 
-if [[ "$PWD" == "/home/topher" && -d "/home/topher/dev/memfault" ]]; then
-    cd ~/dev/memfault
+if [[ "$PWD" == "/home/topher" && -d "/home/topher/memfault" ]]; then
+    cd ~/memfault
 fi
 
-if [[ "$PWD" == "/home/topher/dev/memfault" ]]; then
+if [[ "$PWD" == "/home/topher/memfault" ]]; then
     # pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
     export INVOKE_RUN_ECHO=1
 

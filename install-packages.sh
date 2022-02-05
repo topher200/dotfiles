@@ -12,6 +12,7 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
     curl \
     docker \
     file \
+    flameshot \
     fzf \
     htop \
     httpie \
@@ -47,22 +48,20 @@ brew install gcc
 brew install jesseduffield/lazygit/lazygit
 brew install jesseduffield/lazydocker/lazydocker
 brew install pre-commit
-
-# TODO: try enabling this, not sure if it will pass CI or work in gitpod. to
-# test, see if CI passes AND launch gitpod and see if pre-commmit hooks are
-# present on 'git commit'
-# pre-commit install
+brew install thefuck
+brew install tmuxp
+brew install tldr
+brew install screenplaydev/tap/graphite
 
 # install python packages
 sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
-sudo pip3 install \
-    thefuck
+# sudo pip3 install \
+    # thefuck
 
 # install node packages
 sudo apt-get install -y npm
 sudo npm install \
-    sql-formatter \
-    tldr
+    sql-formatter
 
 # pet snippet manager
 if [ ! -f /tmp/pet.deb ]; then
