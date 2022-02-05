@@ -35,4 +35,4 @@ install-packages:
 .PHONY: docker
 docker:
 	docker build --tag dotfiles .
-	docker run --rm -it dotfiles /bin/bash
+	docker run --rm -it dotfiles zsh
