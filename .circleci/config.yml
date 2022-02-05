@@ -12,7 +12,9 @@ jobs:
       - run: sudo apt install -y make
       - checkout
       - run: make install
-      - run: make test
+      - run:
+        shell: /bin/zsh
+        command: make test
 workflows:
   version: 2
   build_and_test:
