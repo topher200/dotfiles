@@ -222,3 +222,8 @@
   description = "run autoflake remove unused imports"
   command = "autoflake --in-place --remove-all-unused-imports example.py"
   output = ""
+
+[[snippets]]
+  description = "redis docker pytest container cli"
+  command = "redis-cli -p $(docker ps | grep pytest-master_redis_1 | perl -nE 'say/:(\\d+)-/')"
+  output = ""
