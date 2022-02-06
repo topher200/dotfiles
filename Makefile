@@ -40,4 +40,3 @@ docker-build:
 .PHONY: docker-run
 docker-run: docker-build
 	docker run --rm -it dotfiles zsh
-
