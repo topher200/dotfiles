@@ -16,7 +16,7 @@ exclude: |
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
+    rev: v4.1.0
     hooks:
       - id: check-added-large-files # Prevent giant files from being committed
       - id: check-case-conflict # Check for files that would conflict in case-insensitive filesystems
@@ -27,12 +27,12 @@ repos:
       - id: trailing-whitespace # This hook trims trailing whitespace.
 
   - repo: https://github.com/AleksaC/circleci-cli-py
-    rev: v0.1.15932
+    rev: v0.1.16535
     hooks:
       - id: circle-ci-validator
         files: \.circleci/.*\.yml$
 
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: ""
+    rev: "v2.5.1"
     hooks:
       - id: prettier
