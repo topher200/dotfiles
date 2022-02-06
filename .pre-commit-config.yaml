@@ -13,6 +13,12 @@ repos:
       rev: 0.0.11 # or specific tag
       hooks:
           - id: yamlfmt
+    - repo: https://github.com/syntaqx/git-hooks
+      rev: v0.0.17
+      hooks:
+          - id: circleci-config-validate
+          - id: shellcheck
+          - id: shfmt
 
 exclude: |
     (?x)^(
