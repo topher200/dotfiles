@@ -12,8 +12,7 @@ test:
 	./test/test-install-packages.sh
 
 .PHONY: test-in-docker
-test-in-docker:
-	docker build --tag dotfiles .
+test-in-docker: docker-build
 	# TODO: enable this when we know it passes
 	# pre-commit run --all-files
 	docker run --rm -it dotfiles ./test/run_shellcheck.sh
@@ -37,7 +36,11 @@ install-base-packages:
 install-packages:
 	./scripts/install-packages.sh
 
-.PHONY: docker
-docker:
-	docker build --tag dotfiles .
+.PHONY: docker-build
+docker-build:
+	DOCKER_BUILDKIT=1 docker build --tag dotfiles --build-arg BUILDKIT_INLINE_CACHE=1 .
+
+.PHONY: docker-run
+docker-run: docker-build
 	docker run --rm -it dotfiles zsh
+
