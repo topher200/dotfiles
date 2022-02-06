@@ -29,9 +29,13 @@ install-spacemacs:
 	git clone git@github.com:topher200/spacemacs.git ~/.emacs.d
 	make stow
 
+.PHONY: install-base-packages
+install-base-packages:
+	./scripts/install-base-packages.sh
+
 .PHONY: install-packages
 install-packages:
-	./install-packages.sh
+	./scripts/install-packages.sh
 
 .PHONY: docker
 docker:
