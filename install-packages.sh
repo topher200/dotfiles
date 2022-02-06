@@ -87,8 +87,5 @@ if [ ! -f /usr/local/bin/exa ]; then
     popd || exit
 fi
 
-# install vim plugins
-vim +PlugInstall +qall
-
 # set shell to zsh
 sudo chsh -s "$(command -v zsh)" "$(whoami)"
