@@ -2,13 +2,12 @@ version: 2.1
 
 jobs:
   test:
-    docker:
-      - image: ubuntu:21.10
+    machine:
+      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
+
     steps:
       - run: apt update && apt install -y make
       - checkout
-      - setup_remote_docker:
-          version: 19.03.13
       - run: make test-in-docker
 workflows:
   version: 2
