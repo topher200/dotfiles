@@ -22,31 +22,30 @@ alias '$ '=''
 
 # Delete the current branch you're on, leaving you on a detached HEAD
 function gdcb {
-    branch_name=`git symbolic-ref HEAD --short`
-    current_rev=`git rev-parse HEAD`
+    branch_name=$(git symbolic-ref HEAD --short)
+    current_rev=$(git rev-parse HEAD)
     git checkout $current_rev
     git branch -D $branch_name
 }
 
 function ec2_instance_id() {
-    aws ec2 describe-instances | \
+    aws ec2 describe-instances |
         jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .InstanceId" -r
 }
 
 function ec2_ip_address() {
-    aws ec2 describe-instances | \
+    aws ec2 describe-instances |
         jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .PublicDnsName" -r
 }
 function ec2_ip_address_private() {
-    aws ec2 describe-instances | \
+    aws ec2 describe-instances |
         jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .PrivateDnsName" -r
 }
 function rds_ip_address() {
-    aws rds describe-db-instances | \
+    aws rds describe-db-instances |
         jq ".DBInstances[] | select(.DBInstanceIdentifier==\"$1\") | .Endpoint.Address" -r
 }
 ### END COMMAND LINE ALIASES ###
-
 
 ### INSTALL AND CONFIGURE APPLICATIONS ###
 # load ssh remote shells in vi mode
@@ -63,24 +62,15 @@ function sshv() {
 # Installation: /home/linuxbrew/.linuxbrew/bin/gt completion >> ~/.zshrc
 #    or /home/linuxbrew/.linuxbrew/bin/gt completion >> ~/.zsh_profile on OSX.
 #
-_gt_yargs_completions()
-{
-  local reply
-  local si=$IFS
-  IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" /home/linuxbrew/.linuxbrew/bin/gt --get-yargs-completions "${words[@]}"))
-  IFS=$si
-  _describe 'values' reply
+_gt_yargs_completions() {
+    local reply
+    local si=$IFS
+    IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT - 1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" /home/linuxbrew/.linuxbrew/bin/gt --get-yargs-completions "${words[@]}"))
+    IFS=$si
+    _describe 'values' reply
 }
 compdef _gt_yargs_completions gt
 ###-end-gt-completions-###
 
 export PATH=/home/topher/.cargo/bin:$PATH
-
-# homebrew pathing
-export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
-export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
-export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";

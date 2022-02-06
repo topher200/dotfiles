@@ -7,7 +7,7 @@ install: install-packages stow
 
 .PHONY: test
 test:
-	./test/run-precommit-on-all-files.sh
+	BASH_ENV="/home/topher/envrc" ./test/run-precommit-on-all-files.sh
 	./test/run_shellcheck.sh
 	./test/test-install-packages.sh
 
