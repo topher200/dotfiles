@@ -8,8 +8,8 @@ jobs:
       - run: apt update && apt install -y make
       - checkout
       - setup_remote_docker:
-        version: 19.03.13
-        docker_layer_caching: true
+          version: 19.03.13
+          docker_layer_caching: true
       - run: make test-in-docker
 workflows:
   version: 2
