@@ -19,10 +19,6 @@ test-in-docker:
 	docker run --rm -it dotfiles ./test/run_shellcheck.sh
 	docker run --rm -it dotfiles ./test/test-install-packages.sh
 
-.PHONY: stow-force
-stow-force:
-	stow --restow --adopt -v files
-
 .PHONY: stow-uninstall
 stow-uninstall:
 	stow --delete -v files
