@@ -1,3 +1,4 @@
+---
 name: forty_thieves
 root: ~/dev/go/src/github.com/topher200/forty-thieves
 
@@ -41,31 +42,31 @@ root: ~/dev/go/src/github.com/topher200/forty-thieves
 # post: tmux -CC attach -t wordstream
 
 windows:
-  - forty-thieves:
-      layout: main-vertical
-      panes:
-        - cd .
-  - run-solver:
-      layout: main-vertical
-      panes:
-        - #make run-solvercmd
-  - run-server:
-      layout: main-vertical
-      panes:
-        - #make run-webcmd
-  - prometheus:
-      layout: main-vertical
-      panes:
-        - #prometheus --config.file prometheus/prometheus.yml
-  - test:
-      layout: main-vertical
-      panes:
-        - make test
-  - deck-repo:
-      layout: main-vertical
-      panes:
-        - cd ~/dev/go/src/github.com/topher200/deck
-  - psql:
-      layout: main-vertical
-      panes:
-        - psql -d forty_thieves
+    - forty-thieves:
+          layout: main-vertical
+          panes:
+              - cd .
+    - run-solver:
+          layout: main-vertical
+          panes:
+              - make run-solvercmd
+    - run-server:
+          layout: main-vertical
+          panes:
+              - make run-webcmd
+    - prometheus:
+          layout: main-vertical
+          panes:
+              - prometheus --config.file prometheus/prometheus.yml
+    - test:
+          layout: main-vertical
+          panes:
+              - make test
+    - deck-repo:
+          layout: main-vertical
+          panes:
+              - cd ~/dev/go/src/github.com/topher200/deck
+    - psql:
+          layout: main-vertical
+          panes:
+              - psql -d forty_thieves

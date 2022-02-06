@@ -1,13 +1,14 @@
+---
 # full config list: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
 
 quitOnTopLevelReturn: true
 
 git:
-  disableForcePushing: true
-  parseEmoji: true
+    disableForcePushing: true
+    parseEmoji: true
 
 keybinding:
-  universal:
-    quit: '<esc>'
-    quit-alt1: '<c-c>' # alternative/alias of quit
-    return: 'q' # return to previous menu, will quit if there's nowhere to return
+    universal:
+        quit: <esc>
+        quit-alt1: <c-c> # alternative/alias of quit
+        return: q # return to previous menu, will quit if there's nowhere to return
