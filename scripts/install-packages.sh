@@ -9,6 +9,7 @@ if ! command_exists brew; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 brew install circleci
+brew install prettier
 
 command_exists() {
     command -v "$1" >/dev/null 2>&1
