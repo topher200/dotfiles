@@ -227,3 +227,8 @@
   description = "redis docker pytest container cli"
   command = "redis-cli -p $(docker ps | grep pytest-master_redis_1 | perl -nE 'say/:(\\d+)-/')"
   output = ""
+
+[[snippets]]
+  description = "update repo, rebase all branches, push stack submit"
+  command = "gt rs && gt sf && gt ss"
+  output = ""
