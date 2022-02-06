@@ -27,7 +27,7 @@ install-all-packages:
 
 .PHONY: docker-build
 docker-build:
-	DOCKER_BUILDKIT=1 docker build --tag dotfiles --build-arg BUILDKIT_INLINE_CACHE=1 .
+	DOCKER_BUILDKIT=1 docker build --tag dotfiles --cache-from topher200/dotfiles:latest --build-arg BUILDKIT_INLINE_CACHE=1 .
 
 .PHONY: docker-repl
 docker-repl: docker-build
