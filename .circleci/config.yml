@@ -1,22 +1,16 @@
 version: 2.1
 
 jobs:
-  build-and-test:
-    docker:
-      - image: ubuntu:21.10
-    steps:
-      # install sudo and bash: https://github.com/dwyl/learn-circleci/issues/12
-      - run: apt update && apt install -y sudo
-      - run: ls -al /bin/sh && sudo rm /bin/sh && sudo ln -s /bin/bash /bin/sh && ls -al /bin/sh
+  test:
+    machine:
+      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
 
-      - run: sudo apt install -y make
+    steps:
+      - run: sudo apt update && sudo apt install -y make
       - checkout
-      - run: make install
-      - run:
-          command: make test
-          shell: /bin/zsh
+      - run: make test-in-docker
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - build-and-test
+      - test
