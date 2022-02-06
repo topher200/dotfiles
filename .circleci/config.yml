@@ -8,7 +8,7 @@ jobs:
     steps:
       - run: sudo apt update && sudo apt install -y make
       - checkout
-      - run: make test-in-docker
+      - run: BUILDKIT_PROGRESS=plain make test-in-docker
 workflows:
   version: 2
   build_and_test:
