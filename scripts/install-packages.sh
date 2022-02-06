@@ -2,71 +2,12 @@
 
 set -Eeuox pipefail
 
-# install packages
-# use the latest version of git (important for git 2.35)
-sudo add-apt-repository ppa:git-core/ppa -y
-# timezone copy and DEBIAN_FRONTEND are to stop 'tzdata' from prompting for timezone during install
-sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
-sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
-    autojump \
-    build-essential \
-    colorized-logs \
-    curl \
-    docker \
-    file \
-    flameshot \
-    fzf \
-    htop \
-    httpie \
-    moreutils \
-    neovim \
-    jq \
-    pspg \
-    shellcheck \
-    silversearcher-ag \
-    stow \
-    tig \
-    tmux \
-    tree \
-    unp \
-    unzip \
-    vim \
-    wget \
-    zsh
-
 # workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
 sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
-
-sudo apt-get update
-sudo apt-get install git -y
 
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
-
-# install Linuxbrew
-if ! command_exists brew ; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-brew install gcc
-brew install jesseduffield/lazygit/lazygit
-brew install jesseduffield/lazydocker/lazydocker
-brew install pre-commit
-brew install thefuck
-brew install tmuxp
-brew install tldr
-brew install screenplaydev/tap/graphite
-
-# install python packages
-sudo apt-get install -y python3-dev python3-pip python3-setuptools python3-venv
-# sudo pip3 install \
-    # thefuck
-
-# install node packages
-sudo apt-get install -y npm
-sudo npm install \
-    sql-formatter
 
 # pet snippet manager
 if [ ! -f /tmp/pet.deb ]; then

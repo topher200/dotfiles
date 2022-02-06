@@ -13,10 +13,9 @@ WORKDIR /home/topher/dev/dotfiles
 RUN sudo apt-get install -y make
 
 COPY --chown=topher scripts/install-base-packages.sh ./scripts/install-base-packages.sh
-COPY --chown=topher Makefile ./
-RUN make install-base-packages
+RUN ./scripts/install-base-packages.sh
 COPY --chown=topher scripts/install-packages.sh ./scripts/install-packages.sh
-RUN make install-packages
+RUN ./scripts/install-packages.sh
 
 COPY --chown=topher . /home/topher/dev/dotfiles
 RUN sudo chown topher -R -f /home/topher/dev/dotfiles
@@ -26,6 +25,6 @@ COPY --chown=topher .dockerignore /home/topher/dev/dotfiles/.dockerignore
 COPY --chown=topher .gitignore /home/topher/dev/dotfiles/.gitignore
 COPY --chown=topher .gitpod.yml /home/topher/dev/dotfiles/.gitpod.yml
 
-RUN make stow
+RUN make
 
 CMD zsh
