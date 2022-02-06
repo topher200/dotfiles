@@ -26,4 +26,4 @@ COPY --chown=topher .gitpod.yml /home/topher/dev/dotfiles/.gitpod.yml
 
 RUN make stow
 
-CMD bash
+CMD zsh
