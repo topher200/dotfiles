@@ -14,7 +14,7 @@ jobs:
             # https://github.com/moby/buildkit/issues/1981
             # without this pull we see CI runs stop using the cache on the 'WORKDIR'
             # call in the Dockerfile.
-            - run: docker pull topher200/dotfiles:buildcache
+            - run: docker pull topher200/dotfiles:latest
             - run: BUILDKIT_PROGRESS=plain make test-in-docker
 workflows:
     version: 2
