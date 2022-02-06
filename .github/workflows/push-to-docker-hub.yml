@@ -24,3 +24,5 @@ jobs:
           push: true
           tags: topher200/dotfiles:latest
           file: ./Dockerfile
+          cache-from: type=registry,ref=topher200/dotfiles:buildcache
+          cache-to: type=registry,ref=topher200/dotfiles:buildcache,mode=max
