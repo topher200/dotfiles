@@ -7,16 +7,13 @@ install: install-packages stow
 
 .PHONY: test
 test:
-	pre-commit run --all-files
+	./test/run-precommit-on-all-files.sh
 	./test/run_shellcheck.sh
 	./test/test-install-packages.sh
 
 .PHONY: test-in-docker
 test-in-docker: docker-build
-	# TODO: enable this when we know it passes
-	# pre-commit run --all-files
-	docker run --rm -it dotfiles ./test/run_shellcheck.sh
-	docker run --rm -it dotfiles ./test/test-install-packages.sh
+	docker run --rm -it dotfiles make test
 
 .PHONY: stow-uninstall
 stow-uninstall:
