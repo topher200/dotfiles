@@ -6,6 +6,7 @@ jobs:
       - image: ubuntu:21.10
     steps:
       - checkout
+      - run: sudo apt install -y make
       - run: make test-in-docker
 workflows:
   version: 2
