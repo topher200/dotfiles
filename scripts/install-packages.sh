@@ -5,6 +5,8 @@ set -Eeuox pipefail
 # workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
 sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
+brew install circleci
+
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
