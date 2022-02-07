@@ -1,0 +1,115 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+exclude: |
+  (?x)^(
+      .*/__generated__/.*|
+      .yarn/.*|
+      py-packages/pyOCD/.*
+  )$
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-added-large-files # Prevent giant files from being committed
+      - id: check-case-conflict # Check for files that would conflict in case-insensitive filesystems
+      - id: check-executables-have-shebangs # Ensures that (non-binary) executables have a shebang.
+      - id: check-json # This hook checks json files for parseable syntax.
+      - id: check-yaml # This hook checks yaml files for parseable syntax.
+      - id: end-of-file-fixer # Ensures that a file is either empty, or ends with one newline.
+      - id: trailing-whitespace # This hook trims trailing whitespace.
+        exclude: |
+          (?x)^(
+              .*/snap_.*\.py
+          )$
+
+  # use local hooks, so we use the versions installed via conda/poetry rather
+  # than relying on separately defined pre-commit versions
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: node_modules/.bin/prettier
+        language: system
+        args: [--write]
+        files: \.(js|ts|jsx|tsx|css|less|html|json|markdown|md|yaml|yml)$
+
+      - id: eslint
+        name: eslint
+        entry: node_modules/.bin/eslint_d
+        language: system
+        args: [--fix]
+        files: \.(js|ts|jsx|tsx)$
+
+      - id: stylelint
+        name: stylelint
+        entry: node_modules/.bin/stylelint
+        language: system
+        args: [--fix]
+        files: \.(css|less)$
+
+      - id: isort
+        name: isort
+        entry: isort
+        language: system
+        args: [--profile, black]
+        files: \.(py|pyi)$
+
+      - id: black
+        name: black
+        entry: black
+        language: system
+        files: \.(py|pyi)$
+
+      - id: flake8
+        name: flake8
+        entry: flake8
+        language: system
+        files: \.(py|pyi)$
+        exclude: |
+          (?x)^(
+              .*/snap_.*\.py
+          )$
+
+      - id: ktlint
+        name: ktlint
+        entry: ./.lint/lintstaged-ktlint.sh
+        language: system
+        files: \.(kt|kts)$
+
+      # Require '#pragma once' on specific c header files
+      - id: pragma-once
+        name: pragma-once
+        entry: ./.lint/lint-pragma-once.sh
+        language: system
+        files: sdk/embedded/components/.*\.h$
+
+      - id: check-urls-404
+        name: check-urls-404
+        entry: ./.lint/check_urls_404.py
+        language: system
+        files: mflt.io/_redirects
+
+      - id: mypy
+        name: mypy
+        entry: mypy --sqlite-cache
+        language: system
+        files: www/.*\.(py|pyi)$
+
+    # uses whatever version of terraform is installed
+  - repo: https://github.com/memfault/pre-commit
+    rev: 985d1d44085b2f2313ba9a8c268b5f36642485a1
+    hooks:
+      - id: terraform-fmt
+
+  - repo: https://github.com/sirosen/check-jsonschema
+    rev: 0.4.1
+    hooks:
+      - id: check-github-actions
+      - id: check-github-workflows
+
+  - repo: https://github.com/AleksaC/circleci-cli-py
+    rev: v0.1.15932
+    hooks:
+      - id: circle-ci-validator
+        files: \.circleci/.*\.yml$

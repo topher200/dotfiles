@@ -1,52 +1,52 @@
 ---
 session_name: work
 windows:
-    - focus: 'true'
-      options: {}
-      panes:
-          - shell_command: cam
-      start_directory: /home/topher/dev/memfault
-    - window_name: test
-      window_index: 2
-      options:
-          automatic-rename: off
-      panes:
-          - shell_command: cam
-      start_directory: /home/topher/dev/memfault
-    - window_name: servers
-      window_index: 4
-      options:
-          automatic-rename: off
-      panes:
-          - shell_command:
-                - cam
-                - inv dev
-          - shell_command:
-                - cam
-                - inv ingress.dev
-          - shell_command:
-                - cam
-                - inv dc.test-svc
-          - shell_command:
-                - cam
-                - inv dc.svc
-      layout: even-vertical
-      start_directory: /home/topher/dev/memfault
-    - window_name: local-psql
-      window_index: 5
-      options:
-          automatic-rename: off
-      panes:
-          - shell_command:
-                - cam
-                - inv db.psql
-          - shell_command:
-                - cam
-                - inv db.timescale-psql
-      layout: even-horizontal
-      start_directory: /home/topher/dev/memfault
-    - window_name: dotfiles
-      window_index: 10
-      options:
-          automatic-rename: off
-      start_directory: /home/topher/dev/dotfiles
+  - focus: "true"
+    options: {}
+    panes:
+      - shell_command: cam
+    start_directory: /home/topher/dev/memfault
+  - window_name: test
+    window_index: 2
+    options:
+      automatic-rename: off
+    panes:
+      - shell_command: cam
+    start_directory: /home/topher/dev/memfault
+  - window_name: servers
+    window_index: 4
+    options:
+      automatic-rename: off
+    panes:
+      - shell_command:
+          - cam
+          - inv dev
+      - shell_command:
+          - cam
+          - inv ingress.dev
+      - shell_command:
+          - cam
+          - inv dc.test-svc
+      - shell_command:
+          - cam
+          - inv dc.svc
+    layout: even-vertical
+    start_directory: /home/topher/dev/memfault
+  - window_name: local-psql
+    window_index: 5
+    options:
+      automatic-rename: off
+    panes:
+      - shell_command:
+          - cam
+          - inv db.psql
+      - shell_command:
+          - cam
+          - inv db.timescale-psql
+    layout: even-horizontal
+    start_directory: /home/topher/dev/memfault
+  - window_name: dotfiles
+    window_index: 10
+    options:
+      automatic-rename: off
+    start_directory: /home/topher/dev/dotfiles

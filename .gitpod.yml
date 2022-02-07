@@ -1,16 +1,16 @@
 ---
 image:
-    file: Dockerfile
+  file: Dockerfile
 
 tasks:
-    - command: ./scripts/gitpod-startup.sh
+  - command: ./scripts/gitpod-startup.sh
 
 github:
-    prebuilds:
-        master: true
-        branches: true
-        pullRequests: true
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
     # add a check to pull requests (defaults to true)
-        addCheck: true
+    addCheck: true
     # add a "Review in Gitpod" button as a comment to pull requests (defaults to false)
-        addComment: true
+    addComment: true
