@@ -1,18 +1,18 @@
 ---
 swipe:
-    3:
-        left:
-            command: xdotool key alt+Right # History forward
-            threshold: 0.5
-        right:
-            command: xdotool key alt+Left # History back
-            threshold: 0.5
-    4:
-        left:
-            command: xdotool key ctrl+alt+Right
-        right:
-            command: xdotool key ctrl+alt+Left
-        up:
-            command: xdotool key ctrl+alt+Down
-        down:
-            command: xdotool key ctrl+alt+Up
+  3:
+    left:
+      command: xdotool key alt+Right # History forward
+      threshold: 0.5
+    right:
+      command: xdotool key alt+Left # History back
+      threshold: 0.5
+  4:
+    left:
+      command: xdotool key ctrl+alt+Right
+    right:
+      command: xdotool key ctrl+alt+Left
+    up:
+      command: xdotool key ctrl+alt+Down
+    down:
+      command: xdotool key ctrl+alt+Up
