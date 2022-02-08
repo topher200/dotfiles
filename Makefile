@@ -2,8 +2,10 @@
 stow:
 	stow --restow -v --target ~ files
 
-.PHONY: install
-install: install-all-packages stow
+.PHONY: install-packages
+install-packages:
+	./scripts/install-base-packages.sh
+	./scripts/install-packages.sh
 
 .PHONY: test
 test:
@@ -19,11 +21,6 @@ test-in-docker: docker-build
 .PHONY: stow-uninstall
 stow-uninstall:
 	stow --delete -v files
-
-.PHONY: install-all-packages
-install-all-packages:
-	./scripts/install-base-packages.sh
-	./scripts/install-packages.sh
 
 .PHONY: docker-build
 docker-build:

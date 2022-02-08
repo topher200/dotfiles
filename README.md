@@ -11,6 +11,7 @@ sudo apt-get install make
 git clone git@github.com:topher200/dotfiles.git # requires .ssh keys
 cd dotfiles
 make install
+make
 ```
 
 ### Install tmux plugins
