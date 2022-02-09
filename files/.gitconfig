@@ -47,21 +47,31 @@ std = stash drop
 stp = stash pop
 stpa = stash --patch
 sts = stash show --patch
-[push]
-default = simple
-[commit]
-verbose = 1
-template = /home/topher/.memfault-git-commit-template
-[core]
-editor = vim
-bare = false
-[rerere]
-enabled = true
+
 [user]
 name = Topher Brown
 email = topher@memfault.com
+[commit]
+verbose = 1
+template = /home/topher/.memfault-git-commit-template
+
+[core]
+editor = vim
+bare = false
+[diff]
+tool = nvimdiff
+[merge]
+conflictStyle = zdiff3
+
+[push]
+default = simple
+[pull]
+ff = only
+[rerere]
+enabled = true
 [advice]
 detachedHead = false
+
 [stgit]
 # Behave as if the --keep option is always passed
 autokeep = yes
@@ -78,12 +88,3 @@ applied = cyan_foreground
 current = green_foreground
 unapplied = white_foreground
 hidden = red_foreground
-[pull]
-ff = only
-[diff]
-guitool = vscode
-tool = nvimdiff
-[difftool "vscode"]
-cmd = code --wait --diff $LOCAL $REMOTE
-[merge]
-conflictStyle = zdiff3
