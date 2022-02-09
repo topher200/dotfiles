@@ -1,89 +1,89 @@
 [alias]
-  a = add
-  aa = add --all
-  apa = add --patch
-  au = add --update
-  b = !git --no-pager branch
-  bb = bisect bad
-  bg = bisect good
-  br = bisect reset
-  c = commit
-  ca = commit --all
-  canv = commit --all --no-verify
-  cam = commit --amend --no-edit
-  camnv = commit --amend --no-edit --no-verify
-  cama = commit --amend --all --no-edit
-  camanv = commit --amend --all --no-edit --no-verify
-  came = commit --amend --edit
-  camenv = commit --amend --edit --no-verify
-  camae = commit --amend --all --edit
-  camaenv = commit --amend --edit --all --no-verify
-  campa = commit --amend --patch --no-edit
-  campae = commit --amend --edit --patch
-  co = checkout
-  com = checkout master
-  coom = checkout origin/master
-  copa = checkout --patch
-  cpa = commit --patch
-  d = diff
-  dh = diff HEAD^
-  dhs = diff HEAD^ --stat
-  dm = diff master
-  dom = diff master
-  dnp = !git --no-pager diff
-  f = fetch
-  p = push
-  poh = push origin HEAD
-  pl = pull
-  rea = rebase --abort
-  rec = rebase --continue
-  rem = rebase master
-  reom = rebase origin/master
-  remi = rebase master -i
-  reomi = rebase origin/master -i
-  s = status
-  st = stash
-  std = stash drop
-  stp = stash pop
-  stpa = stash --patch
-  sts = stash show --patch
+a = add
+aa = add --all
+apa = add --patch
+au = add --update
+b = !git --no-pager branch
+bb = bisect bad
+bg = bisect good
+br = bisect reset
+c = commit
+ca = commit --all
+canv = commit --all --no-verify
+cam = commit --amend --no-edit
+camnv = commit --amend --no-edit --no-verify
+cama = commit --amend --all --no-edit
+camanv = commit --amend --all --no-edit --no-verify
+came = commit --amend --edit
+camenv = commit --amend --edit --no-verify
+camae = commit --amend --all --edit
+camaenv = commit --amend --edit --all --no-verify
+campa = commit --amend --patch --no-edit
+campae = commit --amend --edit --patch
+co = checkout
+com = checkout master
+coom = checkout origin/master
+copa = checkout --patch
+cpa = commit --patch
+d = diff
+dh = diff HEAD^
+dhs = diff HEAD^ --stat
+dm = diff master
+dom = diff master
+dnp = !git --no-pager diff
+f = fetch
+p = push
+poh = push origin HEAD
+pl = pull
+rea = rebase --abort
+rec = rebase --continue
+rem = rebase master
+reom = rebase origin/master
+remi = rebase master -i
+reomi = rebase origin/master -i
+s = status
+st = stash
+std = stash drop
+stp = stash pop
+stpa = stash --patch
+sts = stash show --patch
 [push]
-	default = simple
+default = simple
 [commit]
-  verbose = 1
-	template = /home/topher/.memfault-git-commit-template
+verbose = 1
+template = /home/topher/.memfault-git-commit-template
 [core]
-	editor = vim
-	bare = false
+editor = vim
+bare = false
 [rerere]
-	enabled = true
+enabled = true
 [user]
-	name = Topher Brown
-	email = topher@memfault.com
+name = Topher Brown
+email = topher@memfault.com
 [advice]
-	detachedHead = false
+detachedHead = false
 [stgit]
-  # Behave as if the --keep option is always passed
-  autokeep = yes
-  autostash = yes
-  # Extra options to pass to "git diff" (extend/override with
-	# -O/--diff-opts). For example, -M turns on rename detection.
-  diff-opts = -M
-  # The maximum length of an automatically generated patch name
-	namelength = 50
-  # docs: https://github.com/stacked-git/stgit/blob/master/examples/gitconfig
+# Behave as if the --keep option is always passed
+autokeep = yes
+autostash = yes
+# Extra options to pass to "git diff" (extend/override with
+# -O/--diff-opts). For example, -M turns on rename detection.
+diff-opts = -M
+# The maximum length of an automatically generated patch name
+namelength = 50
+# docs: https://github.com/stacked-git/stgit/blob/master/examples/gitconfig
 [stgit "color"]
-  # Specify output colors for series commands
-  applied = cyan_foreground
-  current = green_foreground
-  unapplied = white_foreground
-  hidden = red_foreground
+# Specify output colors for series commands
+applied = cyan_foreground
+current = green_foreground
+unapplied = white_foreground
+hidden = red_foreground
 [pull]
-	ff = only
+ff = only
 [diff]
-    guitool = vscode
-    tool = nvimdiff
+guitool = vscode
+tool = nvimdiff
 [difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+cmd = code --wait --diff $LOCAL $REMOTE
 [merge]
-	conflictStyle = zdiff3
+conflictStyle = zdiff3
