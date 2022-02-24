@@ -7,49 +7,49 @@ sudo add-apt-repository ppa:git-core/ppa -y
 # timezone copy and DEBIAN_FRONTEND are to stop 'tzdata' from prompting for timezone during install
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
-	autojump \
-	build-essential \
-	colorized-logs \
-	curl \
-	docker \
-	file \
-	flameshot \
-	fzf \
-	htop \
-	httpie \
-	git \
-	moreutils \
-	neovim \
-	jq \
-	pspg \
-	shellcheck \
-	silversearcher-ag \
-	stow \
-	tig \
-	tmux \
-	tree \
-	unp \
-	unzip \
-	vim \
-	wget \
-	zsh
+    autojump \
+    build-essential \
+    colorized-logs \
+    curl \
+    docker \
+    file \
+    flameshot \
+    fzf \
+    htop \
+    httpie \
+    git \
+    moreutils \
+    neovim \
+    jq \
+    pspg \
+    shellcheck \
+    silversearcher-ag \
+    stow \
+    tig \
+    tmux \
+    tree \
+    unp \
+    unzip \
+    vim \
+    wget \
+    zsh
 
 # install Linuxbrew
 if ! command_exists brew; then
-	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 brew install \
-	gcc \
-	jesseduffield/lazygit/lazygit \
-	jesseduffield/lazydocker/lazydocker \
-	pre-commit \
-	thefuck \
-	tmuxp \
-	tldr \
-	screenplaydev/tap/graphite
+    gcc \
+    jesseduffield/lazygit/lazygit \
+    jesseduffield/lazydocker/lazydocker \
+    pre-commit \
+    thefuck \
+    tmuxp \
+    tldr \
+    screenplaydev/tap/graphite
 
 # install node packages
 sudo apt-get install -y npm
 sudo npm install \
-	sql-formatter
+    sql-formatter

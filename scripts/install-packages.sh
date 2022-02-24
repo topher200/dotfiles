@@ -11,6 +11,7 @@ if ! command_exists brew; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 brew install circleci
+brew install shfmt
 brew install prettier
 
 command_exists() {

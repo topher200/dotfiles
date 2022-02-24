@@ -16,18 +16,17 @@ for f in $(find . -type f \
     -not -iwholename './files/bin/ftwind' \
     -not -iwholename './files/bin/vimv' \
     -not -iwholename './files/zsh-custom/*' \
-    -not -iwholename './node_modules/*'\
+    -not -iwholename './node_modules/*' \
     | sort -u); do
 
-
-if file "$f" | grep --quiet shell; then
-    {
-        shellcheck "$f" && echo "[OK]: sucessfully linted $f"
-    } || {
-        # add to errors
+    if file "$f" | grep --quiet shell; then
+        {
+            shellcheck "$f" && echo "[OK]: sucessfully linted $f"
+        } || {
+            # add to errors
             ERRORS+=("$f")
         }
-fi
+    fi
 done
 
 if [ ${#ERRORS[@]} -eq 0 ]; then
