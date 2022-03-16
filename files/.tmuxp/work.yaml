@@ -45,6 +45,15 @@ windows:
           - inv db.timescale-psql
     layout: even-horizontal
     start_directory: /home/topher/dev/memfault
+  - window_name: ipython
+    window_index: 6
+    options:
+      automatic-rename: off
+    panes:
+      - shell_command:
+          - cam
+          - ipython
+    start_directory: /home/topher/dev/memfault
   - window_name: dotfiles
     window_index: 10
     options:
