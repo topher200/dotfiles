@@ -14,6 +14,8 @@ brew install circleci
 brew install jless
 brew install shfmt
 brew install prettier
+# this is currently broken: https://github.com/jesseduffield/lazydocker/issues/273
+# brew install jesseduffield/lazydocker/lazydocker
 
 command_exists() {
     command -v "$1" >/dev/null 2>&1
