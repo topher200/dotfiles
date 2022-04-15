@@ -147,3 +147,5 @@ if [[ -f "$HOME"/condarc ]]; then
     source "$HOME"/condarc
 fi
 source "$HOME"/memfaultrc
+
+alias docker-compose=docker compose

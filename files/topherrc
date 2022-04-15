@@ -30,12 +30,22 @@ function gdcb {
 
 # Update and resubmit all graphite branches
 function gtup {
+    set -x
     current_branch_name=$(git symbolic-ref HEAD --short)
     git checkout master
     gt repo sync --force
-    gt stack fix
+    git submodule update
+    gt stack fix --rebase
     gt stack submit --update-only
     git checkout $current_branch_name
+    set +x
+}
+
+function pcs {
+    set -x
+    inv db.upgrade
+    inv setup
+    set +x
 }
 
 function ec2_instance_id() {

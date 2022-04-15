@@ -43,7 +43,7 @@ windows:
       - shell_command:
           - cam
           - inv db.timescale-psql
-    layout: even-horizontal
+    layout: even-vertical
     start_directory: /home/topher/dev/memfault
   - window_name: ipython
     window_index: 6
