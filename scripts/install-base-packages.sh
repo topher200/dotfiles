@@ -42,7 +42,6 @@ fi
 brew install \
     gcc \
     jesseduffield/lazygit/lazygit \
-    jesseduffield/lazydocker/lazydocker \
     pre-commit \
     thefuck \
     tmuxp \

@@ -28,6 +28,16 @@ function gdcb {
     git branch -D $branch_name
 }
 
+# Update and resubmit all graphite branches
+function gtup {
+    current_branch_name=$(git symbolic-ref HEAD --short)
+    git checkout master
+    gt repo sync --force
+    gt stack fix
+    gt stack submit --update-only
+    git checkout $current_branch_name
+}
+
 function ec2_instance_id() {
     aws ec2 describe-instances |
         jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .InstanceId" -r
