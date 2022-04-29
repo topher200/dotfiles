@@ -150,12 +150,12 @@
 
 [[snippets]]
   description = "aws login root"
-  command = "aws-vault login topher-root"
+  command = "aws-vault login topher-root -d 36h"
   output = ""
 
 [[snippets]]
   description = "aws login prod"
-  command = "aws-vault login topher-prod"
+  command = "aws-vault login topher-prod -d 36h"
   output = ""
 
 [[snippets]]
