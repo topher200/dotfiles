@@ -6,6 +6,8 @@ alias glb="git branch --sort=committerdate | grep -v 'dura-' | tail -n 15"
 alias agh='ag --hidden --ignore .git'
 # application aliases
 alias cat='batcat -p'
+alias fd=fdfind
+alias fdh='fdfind -H'
 alias vim=nvim
 alias gg=lazygit
 alias lg=lazygit
