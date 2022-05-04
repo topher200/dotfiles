@@ -34,6 +34,7 @@ cpa = commit --patch
 d = diff
 dh = diff HEAD^
 dhs = diff HEAD^ --stat
+ds = diff --staged
 dm = diff master
 dmno = diff master --name-only
 dom = diff master
