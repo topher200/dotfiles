@@ -5,7 +5,9 @@ set -Eeuox pipefail
 # workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
 sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
-sudo apt-get install -y xsel
+sudo apt-get install -y \
+    fd-find \
+    xsel
 
 if ! command_exists brew; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
