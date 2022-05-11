@@ -69,6 +69,8 @@ template = /home/topher/.memfault-git-commit-template
 [core]
 editor = vim
 bare = false
+excludesFile = /home/topher/.gitignore_global
+
 [diff]
 tool = nvimdiff
 [merge]
