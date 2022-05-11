@@ -232,3 +232,8 @@
   description = "psql into pytest docker container postgres"
   command = "psql \"postgresql://memfault:memfault@127.0.0.1:$($ docker ps | grep master_db | perl -ne '/0.0.0.0:(\\d+)/ && print \"$1\"')/memfault_db?sslmode=disable\""
   output = ""
+
+[[snippets]]
+  description = "ssh into seedbox"
+  command = "ssh_seedbox"
+  output = ""
