@@ -36,7 +36,7 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 
 # install Linuxbrew
 if ! command_exists brew; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 brew install \
