@@ -1,9 +1,8 @@
 ---
-image:
-  file: Dockerfile
+image: gitpod/workspace-full:latest
 
 tasks:
-  - command: ./scripts/gitpod-startup.sh
+  - command: ./bootstrap.sh
 
 github:
   prebuilds:

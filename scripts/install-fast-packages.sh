@@ -2,23 +2,44 @@
 
 set -Eeuox pipefail
 
+# use the latest version of git (important for git 2.35)
+sudo add-apt-repository ppa:git-core/ppa -y
+# timezone copy and DEBIAN_FRONTEND are to stop 'tzdata' from prompting for timezone during install
+sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
+    autojump \
+    build-essential \
+    colorized-logs \
+    curl \
+    docker \
+    fd-find \
+    file \
+    flameshot \
+    fzf \
+    htop \
+    httpie \
+    git \
+    moreutils \
+    neovim \
+    jq \
+    pspg \
+    shellcheck \
+    silversearcher-ag \
+    stow \
+    tig \
+    tmux \
+    tree \
+    unp \
+    unzip \
+    vim \
+    wget \
+    xsel \
+    zsh
+
 # workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
 sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
-sudo apt-get install -y \
-    fd-find \
-    xsel
-
-if ! command_exists brew; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-brew install circleci
-brew install jless
-brew install shfmt
-brew install prettier
-# this is currently broken: https://github.com/jesseduffield/lazydocker/issues/273
-# brew install jesseduffield/lazydocker/lazydocker
-
+# TODO: use this for more checks
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }

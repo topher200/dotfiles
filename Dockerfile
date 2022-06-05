@@ -12,10 +12,10 @@ WORKDIR /home/topher/dev/dotfiles
 
 RUN sudo apt-get install -y make
 
-COPY --chown=topher scripts/install-base-packages.sh ./scripts/install-base-packages.sh
-RUN ./scripts/install-base-packages.sh
-COPY --chown=topher scripts/install-packages.sh ./scripts/install-packages.sh
-RUN ./scripts/install-packages.sh
+COPY --chown=topher scripts/install-fast-packages.sh ./scripts/install-fast-packages.sh
+RUN ./scripts/install-fast-packages.sh
+COPY --chown=topher scripts/install-slow-packages.sh ./scripts/install-slow-packages.sh
+RUN ./scripts/install-slow-packages.sh
 
 COPY --chown=topher . /home/topher/dev/dotfiles
 RUN sudo chown topher -R -f /home/topher/dev/dotfiles
