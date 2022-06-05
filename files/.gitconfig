@@ -101,3 +101,6 @@ applied = cyan_foreground
 current = green_foreground
 unapplied = white_foreground
 hidden = red_foreground
+
+[credential]
+	helper = /usr/bin/gp credential-helper

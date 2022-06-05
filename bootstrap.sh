@@ -3,16 +3,12 @@ set -ex
 
 make install-fast-packages
 
-# gitpod provides a garbage ~/.zshrc file
+# gitpod provides garbage ~/.zshrc and .gitconfig files
 echo removing ~/.zshrc
 cat ~/.zshrc
 rm ~/.zshrc
-
-# gitpod stores git credentials in .gitconfig. we need those! save them and add
-# them back in later
-mv ~/.gitconfig ~/.gitconfig.gitpod
+echo removing ~/.gitconfig
+cat ~/.gitconfig
+rm ~/.gitconfig
 
 make
-
-echo concatenating  ~/.gitconfig together
-cat ~/.gitconfig.gitpod >> ~/.gitconfig
