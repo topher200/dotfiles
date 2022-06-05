@@ -17,6 +17,7 @@ fi
 brew install \
     circleci \
     gcc \
+    jesseduffield/lazydocker/lazydocker \
     jesseduffield/lazygit/lazygit \
     jless \
     pre-commit \
@@ -26,6 +27,3 @@ brew install \
     tmuxp \
     tldr \
     screenplaydev/tap/graphite
-
-# this is currently broken: https://github.com/jesseduffield/lazydocker/issues/273
-# brew install jesseduffield/lazydocker/lazydocker

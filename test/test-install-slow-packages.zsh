@@ -17,6 +17,7 @@ fail_if_not_exists() {
 fail_if_not_exists brew
 fail_if_not_exists circleci
 fail_if_not_exists gcc
+fail_if_not_exists lazydocker
 fail_if_not_exists lazygit
 fail_if_not_exists jless
 fail_if_not_exists pre-commit
