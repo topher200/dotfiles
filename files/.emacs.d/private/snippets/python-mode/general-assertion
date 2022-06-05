@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: general-assertion
-# key: assg
-# --
-@precondition: $1 $2
-assert $1 $2, $1

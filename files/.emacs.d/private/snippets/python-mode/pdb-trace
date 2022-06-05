@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: pdb-trace
-# key: pdb
-# --
-import ipdb; ipdb.set_trace()
