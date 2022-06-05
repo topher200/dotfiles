@@ -4,7 +4,11 @@ stow:
 
 .PHONY: install-packages
 install-packages:
-	./scripts/install-base-packages.sh
+	./scripts/install-slow.sh
+	./scripts/install-packages.sh
+
+.PHONY: install-fast
+install-fast:
 	./scripts/install-packages.sh
 
 .PHONY: test
