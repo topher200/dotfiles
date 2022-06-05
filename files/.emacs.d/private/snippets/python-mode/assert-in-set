@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: assertion for 'enum in set'
-# key: assin
-# --
-@precondition: $1 in $2
-assert $1 in $2, (type($1), $1)

@@ -4,11 +4,6 @@
   output = ""
 
 [[snippets]]
-  description = "sig kill emacs"
-  command = "pkill -SIGUSR2 Emacs"
-  output = ""
-
-[[snippets]]
   description = "what's my ip"
   command = "curl v4.ifconfig.co | tee >(xsel)"
   output = ""
