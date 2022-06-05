@@ -1,5 +1,5 @@
 #!/bin/bash
 set -ex
 
-make install-fast
+make install-fast-packages
 make
