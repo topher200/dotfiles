@@ -3,7 +3,7 @@ image:
   file: Dockerfile
 
 tasks:
-  - command: make install-fast-packages
+  - command: ./bootstrap.sh
 
 github:
   prebuilds:
