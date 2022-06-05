@@ -26,8 +26,3 @@ brew install \
 
 # this is currently broken: https://github.com/jesseduffield/lazydocker/issues/273
 # brew install jesseduffield/lazydocker/lazydocker
-
-# install node packages
-sudo apt-get install -y npm
-sudo npm install \
-    sql-formatter
