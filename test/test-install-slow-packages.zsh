@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 # shellcheck shell=bash
 
-set -Eeuox pipefail
+set -Eeuo pipefail
 
 exists() {
 	command -v "$1" >/dev/null 2>&1
@@ -18,7 +18,6 @@ fail_if_not_exists brew
 fail_if_not_exists circleci
 fail_if_not_exists gcc
 fail_if_not_exists lazygit
-fail_if_not_exists gg
 fail_if_not_exists jless
 fail_if_not_exists pre-commit
 fail_if_not_exists prettier
