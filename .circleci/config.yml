@@ -9,7 +9,7 @@ jobs:
     steps:
       - run: sudo apt-get install shellcheck
       - run: npm install --save-dev --save-exact prettier
-      - run: sudo snap install shfmt prettier
+      - run: sudo snap install shfmt
       - run: pip3 install pre-commit
       - checkout
       - run: make lint
