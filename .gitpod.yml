@@ -3,7 +3,7 @@ image:
   file: Dockerfile
 
 tasks:
-  - command: ./scripts/gitpod-startup.sh
+  - init: ./bootstrap.sh
 
 github:
   prebuilds:
