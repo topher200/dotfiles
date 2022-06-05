@@ -1,5 +1,7 @@
 #!/bin/bash
-set -ex
+set -Eeuox pipefail
+
+cd /home/gitpod/.dotfiles
 
 make install-fast-packages
 
