@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: sudo apt-get install shellcheck
       - run: sudo snap install shfmt
-      - run: sudo snap install prettier
+      - run: sudo snap install --beta prettier
       - run: pip3 install pre-commit
       - run: make lint
   test-full-install:
