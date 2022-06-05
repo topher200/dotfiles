@@ -101,3 +101,12 @@ applied = cyan_foreground
 current = green_foreground
 unapplied = white_foreground
 hidden = red_foreground
+[push]
+	default = simple
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[credential]
+	helper = /usr/bin/gp credential-helper
+[user]
+	name = Topher Brown
+	email = topher@memfault.com
