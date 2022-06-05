@@ -7,7 +7,7 @@ jobs:
       image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
 
     steps:
-      - run: pip install pre-commit
+      - run: pip3 install pre-commit
       - checkout
       - run: make lint
   test-full-install:
