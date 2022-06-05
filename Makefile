@@ -11,11 +11,14 @@ install-all-packages:
 install-fast-packages:
 	./scripts/install-fast-packages.sh
 
-.PHONY: test
-test:
+.PHONY: lint
+lint:
 	# envrc is used here to set env vars such that pre-commit is on the PATH
 	BASH_ENV="/home/topher/envrc" ./test/run-precommit-on-all-files.sh
 	./test/run_shellcheck.sh
+
+.PHONY: test
+test: lint
 	./test/test-install-packages.sh
 
 .PHONY: test-in-docker
