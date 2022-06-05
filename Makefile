@@ -19,7 +19,7 @@ lint:
 
 .PHONY: test
 test: lint
-	./test/test-install-slow-packages.sh
+	./test/test-install-slow-packages.zsh
 
 .PHONY: test-in-docker
 test-in-docker: docker-build
