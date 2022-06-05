@@ -14,7 +14,7 @@ install-fast-packages:
 .PHONY: test
 test:
 	# envrc is used here to set env vars such that pre-commit is on the PATH
-	BASH_ENV="/home/topher/envrc" ./test/run-precommit-on-all-files.sh
+	BASH_ENV="${HOME}/envrc" && ./test/run-precommit-on-all-files.sh
 	./test/run_shellcheck.sh
 	./test/test-install-packages.sh
 
