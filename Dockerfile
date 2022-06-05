@@ -1,4 +1,4 @@
-FROM ubuntu:22.10
+FROM gitpod/workspace-base:latest
 
 # add my user user; sudo access with no password required
 # https://dev.to/emmanuelnk/using-sudo-without-password-prompt-as-non-root-docker-user-52bg
@@ -12,10 +12,10 @@ WORKDIR /home/topher/dev/dotfiles
 
 RUN sudo apt-get install -y make
 
-COPY --chown=topher scripts/install-slow-packages.sh ./scripts/install-slow-packages.sh
-RUN ./scripts/install-slow-packages.sh
 COPY --chown=topher scripts/install-fast-packages.sh ./scripts/install-fast-packages.sh
 RUN ./scripts/install-fast-packages.sh
+COPY --chown=topher scripts/install-slow-packages.sh ./scripts/install-slow-packages.sh
+RUN ./scripts/install-slow-packages.sh
 
 COPY --chown=topher . /home/topher/dev/dotfiles
 RUN sudo chown topher -R -f /home/topher/dev/dotfiles
