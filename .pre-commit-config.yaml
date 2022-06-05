@@ -37,7 +37,6 @@ repos:
         entry: prettier
         language: system
         args: [--write]
-        files: \.(js|ts|jsx|tsx|css|less|html|json|markdown|md|yaml|yml)$
 
   - repo: https://github.com/jumanjihouse/pre-commit-hooks
     rev: "2.1.5"
