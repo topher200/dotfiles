@@ -2,8 +2,8 @@
 stow:
 	stow --restow -v --target ~ files
 
-.PHONY: install-packages
-install-packages:
+.PHONY: install-all-packages
+install-all-packages:
 	./scripts/install-slow.sh
 	./scripts/install-packages.sh
 

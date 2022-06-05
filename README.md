@@ -10,7 +10,7 @@ managed by GNU stow
 sudo apt-get install make
 git clone git@github.com:topher200/dotfiles.git
 cd dotfiles
-make install-packages
+make install-all-packages
 make
 ```
 

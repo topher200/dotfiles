@@ -3,7 +3,7 @@ image:
   file: Dockerfile
 
 tasks:
-  - init: ./bootstrap.sh
+  - init: make install-all-packages
 
 github:
   prebuilds:
