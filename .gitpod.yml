@@ -2,7 +2,9 @@
 image: gitpod/workspace-full:latest
 
 tasks:
-  - before: make install-slow-packages
+  - name: install-slow-packages
+    before: make install-slow-packages
+    command: exit
   - command: zsh
 
 github:
