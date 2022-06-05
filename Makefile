@@ -3,13 +3,15 @@ stow:
 	stow --restow -v --target ~ files
 
 .PHONY: install-all-packages
-install-all-packages:
-	./scripts/install-fast-packages.sh
-	./scripts/install-slow-packages.sh
+install-all-packages: install-fast-packages install-slow-packages
 
 .PHONY: install-fast-packages
 install-fast-packages:
 	./scripts/install-fast-packages.sh
+
+.PHONY: install-slow-packages
+install-slow-packages:
+	./scripts/install-slow-packages.sh
 
 .PHONY: lint
 lint:
