@@ -1,7 +1,10 @@
 #!/bin/bash
 set -Eeuox pipefail
 
-cd /home/gitpod/.dotfiles
+# if we're running in gitpod, cd to the gitpod checkout location
+if [[ -d "/home/gitpod/.dotfiles" ]]; then
+    cd /home/gitpod/.dotfiles
+fi
 
 echo Installing fast packages at "$(date)"
 make install-fast-packages
