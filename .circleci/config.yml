@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - run: sudo apt-get install shellcheck
-      - run: brew install prettier shfmt
+      - run: sudo snap install shfmt
       - run: pip3 install pre-commit
       - checkout
       - run: make lint
