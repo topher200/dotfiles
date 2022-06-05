@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Installs packages which are slow to install. Should be run after
+# ./install-fast-packages.sh
+
 set -Eeuox pipefail
 
 command_exists() {
