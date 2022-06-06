@@ -24,4 +24,4 @@ make
 echo Finished stow at "$(date)"
 
 echo concatenating ~/.gitconfig together
-cat ~/.gitconfig.gitpod >> ~/.gitconfig
+cat ~/.gitconfig.gitpod >>~/.gitconfig
