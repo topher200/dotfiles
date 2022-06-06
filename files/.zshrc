@@ -143,9 +143,7 @@ source "$HOME"/topherrc
 if [[ -f "$HOME"/Downloads/secretsrc ]]; then
     source "$HOME"/Downloads/secretsrc
 fi
-if [[ -f "$HOME"/condarc ]]; then
-    source "$HOME"/condarc
-fi
+source "$HOME"/condarc
 source "$HOME"/memfaultrc
 
 alias docker-compose=docker compose
