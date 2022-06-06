@@ -1,10 +1,15 @@
 ---
 version: 2.1
 
+executors:
+  ubuntu:
+    docker:
+      - image: cimg/base:stable-20.04 # build-essential 12.8ubuntu1.1, curl 7.68.0, docker 20.10.14, docker-compose /usr/local/bin/docker-compose Docker Compose version v2.4.1 v2.4.1, dockerize v0.6.1, git 2.36.1, jq 1.6, ubuntu 20.04.4 LTS, wget 1.20.3
+
+
 jobs:
   test-lint:
-    machine:
-      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
+    executor: ubuntu
     steps:
       - checkout
       - run: sudo apt-get install shellcheck
@@ -14,8 +19,7 @@ jobs:
       - run: make lint
 
   test-full-install:
-    machine:
-      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
+    executor: ubuntu
     steps:
       - run: sudo apt update && sudo apt install -y make
       - checkout
@@ -25,8 +29,7 @@ jobs:
       - run: BUILDKIT_PROGRESS=plain make test-in-docker
 
   test-gitpod-bootstrap:
-    machine:
-      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
+    executor: ubuntu
     steps:
       - checkout
       - run: ./bootstrap.sh
