@@ -6,9 +6,6 @@ tasks:
     before: make install-slow-packages
     init: graphite repo init --trunk=master
     command: exit
-  - name: graphite-setup
-    init: gt
-    command: exit
   - command: tmux
 
 github:
