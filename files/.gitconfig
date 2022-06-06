@@ -101,5 +101,12 @@ applied = cyan_foreground
 current = green_foreground
 unapplied = white_foreground
 hidden = red_foreground
+<<<<<<< HEAD
 [credential]
 helper = /usr/bin/gp credential-helper
+||||||| a84e417 (Gitpod credential helper (#71))
+
+[credential]
+	helper = /usr/bin/gp credential-helper
+=======
+>>>>>>> parent of a84e417 (Gitpod credential helper (#71))
