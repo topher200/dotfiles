@@ -1,21 +1,24 @@
 ---
 version: 2.1
 
+executors:
+  ubuntu:
+    machine:
+      image: ubuntu-2204:2022.04.1 # Ubuntu 22.04, Docker v20.10.14, Docker Compose v2.4.1
+
 jobs:
   test-lint:
-    machine:
-      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
+    executor: ubuntu
     steps:
       - checkout
       - run: sudo apt-get install shellcheck
-      - run: sudo snap install shfmt
+      - run: sudo apt-get install snapd && sudo snap install shfmt
       - run: npm install --global prettier
       - run: pip3 install pre-commit
       - run: make lint
 
   test-full-install:
-    machine:
-      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
+    executor: ubuntu
     steps:
       - run: sudo apt update && sudo apt install -y make
       - checkout
@@ -25,8 +28,7 @@ jobs:
       - run: BUILDKIT_PROGRESS=plain make test-in-docker
 
   test-gitpod-bootstrap:
-    machine:
-      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
+    executor: ubuntu
     steps:
       - checkout
       - run: ./bootstrap.sh
