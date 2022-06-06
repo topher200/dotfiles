@@ -37,4 +37,6 @@ workflows:
     jobs:
       - test-lint
       - test-gitpod-bootstrap
-      - test-full-install
+      - test-full-install:
+          context:
+            - topher200-dotfiles
