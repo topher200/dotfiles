@@ -37,7 +37,7 @@ docker-build:
 
 .PHONY: docker-push
 docker-push:
-	docker push topher200/dotfiles:buildcache
+	docker push dotfiles
 
 .PHONY: docker-repl
 docker-repl: docker-build
