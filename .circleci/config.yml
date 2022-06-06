@@ -6,7 +6,6 @@ executors:
     docker:
       - image: cimg/base:stable-20.04 # build-essential 12.8ubuntu1.1, curl 7.68.0, docker 20.10.14, docker-compose /usr/local/bin/docker-compose Docker Compose version v2.4.1 v2.4.1, dockerize v0.6.1, git 2.36.1, jq 1.6, ubuntu 20.04.4 LTS, wget 1.20.3
 
-
 jobs:
   test-lint:
     executor: ubuntu
