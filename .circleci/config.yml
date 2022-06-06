@@ -21,6 +21,8 @@ jobs:
       - run: sudo apt update && sudo apt install -y make
       - checkout
       - run: BUILDKIT_PROGRESS=plain make test-in-docker
+      - run: docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+      - run: make docker-push
   test-gitpod-bootstrap:
     machine:
       image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
