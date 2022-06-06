@@ -4,10 +4,10 @@ image: gitpod/workspace-full:latest
 tasks:
   - name: install-slow-packages
     before: make install-slow-packages
-    init: graphite repo init --trunk=master  
+    init: graphite repo init --trunk=master
     command: exit
   - name: graphite-setup
-    init: gt 
+    init: gt
     command: exit
   - command: tmux
 
