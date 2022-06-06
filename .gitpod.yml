@@ -4,7 +4,9 @@ image: gitpod/workspace-full:latest
 tasks:
   - name: install-slow-packages
     before: make install-slow-packages
-    init: graphite repo init --trunk=master --interactive=false --quiet=true --verify=false
+    command: exit
+  - name: initialize-graphite
+    init: "echo '{\"trunk\": \"master\"}' > .git/.graphite_repo_config"
     command: exit
   - command: tmux
 
