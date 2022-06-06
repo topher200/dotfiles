@@ -5,7 +5,10 @@ tasks:
   - name: install-slow-packages
     before: make install-slow-packages
     command: exit
-  - command: zsh
+  - name: initialize-graphite
+    init: 'echo ''{"trunk": "master"}'' > .git/.graphite_repo_config'
+    command: exit
+  - command: tmux
 
 github:
   prebuilds:
