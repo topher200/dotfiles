@@ -4,7 +4,8 @@ version: 2.1
 executors:
   ubuntu:
     machine:
-      image: ubuntu-2204:2022.04.1 # Ubuntu 22.04, Docker v20.10.14, Docker Compose v2.4.1
+      # image: ubuntu-2204:2022.04.1 # Ubuntu 22.04, Docker v20.10.14, Docker Compose v2.4.1
+      image: ubuntu-2004:202010-01 # includes Ubuntu 20.04, docker 19.03.13, docker-compose 1.27.4
 
 jobs:
   test-lint:
