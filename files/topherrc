@@ -1,3 +1,6 @@
+#!/bin/zsh
+# shellcheck shell=bash
+
 ### COMMAND LINE ALIASES ###
 # general aliases
 alias g='git'
@@ -29,8 +32,8 @@ alias '$ '=''
 function gdcb {
     branch_name=$(git symbolic-ref HEAD --short)
     current_rev=$(git rev-parse HEAD)
-    git checkout $current_rev
-    git branch -D $branch_name
+    git checkout "$current_rev"
+    git branch -D "$branch_name"
 }
 
 # Update and resubmit all graphite branches
@@ -42,7 +45,7 @@ function gtup {
     git submodule update
     gt stack fix --rebase
     gt stack submit --update-only
-    git checkout $current_branch_name
+    git checkout "$current_branch_name"
     set +x
 }
 
@@ -75,25 +78,6 @@ function rds_ip_address() {
 ### INSTALL AND CONFIGURE APPLICATIONS ###
 # load ssh remote shells in vi mode
 function sshv() {
-    ssh -t $1 "bash -i -o vi"
+    ssh -t "$1" "bash -i -o vi"
 }
 ### END INSTALL AND CONFIGURE APPLICATIONS ###
-
-# completion for graphite
-###-begin-gt-completions-###
-#
-# yargs command completion script
-#
-# Installation: /home/linuxbrew/.linuxbrew/bin/gt completion >> ~/.zshrc
-#    or /home/linuxbrew/.linuxbrew/bin/gt completion >> ~/.zsh_profile on OSX.
-#
-_gt_yargs_completions() {
-    local reply
-    local si=$IFS
-    IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT - 1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" /home/linuxbrew/.linuxbrew/bin/gt --get-yargs-completions "${words[@]}"))
-    IFS=$si
-    _describe 'values' reply
-}
-compdef _gt_yargs_completions gt
-###-end-gt-completions-###

@@ -1,16 +1,24 @@
+#!/bin/zsh
+# shellcheck shell=bash
+
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export ZSH=~/.oh-my-zsh
+# shellcheck disable=SC2034
 HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder
 # if we want to switch to 'off':
 # zstyle ':omz:update' mode disabled
+# shellcheck disable=SC2034
 DISABLE_AUTO_TITLE="true"
+# shellcheck disable=SC2034
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+# shellcheck disable=SC2034
 HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM=~/zsh-custom
 # https://github.com/ohmyzsh/ohmyzsh/issues/449
 setopt NO_NOMATCH
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# shellcheck disable=SC2034
 plugins=(
     autojump
     github
@@ -34,7 +42,7 @@ source $ZSH_CUSTOM/invoke-completion.sh
 export LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 # create .zsh_functions dir (https://github.com/jwilm/alacritty/blob/master/INSTALL.md#zsh)
-mkdir -p ${ZDOTDIR:-~}/.zsh_functions
+mkdir -p "${ZDOTDIR:-~}/.zsh_functions"
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # move up and down in local history, but ctrl-r uses global history
@@ -81,9 +89,13 @@ source $ZSH_CUSTOM/tmuxinator.zsh
 # add 'pure-prompt'
 fpath+=("$ZSH_CUSTOM/pure")
 autoload -U promptinit; promptinit
+# shellcheck disable=SC2034
 PURE_CMD_MAX_EXEC_TIME=1
+# shellcheck disable=SC2034
 PURE_PROMPT_SYMBOL=$
+# shellcheck disable=SC2034
 PURE_PROMPT_VICMD_SYMBOL=$
+# shellcheck disable=SC2034
 PURE_GIT_UNTRACKED_DIRTY=0
 zstyle :prompt:pure:virtualenv color green
 zstyle :prompt:pure:git:stash show yes
@@ -104,11 +116,13 @@ bindkey -M viins '^H' backward-delete-char
 # save previous command to pet
 function petme() {
     PREV=$(fc -lrn | head -n 1)
-    sh -c "pet new `printf %q "$PREV"`"
+        sh -c "pet new $(printf %q "$PREV")"                                                                                    
 }
 # search pets
 function pet-select() {
+    # shellcheck disable=SC2153,SC2034
     BUFFER=$(pet search --color --query "$LBUFFER")
+    # shellcheck disable=SC2034
     CURSOR=$#BUFFER
     zle redisplay
 }
@@ -142,10 +156,11 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/D
 
 # include my non-shell-specific code
 source "$HOME"/topherrc
+source "$HOME"/graphiterc
+source "$HOME"/condarc
+source "$HOME"/memfaultrc
 if [[ -f "$HOME"/Downloads/secretsrc ]]; then
     source "$HOME"/Downloads/secretsrc
 fi
-source "$HOME"/condarc
-source "$HOME"/memfaultrc
 
 alias docker-compose=docker compose
