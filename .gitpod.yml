@@ -3,9 +3,6 @@ image: gitpod/workspace-full:latest
 
 tasks:
   - command: /workspace/dotfiles/start-tmux-and-install-slow-packages.sh
-  - name: initialize-graphite
-    init: 'echo ''{"trunk": "master"}'' > .git/.graphite_repo_config'
-    command: exit
 
 github:
   prebuilds:
