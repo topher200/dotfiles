@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # configure graphite
-echo '{"trunk": "master"}' > .git/.graphite_repo_config
+echo '{"trunk": "master"}' >.git/.graphite_repo_config
 
 # start tmux session, with background windows doing setup
 tmux new-session -d -s work
