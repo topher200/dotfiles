@@ -30,54 +30,54 @@ alias '$ '=''
 
 # Delete the current branch you're on, leaving you on a detached HEAD
 function gdcb {
-    branch_name=$(git symbolic-ref HEAD --short)
-    current_rev=$(git rev-parse HEAD)
-    git checkout "$current_rev"
-    git branch -D "$branch_name"
+	branch_name=$(git symbolic-ref HEAD --short)
+	current_rev=$(git rev-parse HEAD)
+	git checkout "$current_rev"
+	git branch -D "$branch_name"
 }
 
 # Update and resubmit all graphite branches
 function gtup {
-    set -x
-    current_branch_name=$(git symbolic-ref HEAD --short)
-    git checkout master
-    gt repo sync --force
-    git submodule update
-    gt stack fix --rebase
-    gt stack submit --update-only
-    git checkout "$current_branch_name"
-    set +x
+	set -x
+	current_branch_name=$(git symbolic-ref HEAD --short)
+	git checkout master
+	gt repo sync --force
+	git submodule update
+	gt stack fix --rebase
+	gt stack submit --update-only
+	git checkout "$current_branch_name"
+	set +x
 }
 
 function pcs {
-    set -x
-    inv db.upgrade
-    inv setup
-    set +x
+	set -x
+	inv db.upgrade
+	inv setup
+	set +x
 }
 
 function ec2_instance_id() {
-    aws ec2 describe-instances |
-        jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .InstanceId" -r
+	aws ec2 describe-instances |
+		jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .InstanceId" -r
 }
 
 function ec2_ip_address() {
-    aws ec2 describe-instances |
-        jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .PublicDnsName" -r
+	aws ec2 describe-instances |
+		jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .PublicDnsName" -r
 }
 function ec2_ip_address_private() {
-    aws ec2 describe-instances |
-        jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .PrivateDnsName" -r
+	aws ec2 describe-instances |
+		jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .PrivateDnsName" -r
 }
 function rds_ip_address() {
-    aws rds describe-db-instances |
-        jq ".DBInstances[] | select(.DBInstanceIdentifier==\"$1\") | .Endpoint.Address" -r
+	aws rds describe-db-instances |
+		jq ".DBInstances[] | select(.DBInstanceIdentifier==\"$1\") | .Endpoint.Address" -r
 }
 ### END COMMAND LINE ALIASES ###
 
 ### INSTALL AND CONFIGURE APPLICATIONS ###
 # load ssh remote shells in vi mode
 function sshv() {
-    ssh -t "$1" "bash -i -o vi"
+	ssh -t "$1" "bash -i -o vi"
 }
 ### END INSTALL AND CONFIGURE APPLICATIONS ###
