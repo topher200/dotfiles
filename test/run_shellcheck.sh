@@ -16,12 +16,15 @@ for f in $(find . -type f \
 	-not -iwholename './files/bin/ftwind' \
 	-not -iwholename './files/bin/vimv' \
 	-not -iwholename './files/zsh-custom/*' \
+	-not -iwholename './files/condarc' \
+	-not -iwholename './files/.zshenv' \
 	-not -iwholename './node_modules/*' |
 	sort -u); do
 
-	if file "$f" | grep --quiet shell; then
+	if file "$f" | grep --quiet -e shell -e zsh; then
 		{
-			shellcheck "$f" && echo "[OK]: sucessfully linted $f"
+			# DEBUG: shellcheck "$f" --exclude=SC1090,SC1091 && echo "[OK]: sucessfully linted $f"
+			shellcheck --exclude=SC1090,SC1091 "$f"
 		} || {
 			# add to errors
 			ERRORS+=("$f")
