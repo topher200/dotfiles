@@ -17,7 +17,6 @@ install-slow-packages:
 lint:
 	# envrc is used here to set env vars such that pre-commit is on the PATH
 	BASH_ENV="${HOME}/envrc" ./test/run-precommit-on-all-files.sh
-	./test/run_shellcheck.sh
 
 .PHONY: test
 test: lint
