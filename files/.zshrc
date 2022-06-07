@@ -8,6 +8,8 @@ DISABLE_AUTO_TITLE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM=~/zsh-custom
+# https://github.com/ohmyzsh/ohmyzsh/issues/449
+setopt NO_NOMATCH
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(
     autojump
