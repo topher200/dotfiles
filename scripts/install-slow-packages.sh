@@ -15,8 +15,14 @@ if ! command_exists brew; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+# if we have npm, that's a much faster installer for graphite
+if command_exists npm; then
+	npm install -g @withgraphite/graphite-cli
+else
+	brew install withgraphite/tap/graphite
+fi
+
 # install frequently used apps first
-brew install withgraphite/tap/graphite
 brew install jesseduffield/lazygit/lazygit
 brew install \
 	pre-commit \
