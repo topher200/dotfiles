@@ -17,6 +17,7 @@ alias ls="exa"
 alias ll="exa -al"
 alias rg='rg --smart-case --no-messages'
 alias rgh="rg --smart-case  --no-messages --hidden -g '!.git/'"
+alias sgp=/home/gitpod/.dotfiles/start-tmux-and-install-slow-packages.sh
 alias xsel="xsel --clipboard"
 # don't use a pager if less than a screen
 export LESS="-F -X $LESS"
