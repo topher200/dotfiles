@@ -14,16 +14,23 @@ if ! command_exists brew; then
 	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# install frequently used apps first
+brew install withgraphite/tap/graphite
+brew install jesseduffield/lazygit/lazygit
+brew install \
+	pre-commit \
+	prettier \
+	shfmt
+
 brew install \
 	circleci \
 	gcc \
 	jesseduffield/lazydocker/lazydocker \
-	jesseduffield/lazygit/lazygit \
 	jless \
 	pre-commit \
 	prettier \
 	shfmt \
 	thefuck \
 	tmuxp \
-	tldr \
-	screenplaydev/tap/graphite
+	tldr
