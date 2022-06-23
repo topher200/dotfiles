@@ -43,9 +43,15 @@ function gtup {
 	git checkout master
 	gt repo sync --force
 	git submodule update
-	gt stack fix --rebase
+	gt stack restack
 	gt stack submit --update-only
 	git checkout "$current_branch_name"
+	set +x
+}
+
+function pcsq {
+	set -x
+	inv db.upgrade
 	set +x
 }
 
