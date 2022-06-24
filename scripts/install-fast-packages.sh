@@ -37,7 +37,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	zsh
 
 # workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
-sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
 # TODO: use this for more checks
 command_exists() {
