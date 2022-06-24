@@ -1,7 +1,7 @@
 #!/bin/zsh
 # shellcheck shell=bash
 
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/go/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export ZSH=~/.oh-my-zsh
 # shellcheck disable=SC2034
 HYPHEN_INSENSITIVE="true"
