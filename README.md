@@ -37,10 +37,12 @@ sudo su - $NEWUSER
 
 - https://github.com/sindresorhus/pure
 
-  - `rm -r files/zsh-custom/pure && git clone https://github.com/sindresorhus/pure files/zsh-custom/pure --depth 1 && rm -rf files/zsh-custom/pure/.git`
+  ```console
+  rm -r files/zsh-custom/pure && git clone https://github.com/sindresorhus/pure files/zsh-custom/pure --depth 1 && rm -rf files/zsh-custom/pure/.git
+  ```
 
-## tmux plugins
+## tmux plugin manager
 
-```
-git clone https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm
+```console
+rm -r files/.tmux/plugins/tpm && git clone https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm && rm -rf files/.tmux/plugins/tpm/.git
 ```
