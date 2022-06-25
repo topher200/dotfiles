@@ -67,6 +67,22 @@ expected_region_highlight=(
 )
 ```
 
+Memos and commas
+----------------
+
+We append to `region_highlight` as follows:
+
+
+```zsh
+region_highlight+=("$start $end $spec, memo=zsh-syntax-highlighting")
+```
+
+That comma is required to cause zsh 5.8 and older to ignore the memo without
+ignoring the `$spec`.  It's a hack, but given that no further 5.8.x patch
+releases are planned, it's been deemed acceptable.  See issue #418 and the
+cross-referenced issues.
+
+
 Miscellany
 ----------
 
@@ -79,5 +95,5 @@ zstyle ':completion:*:*:*:*:globbed-files' ignored-patterns {'*/',}zsh-syntax-hi
 IRC channel
 -----------
 
-We're on #zsh-syntax-highlighting on freenode.
+We're on #zsh-syntax-highlighting on Libera.Chat.
 
