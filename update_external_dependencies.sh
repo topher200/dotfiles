@@ -3,7 +3,7 @@
 set -e
 
 echo 'upgrading oh-my-zsh'
-rm -r files/.oh-my-zsh
+rm -rf files/.oh-my-zsh
 git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh files/.oh-my-zsh
 rm -rf files/.oh-my-zsh/.git
 echo 'done upgrading oh-my-zsh'

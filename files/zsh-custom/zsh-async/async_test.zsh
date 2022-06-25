@@ -136,7 +136,7 @@ test_async_process_results_stress() {
 	async_start_worker test
 	t_defer async_stop_worker test
 
-	integer iter=40 timeout=5
+	integer iter=20 timeout=5
 	for i in {1..$iter}; do
 		async_job test "print -n $i"
 	done
@@ -167,7 +167,7 @@ test_async_process_results_stress() {
 	[[ $want = $got ]] || t_error "want stdout: ${(Vq-)want}, got ${(Vq-)got}"
 
 	# Test with longer running commands (sleep, then print).
-	iter=40
+	iter=20
 	for i in {1..$iter}; do
 		async_job test "sleep 1 && print -n $i"
 		sleep 0.00001
@@ -312,6 +312,10 @@ test_async_worker_notify_sigwinch() {
 	local -a result
 	cb() { result=("$@") }
 
+	if ! is-at-least 5.0.3 && [[ -n $CI ]]; then
+		t_skip "Skip winch test on GitHub Actions for zsh 5.0.2: undefined signal: WINCH"
+	fi
+
 	ASYNC_USE_ZLE_HANDLER=0
 
 	async_start_worker test -n
@@ -437,7 +441,7 @@ test_async_worker_update_pwd() {
 	async_job test1 'print $PWD'
 
 	start=$EPOCHREALTIME
-	while (( EPOCHREALTIME - start < 2.0 && $#result < 3 )); do
+	while (( EPOCHREALTIME - start < 2.0 && $#result < 2 )); do
 		async_process_results test1 cb
 	done
 
@@ -445,6 +449,36 @@ test_async_worker_update_pwd() {
 	[[ $eval_out = foobarbaz ]] || t_error "wanted async_worker_eval to output foobarbaz, got ${(q)eval_out}"
 	[[ -n $result[2] ]] || t_error "wanted second pwd to be non-empty"
 	[[ $result[1] != $result[2] ]] || t_error "wanted worker to change pwd, was ${(q)result[1]}, got ${(q)result[2]}"
+}
+
+test_async_worker_update_pwd_and_env() {
+	local -a result
+	local eval_out
+	cb() {
+		if [[ $1 == '[async/eval]' ]]; then
+			eval_out="$3"
+		else
+			result+=("$3")
+		fi
+	}
+
+	input=$'my\ninput'
+
+	async_start_worker test1
+	t_defer async_stop_worker test1
+
+	async_job test1 "print -n $myenv"
+	async_worker_eval test1 "cd ..; export myenv=${(q)input}"
+	async_job test1 'print -n $myenv'
+
+	start=$EPOCHREALTIME
+	while (( EPOCHREALTIME - start < 2.0 && $#result < 2 )); do
+		async_process_results test1 cb
+	done
+
+	(( $#result == 2 )) || t_error "wanted 2 results, got ${#result}"
+	[[ $result[2] = $input ]] || t_error "wanted second print to output ${(q-)input}, got ${(q-)result[2]}"
+	[[ $result[1] != $result[2] ]] || t_error "wanted worker to change env, was ${(q-)result[1]}, got ${(q-)result[2]}"
 }
 
 setopt_helper() {
@@ -537,6 +571,13 @@ zpty_init() {
 		t_log "prompt missing"
 		return 1
 	}
+
+	local junk
+	if zpty -r -t zsh junk '*'; then
+		while zpty -r -t zsh junk '*'; do
+			# Noop.
+		done
+	fi
 }
 
 zpty_run() {
@@ -552,6 +593,9 @@ zpty_deinit() {
 }
 
 test_zle_watcher() {
+	t_skip "Test is not reliable on zsh 5.0.X"
+
+	setopt localoptions
 	zpty_init '
 		emulate -R zsh
 		setopt zle
