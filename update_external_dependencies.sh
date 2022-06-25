@@ -25,3 +25,9 @@ rm -r files/zsh-custom/zsh-syntax-highlighting
 git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting files/zsh-custom/zsh-syntax-highlighting
 rm -rf files/zsh-custom/zsh-syntax-highlighting/.git
 echo 'done upgrading zsh-syntax-highlighting'
+
+echo 'upgrading tmux plugin manager (tpm)'
+rm -r files/.tmux/plugins/tpm
+git clone --depth 1 https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm
+rm -rf files/.tmux/plugins/tpm/.git
+echo 'done upgrading tmux plugin manager (tpm)'
