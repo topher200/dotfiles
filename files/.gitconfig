@@ -64,12 +64,12 @@ name = Topher Brown
 email = topher@memfault.com
 [commit]
 verbose = 1
-template = $HOME/.memfault-git-commit-template
+template = ~/.memfault-git-commit-template
 
 [core]
 editor = vim
 bare = false
-excludesFile = $HOME/.gitignore_global
+excludesFile = ~/.gitignore_global
 
 [diff]
 tool = nvimdiff
