@@ -163,8 +163,6 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/D
 # include my non-shell-specific code
 # shellcheck source=topherrc
 source "$HOME"/topherrc
-# shellcheck source=graphiterc
-source "$HOME"/graphiterc
 # shellcheck source=condarc
 source "$HOME"/condarc
 # shellcheck source=memfaultrc
@@ -172,6 +170,10 @@ source "$HOME"/memfaultrc
 if [[ -f "$HOME"/Downloads/secretsrc ]]; then
 	# shellcheck disable=SC1090
 	source "$HOME"/Downloads/secretsrc
+fi
+if [[ -f "$HOME"/systemrc ]]; then
+	# shellcheck disable=SC1090
+	source "$HOME"/systemrc
 fi
 
 alias docker-compose=docker compose
