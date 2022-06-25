@@ -44,10 +44,6 @@ source $ZSH_CUSTOM/invoke-completion.sh
 # make sure our locale can handle unicode chars in prompt
 export LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
-# create .zsh_functions dir (https://github.com/jwilm/alacritty/blob/master/INSTALL.md#zsh)
-mkdir -p "${ZDOTDIR:-~}/.zsh_functions"
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-
 # move up and down in local history, but ctrl-r uses global history
 # https://superuser.com/questions/446594/separate-up-arrow-lookback-for-local-and-global-zsh-history
 unsetopt inc_append_history
