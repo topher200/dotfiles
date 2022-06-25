@@ -36,6 +36,7 @@ sudo su - $NEWUSER
 ## zsh-custom git repo clones
 
 - https://github.com/sindresorhus/pure
+
   - I have local modifications which need to be re-applied after update.
 
   - `rm -r files/zsh-custom/pure && git clone https://github.com/sindresorhus/pure files/zsh-custom/pure --depth 1 && rm -rf files/zsh-custom/pure/.git`
