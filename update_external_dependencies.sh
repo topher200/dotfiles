@@ -25,3 +25,16 @@ rm -r files/zsh-custom/zsh-syntax-highlighting
 git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting files/zsh-custom/zsh-syntax-highlighting
 rm -rf files/zsh-custom/zsh-syntax-highlighting/.git
 echo 'done upgrading zsh-syntax-highlighting'
+
+echo 'upgrading pure-prompt'
+# https://github.com/sindresorhus/pure
+rm -r files/zsh-custom/pure
+git clone --depth 1 https://github.com/sindresorhus/pure files/zsh-custom/pure
+rm -rf files/zsh-custom/pure/.git
+echo 'done upgrading pure-prompt'
+
+echo 'upgrading tmux plugin manager (tpm)'
+rm -r files/.tmux/plugins/tpm
+git clone --depth 1 https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm
+rm -rf files/.tmux/plugins/tpm/.git
+echo 'done upgrading tmux plugin manager (tpm)'
