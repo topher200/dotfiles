@@ -83,6 +83,12 @@ That's it. Skip to [Getting started](#getting-started).
 brew install pure
 ```
 
+If you're not using ZSH from Homebrew (`brew install zsh` and `$(brew --prefix)/bin/zsh`), you must also add the site-functions to your `fpath` in `$HOME/.zshrc`:
+
+```sh
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+```
+
 ### Manually
 
 1. Clone this repo somewhere. Here we'll use `$HOME/.zsh/pure`.
@@ -95,7 +101,7 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 2. Add the path of the cloned repo to `$fpath` in `$HOME/.zshrc`.
 ```sh
 # .zshrc
-fpath+=$HOME/.zsh/pure
+fpath+=($HOME/.zsh/pure)
 ```
 
 ## Getting started
@@ -156,6 +162,7 @@ Colors can be changed by using [`zstyle`](http://zsh.sourceforge.net/Doc/Release
 - `prompt:error` (red) - The `PURE_PROMPT_SYMBOL` when the previous command has *failed*.
 - `prompt:success` (magenta) - The `PURE_PROMPT_SYMBOL` when the previous command has *succeeded*.
 - `prompt:continuation` (242) - The color for showing the state of the parser in the continuation prompt (PS2). It's the pink part in [this screenshot](https://user-images.githubusercontent.com/147409/70068574-ebc74800-15f8-11ea-84c0-8b94a4b57ff4.png), it appears in the same spot as `virtualenv`. You could for example matching both colors so that Pure has a uniform look.
+- `suspended_jobs` (red) - The `✦` symbol indicates that jobs are running in the background.
 - `user` (242) - The username when on remote machine.
 - `user:root` (default) - The username when the user is root.
 - `virtualenv` (242) - The name of the Python `virtualenv` when in use.
