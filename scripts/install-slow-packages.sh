@@ -18,7 +18,6 @@ fi
 # if we have npm, that's a much faster installer for graphite
 if command_exists npm; then
 	npm install -g @withgraphite/graphite-cli
-	gt completion >>~/systemrc
 else
 	brew install withgraphite/tap/graphite
 fi

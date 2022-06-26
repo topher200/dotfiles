@@ -3,14 +3,14 @@
 #
 # yargs command completion script
 #
-# Installation: /home/linuxbrew/.linuxbrew/bin/gt completion >> ~/.zshrc
-#    or /home/linuxbrew/.linuxbrew/bin/gt completion >> ~/.zsh_profile on OSX.
+# Installation: gt completion >> ~/.zshrc
+#    or gt completion >> ~/.zsh_profile on OSX.
 #
 _gt_yargs_completions() {
     local reply
     local si=$IFS
     IFS=$'
-' reply=($(COMP_CWORD="$((CURRENT - 1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" /home/linuxbrew/.linuxbrew/bin/gt --get-yargs-completions "${words[@]}"))
+' reply=($(COMP_CWORD="$((CURRENT - 1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
     IFS=$si
     _describe 'values' reply
 }
