@@ -8,11 +8,11 @@ echo "{\"authToken\": \"$GRAPHITE_AUTH_TOKEN\", \"branchPrefix\": \"topher/\"}" 
 tmux new-session -d -s work
 if [[ -d /workspace/dotfiles ]]; then
 	echo 'running in /workspace/dotfiles'
-	tmux new-window -n install-slow 'cd /workspace/dotfiles && make install-slow-packages && pre-commit install --install-hooks'
+	tmux new-window -n install-slow 'cd /workspace/dotfiles && make install-slow-packages && gt completion >>~/systemrc && pre-commit install --install-hooks'
 else
 	# if we're not already in a dotfiles repo, find one
 	echo 'running in ~/.dotfiles'
-	tmux new-window -n install-slow 'cd ~/.dotfiles && make install-slow-packages && pre-commit install --install-hooks'
+	tmux new-window -n install-slow 'cd ~/.dotfiles && make install-slow-packages && gt completion >>~/systemrc && pre-commit install --install-hooks'
 fi
 tmux select-window -t 1
 

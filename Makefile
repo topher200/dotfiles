@@ -12,6 +12,7 @@ install-fast-packages:
 .PHONY: install-slow-packages
 install-slow-packages:
 	./scripts/install-slow-packages.sh
+	gt completion >>~/systemrc
 
 .PHONY: lint
 lint:

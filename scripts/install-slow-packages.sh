@@ -21,7 +21,6 @@ if command_exists npm; then
 else
 	brew install withgraphite/tap/graphite
 fi
-gt completion >>~/systemrc
 
 # install frequently used apps first
 brew install jesseduffield/lazygit/lazygit
