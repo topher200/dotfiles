@@ -163,6 +163,8 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/D
 # include my non-shell-specific code
 # shellcheck source=topherrc
 source "$HOME"/topherrc
+# shellcheck source=graphiterc
+source "$HOME"/graphiterc
 # shellcheck source=condarc
 source "$HOME"/condarc
 # shellcheck source=memfaultrc
