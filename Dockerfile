@@ -9,7 +9,6 @@ COPY --chown=gitpod scripts/install-fast-packages.sh ./scripts/install-fast-pack
 RUN ./scripts/install-fast-packages.sh
 COPY --chown=gitpod scripts/install-slow-packages.sh ./scripts/install-slow-packages.sh
 RUN ./scripts/install-slow-packages.sh
-RUN gt completion >>/home/gitpod/systemrc
 
 COPY --chown=gitpod . .
 # hidden files are ignored by COPY by default
