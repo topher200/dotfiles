@@ -1,9 +1,13 @@
 set mouse = true
 
-bind main 9 !@bash -c "echo -n %(commit) | xsel --clipboard"
+# mirrors lazygit
+bind main s !@bash -c "echo -n %(commit) | xsel --clipboard"
+bind main t !@bash -c "git revert %(commit)"
+bind main <Space> !@bash -c "git checkout %(commit)"
+
+# unique actions
 bind main B !git rebase -i %(commit)
-bind main T !@bash -c "git diff %(commit).. > diff.txt"
 bind main E !@bash -c "git reset --hard %(commit)"
-bind main V !@bash -c "git revert %(commit)"
-bind main O !@bash -c "git checkout %(commit)"
 bind main P !@bash -c "git cherry-pick %(commit)"
+bind main T view-tree
+bind main ? view-help
