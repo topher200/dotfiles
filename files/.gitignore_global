@@ -2,5 +2,5 @@
 __pycache__
 .DS_Store
 diff.txt
-
+.envrc
 .vscode

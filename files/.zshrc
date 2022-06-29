@@ -147,6 +147,9 @@ export FZF_TMUX_OPTS='-d 30%'
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
 
+# https://direnv.net/docs/hook.html
+eval "$(direnv hook zsh)"
+
 setopt globdots
 
 export EDITOR=nvim
