@@ -11,6 +11,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	build-essential \
 	colorized-logs \
 	curl \
+	direnv \
 	docker \
 	fd-find \
 	file \
