@@ -232,3 +232,13 @@
   description = "ssh into seedbox"
   command = "ssh_seedbox"
   output = ""
+
+[[snippets]]
+  description = "print ubuntu version"
+  command = "lsb_release -a"
+  output = ""
+
+[[snippets]]
+  description = "print wifi qr code"
+  command = "nmcli dev wifi show-password"
+  output = ""
