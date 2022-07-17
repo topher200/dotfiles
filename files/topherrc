@@ -36,7 +36,15 @@ function gdcb {
 	git branch -D "$branch_name"
 }
 
-# Update and resubmit all graphite branches
+# Update and resubmit this graphite stack
+function gtsrs {
+	set -x
+	gt stack restack
+	gt stack submit --update-only
+	set +x
+}
+
+# Update and resubmit all graphite stacks
 function gtup {
 	set -x
 	current_branch_name=$(git symbolic-ref HEAD --short)
