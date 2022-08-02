@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -Eeuox pipefail
 
 echo 'upgrading oh-my-zsh'
 rm -r files/.oh-my-zsh

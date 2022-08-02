@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -Eeuox pipefail
+
 # configure graphite
 echo '{"trunk": "master"}' >.git/.graphite_repo_config
 echo "{\"authToken\": \"$GRAPHITE_AUTH_TOKEN\", \"branchPrefix\": \"topher/\"}" >~/.graphite_user_config
