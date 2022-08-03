@@ -1,6 +1,8 @@
 FROM gitpod/workspace-base:latest
 
-# RUN sudo adduser topher sudo
+# gitpod adds a garbage ~/.gitconfig file, let's remove it
+RUN mv ~/.gitconfig ~/.gitconfig.gitpod-workspace-base
+
 WORKDIR /home/gitpod/dotfiles
 
 RUN sudo apt-get install -y make
