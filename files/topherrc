@@ -39,20 +39,20 @@ function gdcb {
 # Update and resubmit this graphite stack
 function gsrs {
 	set -x
-	gt stack restack
-	gt stack submit --update-only
+	gt stack restack &&
+		gt stack submit --update-only
 	set +x
 }
 
 # Update and resubmit all graphite stacks
 function gup {
 	set -x
-	current_branch_name=$(git symbolic-ref HEAD --short)
-	git checkout master
-	gt repo sync --force
-	git submodule update
-	gt stack restack
-	gt stack submit --update-only
+	current_branch_name=$(git symbolic-ref HEAD --short) &&
+		git checkout master &&
+		gt repo sync --force &&
+		git submodule update &&
+		gt stack restack &&
+		gt stack submit --update-only
 	git checkout "$current_branch_name"
 	set +x
 }
