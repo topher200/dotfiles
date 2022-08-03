@@ -37,7 +37,7 @@ function gdcb {
 }
 
 # Update and resubmit this graphite stack
-function gtsrs {
+function gsrs {
 	set -x
 	gt stack restack
 	gt stack submit --update-only
@@ -45,7 +45,7 @@ function gtsrs {
 }
 
 # Update and resubmit all graphite stacks
-function gtup {
+function gup {
 	set -x
 	current_branch_name=$(git symbolic-ref HEAD --short)
 	git checkout master
