@@ -180,5 +180,3 @@ if [[ -f "$HOME"/systemrc ]]; then
 	# shellcheck disable=SC1090
 	source "$HOME"/systemrc
 fi
-
-alias docker-compose=docker compose
