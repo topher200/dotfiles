@@ -3,8 +3,11 @@
 set -Eeuox pipefail
 
 # configure graphite
-echo '{"trunk": "master"}' >.git/.graphite_repo_config
-echo "{\"authToken\": \"$GRAPHITE_AUTH_TOKEN\", \"branchPrefix\": \"topher/\"}" >~/.graphite_user_config
+gt auth --token "$GRAPHITE_AUTH_TOKEN"
+gt user submit-body --include-commit-messages
+gt user branch-prefix --set topher/
+# this command takes effect in the current repo
+gt repo init --no-interactive --trunk master
 
 # start tmux session, with background windows doing setup
 tmux new-session -d -s work
