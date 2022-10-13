@@ -5,6 +5,10 @@ export MEMFAULT_EMAIL=user@example.com
 export MEMFAULT_PASSWORD=asdf
 export MEMFAULT_ORG=acme-inc
 
+# pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
+export INVOKE_RUN_ECHO=1
+export INVOKE_MEMFAULT_PROCFILE_RUNNER=overmind
+
 alias cam='conda deactivate && conda deactivate && conda deactivate && conda activate memfault'
 
 if [[ "$PWD" == "/home/topher" && -d "/home/topher/memfault" ]]; then
@@ -12,9 +16,6 @@ if [[ "$PWD" == "/home/topher" && -d "/home/topher/memfault" ]]; then
 fi
 
 if [[ "$PWD" == "/home/topher/memfault" ]]; then
-	# pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
-	export INVOKE_RUN_ECHO=1
-
 	# aws alias
 	# https://www.notion.so/memfault/Platform-Tooling-5facd1d8941945c08e82a549e192885e
 	alias chamberprod='aws-vault exec topher-prod -- chamber'
