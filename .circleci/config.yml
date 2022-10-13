@@ -11,6 +11,7 @@ jobs:
     executor: ubuntu
     steps:
       - checkout
+      - run: sudo apt-get update
       - run: sudo apt-get install shellcheck
       - run: sudo apt-get install snapd && sudo snap install shfmt
       - run: npm install --global prettier
