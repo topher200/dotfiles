@@ -9,6 +9,8 @@ export MEMFAULT_ORG=acme-inc
 export INVOKE_RUN_ECHO=1
 export INVOKE_MEMFAULT_PROCFILE_RUNNER=overmind
 
+export LOG_RAW_SQL_QUERIES=1
+
 alias cam='conda deactivate && conda deactivate && conda deactivate && conda activate memfault'
 
 if [[ "$PWD" == "/home/topher" && -d "/home/topher/memfault" ]]; then
