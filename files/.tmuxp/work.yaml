@@ -13,6 +13,13 @@ windows:
     panes:
       - shell_command: cam
     start_directory: /home/topher/dev/memfault
+  - window_name: overmind
+    window_index: 3
+    options:
+      automatic-rename: off
+    panes:
+      - shell_command: overmind c
+    start_directory: /home/topher/dev/memfault
   - window_name: servers
     window_index: 4
     options:
