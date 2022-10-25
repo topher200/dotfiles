@@ -29,6 +29,11 @@ plugins=(
 # shellcheck source=.oh-my-zsh/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
 
+# shellcheck source=zsh-custom/antigen.zsh
+source ~/zsh-custom/antigen.zsh
+# antigen use oh-my-zsh
+antigen bundle jeffreytse/zsh-vi-mode
+
 # enable 'kitty' terminal emulator
 if command -v kitty >/dev/null; then
 	autoload -Uz compinit
