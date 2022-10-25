@@ -18,21 +18,16 @@ ZSH_CUSTOM=~/zsh-custom
 # https://github.com/ohmyzsh/ohmyzsh/issues/449
 setopt NO_NOMATCH
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# shellcheck disable=SC2034
-plugins=(
-	autojump
-	github
-	httpie
-	poetry
-	safe-paste
-)
-# shellcheck source=.oh-my-zsh/oh-my-zsh.sh
-source $ZSH/oh-my-zsh.sh
 
 # shellcheck source=zsh-custom/antigen.zsh
 source ~/zsh-custom/antigen.zsh
-# antigen use oh-my-zsh
+antigen use oh-my-zsh
+antigen bundle autojump
+antigen bundle github
+antigen bundle httpie
+antigen bundle safe-paste
 antigen bundle jeffreytse/zsh-vi-mode
+antigen apply
 
 # enable 'kitty' terminal emulator
 if command -v kitty >/dev/null; then
