@@ -10,19 +10,23 @@ command_exists() {
 }
 
 # install Linuxbrew
-if ! command_exists brew; then
-	NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+install_brew() {
+	if ! command_exists brew; then
+		NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+	fi
+}
 
 # if we have npm, that's a much faster installer for graphite
 if command_exists npm; then
 	npm install -g @withgraphite/graphite-cli
 else
+	install_brew
 	brew install withgraphite/tap/graphite
 fi
 
 # install frequently used apps first
+install_brew
 brew install jesseduffield/lazygit/lazygit
 brew install \
 	pre-commit \
