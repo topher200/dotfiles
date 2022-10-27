@@ -29,9 +29,6 @@ plugins=(
 # shellcheck source=.oh-my-zsh/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
 
-# install thefuck
-eval "$(thefuck --alias)"
-
 # enable 'kitty' terminal emulator
 if command -v kitty >/dev/null; then
 	autoload -Uz compinit
