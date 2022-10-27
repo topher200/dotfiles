@@ -26,6 +26,8 @@ antigen bundle autojump
 antigen bundle github
 antigen bundle httpie
 antigen bundle safe-paste
+# shellcheck disable=SC2034
+ZVM_INIT_MODE=sourcing
 antigen bundle jeffreytse/zsh-vi-mode
 antigen apply
 
