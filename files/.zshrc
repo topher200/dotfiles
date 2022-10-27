@@ -105,14 +105,8 @@ PURE_GIT_UNTRACKED_DIRTY=0
 zstyle :prompt:pure:virtualenv color green
 zstyle :prompt:pure:git:stash show yes
 prompt pure
-# set -o vi
-bindkey -v
 # this bindkey is overriden later by fzf
 bindkey '^R' history-incremental-search-backward
-# 'v' enters VI mode, from https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd 'v' edit-command-line
 # backspace always deletes a char, even in insert mode. from https://unix.stackexchange.com/a/368576
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^H' backward-delete-char
