@@ -2,7 +2,6 @@
 # shellcheck shell=bash
 
 export PATH=$HOME/bin:$HOME/go/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-export ZSH=~/.oh-my-zsh
 # shellcheck disable=SC2034
 HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder
@@ -17,7 +16,6 @@ HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM=~/zsh-custom
 # https://github.com/ohmyzsh/ohmyzsh/issues/449
 setopt NO_NOMATCH
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 
 # shellcheck source=zsh-custom/antigen.zsh
 source ~/zsh-custom/antigen.zsh
