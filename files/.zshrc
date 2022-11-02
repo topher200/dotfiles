@@ -26,6 +26,8 @@ antigen bundle httpie
 antigen bundle safe-paste
 # shellcheck disable=SC2034
 ZVM_INIT_MODE=sourcing
+# shellcheck disable=SC2034
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 antigen bundle jeffreytse/zsh-vi-mode
 antigen apply
 
