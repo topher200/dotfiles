@@ -2,8 +2,6 @@
 
 set -Eeuox pipefail
 
-# use the latest version of git (important for git 2.35)
-sudo add-apt-repository ppa:git-core/ppa -y
 # timezone copy and DEBIAN_FRONTEND are to stop 'tzdata' from prompting for timezone during install
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
@@ -37,9 +35,6 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	xsel \
 	zsh
 
-# workaround for https://github.com/sharkdp/bat/issues/938, required for ubuntu 20.04 (but not later!)
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -y -o Dpkg::Options::="--force-overwrite" bat ripgrep
-
 # TODO: use this for more checks
 command_exists() {
 	command -v "$1" >/dev/null 2>&1
@@ -60,6 +55,7 @@ if [ ! -f /usr/local/bin/viddy ]; then
 	popd || exit
 fi
 
+# TODO: install with 'apt'
 # install exa, (not available on Ubuntu 20.04)
 if [ ! -f /usr/local/bin/exa ]; then
 	wget -O /tmp/exa.zip https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip
