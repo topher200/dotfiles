@@ -11,7 +11,7 @@ jobs:
     executor: ubuntu
     steps:
       - checkout
-      - run: sudo apt update
+      - run: sudo apt update --yes
       - run: sudo apt install shellcheck
       - run: sudo apt install snapd && sudo snap install shfmt
       - run: npm install --global prettier
@@ -21,7 +21,7 @@ jobs:
   test-full-install:
     executor: ubuntu
     steps:
-      - run: sudo apt update && sudo apt install -y make
+      - run: sudo apt update --yes && sudo apt install -y make
       - checkout
       - run: BUILDKIT_PROGRESS=plain make docker-build
       - run: docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
