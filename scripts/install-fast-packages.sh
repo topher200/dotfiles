@@ -4,7 +4,7 @@ set -Eeuox pipefail
 
 # timezone copy and DEBIAN_FRONTEND are to stop 'tzdata' from prompting for timezone during install
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
+DEBIAN_FRONTEND=noninteractive sudo apt install -y \
 	autojump \
 	build-essential \
 	colorized-logs \
