@@ -11,9 +11,9 @@ jobs:
     executor: ubuntu
     steps:
       - checkout
-      - run: sudo apt-get update
-      - run: sudo apt-get install shellcheck
-      - run: sudo apt-get install snapd && sudo snap install shfmt
+      - run: sudo apt update
+      - run: sudo apt install shellcheck
+      - run: sudo apt install snapd && sudo snap install shfmt
       - run: npm install --global prettier
       - run: pip3 install pre-commit
       - run: make lint
