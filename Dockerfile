@@ -5,7 +5,7 @@ RUN mv ~/.gitconfig ~/.gitconfig.gitpod-workspace-base
 
 WORKDIR /home/gitpod/dotfiles
 
-RUN sudo apt-get install -y make
+RUN sudo apt install -y make
 
 COPY --chown=gitpod scripts/install-fast-packages.sh ./scripts/install-fast-packages.sh
 RUN ./scripts/install-fast-packages.sh
