@@ -17,7 +17,6 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
 	fzf \
 	htop \
 	httpie \
-	git \
 	moreutils \
 	neovim \
 	jq \
@@ -34,6 +33,8 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
 	wget \
 	xsel \
 	zsh
+
+# TODO add back in 'git' installation
 
 # TODO: use this for more checks
 command_exists() {
