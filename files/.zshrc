@@ -2,6 +2,7 @@
 # shellcheck shell=bash
 
 export PATH=$HOME/bin:$HOME/go/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export ZSH=~/.oh-my-zsh
 # shellcheck disable=SC2034
 HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode reminder
@@ -16,20 +17,17 @@ HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM=~/zsh-custom
 # https://github.com/ohmyzsh/ohmyzsh/issues/449
 setopt NO_NOMATCH
-
-# shellcheck source=zsh-custom/antigen.zsh
-source ~/zsh-custom/antigen.zsh
-antigen use oh-my-zsh
-antigen bundle autojump
-antigen bundle github
-antigen bundle httpie
-antigen bundle safe-paste
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # shellcheck disable=SC2034
-ZVM_INIT_MODE=sourcing
-# shellcheck disable=SC2034
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-antigen bundle jeffreytse/zsh-vi-mode
-antigen apply
+plugins=(
+	autojump
+	github
+	httpie
+	poetry
+	safe-paste
+)
+# shellcheck source=.oh-my-zsh/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # enable 'kitty' terminal emulator
 if command -v kitty >/dev/null; then

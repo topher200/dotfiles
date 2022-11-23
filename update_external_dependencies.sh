@@ -31,8 +31,3 @@ rm -r files/.tmux/plugins/tpm
 git clone --depth 1 https://github.com/tmux-plugins/tpm files/.tmux/plugins/tpm
 rm -rf files/.tmux/plugins/tpm/.git
 echo 'done upgrading tmux plugin manager (tpm)'
-
-echo 'upgrading antigen (zsh plugin manager)'
-rm -r files/zsh-custom/antigen.zsh
-curl -L git.io/antigen >files/zsh-custom/antigen.zsh
-echo 'done upgrading antigen (zsh plugin manager)'
