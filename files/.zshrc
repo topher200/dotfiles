@@ -25,6 +25,7 @@ plugins=(
 	httpie
 	poetry
 	safe-paste
+	zsh-vi-mode
 )
 # shellcheck source=.oh-my-zsh/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
