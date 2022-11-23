@@ -5,7 +5,7 @@
 
 [[snippets]]
   description = "what's my ip"
-  command = "curl v4.ifconfig.co | tee >(xsel)"
+  command = "curl -s icanhazip.com | tr -d '\\n' | tee >(xsel)"
   output = ""
 
 [[snippets]]
