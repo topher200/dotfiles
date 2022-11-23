@@ -27,6 +27,7 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
 	pspg \
 	shellcheck \
 	silversearcher-ag \
+	stgit \
 	stow \
 	tig \
 	tmux \
