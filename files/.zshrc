@@ -18,6 +18,7 @@ ZSH_CUSTOM=~/zsh-custom
 # https://github.com/ohmyzsh/ohmyzsh/issues/449
 setopt NO_NOMATCH
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# shellcheck disable=SC2034
 plugins=(
 	autojump
 	github
