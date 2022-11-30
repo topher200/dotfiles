@@ -27,7 +27,7 @@ windows:
     panes:
       - shell_command:
           - cam
-          - inv dev
+          - rm ./.overmind.sock || inv dev
       - shell_command:
           - cam
           - inv ingress.dev
