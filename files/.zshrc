@@ -104,11 +104,6 @@ PURE_GIT_UNTRACKED_DIRTY=0
 zstyle :prompt:pure:virtualenv color green
 zstyle :prompt:pure:git:stash show yes
 prompt pure
-# this bindkey is overriden later by fzf
-bindkey '^R' history-incremental-search-backward
-# backspace always deletes a char, even in insert mode. from https://unix.stackexchange.com/a/368576
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^H' backward-delete-char
 
 ### pet (command line snippet manager)
 # save previous command to pet
@@ -126,7 +121,8 @@ function pet-select() {
 }
 zle -N pet-select
 stty -ixon
-bindkey '^s' pet-select
+# this bindkey must be executed after zvm, see zvm_after_init
+# bindkey '^s' pet-select
 ### end pet (command line snippet manager)
 
 # make fzf use ag instead of its default (find)
@@ -137,10 +133,16 @@ export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
 # use fzf-tmux
 export FZF_TMUX_OPTS='-d 30%'
 # add fzf keybindings
-# shellcheck disable=SC1090
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
-[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
+# using lazy method described for https://github.com/jeffreytse/zsh-vi-mode
+function zvm_after_init() {
+	# shellcheck disable=SC1090
+	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+	[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+	[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
+
+	# enable pet-select (from earlier)
+	bindkey '^s' pet-select
+}
 
 # https://direnv.net/docs/hook.html
 eval "$(direnv hook zsh)"
