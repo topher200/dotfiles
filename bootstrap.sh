@@ -1,8 +1,12 @@
 #!/bin/bash
 set -Eeuox pipefail
 
-# if we're running in gitpod, cd to the gitpod checkout location
-if [[ -d "/home/gitpod/.dotfiles" ]]; then
+if [[ -d "/workspace/dotfiles" ]]; then
+	# if we're running in gitpod and we're running our repo, cd to it
+	cd /workspace/dotfiles
+elif [[ -d "/home/gitpod/.dotfiles" ]]; then
+	# if we're running in gitpod on some other repo, cd to the normal gitpod
+	# dotfiles location and use that
 	cd /home/gitpod/.dotfiles
 fi
 
