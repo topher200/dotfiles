@@ -4,6 +4,8 @@ set -Eeuox pipefail
 if [[ -d "/workspace/dotfiles" ]]; then
 	# if we're running in gitpod and we're running our repo, cd to it
 	cd /workspace/dotfiles
+	# remove the gitpod checkout so we don't get confused
+	rm -rf /home/gitpod/.dotfiles
 elif [[ -d "/home/gitpod/.dotfiles" ]]; then
 	# if we're running in gitpod on some other repo, cd to the normal gitpod
 	# dotfiles location and use that
