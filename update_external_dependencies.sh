@@ -8,8 +8,6 @@ git clone https://github.com/jeffreytse/zsh-vi-mode files/zsh-custom/plugins/zsh
 rm -rf files/zsh-custom/plugins/zsh-vi-mode/.git
 echo 'done upgrading zsh-vi-mode'
 
-exit
-
 echo 'upgrading oh-my-zsh'
 rm -r files/.oh-my-zsh
 git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh files/.oh-my-zsh
