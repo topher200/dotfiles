@@ -66,7 +66,7 @@ function pcsq {
 function pcs {
 	set -x
 	inv db.upgrade
-	inv setup
+	./bin/setup.py
 	set +x
 }
 
