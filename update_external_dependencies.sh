@@ -3,7 +3,7 @@
 set -Eeuox pipefail
 
 echo 'upgrading zsh-vi-mode'
-rm -r files/zsh-custom/plugins/zsh-vi-mode
+rm -rf files/zsh-custom/plugins/zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode files/zsh-custom/plugins/zsh-vi-mode
 rm -rf files/zsh-custom/plugins/zsh-vi-mode/.git
 echo 'done upgrading zsh-vi-mode'
