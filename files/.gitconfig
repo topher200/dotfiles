@@ -60,6 +60,7 @@ std = stash drop
 stp = stash pop
 stpa = stash --patch
 sts = stash show --patch
+su = submodule update
 
 [user]
 name = Topher Brown
