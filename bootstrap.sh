@@ -13,7 +13,7 @@ elif [[ -d "/home/gitpod/.dotfiles" ]]; then
 fi
 
 echo Installing fast packages at "$(date)"
-make install-fast-packages
+make install-fast-packages || true
 echo Finished installing fast packages at "$(date)"
 
 # gitpod provides a garbage ~/.zshrc file
