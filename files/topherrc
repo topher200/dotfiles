@@ -9,9 +9,7 @@ alias glb="git branch --sort=committerdate | grep -v 'dura-' | tail -n 15"
 alias agh='ag --hidden --ignore .git'
 # application aliases
 export BAT_THEME=zenburn
-# run batcat if it's installed, otherwise run cat
-alias cat='batcat -p || cat'
-# alias cat='batcat -p'
+alias ca=batcat -p
 alias dr=lazydocker
 alias fd=fdfind
 alias fdh='fdfind -H'
