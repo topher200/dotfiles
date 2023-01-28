@@ -270,5 +270,5 @@
 
 [[snippets]]
   description = "Source rust on PATH"
-  command = "source \"$HOME/.cargo/env\"\\n"
+  command = "source \"$HOME/.cargo/env\""
   output = ""
