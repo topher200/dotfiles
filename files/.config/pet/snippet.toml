@@ -267,3 +267,8 @@
   description = "get all commits / PRs which are in master but not yet released to prod"
   command = "git log --oneline --no-decorate $(inv sheriff.release-current --app memfault-prod)..origin/master"
   output = ""
+
+[[snippets]]
+  description = "Source rust on PATH"
+  command = "source \"$HOME/.cargo/env\""
+  output = ""
