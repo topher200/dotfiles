@@ -72,11 +72,13 @@ install_brew() {
 }
 
 # if we have npm, that's a much faster installer for graphite
-if command_exists npm; then
-	npm install -g @withgraphite/graphite-cli
-else
-	install_brew
-	brew install withgraphite/tap/graphite
+if ! command_exists graphite; then
+	if command_exists npm; then
+		npm install -g @withgraphite/graphite-cli
+	else
+		install_brew
+		brew install withgraphite/tap/graphite
+	fi
 fi
 
 # install frequently used apps first
