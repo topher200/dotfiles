@@ -89,6 +89,7 @@ brew install \
 
 brew install \
 	circleci \
+	ijq \
 	gcc \
 	jesseduffield/lazydocker/lazydocker \
 	jless \
