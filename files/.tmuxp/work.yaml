@@ -13,15 +13,8 @@ windows:
     panes:
       - shell_command: cam
     start_directory: /home/topher/dev/memfault
-  - window_name: overmind
-    window_index: 3
-    options:
-      automatic-rename: off
-    panes:
-      - shell_command: overmind c
-    start_directory: /home/topher/dev/memfault
   - window_name: servers
-    window_index: 4
+    window_index: 3
     options:
       automatic-rename: off
     panes:
@@ -38,6 +31,13 @@ windows:
           - cam
           - inv dc.svc
     layout: even-vertical
+    start_directory: /home/topher/dev/memfault
+  - window_name: overmind
+    window_index: 4
+    options:
+      automatic-rename: off
+    panes:
+      - shell_command: overmind c
     start_directory: /home/topher/dev/memfault
   - window_name: local-psql
     window_index: 5
