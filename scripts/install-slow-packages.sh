@@ -92,9 +92,6 @@ brew install \
 	gcc \
 	jesseduffield/lazydocker/lazydocker \
 	jless \
-	pre-commit \
-	prettier \
-	shfmt \
 	thefuck \
 	tmuxp \
 	tldr
