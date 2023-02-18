@@ -24,6 +24,8 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
 	httpie \
 	moreutils \
 	neovim \
+	jc \
+	jello \
 	jq \
 	pspg \
 	shellcheck \
