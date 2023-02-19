@@ -4,7 +4,8 @@ version: 2.1
 executors:
   ubuntu:
     machine:
-      image: ubuntu-2204:2022.04.1 # Ubuntu 22.04, Docker v20.10.14, Docker Compose v2.4.1
+      # packages here: https://discuss.circleci.com/t/linux-machine-executor-update-2022-october-q4-update/45753
+      image: ubuntu-2204:2022.10.1 # Ubuntu 22.04, Docker v20.10.14, Docker Compose v2.10.2
 
 jobs:
   test-lint:
