@@ -43,3 +43,10 @@ rm -r files/zsh-custom/plugins/zsh-vi-mode
 git clone https://github.com/jeffreytse/zsh-vi-mode files/zsh-custom/plugins/zsh-vi-mode
 rm -rf files/zsh-custom/plugins/zsh-vi-mode.git
 echo 'done upgrading zsh-vi-mode'
+
+echo 'upgrading copilot.vim'
+# copilot for neovim. https://github.com/github/copilot.vim
+# run ':Copilot setup' in neovim
+git clone https://github.com/github/copilot.vim.git files/.config/nvim/pack/github/start/copilot.vim
+rm -rf files/.config/nvim/pack/github/start/copilot.vim/.git
+echo 'done upgrading copilot.vim'
