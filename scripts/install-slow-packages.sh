@@ -39,9 +39,11 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	xsel
 
 # don't fail if some installs don't succeed
+set +e
 DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	jello \
 	jq || true
+set -e
 
 # TODO add back in 'git' installation
 
