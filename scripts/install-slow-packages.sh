@@ -9,7 +9,7 @@ command_exists() {
 	command -v "$1" >/dev/null 2>&1
 }
 
-DEBIAN_FRONTEND=noninteractive sudo apt install -y \
+sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	autojump \
 	build-essential \
 	colorized-logs \
@@ -35,6 +35,14 @@ DEBIAN_FRONTEND=noninteractive sudo apt install -y \
 	unzip \
 	wget \
 	xsel
+
+# These aren't available until super-modern Ubuntu. Don't fail if these
+# installs don't succeed.
+set +e
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
+	jello \
+	jq || true
+set -e
 
 # TODO add back in 'git' installation
 
