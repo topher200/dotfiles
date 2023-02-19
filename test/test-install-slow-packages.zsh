@@ -23,7 +23,6 @@ fail_if_not_exists jless
 fail_if_not_exists pre-commit
 fail_if_not_exists prettier
 fail_if_not_exists shfmt
-fail_if_not_exists thefuck
 fail_if_not_exists tmuxp
 fail_if_not_exists tldr
 fail_if_not_exists graphite
