@@ -36,7 +36,8 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	wget \
 	xsel
 
-# don't fail if some installs don't succeed
+# These aren't available until super-modern Ubuntu. Don't fail if these
+# installs don't succeed.
 set +e
 DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	jello \
