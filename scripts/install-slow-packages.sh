@@ -38,6 +38,11 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	wget \
 	xsel
 
+# don't fail if some installs don't succeed
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
+	jello \
+	jq || true
+
 # TODO add back in 'git' installation
 
 # pet snippet manager
