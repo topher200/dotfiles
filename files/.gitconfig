@@ -1,112 +1,108 @@
-[alias]
-a = add
-aa = add --all
-apa = add --patch
-au = add --update
-b = !git --no-pager branch
-bb = bisect bad
-bg = bisect good
-br = bisect reset
-c = commit
-cnv = commit --no-verify
-ca = commit --all
-canv = commit --all --no-verify
-cam = commit --amend --no-edit
-camnv = commit --amend --no-edit --no-verify
-cama = commit --amend --all --no-edit
-camanv = commit --amend --all --no-edit --no-verify
-came = commit --amend --edit --allow-empty
-camenv = commit --amend --edit --no-verify --allow-empty
-camae = commit --amend --all --edit --allow-empty
-camaenv = commit --amend --edit --all --no-verify --allow-empty
-campa = commit --amend --patch --no-edit
-campae = commit --amend --edit --patch --allow-empty
-campanv = commit --amend --patch --no-edit --no-verify
-cl = clean
-clf = clean -f
-clfd = clean -f -d
-cln = clean -n
-co = checkout
-com = checkout master
-coom = checkout origin/master
-copa = checkout --patch
-cpa = commit --patch
-d = diff
-dh = diff HEAD
-dhs = diff HEAD --stat
-dhh = diff HEAD^
-dhhs = diff HEAD^ --stat
-ds = diff --staged
-dm = diff master
-dmno = diff master --name-only
-dom = diff origin/master
-domno = diff origin/master --name-only
-dno = diff --name-only
-dnp = !git --no-pager diff
-f = fetch
-p = push
-poh = push origin HEAD
-pl = pull
-rea = rebase --abort
-rec = rebase --continue
-res = rebase --skip
-rem = rebase master
-reom = rebase origin/master
-remi = rebase master -i
-reomi = rebase origin/master -i
-s = status
-st = stash
-std = stash drop
-stp = stash pop
-stpa = stash --patch
-sts = stash show --patch
-su = submodule update
-
-[user]
-name = Topher Brown
-email = topher@memfault.com
-
-[commit]
-verbose = 1
-template = ~/.memfault-git-commit-template
-
-[core]
-editor = vim
-bare = false
-excludesFile = ~/.gitignore_global
-
-[diff]
-tool = nvimdiff
-[merge]
-conflictStyle = zdiff3
-
-[push]
-default = simple
-[pull]
-ff = only
-[rerere]
-enabled = true
 [advice]
-detachedHead = false
+    detachedHead = false
+[commit]
+    verbose = 1
+    template = ~/.memfault-git-commit-template
+[core]
+    editor = vim
+    bare = false
+    excludesFile = ~/.gitignore_global
+[diff]
+    tool = nvimdiff
+[merge]
+    conflictStyle = zdiff3
+[push]
+    default = simple
+[pull]
+    ff = only
+[rerere]
+    enabled = true
+[user]
+    name = Topher Brown
+    email = topher@memfault.com
 
 [stgit]
-# Behave as if the --keep option is always passed
-autokeep = yes
-autostash = yes
-# Extra options to pass to "git diff" (extend/override with
-# -O/--diff-opts). For example, -M turns on rename detection.
-diff-opts = -M
-# The maximum length of an automatically generated patch name
-namelength = 50
-# docs: https://github.com/stacked-git/stgit/blob/master/examples/gitconfig
+    # docs: https://github.com/stacked-git/stgit/blob/master/examples/gitconfig
+    # Behave as if the --keep option is always passed
+    autokeep = yes
+    autostash = yes
+    # Extra options to pass to "git diff" (extend/override with
+    # -O/--diff-opts). For example, -M turns on rename detection.
+    diff-opts = -M
+    # The maximum length of an automatically generated patch name
+    namelength = 50
 [stgit "color"]
-# Specify output colors for series commands
-applied = cyan_foreground
-current = green_foreground
-unapplied = white_foreground
-hidden = red_foreground
+    applied = cyan_foreground
+    current = green_foreground
+    unapplied = white_foreground
+    hidden = red_foreground
+
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+
+[alias]
+    a = add
+    aa = add --all
+    apa = add --patch
+    au = add --update
+    b = !git --no-pager branch
+    bb = bisect bad
+    bg = bisect good
+    br = bisect reset
+    c = commit
+    cnv = commit --no-verify
+    ca = commit --all
+    canv = commit --all --no-verify
+    cam = commit --amend --no-edit
+    camnv = commit --amend --no-edit --no-verify
+    cama = commit --amend --all --no-edit
+    camanv = commit --amend --all --no-edit --no-verify
+    came = commit --amend --edit --allow-empty
+    camenv = commit --amend --edit --no-verify --allow-empty
+    camae = commit --amend --all --edit --allow-empty
+    camaenv = commit --amend --edit --all --no-verify --allow-empty
+    campa = commit --amend --patch --no-edit
+    campae = commit --amend --edit --patch --allow-empty
+    campanv = commit --amend --patch --no-edit --no-verify
+    cl = clean
+    clf = clean -f
+    clfd = clean -f -d
+    cln = clean -n
+    co = checkout
+    com = checkout master
+    coom = checkout origin/master
+    copa = checkout --patch
+    cpa = commit --patch
+    d = diff
+    dh = diff HEAD
+    dhs = diff HEAD --stat
+    dhh = diff HEAD^
+    dhhs = diff HEAD^ --stat
+    ds = diff --staged
+    dm = diff master
+    dmno = diff master --name-only
+    dom = diff origin/master
+    domno = diff origin/master --name-only
+    dno = diff --name-only
+    dnp = !git --no-pager diff
+    f = fetch
+    p = push
+    poh = push origin HEAD
+    pl = pull
+    rea = rebase --abort
+    rec = rebase --continue
+    res = rebase --skip
+    rem = rebase master
+    reom = rebase origin/master
+    remi = rebase master -i
+    reomi = rebase origin/master -i
+    s = status
+    st = stash
+    std = stash drop
+    stp = stash pop
+    stpa = stash --patch
+    sts = stash show --patch
+    su = submodule update
