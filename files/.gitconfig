@@ -65,6 +65,7 @@ su = submodule update
 [user]
 name = Topher Brown
 email = topher@memfault.com
+
 [commit]
 verbose = 1
 template = ~/.memfault-git-commit-template
