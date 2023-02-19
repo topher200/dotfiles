@@ -9,7 +9,7 @@ command_exists() {
 	command -v "$1" >/dev/null 2>&1
 }
 
-DEBIAN_FRONTEND=noninteractive sudo apt install -y \
+sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	autojump \
 	build-essential \
 	colorized-logs \
