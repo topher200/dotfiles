@@ -102,6 +102,5 @@ brew install \
 	gcc \
 	jesseduffield/lazydocker/lazydocker \
 	jless \
-	thefuck \
 	tmuxp \
 	tldr
