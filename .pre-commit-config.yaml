@@ -1,14 +1,15 @@
 exclude: |
   (?x)^(
+      files/.config/nvim/pack.*|
+      files/.oh-my-zsh/.*|
+      files/.tmux/plugins/.*|
       files/.zshenv|
-      files/condarc|
       files/bin/dropbox_uploader.sh|
       files/bin/ftwind|
       files/bin/run-forever.sh|
       files/bin/vimv|
-      files/zsh-custom/.*|
-      files/.oh-my-zsh/.*|
-      files/.tmux/plugins/.*
+      files/condarc|
+      files/zsh-custom/.*
   )$
 
 repos:
