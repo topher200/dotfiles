@@ -19,6 +19,7 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	file \
 	flameshot \
 	fzf \
+	git \
 	gron \
 	htop \
 	httpie \
@@ -43,8 +44,6 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	jello \
 	jq || true
 set -e
-
-# TODO add back in 'git' installation
 
 # pet snippet manager
 if [ ! -f /tmp/pet.deb ]; then
