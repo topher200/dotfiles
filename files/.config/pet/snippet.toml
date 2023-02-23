@@ -249,16 +249,6 @@
   output = ""
 
 [[snippets]]
-  description = "staging tests in docker"
-  command = "INV_COMMAND='inv www-e2e.configure --url https://staging-app.memfault.com --ingress-url https://chunks-staging.memfault.com/ www-e2e.test --numprocesses 0 --pytest-args --color=no && inv www-e2e.configure --url https://staging-app.memfault.com --ingress-url https://chunks-staging.memfault.com/ www-e2e.test --numprocesses 0 --pytest-args \"--last-failed --color=no\"' infra/terraform/deploy-memfault-app/scripts/execute-invoke-command.sh"
-  output = ""
-
-[[snippets]]
-  description = "build docker images locally codebuild github"
-  command = "ADK_TOOLKIT_EXE_GPG_KEY=$(aws ssm get-parameter --name /CodeBuild/ADK_TOOLKIT_EXE_GPG_KEY --with-decryption --output text --query Parameter.Value) GEMFURY_DEPLOY_TOKEN=$(aws ssm get-parameter --name /CodeBuild/GEMFURY_DEPLOY_TOKEN --with-decryption --output text --query Parameter.Value) GITHUB_DEPLOY_TOKEN=$(aws ssm get-parameter --name /CodeBuild/GITHUB_DEPLOY_TOKEN --with-decryption --output text --query Parameter.Value) CODEBUILD_RESOLVED_SOURCE_VERSION=$(git rev-parse HEAD) ./infra/terraform/deploy-memfault-app/scripts/build-and-publish-app-docker-images.sh"
-  output = ""
-
-[[snippets]]
   description = "open pr in github dashboard chrome"
   command = "gh pr view --web"
   output = ""
