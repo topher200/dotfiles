@@ -262,3 +262,8 @@
   description = "Source rust on PATH"
   command = "source \"$HOME/.cargo/env\""
   output = ""
+
+[[snippets]]
+  description = "Update steps to skip in vim"
+  command = "aws ssm get-parameter --name /CodeBuild/CODEPIPELINE_STEPS_TO_SKIP --with-decryption --query Parameter.Value --output text | vipe | xargs aws ssm put-parameter --name /CodeBuild/CODEPIPELINE_STEPS_TO_SKIP --type SecureString --overwrite --value"
+  output = ""
