@@ -98,6 +98,7 @@ brew install \
 	shfmt
 
 brew install \
+	atuin \
 	circleci \
 	ijq \
 	gcc \
