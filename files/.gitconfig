@@ -4,7 +4,7 @@
     verbose = 1
     template = ~/.memfault-git-commit-template
 [core]
-    editor = vim
+    editor = vim -c 'set filetype=gitcommit'
     bare = false
     excludesFile = ~/.gitignore_global
 [diff]
