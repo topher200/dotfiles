@@ -47,8 +47,9 @@ function gsrs {
 # Update and resubmit all graphite stacks
 function gup {
 	set -x
+	default_branch_name=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 	current_branch_name=$(git symbolic-ref HEAD --short) &&
-		git checkout master &&
+		git checkout "$default_branch_name" &&
 		gt repo sync --force &&
 		git submodule update &&
 		gt stack restack &&
