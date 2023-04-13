@@ -265,5 +265,5 @@
 
 [[snippets]]
   description = "Update steps to skip in vim"
-  command = "aws ssm get-parameter --name /CodeBuild/CODEPIPELINE_STEPS_TO_SKIP --with-decryption --query Parameter.Value --output text | vipe | xargs aws ssm put-parameter --name /CodeBuild/CODEPIPELINE_STEPS_TO_SKIP --type SecureString --overwrite --value"
+  command = "aws ssm get-parameter --name /CodeBuild/CODEPIPELINE_STEPS_TO_SKIP --with-decryption --query Parameter.Value --output text --region us-east-1 | vipe | xargs aws ssm put-parameter --name /CodeBuild/CODEPIPELINE_STEPS_TO_SKIP --type SecureString --overwrite --value --region us-east-1"
   output = ""
