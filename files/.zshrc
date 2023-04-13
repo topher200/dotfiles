@@ -45,25 +45,6 @@ source $ZSH_CUSTOM/invoke-completion.sh
 # make sure our locale can handle unicode chars in prompt
 export LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
-# move up and down in local history, but ctrl-r uses global history
-# https://superuser.com/questions/446594/separate-up-arrow-lookback-for-local-and-global-zsh-history
-unsetopt inc_append_history
-unsetopt inc_append_history_time
-setopt sharehistory
-function up-line-or-history() {
-	zle set-local-history 1
-	zle .up-line-or-history
-	zle set-local-history 0
-}
-
-function down-line-or-history() {
-	zle set-local-history 1
-	zle .down-line-or-history
-	zle set-local-history 0
-}
-zle -N up-line-or-history
-zle -N down-line-or-history
-
 # clean up extra spaces in history commands
 setopt hist_reduce_blanks
 unsetopt hist_ignore_space
@@ -142,6 +123,11 @@ function zvm_after_init() {
 
 	# enable pet-select (from earlier)
 	bindkey '^s' pet-select
+
+	# https://github.com/ellie/atuin
+	if [[ -x "$(command -v atuin)" ]]; then
+		eval "$(atuin init zsh)"
+	fi
 }
 
 # https://direnv.net/docs/hook.html
