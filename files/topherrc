@@ -72,20 +72,20 @@ function pcs {
 }
 
 function ec2_instance_id() {
-	aws ec2 describe-instances |
+	aws ec2 describe-instances --output=json --region=us-east-1 |
 		jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .InstanceId" -r
 }
 
 function ec2_ip_address() {
-	aws ec2 describe-instances |
+	aws ec2 describe-instances --output=json --region=us-east-1 |
 		jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .PublicDnsName" -r
 }
 function ec2_ip_address_private() {
-	aws ec2 describe-instances |
+	aws ec2 describe-instances --output=json --region=us-east-1 |
 		jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .PrivateDnsName" -r
 }
 function rds_ip_address() {
-	aws rds describe-db-instances |
+	aws rds describe-db-instances --output=json --region=us-east-1 |
 		jq ".DBInstances[] | select(.DBInstanceIdentifier==\"$1\") | .Endpoint.Address" -r
 }
 ### END COMMAND LINE ALIASES ###
