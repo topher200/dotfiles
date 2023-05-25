@@ -106,3 +106,9 @@
     stpa = stash --patch
     sts = stash show --patch
     su = submodule update
+[credential "https://github.com"]
+	helper =
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !gh auth git-credential
