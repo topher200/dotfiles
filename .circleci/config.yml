@@ -24,7 +24,7 @@ jobs:
     steps:
       - run: sudo apt update --yes && sudo apt install -y make
       - checkout
-      - run: BUILDKIT_PROGRESS=plain make docker-build
+      - run: BUILDKIT_PROGRESS=plain make docker-build-no-cache
       - run: docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
       - run: make docker-push
       - run: BUILDKIT_PROGRESS=plain make test-in-docker

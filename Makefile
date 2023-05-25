@@ -34,6 +34,10 @@ stow-uninstall:
 docker-build:
 	DOCKER_BUILDKIT=1 docker build --tag dotfiles --cache-from topher200/dotfiles:buildcache --build-arg BUILDKIT_INLINE_CACHE=1 .
 
+.PHONY: docker-build-no-cache
+docker-build-no-cache:
+	DOCKER_BUILDKIT=1 docker build --tag dotfiles --cache-from topher200/dotfiles:buildcache --build-arg BUILDKIT_INLINE_CACHE=1 --no-cache .
+
 .PHONY: docker-push
 docker-push:
 	docker tag dotfiles topher200/dotfiles:buildcache
