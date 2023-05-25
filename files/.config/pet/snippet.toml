@@ -272,3 +272,13 @@
   description = "ssm caprover box ec2"
   command = "aws ssm --profile memfault-prod --region=us-east-1 start-session --target $(ec2_instance_id CapRover)"
   output = ""
+
+[[snippets]]
+  description = "copy github PR url to clipboard"
+  command = "gh pr view --json url --jq .url | xsel"
+  output = ""
+
+[[snippets]]
+  description = "check out most recently edited updated git branch"
+  command = "git checkout $(git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' --count=1)"
+  output = ""
