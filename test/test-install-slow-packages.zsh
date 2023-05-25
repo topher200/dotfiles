@@ -25,5 +25,4 @@ fail_if_not_exists prettier
 fail_if_not_exists shfmt
 fail_if_not_exists tmuxp
 fail_if_not_exists tldr
-fail_if_not_exists graphite
 fail_if_not_exists gt
