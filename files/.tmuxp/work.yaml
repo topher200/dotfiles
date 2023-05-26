@@ -65,4 +65,4 @@ windows:
     window_index: 10
     options:
       automatic-rename: off
-    start_directory: /home/topher/dev/dotfiles
+    start_directory: /home/topher/dotfiles
