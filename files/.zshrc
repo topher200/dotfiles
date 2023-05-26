@@ -124,10 +124,45 @@ function zvm_after_init() {
 	# enable pet-select (from earlier)
 	bindkey '^s' pet-select
 
-	# https://github.com/ellie/atuin
-	if [[ -x "$(command -v atuin)" ]]; then
+	# enable atuin for shell history, using fzf fuzzy finding
+	# script from https://news.ycombinator.com/item?id=35256206
+	atuin-setup() {
+		if ! which atuin &>/dev/null; then return 1; fi
+		bindkey '^E' _atuin_search_widget
+
+		export ATUIN_NOBIND="true"
 		eval "$(atuin init zsh)"
-	fi
+		fzf-atuin-history-widget() {
+			setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+
+			# local atuin_opts="--cmd-only --limit ${ATUIN_LIMIT:-5000}"
+			local atuin_opts="--cmd-only"
+			local fzf_opts=(
+				--height="${FZF_TMUX_HEIGHT:-80%}"
+				--tac
+				"-n2..,.."
+				--tiebreak=index
+				"--query=${LBUFFER}"
+				"+m"
+				"--bind=ctrl-d:reload(atuin search $atuin_opts -c $PWD),ctrl-r:reload(atuin search $atuin_opts)"
+			)
+
+			selected=$(
+				eval "atuin search ${atuin_opts}" |
+					fzf "${fzf_opts[@]}"
+			)
+			local ret=$?
+			if [ -n "$selected" ]; then
+				# the += lets it insert at current pos instead of replacing
+				LBUFFER+="${selected}"
+			fi
+			zle reset-prompt
+			return $ret
+		}
+		zle -N fzf-atuin-history-widget
+		bindkey '^R' fzf-atuin-history-widget
+	}
+	atuin-setup
 }
 
 # https://direnv.net/docs/hook.html
