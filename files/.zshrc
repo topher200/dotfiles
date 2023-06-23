@@ -107,7 +107,7 @@ stty -ixon
 ### end pet (command line snippet manager)
 
 # make fzf use ag instead of its default (find)
-export FZF_COMPLETION_TRIGGER='ff'
+export FZF_COMPLETION_TRIGGER='fzf'
 export FZF_COMPLETION_OPTS='--border --info=inline'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
