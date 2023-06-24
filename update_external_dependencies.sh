@@ -50,3 +50,10 @@ echo 'upgrading copilot.vim'
 git clone https://github.com/github/copilot.vim.git files/.config/nvim/pack/github/start/copilot.vim
 rm -rf files/.config/nvim/pack/github/start/copilot.vim/.git
 echo 'done upgrading copilot.vim'
+
+# https://github.com/binpash/try
+echo 'updating try script'
+rm -rf files/bin/try
+curl https://raw.githubusercontent.com/binpash/try/main/try -o files/bin/try
+chmod +x files/bin/try
+echo 'done updating try script'
