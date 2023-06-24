@@ -195,11 +195,8 @@ typeset -gr ZVM_VERSION='0.8.5'
 # Plugin initial status
 ZVM_INIT_DONE=false
 
-# Postpone reset prompt (i.e. postpone the widget `reset-prompt`)
-# empty (No postponing)
-# true (Enter postponing)
-# false (Trigger reset prompt)
-ZVM_POSTPONE_RESET_PROMPT=
+# Disable reset prompt (i.e. disable the widget `reset-prompt`)
+ZVM_RESET_PROMPT_DISABLED=false
 
 # Operator pending mode
 ZVM_OPPEND_MODE=false
@@ -260,11 +257,6 @@ ZVM_REPEAT_COMMANDS=($ZVM_MODE_NORMAL i)
 
 # Default config function
 : ${ZVM_CONFIG_FUNC:='zvm_config'}
-
-# Load config by calling the config function
-if command -v "$ZVM_CONFIG_FUNC" >/dev/null; then
-  $ZVM_CONFIG_FUNC
-fi
 
 # Set the readkey engine (default is NEX engine)
 : ${ZVM_READKEY_ENGINE:=$ZVM_READKEY_ENGINE_DEFAULT}
@@ -768,13 +760,12 @@ function zvm_vi_replace() {
     zvm_select_vi_mode $ZVM_MODE_REPLACE
 
     while :; do
-      # Read a character for replacing
-      zvm_update_cursor
-
       # Redisplay the command line, this is to be called from within
       # a user-defined widget to allow changes to become visible
       zle -R
 
+      # Read a character for replacing
+      zvm_update_cursor
       read -k 1 key
 
       # Escape key will break the replacing process, and enter key
@@ -853,12 +844,6 @@ function zvm_vi_replace_chars() {
 
   # Read a character for replacing
   zvm_enter_oppend_mode
-
-  # Redisplay the command line, this is to be called from within
-  # a user-defined widget to allow changes to become visible
-  zle redisplay
-  zle -R
-
   read -k 1 key
 
   zvm_exit_oppend_mode
@@ -1158,10 +1143,16 @@ function zvm_vi_put_before() {
   zvm_highlight custom $#head $(($#head+$#content))
 }
 
-# Delete characters of the visual selection
-function zvm_vi_delete() {
+# Replace a selection
+function zvm_replace_selection() {
   local ret=($(zvm_calc_selection))
   local bpos=$ret[1] epos=$ret[2] cpos=$ret[3]
+  local cutbuf=$1
+
+  # If there's a replacement, we need to calculate cursor position
+  if (( $#cutbuf > 0 )); then
+    cpos=$(($bpos + $#cutbuf - 1))
+  fi
 
   CUTBUFFER=${BUFFER:$bpos:$((epos-bpos))}
 
@@ -1175,9 +1166,19 @@ function zvm_vi_delete() {
     CUTBUFFER=${CUTBUFFER}$'\n'
   fi
 
-  BUFFER="${BUFFER:0:$bpos}${BUFFER:$epos}"
+  BUFFER="${BUFFER:0:$bpos}${cutbuf}${BUFFER:$epos}"
   CURSOR=$cpos
+}
 
+# Replace characters of the visual selection
+function zvm_vi_replace_selection() {
+  zvm_replace_selection $CUTBUFFER
+  zvm_exit_visual_mode ${1:-true}
+}
+
+# Delete characters of the visual selection
+function zvm_vi_delete() {
+  zvm_replace_selection
   zvm_exit_visual_mode ${1:-true}
 }
 
@@ -1416,7 +1417,13 @@ function zvm_navigation_handler() {
     [[ ${keys[-2]} =~ '[FT]' ]] && forward=false
     [[ ${keys[-2]} =~ '[tT]' ]] && skip=true
 
-    cmd=(zvm_find_and_move_cursor ${keys[-1]} $count $forward $skip)
+    # Escape special characters (e.g. ', ", `, ~, ^, |, &, <space>)
+    local key=${keys[-1]}
+    if [[ $key =~ "['\\\"\`\~\^\|\#\&\*\;\}\(\)\<\>\ ]" ]]; then
+      key=\\${key}
+    fi
+
+    cmd=(zvm_find_and_move_cursor $key $count $forward $skip)
     count=1
   else
     count=${keys:0:-1}
@@ -1448,36 +1455,11 @@ function zvm_navigation_handler() {
     count=1
   fi
 
-  # Call the widget, we can not use variable `i`, since
-  # some widgets will affect the variable `i`, and it
-  # will cause an infinite loop.
-  local init_cursor=$CURSOR
-  local last_cursor=$CURSOR
-  local exit_code=0
-  for ((c=0; c<count; c++)); do
-    $cmd
-
-    exit_code=$?
-
-    if [[ ${cmd[1]} == 'zle' ]]; then
-      exit_code=0
-    elif [[ $exit_code != 0 ]]; then
-      break
-    fi
-
-    # If the cursor position is no change, we can break
-    # the loop and no need to loop so many times, thus
-    # when the count is quite large, it will not be
-    # stuck for a long time.
-    [[ $last_cursor == $CURSOR ]] && break
-
-    last_cursor=$CURSOR
-  done
+  zvm_repeat_command "$cmd" $count
+  exit_code=$?
 
   if [[ $exit_code == 0 ]]; then
     retval=$keys
-  else
-    CURSOR=$init_cursor
   fi
 
   return $exit_code
@@ -1518,6 +1500,17 @@ function zvm_range_handler() {
     zvm_update_cursor
     read -k 1 key
     keys="${keys}${key}"
+  fi
+
+  # Exit operator pending mode
+  zvm_exit_oppend_mode
+
+  # Escape non-printed characters (e.g. ^[)
+  keys=$(zvm_escape_non_printed_characters "$keys")
+
+  # Handle escape in operator pending mode
+  if [[ "$keys" =~ ${ZVM_VI_OPPEND_ESCAPE_BINDKEY/\^\[/\\^\\[} ]]; then
+    return 1
   fi
 
   # Enter visual mode or visual line mode
@@ -1601,20 +1594,9 @@ function zvm_range_handler() {
     navkey=${keys: -2}
   elif [[ $keys =~ '^[cdy]([1-9][0-9]*)?[ia][eE]$' ]]; then
     navkey=
-  elif [[ $keys =~ '^c([1-9][0-9]*)?w$' ]]; then
-    zle vi-backward-char
+  elif [[ $keys =~ '^c([1-9][0-9]*)?[eEwW]$' ]]; then
     count=${match[1]:-1}
-    navkey='e'
-  elif [[ $keys =~ '^c([1-9][0-9]*)?W$' ]]; then
-    zle vi-backward-blank-char
-    count=${match[1]:-1}
-    navkey='E'
-  elif [[ $keys =~ '^c([1-9][0-9]*)?e$' ]]; then
-    count=${match[1]:-1}
-    navkey='e'
-  elif [[ $keys =~ '^c([1-9][0-9]*)?E$' ]]; then
-    count=${match[1]:-1}
-    navkey='E'
+    navkey=c${keys: -1}
   elif [[ $keys =~ '^[cdy]([1-9][0-9]*)?[bB]$' ]]; then
     MARK=$((MARK-1))
     count=${match[1]:-1}
@@ -1635,10 +1617,10 @@ function zvm_range_handler() {
     for ((i=$((CURSOR+1)); i>0; i--)); do
       [[ ${BUFFER[$i]} == $'\n' ]] && navkey='k'
     done
-  elif [[ $keys =~ '^[cdy]([1-9][0-9]*)?h$' ]]; then
+  elif [[ $keys =~ '^[cdy]([1-9][0-9]*)?[\^h0]$' ]]; then
     MARK=$((MARK-1))
     count=${match[1]:-1}
-    navkey='h'
+    navkey=${keys: -1}
 
     # Exit if the cursor is at the beginning of a line
     if ((MARK < 0)); then
@@ -1660,10 +1642,7 @@ function zvm_range_handler() {
   # Handle navigation
   case $navkey in
     '') exit_code=1;;
-    *[ia][wW])
-      local widget=
-      local mark=
-
+    *[ia]?)
       # At least 1 time
       if [[ -z $count ]]; then
         count=1
@@ -1671,27 +1650,56 @@ function zvm_range_handler() {
 
       # Retrieve the widget
       case ${navkey: -2} in
-        iw) widget=select-in-word;;
-        aw) widget=select-a-word;;
-        iW) widget=select-in-blank-word;;
-        aW) widget=select-a-blank-word;;
+        iw) cmd=(zle select-in-word);;
+        aw) cmd=(zle select-a-word);;
+        iW) cmd=(zle select-in-blank-word);;
+        aW) cmd=(zle select-a-blank-word);;
       esac
 
-      # Execute the widget for `count` times, and
-      # save the `mark` position of the first time
-      for ((c=0; c<count; c++)); do
-        zle $widget
-        if (( c == 0 )); then
-          mark=$MARK
-        fi
-        CURSOR=$((CURSOR+1))
-        if (($CURSOR >= $#BUFFER)); then
-          break
-        fi
-      done
+      zvm_repeat_command "$cmd" $count
+      ;;
+    c[eEwW])
+      #######################################
+      # Selection Cases:
+      #
+      # 1. SAMPLE: `word1  word2  w`, CURSOR: at `1` of `word1`
+      #
+      #  c[weWE] -> `1`
+      #  c2[weWE] -> `1  word2`
+      #
+      # 2. SAMPLE: `word1  word2  w`, CURSOR: at ` ` after `word1`
+      #
+      #  cw -> `  `
+      #  c2w -> `  word2  `
+      #  ce -> `  word2`
+      #  c2e -> `  word2  w`
+      #
 
-      MARK=$mark
-      CURSOR=$((CURSOR-1))
+      if [[ "${BUFFER[$((CURSOR + 1))]}" == ' ' ]]; then
+        case ${navkey: -1} in
+          w) cmd=(zle vi-forward-word);;
+          W) cmd=(zle vi-forward-blank-word);;
+          e) cmd=(zle vi-forward-word-end);;
+          E) cmd=(zle vi-forward-blank-word-end);;
+        esac
+
+        zvm_repeat_command "$cmd" $count
+
+        case ${navkey: -1} in
+          w|W) CURSOR=$((CURSOR-1));;
+        esac
+      else
+        if [[ "${BUFFER[$((CURSOR + 2))]}" == ' ' ]]; then
+          count=$((count - 1))
+        fi
+
+        case ${navkey: -1} in
+          e|w) cmd=(zle vi-forward-word-end);;
+          E|W) cmd=(zle vi-forward-blank-word-end);;
+        esac
+
+        zvm_repeat_command "$cmd" $count
+      fi
       ;;
     *)
       local retval=
@@ -1750,6 +1758,47 @@ function zvm_range_handler() {
   if [[ ! -z $cursor ]]; then
     CURSOR=$cursor
   fi
+}
+
+# Repeat executing command
+function zvm_repeat_command {
+  local cmd=$1
+  local count=${2:-1}
+
+  # check if it's a zle command
+  local is_zle_cmd=false
+  if [[ ${cmd} =~ '^zle .*' ]]; then
+    is_zle_cmd=true
+  fi
+
+  # Execute the command for `count` times. We can not use
+  # variable `i`, since some widgets will affect the variable
+  # `i`, and it will cause an infinite loop.
+  local init_cursor=$CURSOR
+  local last_cursor=$CURSOR
+  local exit_code=0
+  for ((c=0; c<count; c++)); do
+    eval $cmd
+
+    exit_code=$?
+
+    if $is_zle_cmd; then
+      exit_code=0
+    elif [[ $exit_code != 0 ]]; then
+      CURSOR=$init_cursor
+      break
+    fi
+
+    # If the cursor position is no change, we can break
+    # the loop and no need to loop so many times, thus
+    # when the count is quite large, it will not be
+    # stuck for a long time.
+    [[ $last_cursor == $CURSOR ]] && break
+
+    last_cursor=$CURSOR
+  done
+
+  return $exit_code
 }
 
 # Edit command line in EDITOR
@@ -2891,8 +2940,8 @@ function zvm_select_vi_mode() {
   zvm_exec_commands 'before_select_vi_mode'
 
   # Some plugins would reset the prompt when we select the
-  # keymap, so here we postpone executing reset-prompt.
-  zvm_postpone_reset_prompt true
+  # keymap, so here we disable the reset-prompt temporarily.
+  ZVM_RESET_PROMPT_DISABLED=true
 
   # Exit operator pending mode
   if $ZVM_OPPEND_MODE; then
@@ -2930,8 +2979,8 @@ function zvm_select_vi_mode() {
   # update the cursor, prompt and so on.
   zvm_exec_commands 'after_select_vi_mode'
 
-  # Stop and trigger reset-prompt
-  $reset_prompt && zvm_postpone_reset_prompt false true
+  # Enable reset-prompt
+  ZVM_RESET_PROMPT_DISABLED=false
 
   # Start the lazy keybindings when the first time entering the
   # normal mode, when the mode is the same as last mode, we get
@@ -2953,31 +3002,10 @@ function zvm_select_vi_mode() {
   fi
 }
 
-# Postpone reset prompt
-function zvm_postpone_reset_prompt() {
-  local toggle=$1
-  local force=$2
-
-  if $toggle; then
-    ZVM_POSTPONE_RESET_PROMPT=true
-  else
-    if [[ $ZVM_POSTPONE_RESET_PROMPT == false || $force ]]; then
-      ZVM_POSTPONE_RESET_PROMPT=
-      zle reset-prompt
-    else
-      ZVM_POSTPONE_RESET_PROMPT=
-    fi
-  fi
-}
-
 # Reset prompt
 function zvm_reset_prompt() {
-  # Return if postponing is enabled
-  if [[ -n $ZVM_POSTPONE_RESET_PROMPT ]]; then
-    ZVM_POSTPONE_RESET_PROMPT=false
-    return
-  fi
-
+  $ZVM_RESET_PROMPT_DISABLED && return
+  
   local -i retval
   if [[ -z "$rawfunc" ]]; then
     zle .reset-prompt -- "$@"
@@ -3251,6 +3279,7 @@ function zvm_init() {
   zvm_define_widget zvm_vi_yank
   zvm_define_widget zvm_vi_put_after
   zvm_define_widget zvm_vi_put_before
+  zvm_define_widget zvm_vi_replace_selection
   zvm_define_widget zvm_vi_up_case
   zvm_define_widget zvm_vi_down_case
   zvm_define_widget zvm_vi_opp_case
@@ -3315,9 +3344,12 @@ function zvm_init() {
   zvm_bindkey vicmd  'C' zvm_vi_change_eol
   zvm_bindkey visual 'c' zvm_vi_change
   zvm_bindkey visual 'd' zvm_vi_delete
+  zvm_bindkey visual 'x' zvm_vi_delete
   zvm_bindkey visual 'y' zvm_vi_yank
   zvm_bindkey vicmd  'p' zvm_vi_put_after
   zvm_bindkey vicmd  'P' zvm_vi_put_before
+  zvm_bindkey visual 'p' zvm_vi_replace_selection
+  zvm_bindkey visual 'P' zvm_vi_replace_selection
   zvm_bindkey visual 'U' zvm_vi_up_case
   zvm_bindkey visual 'u' zvm_vi_down_case
   zvm_bindkey visual '~' zvm_vi_opp_case
@@ -3450,6 +3482,11 @@ function zvm_exec_commands() {
     eval $cmd
   done
 }
+
+# Load config by calling the config function
+if zvm_exist_command "$ZVM_CONFIG_FUNC"; then
+  $ZVM_CONFIG_FUNC
+fi
 
 # Initialize this plugin according to the mode
 case $ZVM_INIT_MODE in
