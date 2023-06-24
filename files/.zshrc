@@ -141,7 +141,7 @@ function zvm_after_init() {
 				--height="${FZF_TMUX_HEIGHT:-80%}"
 				--tac
 				"-n2..,.."
-				--tiebreak=index
+				"--scheme=history"
 				"--query=${LBUFFER}"
 				"+m"
 				"--bind=ctrl-d:reload(atuin search $atuin_opts -c $PWD),ctrl-r:reload(atuin search $atuin_opts)"
