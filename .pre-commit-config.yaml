@@ -7,6 +7,7 @@ exclude: |
       files/bin/dropbox_uploader.sh|
       files/bin/ftwind|
       files/bin/run-forever.sh|
+      files/bin/try|
       files/bin/vimv|
       files/condarc|
       files/zsh-custom/.*
