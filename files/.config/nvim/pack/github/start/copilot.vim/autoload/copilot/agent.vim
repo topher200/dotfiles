@@ -5,7 +5,7 @@ let g:autoloaded_copilot_agent = 1
 
 scriptencoding utf-8
 
-let s:plugin_version = '1.8.3'
+let s:plugin_version = '1.9.0'
 
 let s:error_exit = -1
 
@@ -425,9 +425,9 @@ function! s:Command() abort
   endif
   let agent = get(g:, 'copilot_agent_command', '')
   if empty(agent) || !filereadable(agent)
-    let agent = s:root . '/copilot/dist/agent.js'
+    let agent = s:root . '/dist/agent.js'
     if !filereadable(agent)
-      return [v:null, node_version, 'Could not find agent.js (bad install?)']
+      return [v:null, node_version, 'Could not find dist/agent.js (bad install?)']
     endif
   endif
   return [node + [agent], node_version, '']
@@ -453,7 +453,7 @@ function! copilot#agent#EditorInfo() abort
   else
     let proxy = ''
   endif
-  let match = matchlist(proxy, '\c^\%([^:]\+://\)\=\%(\([^/:#]\+@\)\)\=\%(\([^/:#]\+\)\|\[\([[:xdigit:]:]\+\)\]\)\%(:\(\d\+\)\)\=\%(/\|$\|?strict_\=ssl=\(.*\)\)')
+  let match = matchlist(proxy, '\c^\%([^:]\+://\)\=\%(\([^/#]\+@\)\)\=\%(\([^/:#]\+\)\|\[\([[:xdigit:]:]\+\)\]\)\%(:\(\d\+\)\)\=\%(/\|$\|?strict_\=ssl=\(.*\)\)')
   if !empty(match)
     let info.networkProxy = {'host': match[2] . match[3], 'port': empty(match[4]) ? 80 : +match[4]}
     if match[5] =~? '^[0f]'
@@ -464,8 +464,8 @@ function! copilot#agent#EditorInfo() abort
       let info.networkProxy.rejectUnauthorized = empty(g:copilot_proxy_strict_ssl) ? v:false : v:true
     endif
     if !empty(match[1])
-      let info.networkProxy.username = s:UrlDecode(matchstr(match[1], '^[^:]*'))
-      let info.networkProxy.password = s:UrlDecode(matchstr(match[1], ':\zs.*'))
+      let info.networkProxy.username = s:UrlDecode(matchstr(match[1], '^[^:@]*'))
+      let info.networkProxy.password = s:UrlDecode(matchstr(match[1], ':\zs[^@]*'))
     endif
   endif
   return info

@@ -21,7 +21,6 @@ defined for convenience.
 | -------- | --------------------------------------- | ------------------------------------------------------------------- |
 | `bcubc`  | `brew upgrade --cask && brew cleanup`   | Update outdated casks, then run cleanup.                            |
 | `bcubo`  | `brew update && brew outdated --cask`   | Update Homebrew data, then list outdated casks.                     |
-| `bcubc`  | `brew upgrade --cask && brew cleanup`   | Update outdated casks, then run cleanup.                            |
 | `brewp`  | `brew pin`                              | Pin a specified formula so that it's not upgraded.                  |
 | `brews`  | `brew list -1`                          | List installed formulae or the installed files for a given formula. |
 | `brewsp` | `brew list --pinned`                    | List pinned formulae, or show the version of a given formula.       |
@@ -33,6 +32,8 @@ defined for convenience.
 | `buz`    | `brew uninstall --zap`                  | Remove all files associated with a cask.                            |
 
 ## Completion
+
+This plugin configures paths with Homebrew's completion functions automatically, so you don't need to do it manually. See: https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh.
 
 With the release of Homebrew 1.0, they decided to bundle the zsh completion as part of the
 brew installation, so we no longer ship it with the brew plugin; now it only has brew
