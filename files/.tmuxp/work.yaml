@@ -5,6 +5,8 @@ windows:
     options: {}
     panes:
       - shell_command: cam
+      - shell_command: cam
+    layout: even-horizontal
     start_directory: /home/topher/dev/memfault
   - window_name: test
     window_index: 2
