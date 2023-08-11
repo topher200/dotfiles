@@ -1,7 +1,11 @@
----
 # full config list: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
 
 git:
   disableForcePushing: true
   parseEmoji: true
-  skipHookPrefix: .*
+  skipRewordInEditorWarning: true
+quitOnTopLevelReturn: true
+keybinding:
+  universal:
+    return: q
+    quit:
