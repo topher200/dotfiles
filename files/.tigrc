@@ -4,10 +4,11 @@ set mouse = true
 bind main s !@bash -c "echo -n %(commit) | xsel --clipboard"
 bind main t !@bash -c "git revert %(commit)"
 bind main <Space> !@bash -c "git checkout %(commit)"
+bind generic q view-close
 
 # unique actions
 bind main B !git rebase -i %(commit)
 bind main E !@bash -c "git reset --hard %(commit)"
 bind main P !@bash -c "git cherry-pick %(commit)"
 bind main T view-tree
-bind main ? view-help
+bind generic ? view-help
