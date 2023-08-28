@@ -1,7 +1,6 @@
 # from https://www.peterbe.com/plog/run-forever.sh
 
 #!/usr/bin/env bash
-set -eo pipefail
 
 
 count=0
