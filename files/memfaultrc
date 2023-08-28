@@ -27,3 +27,6 @@ if [[ "$PWD" == "/home/topher/memfault" ]]; then
 	autoload -U +X bashcompinit && bashcompinit
 	complete -o nospace -C /home/topher/dev/miniforge3/envs/memfault/bin/terraform terraform
 fi
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
