@@ -73,7 +73,7 @@ function pcs {
 
 function ec2_instance_id() {
 	aws ec2 describe-instances --output=json --region=us-east-1 |
-		jq ".Reservations[].Instances[] | select(.Tags[].Value==\"$1\") | .InstanceId" -r
+        jq "first(.Reservations[].Instances[] | select((.Tags[].Value==\"$1\") and (.State.Name==\"running\")) | .InstanceId)" -r
 }
 
 function ec2_ip_address() {
