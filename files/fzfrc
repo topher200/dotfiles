@@ -1,0 +1,58 @@
+# make fzf use ag instead of its default (find)
+export FZF_COMPLETION_TRIGGER='fzf'
+export FZF_COMPLETION_OPTS='--border --info=inline'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git -g ""'
+# use fzf-tmux
+export FZF_TMUX_OPTS='-d 30%'
+# add fzf keybindings
+# using lazy method described for https://github.com/jeffreytse/zsh-vi-mode
+function zvm_after_init() {
+	# shellcheck disable=SC1090
+	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+	[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+	[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh
+
+	# enable pet-select (from earlier)
+	bindkey '^s' pet-select
+
+	# enable atuin for shell history, using fzf fuzzy finding
+	# script from https://news.ycombinator.com/item?id=35256206
+	atuin-setup() {
+		if ! which atuin &>/dev/null; then return 1; fi
+		bindkey '^E' _atuin_search_widget
+
+		export ATUIN_NOBIND="true"
+		eval "$(atuin init zsh)"
+		fzf-atuin-history-widget() {
+			setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2>/dev/null
+
+			# local atuin_opts="--cmd-only --limit ${ATUIN_LIMIT:-5000}"
+			local atuin_opts="--cmd-only"
+			local fzf_opts=(
+				--height="${FZF_TMUX_HEIGHT:-80%}"
+				--tac
+				"-n2..,.."
+				"--scheme=history"
+				"--query=${LBUFFER}"
+				"+m"
+				"--bind=ctrl-d:reload(atuin search $atuin_opts -c $PWD),ctrl-r:reload(atuin search $atuin_opts)"
+			)
+
+			selected=$(
+				eval "atuin search ${atuin_opts}" |
+					fzf "${fzf_opts[@]}"
+			)
+			local ret=$?
+			if [ -n "$selected" ]; then
+				# the += lets it insert at current pos instead of replacing
+				LBUFFER+="${selected}"
+			fi
+			zle reset-prompt
+			return $ret
+		}
+		zle -N fzf-atuin-history-widget
+		bindkey '^R' fzf-atuin-history-widget
+	}
+	atuin-setup
+}
