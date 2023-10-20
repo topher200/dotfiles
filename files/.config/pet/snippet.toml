@@ -100,7 +100,12 @@
 
 [[snippets]]
   description = "rerun last command. upload stdout to gist and copy url to clipboard"
-  command = "!! | ansi2txt | gh gist create - | tee >(xsel)"
+  command = "!! | ansi2txt | gh gist create - | tee >(xsel -b)"
+  output = ""
+
+[[snippets]]
+  description = "rerun last command. copy output to clipboard"
+  command = "!! | ansi2txt | tee >(xsel -b)"
   output = ""
 
 [[snippets]]
@@ -281,4 +286,9 @@
 [[snippets]]
   description = "check out most recently edited updated git branch"
   command = "git checkout $(git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' --count=1)"
+  output = ""
+
+[[snippets]]
+  description = "status of all celery queues rabbitmq env vars"
+  command = "inv deploy.env-var-get --app memfault-prod --vars CELERY_WORKER_S_QUEUE,CELERY_WORKER_L_QUEUE,CELERY_WORKER_BEE_QUEUE"
   output = ""
