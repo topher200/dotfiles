@@ -90,6 +90,7 @@
     dnp = !git --no-pager diff
     f = fetch
     p = push
+    po = push origin
     poh = push origin HEAD
     pl = pull
     rea = rebase --abort
