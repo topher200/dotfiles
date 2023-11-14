@@ -11,4 +11,6 @@ fi
 
 # Key bindings
 # ------------
-source "/home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.zsh"
+if [[ -e "/home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.zsh" ]]; then
+    source "/home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.zsh"
+fi
