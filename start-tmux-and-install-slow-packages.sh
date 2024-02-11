@@ -5,7 +5,12 @@ set -Eeuox pipefail
 # configure graphite
 # these are JSON because we don't have a `graphite` binary yet
 echo '{"trunk": "master"}' >.git/.graphite_repo_config
-echo "{\"authToken\": \"$GRAPHITE_AUTH_TOKEN\", \"branchPrefix\": \"topher/\", \"submitIncludeCommitMessages\": true}" >~/.graphite_user_config
+if [[ -z "${GRAPHITE_AUTH_TOKEN:-}" ]]; then
+	echo 'GRAPHITE_AUTH_TOKEN not set, skipping graphite config'
+else
+	echo 'GRAPHITE_AUTH_TOKEN set, configuring graphite'
+	echo "{\"authToken\": \"$GRAPHITE_AUTH_TOKEN\", \"branchPrefix\": \"topher/\", \"submitIncludeCommitMessages\": true}" >~/.graphite_user_config
+fi
 
 # configure docker hub
 if [[ -z "${DOCKER_HUB_USERNAME:-}" ]] || [[ -z "${DOCKER_HUB_PAT:-}" ]]; then
