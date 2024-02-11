@@ -194,11 +194,6 @@
   output = ""
 
 [[snippets]]
-  description = "set local heroku environment vars for release deployment"
-  command = "$ PROD_SHA=$(git rev-parse --short=9 $(heroku releases --app memfault-prod | grep Deploy | head -n 1 | perl -wne '/Deploy (\\S+)/ and print $1')) && STAGING_SHA=$(git rev-parse --short=9 $(heroku releases --app memfault-staging | grep Deploy | head -n 1 | perl -wne '/Deploy (\\S+)/ and print $1')) && echo 'PROD_SHA   : '$PROD_SHA && echo 'STAGING_SHA: '$STAGING_SHA"
-  output = ""
-
-[[snippets]]
   description = "run terraform validate in all subdirectories"
   command = "find . -type d -execdir sh -c \"pwd && terraform init && terraform validate\" \\;"
   output = ""
@@ -260,7 +255,7 @@
 
 [[snippets]]
   description = "get all commits / PRs which are in master but not yet released to prod"
-  command = "git log --oneline --no-decorate $(inv sheriff.release-current --app memfault-prod)..origin/master"
+  command = "git log --oneline --no-decorate $(aws-vault exec memfault-prod -- inv sheriff.release-current)..origin/master"
   output = ""
 
 [[snippets]]
@@ -290,5 +285,10 @@
 
 [[snippets]]
   description = "status of all celery queues rabbitmq env vars"
-  command = "inv deploy.env-var-get --app memfault-prod --vars CELERY_WORKER_S_QUEUE,CELERY_WORKER_L_QUEUE,CELERY_WORKER_BEE_QUEUE"
+  command = "aws-vault exec memfault-prod -- inv deploy.env-var-get --vars CELERY_WORKER_S_QUEUE,CELERY_WORKER_L_QUEUE,CELERY_WORKER_BEE_QUEUE"
+  output = ""
+
+[[snippets]]
+  description = "copy github url of current pr"
+  command = "gh pr view --json url --jq .url | tee >(xsel -b)"
   output = ""
