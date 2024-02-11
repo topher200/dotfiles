@@ -61,16 +61,6 @@ if [ ! -f /usr/local/bin/viddy ]; then
 	popd || exit
 fi
 
-# TODO: install with 'apt'
-# install exa, (not available on Ubuntu 20.04)
-if [ ! -f /usr/local/bin/exa ]; then
-	wget -O /tmp/exa.zip https://github.com/ogham/exa/releases/download/v0.10.0/exa-linux-x86_64-v0.10.0.zip
-	pushd /tmp || exit
-	unp exa.zip
-	sudo mv bin/exa /usr/local/bin
-	popd || exit
-fi
-
 # install Linuxbrew
 install_brew() {
 	if ! command_exists brew; then

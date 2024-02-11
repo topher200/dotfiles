@@ -14,6 +14,7 @@ alias dr=lazydocker
 alias fd=fdfind
 alias fdh='fdfind -H'
 alias vim=nvim
+alias ll='ls -al'
 alias gg=lazygit
 alias lg=lazygit
 alias rg='rg --smart-case --no-messages'
@@ -25,22 +26,6 @@ export LESS="-F -X $LESS"
 # remove extra '$' from commands
 alias '$'=''
 alias '$ '=''
-
-# use exa if installed, otherwise use ls
-ls() {
-	if command -v exa >/dev/null 2>&1; then
-		exa "$@"
-	else
-		command ls "$@"
-	fi
-}
-ll() {
-	if command -v exa >/dev/null 2>&1; then
-		exa -al "$@"
-	else
-		command ls -al "$@"
-	fi
-}
 
 # Delete the current branch you're on, leaving you on a detached HEAD
 function gdcb {
