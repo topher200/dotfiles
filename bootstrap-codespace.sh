@@ -7,7 +7,11 @@ echo Finished installing fast packages at "$(date)"
 
 # use our .zshrc file, not codespace's
 echo removing ~/.zshrc
-mv ~/.zshrc ~/.zshrc.codespace-orig.bak
+mv ~/.zshrc ~/.zshrc.bak || true
+
+# use our .gitconfig file, not codespace's
+echo removing ~/.gitconfig
+mv ~/.gitconfig ~/.gitconfig.bak || true
 
 echo Running stow at "$(date)"
 make
