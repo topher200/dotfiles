@@ -24,12 +24,15 @@ fi
 tmux new-session -d -s work
 if [[ -d /workspace/dotfiles ]]; then
 	echo 'running in /workspace/dotfiles'
-	tmux new-window -n install-slow 'cd /workspace/dotfiles && make install-slow-packages && pre-commit install --install-hooks'
+	DOTFILES_REPO=/workspace/dotfiles
+elif [[ -d /workspaces/.codespaces/.persistedshare/dotfiles ]]; then
+	DOTFILES_REPO=/workspaces/.codespaces/.persistedshare/dotfiles
+	echo 'running in /workspaces/.codespaces/.persistedshare/dotfiles'
 else
-	# if we're not already in a dotfiles repo, find one
 	echo 'running in ~/.dotfiles'
-	tmux new-window -n install-slow 'cd ~/.dotfiles && make install-slow-packages && pre-commit install --install-hooks'
+	DOTFILES_REPO=~/.dotfiles
 fi
+tmux new-window -n install-slow "cd $DOTFILES_REPO && make install-slow-packages && pre-commit install --install-hooks"
 tmux select-window -t 1
 
 # connect to tmux session
