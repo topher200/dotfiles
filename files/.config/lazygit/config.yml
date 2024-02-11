@@ -4,6 +4,15 @@ git:
   disableForcePushing: true
   parseEmoji: true
   skipRewordInEditorWarning: true
+gui:
+  theme:
+    selectedLineBgColor:
+      - underline
+    selectedRangeBgColor:
+      - underline
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
 quitOnTopLevelReturn: true
 keybinding:
   universal:
