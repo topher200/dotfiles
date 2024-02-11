@@ -1,33 +1,18 @@
 #!/bin/bash
 set -Eeuox pipefail
 
-if [[ -d "/workspace/dotfiles" ]]; then
-	# if we're running in gitpod and we're running our repo, cd to it
-	cd /workspace/dotfiles
-	# remove the gitpod checkout so we don't get confused
-	rm -rf /home/gitpod/.dotfiles
-elif [[ -d "/home/gitpod/.dotfiles" ]]; then
-	# if we're running in gitpod on some other repo, cd to the normal gitpod
-	# dotfiles location and use that
-	cd /home/gitpod/.dotfiles
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# check if we're running in codespace or gitpod, and call the correct shell script to bootstrap
+# gitpod: GITPOD_WORKSPACE_ID
+# codespace: CODESPACES
+if [[ -n "${GITPOD_WORKSPACE_ID:-}" ]]; then
+    echo "Running in gitpod"
+    "$ROOT_DIR"/bootstrap-gitpod.sh
+elif [[ -n "${CODESPACES:-}" ]]; then
+    echo "Running in codespace"
+    "$ROOT_DIR"/bootstrap-codespace.sh
+else
+    echo "Running in unknown environment"
+    exit 1
 fi
-
-echo Installing fast packages at "$(date)"
-make install-fast-packages || true
-echo Finished installing fast packages at "$(date)"
-
-# gitpod provides a garbage ~/.zshrc file
-echo removing ~/.zshrc
-cat ~/.zshrc
-rm ~/.zshrc
-
-# gitpod stores git credentials in .gitconfig. we need those! save them and add
-# them back in later
-mv ~/.gitconfig ~/.gitconfig.gitpod
-
-echo Running stow at "$(date)"
-make
-echo Finished stow at "$(date)"
-
-echo concatenating ~/.gitconfig together
-cat ~/.gitconfig.gitpod >>~/.gitconfig
