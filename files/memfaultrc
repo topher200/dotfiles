@@ -11,6 +11,7 @@ export INVOKE_MEMFAULT_PROCFILE_RUNNER=overmind
 
 export LOG_RAW_SQL_QUERIES=1
 export REUSE_PYTEST_CONTAINERS=1
+export LEFTHOOK_EXCLUDE=pyright
 
 alias cam='conda deactivate && conda deactivate && conda deactivate && conda activate memfault'
 
