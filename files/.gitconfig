@@ -1,14 +1,22 @@
 [advice]
     detachedHead = false
 [commit]
+    cleanup = scissors
     verbose = 1
     template = ~/.memfault-git-commit-template
 [core]
     editor = nvim -c 'set filetype=gitcommit'
     bare = false
     excludesFile = ~/.gitignore_global
+[rebase]
+    autosquash = true
+    autostash = true
+[branch]
+    sort = -committerdate
 [diff]
     tool = nvimdiff
+    algorithm = histogram
+    colorMoved = dimmed-zebra
 [merge]
     conflictStyle = zdiff3
 [push]
@@ -17,6 +25,8 @@
     ff = only
 [rerere]
     enabled = true
+[help]
+    autocorrect = prompt
 [user]
     name = Topher Brown
     email = topher@memfault.com
