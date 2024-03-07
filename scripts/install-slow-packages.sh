@@ -20,6 +20,7 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	file \
 	flameshot \
 	fzf \
+	gh \
 	git \
 	gron \
 	htop \
