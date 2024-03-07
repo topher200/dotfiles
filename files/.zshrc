@@ -144,6 +144,10 @@ if [[ -f "$HOME"/Downloads/secretsrc ]]; then
 	# shellcheck disable=SC1090
 	source "$HOME"/Downloads/secretsrc
 fi
+if [[ -f "$HOME"/Sync/secretsrc ]]; then
+	# shellcheck disable=SC1090
+	source "$HOME"/Sync/secretsrc
+fi
 if [[ -f "$HOME"/systemrc ]]; then
 	# shellcheck disable=SC1090
 	source "$HOME"/systemrc
