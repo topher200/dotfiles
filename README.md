@@ -12,13 +12,34 @@ make install-all-packages
 make
 ```
 
-### Install tmux plugins
+### Optional
 
-- Prefix + I (`ctrl-a I`)
+- Install tmux plugins: Prefix + I (`ctrl-a I`)
+- `scripts/install-chrome.sh`
+- `scripts/install-kitty.sh`
+- Download `secretsrc`
+- Install Slapdash: https://slapdash.com/download/linux and add the binary to
+  Startup Applications
+- Add Flameshot as a startup application
+- Install vim plugin: open Vim and run `:Copilot setup`
+- Install Gnome extensions: https://extensions.gnome.org/local/
+- Install VSCode: `$ sudo snap install code --classic`
+- `sudo apt install gnome-tweaks` (although the tweaks themselves get migrated
+  already with SaveDesktop)
+- add to `/etc/sysctl.conf`:
+
+```
+fs.inotify.max_user_instances = 1048576
+fs.inotify.max_user_watches = 1048576
+```
+
+### Migrating between machines
+
+- Use SaveDestop to migrate Gnome settings between machines (https://github.com/vikdevelop/SaveDesktop)
 
 ### How to create a new user
 
-This isn't quite related to dotfiles, but w/e.
+This isn't quite related to dotfiles but could be helpful.
 
 ```console
 NEWUSER=topher
