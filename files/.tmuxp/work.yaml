@@ -31,9 +31,6 @@ windows:
           - inv ingress.dev
       - shell_command:
           - cam
-          - inv dc.test-svc
-      - shell_command:
-          - cam
           - inv dc.svc
     layout: even-vertical
     start_directory: /home/topher/dev/memfault
