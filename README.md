@@ -33,6 +33,13 @@ fs.inotify.max_user_instances = 1048576
 fs.inotify.max_user_watches = 1048576
 ```
 
+- disable annoying zoom window setting:
+
+```
+$ vim snap/zoom-client/225/.config/zoomus.conf
+enableMiniWindow=false
+```
+
 ### Migrating between machines
 
 - Use SaveDestop to migrate Gnome settings between machines (https://github.com/vikdevelop/SaveDesktop)
