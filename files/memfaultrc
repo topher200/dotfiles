@@ -7,7 +7,6 @@ export MEMFAULT_ORG=acme-inc
 
 # pyinvoke 'echo' by default. http://docs.pyinvoke.org/en/stable/concepts/configuration.html#environment-variables
 export INVOKE_RUN_ECHO=1
-export INVOKE_MEMFAULT_PROCFILE_RUNNER=overmind
 
 export LOG_RAW_SQL_QUERIES=1
 export REUSE_PYTEST_CONTAINERS=1
