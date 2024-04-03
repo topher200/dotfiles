@@ -292,3 +292,8 @@
   description = "copy github url of current pr"
   command = "gh pr view --json url --jq .url | tee >(xsel -b)"
   output = ""
+
+[[snippets]]
+  description = "Remove newlines from clipboard text"
+  command = "xsel -o | sed '/^$/d' | xsel"
+  output = ""
