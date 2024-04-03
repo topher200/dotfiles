@@ -36,7 +36,7 @@ fs.inotify.max_user_watches = 1048576
 - disable annoying zoom window setting:
 
 ```
-$ vim snap/zoom-client/225/.config/zoomus.conf
+$ vim ~/snap/zoom-client/current/.config/zoomus.conf
 enableMiniWindow=false
 ```
 
