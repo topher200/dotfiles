@@ -297,3 +297,18 @@
   description = "Remove newlines from clipboard text"
   command = "xsel -o | sed '/^$/d' | xsel"
   output = ""
+
+[[snippets]]
+  description = "copy markdown image snippet PR"
+  command = "echo '![image](URL)' | xsel -i"
+  output = ""
+
+[[snippets]]
+  description = "copy details summary markdown github gh PR template"
+  command = "echo '<details><summary>Summary</summary>\\n</details>' | xsel -i"
+  output = ""
+
+[[snippets]]
+  description = "copy francois with the c"
+  command = "echo 'François' | xsel -i"
+  output = ""
