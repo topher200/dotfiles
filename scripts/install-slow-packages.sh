@@ -19,7 +19,6 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	fd-find \
 	file \
 	flameshot \
-	fzf \
 	gh \
 	git \
 	gron \
@@ -86,7 +85,8 @@ brew install jesseduffield/lazygit/lazygit
 brew install \
 	pre-commit \
 	prettier \
-	shfmt
+	shfmt \
+	fzf # debian as of April 2024: 0.42.0. can switch back to apt version once it's at least 0.48.1
 
 brew install \
 	atuin \
