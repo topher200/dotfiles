@@ -129,11 +129,6 @@
   output = ""
 
 [[snippets]]
-  description = "create pull request"
-  command = "git push -u origin HEAD && gh pr create --fill --draft"
-  output = ""
-
-[[snippets]]
   description = "redis proxy to app.redsmin.com"
   command = "docker run -it --rm --name redsmin-proxy --network memfault_default -e REDSMIN_KEY=609056fb544e0c0f655afcdd -e REDIS_URI=\"redis://172.18.0.2:6379\" redsmin/proxy"
   output = ""
@@ -149,23 +144,8 @@
   output = ""
 
 [[snippets]]
-  description = "aws login root"
-  command = "aws-vault login topher-root -d 36h"
-  output = ""
-
-[[snippets]]
-  description = "aws login prod"
-  command = "aws-vault login topher-prod -d 36h"
-  output = ""
-
-[[snippets]]
   description = "delete .tmp temp branches from git"
   command = "g b | grep \\\\.tmp | vipe | xargs git branch -D "
-  output = ""
-
-[[snippets]]
-  description = "start memfault servers in tmux panes"
-  command = "tmuxp load work"
   output = ""
 
 [[snippets]]
@@ -201,11 +181,6 @@
 [[snippets]]
   description = "absorb commits changes TODO: make work with graphite"
   command = "git add . && git absorb --base $(stg id stgit-topher:{base}) ; stg repair && git restore --staged ."
-  output = ""
-
-[[snippets]]
-  description = "run prowler security groups unused"
-  command = "se"
   output = ""
 
 [[snippets]]
@@ -264,11 +239,6 @@
   output = ""
 
 [[snippets]]
-  description = "Update steps to skip in vim"
-  command = "aws ssm get-parameter --name /CodeBuild/CODEPIPELINE_STEPS_TO_SKIP --with-decryption --query Parameter.Value --output text --region us-east-1 | vipe | xargs aws ssm put-parameter --name /CodeBuild/CODEPIPELINE_STEPS_TO_SKIP --type SecureString --overwrite --value --region us-east-1"
-  output = ""
-
-[[snippets]]
   description = "ssm caprover box ec2"
   command = "aws ssm --profile memfault-prod --region=us-east-1 start-session --target $(ec2_instance_id CapRover)"
   output = ""
@@ -281,11 +251,6 @@
 [[snippets]]
   description = "check out most recently edited updated git branch"
   command = "git checkout $(git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' --count=1)"
-  output = ""
-
-[[snippets]]
-  description = "status of all celery queues rabbitmq env vars"
-  command = "aws-vault exec memfault-prod -- inv deploy.env-var-get --vars CELERY_WORKER_S_QUEUE,CELERY_WORKER_L_QUEUE,CELERY_WORKER_BEE_QUEUE"
   output = ""
 
 [[snippets]]
