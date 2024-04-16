@@ -36,6 +36,7 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	unp \
 	unzip \
 	wget \
+	xclip \
 	xsel
 
 # These aren't available until super-modern Ubuntu. Don't fail if these
