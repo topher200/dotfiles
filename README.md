@@ -5,7 +5,7 @@ managed by GNU stow
 ## Installation instructions
 
 ```console
-sudo apt-get install make
+sudo apt-get install git make vim
 git clone git@github.com:topher200/dotfiles.git
 cd dotfiles
 make install-all-packages
@@ -14,15 +14,14 @@ make
 
 ### Optional
 
-- Install tmux plugins: Prefix + I (`ctrl-a I`)
-- `scripts/install-chrome.sh`
-- `scripts/install-kitty.sh`
-- Download `secretsrc`
-- Install Slapdash: https://slapdash.com/download/linux and add the binary to
-  Startup Applications
-- Add Flameshot as a startup application
-- Install vim plugin: open Vim and run `:Copilot setup`
+- Start tmux and install tmux plugins: Prefix + I (`ctrl-a I`)
+- `$ scripts/install-chrome.sh`
+- `$ scripts/install-kitty.sh`
+- run `$ syncthing` and add the remote device. choose 'auto accept' and 'sync default folder'
+  - This includes `secretsrc`
+- Install SaveDesktop (use Applications app), import saved archive from a different computer
 - Install Gnome extensions: https://extensions.gnome.org/local/
+- Install vim plugin: open Vim and run `:Copilot setup`
 - Install VSCode: `$ sudo snap install code --classic`
 - `sudo apt install gnome-tweaks` (although the tweaks themselves get migrated
   already with SaveDesktop)
@@ -40,9 +39,11 @@ $ vim ~/snap/zoom-client/current/.config/zoomus.conf
 enableMiniWindow=false
 ```
 
-### Migrating between machines
+- disable wayland in `/etc/gdm3/custom.conf` (may not work beyond 24.04):
 
-- Use SaveDestop to migrate Gnome settings between machines (https://github.com/vikdevelop/SaveDesktop)
+```
+WaylandEnable=false
+```
 
 ### How to create a new user
 
