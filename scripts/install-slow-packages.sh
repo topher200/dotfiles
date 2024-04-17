@@ -31,6 +31,7 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	shellcheck \
 	silversearcher-ag \
 	stgit \
+	syncthing \
 	tig \
 	tree \
 	unp \
