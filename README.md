@@ -45,6 +45,13 @@ enableMiniWindow=false
 WaylandEnable=false
 ```
 
+- grab graphite user config
+
+```
+$ mkdir -p ~/.config/graphite
+$ cp ~/Sync/.config/graphite/user_config ~/.config/graphite
+```
+
 ### How to create a new user
 
 This isn't quite related to dotfiles but could be helpful.
