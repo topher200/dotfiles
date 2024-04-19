@@ -20,7 +20,7 @@ make
 - run `$ syncthing` and add the remote device. choose 'auto accept' and 'sync default folder'
   - This includes `secretsrc`
 - Install SaveDesktop (use Applications app), import saved archive from a different computer
-- Install Gnome extensions: https://extensions.gnome.org/local/
+- Install Gnome extensions: `sudo apt install gnome-browser-connector`; https://extensions.gnome.org/local/
 - Install vim plugin: open Vim and run `:Copilot setup`
 - Install VSCode: `$ sudo snap install code --classic`
 - `sudo apt install gnome-tweaks` (although the tweaks themselves get migrated

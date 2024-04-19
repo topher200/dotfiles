@@ -15,7 +15,6 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	build-essential \
 	colorized-logs \
 	curl \
-	docker \
 	fd-find \
 	file \
 	flameshot \
@@ -37,6 +36,7 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	unp \
 	unzip \
 	wget \
+	wmdocker \
 	xclip \
 	xsel
 
