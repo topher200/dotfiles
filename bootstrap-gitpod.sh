@@ -18,8 +18,8 @@ echo Finished installing fast packages at "$(date)"
 
 # gitpod provides a garbage ~/.zshrc file
 echo removing ~/.zshrc
-cat ~/.zshrc
-rm ~/.zshrc
+cat ~/.zshrc || true
+rm ~/.zshrc || true
 
 # gitpod stores git credentials in .gitconfig. we need those! save them and add
 # them back in later
