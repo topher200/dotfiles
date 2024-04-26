@@ -190,12 +190,17 @@ command -v 'zvm_version' >/dev/null && return
 typeset -gr ZVM_NAME='zsh-vi-mode'
 typeset -gr ZVM_DESCRIPTION='💻 A better and friendly vi(vim) mode plugin for ZSH.'
 typeset -gr ZVM_REPOSITORY='https://github.com/jeffreytse/zsh-vi-mode'
-typeset -gr ZVM_VERSION='0.8.5'
+typeset -gr ZVM_VERSION='0.11.0'
 
 # Plugin initial status
 ZVM_INIT_DONE=false
 
-# Disable reset prompt (i.e. disable the widget `reset-prompt`)
+# Postpone reset prompt (i.e. postpone the widget `reset-prompt`)
+# -1 (No postponing)
+# >=0 (Postponing, the decimal value stands for calling times of `reset-prompt`)
+ZVM_POSTPONE_RESET_PROMPT=-1
+
+# Disable reset prompt (i.e. postpone the widget `reset-prompt`)
 ZVM_RESET_PROMPT_DISABLED=false
 
 # Operator pending mode
@@ -338,9 +343,13 @@ zvm_switch_keyword_handlers=(
   zvm_switch_month
 )
 
+# History for switching keyword
+zvm_switch_keyword_history=()
+
 # Display version information
 function zvm_version() {
-  echo -e "$ZVM_NAME $ZVM_VERSION"
+  local git_info=$(git show -s --format="(%h, %ci)" 2>/dev/null)
+  echo -e "$ZVM_NAME $ZVM_VERSION $git_info"
   echo -e "\e[4m$ZVM_REPOSITORY\e[0m"
   echo -e "$ZVM_DESCRIPTION"
 }
@@ -349,8 +358,10 @@ function zvm_version() {
 function zvm_widget_wrapper() {
   local rawfunc=$1;
   local func=$2;
+  local called=$3;
   local -i retval
-  $func "${@:3}"
+  $called || { $rawfunc "${@:4}" }
+  $func "${@:4}"
   return retval
 }
 
@@ -364,7 +375,14 @@ function zvm_define_widget() {
   if [[ ${#result[@]} == 4 ]]; then
     local rawfunc=${result[4]}
     local wrapper="zvm_${widget}-wrapper"
-    eval "$wrapper() { zvm_widget_wrapper $rawfunc $func \"\$@\" }"
+
+    # To avoid double calling, we need to check if the raw function
+    # has been called already in the custom widget function
+    local rawcode=$(declare -f $func 2>/dev/null)
+    local called=false
+    [[ "$rawcode" == *"\$rawfunc"* ]] && { called=true }
+
+    eval "$wrapper() { zvm_widget_wrapper $rawfunc $func $called \"\$@\" }"
     func=$wrapper
   fi
 
@@ -592,6 +610,14 @@ function zvm_bindkey() {
       key=${keys:0:2}
     else
       key=${keys:0:1}
+
+      # As any character that is not bound to one of the history control
+      # related functions, or self-insert or self-insert-unmeta, will
+      # cause the mode to be exited To prevent history search, so that
+      # we need to bind keys explicitly.
+      if [[ "$keymap" == "viins" ]]; then
+        bindkey -M isearch "${key}" self-insert
+      fi
     fi
     bindkey -M $keymap "${key}" zvm_readkeys_handler
   fi
@@ -760,12 +786,13 @@ function zvm_vi_replace() {
     zvm_select_vi_mode $ZVM_MODE_REPLACE
 
     while :; do
+      # Read a character for replacing
+      zvm_update_cursor
+
       # Redisplay the command line, this is to be called from within
       # a user-defined widget to allow changes to become visible
       zle -R
 
-      # Read a character for replacing
-      zvm_update_cursor
       read -k 1 key
 
       # Escape key will break the replacing process, and enter key
@@ -844,6 +871,12 @@ function zvm_vi_replace_chars() {
 
   # Read a character for replacing
   zvm_enter_oppend_mode
+
+  # Redisplay the command line, this is to be called from within
+  # a user-defined widget to allow changes to become visible
+  zle redisplay
+  zle -R
+
   read -k 1 key
 
   zvm_exit_oppend_mode
@@ -1047,7 +1080,7 @@ function zvm_vi_opp_case() {
 # Yank characters of the visual selection
 function zvm_vi_yank() {
   zvm_yank
-  zvm_exit_visual_mode
+  zvm_exit_visual_mode ${1:-true}
 }
 
 # Put cutbuffer after the cursor
@@ -1222,7 +1255,7 @@ function zvm_vi_change() {
   fi
 
   zvm_exit_visual_mode false
-  zvm_select_vi_mode $ZVM_MODE_INSERT
+  zvm_select_vi_mode $ZVM_MODE_INSERT ${1:-true}
 }
 
 # Change characters from cursor to the end of current line
@@ -1251,12 +1284,14 @@ function zvm_default_handler() {
   # Exit vi mode if keys is the escape keys
   case $(zvm_escape_non_printed_characters "$keys") in
     '^['|$ZVM_VI_INSERT_ESCAPE_BINDKEY)
-      zvm_exit_insert_mode
+      zvm_exit_insert_mode false
+      zvm_reset_prompt
       ZVM_KEYS=${extra_keys}
       return
       ;;
     [vV]'^['|[vV]$ZVM_VI_VISUAL_ESCAPE_BINDKEY)
-      zvm_exit_visual_mode
+      zvm_exit_visual_mode false
+      zvm_reset_prompt
       ZVM_KEYS=${extra_keys}
       return
       ;;
@@ -1265,11 +1300,36 @@ function zvm_default_handler() {
   case "$KEYMAP" in
     vicmd)
       case "$keys" in
-        [vV]c) zvm_vi_change;;
-        [vV]d) zvm_vi_delete;;
-        [vV]y) zvm_vi_yank;;
+        [vV]c) zvm_vi_change false;;
+        [vV]d) zvm_vi_delete false;;
+        [vV]y) zvm_vi_yank false;;
         [vV]S) zvm_change_surround S;;
-        [cdyvV]*) zvm_range_handler "${keys}${extra_keys}";;
+        [cdyvV]*)
+          # We must loop util we meet a valid range action
+          while :; do
+            zvm_range_handler "${keys}${extra_keys}"
+            case $? in
+              0) break;;
+              1)
+                # Continue to ask to provide the action when we're
+                # still in visual mode
+                keys='v'; extra_keys=
+                ;;
+              2)
+                # Pushe the keys onto the input stack of ZLE, it's
+                # handled in zvm_readkeys_handler function
+                zvm_exit_visual_mode false
+                zvm_reset_prompt
+                return
+                ;;
+              3)
+                zvm_exit_visual_mode false
+                zvm_reset_prompt
+                break
+                ;;
+            esac
+          done
+          ;;
         *)
           for ((i=0;i<$#keys;i++)) do
             zvm_navigation_handler ${keys:$i:1}
@@ -1285,7 +1345,7 @@ function zvm_default_handler() {
         ZVM_KEYS="${keys:1}${extra_keys}"
         return
       elif [[ "${keys:0:1}" == $'\e' ]]; then
-        zvm_exit_insert_mode
+        zvm_exit_insert_mode false
         ZVM_KEYS="${keys:1}${extra_keys}"
         return
       fi
@@ -1332,11 +1392,23 @@ function zvm_readkeys_handler() {
 
   # If the widget isn't matched, we should call the default handler
   if [[ -z ${widget} ]]; then
+    # Disable reset prompt action, as multiple calling this function
+    # will cause potential line eaten issue.
+    ZVM_RESET_PROMPT_DISABLED=true
+
     zle zvm_default_handler "$key"
 
-    # Push back to the key input stack
+    ZVM_RESET_PROMPT_DISABLED=false
+
+    # Push back to the key input stack, and postpone reset prompt
     if [[ -n "$ZVM_KEYS" ]]; then
-      zle -U "$ZVM_KEYS"
+      # To prevent ZLE from error "not enough arguments for -U", the
+      # parameter should be put after `--` symbols.
+      zle -U -- "${ZVM_KEYS}"
+    else
+      # If there is any reset prompt, we need to execute for
+      # prompt resetting.
+      zvm_postpone_reset_prompt false
     fi
   else
     zle $widget
@@ -1456,7 +1528,7 @@ function zvm_navigation_handler() {
   fi
 
   zvm_repeat_command "$cmd" $count
-  exit_code=$?
+  local exit_code=$?
 
   if [[ $exit_code == 0 ]]; then
     retval=$keys
@@ -1494,9 +1566,9 @@ function zvm_range_handler() {
     keys="${keys}${key}"
   done
 
-  # If the last character is `i` or `a`, we should, we
-  # should read one more key
-  if [[ ${keys: -1} =~ [ia] ]]; then
+  # If the 2nd character is `i` or `a`, we should read
+  # one more key
+  if [[ ${keys} =~ '^.[ia]$' ]]; then
     zvm_update_cursor
     read -k 1 key
     keys="${keys}${key}"
@@ -1505,11 +1577,10 @@ function zvm_range_handler() {
   # Exit operator pending mode
   zvm_exit_oppend_mode
 
-  # Escape non-printed characters (e.g. ^[)
-  keys=$(zvm_escape_non_printed_characters "$keys")
-
   # Handle escape in operator pending mode
-  if [[ "$keys" =~ ${ZVM_VI_OPPEND_ESCAPE_BINDKEY/\^\[/\\^\\[} ]]; then
+  # escape non-printed characters (e.g. ^[)
+  if [[ $(zvm_escape_non_printed_characters "$keys") =~
+    ${ZVM_VI_OPPEND_ESCAPE_BINDKEY/\^\[/\\^\\[} ]]; then
     return 1
   fi
 
@@ -1649,6 +1720,7 @@ function zvm_range_handler() {
       fi
 
       # Retrieve the widget
+      cmd=
       case ${navkey: -2} in
         iw) cmd=(zle select-in-word);;
         aw) cmd=(zle select-a-word);;
@@ -1656,7 +1728,16 @@ function zvm_range_handler() {
         aW) cmd=(zle select-a-blank-word);;
       esac
 
-      zvm_repeat_command "$cmd" $count
+      if [[ -n "$cmd" ]]; then
+        zvm_repeat_command "$cmd" $count
+      elif [[ -n "$(zvm_match_surround "${keys[-1]}")" ]]; then
+        ZVM_KEYS="${keys}"
+        exit_code=2
+      elif [[ "${keys[1]}" == 'v' ]]; then
+        exit_code=1
+      else
+        exit_code=3
+      fi
       ;;
     c[eEwW])
       #######################################
@@ -1719,9 +1800,12 @@ function zvm_range_handler() {
   esac
 
   # Check if there is no range selected
+  # For the exit code:
+  # 1) Loop in visual mode
+  # 2) Loop by ZVM_KEYS
+  # 3) Exit loop
   if [[ $exit_code != 0 ]]; then
-    zvm_exit_visual_mode
-    return
+    return $exit_code
   fi
 
   # Post navigation handling
@@ -1740,9 +1824,9 @@ function zvm_range_handler() {
 
   # Handle operation
   case "${keys}" in
-    c*) zvm_vi_change; cursor=;;
-    d*) zvm_vi_delete; cursor=;;
-    y*) zvm_vi_yank;;
+    c*) zvm_vi_change false; cursor=;;
+    d*) zvm_vi_delete false; cursor=;;
+    y*) zvm_vi_yank false; cursor=;;
     [vV]*) cursor=;;
   esac
 
@@ -1912,6 +1996,8 @@ function zvm_match_surround() {
     ']') bchar='[';echar=']';;
     '}') bchar='{';echar='}';;
     '>') bchar='<';echar='>';;
+    \'|\"|\`| ) ;;
+    *) return;;
   esac
   echo $bchar $echar
 }
@@ -1941,8 +2027,8 @@ function zvm_search_surround() {
 # Select surround and highlight it in visual mode
 function zvm_select_surround() {
   local ret=($(zvm_parse_surround_keys))
-  local action=${ret[1]}
-  local surround=${ret[2]//$ZVM_ESCAPE_SPACE/ }
+  local action=${1:-${ret[1]}}
+  local surround=${2:-${ret[2]//$ZVM_ESCAPE_SPACE/ }}
   ret=($(zvm_search_surround ${surround}))
   if [[ ${#ret[@]} == 0 ]]; then
     zvm_exit_visual_mode
@@ -1957,8 +2043,8 @@ function zvm_select_surround() {
   fi
   MARK=$bpos; CURSOR=$epos-1
 
-  # refresh current mode for prompt redraw
-  zle reset-prompt
+  # refresh for highlight redraw
+  zle redisplay
 }
 
 # Change surround in vicmd or visual mode
@@ -2032,8 +2118,8 @@ function zvm_change_surround() {
 # Change surround text object
 function zvm_change_surround_text_object() {
   local ret=($(zvm_parse_surround_keys))
-  local action=${ret[1]}
-  local surround=${ret[2]//$ZVM_ESCAPE_SPACE/ }
+  local action=${1:-${ret[1]}}
+  local surround=${2:-${ret[2]//$ZVM_ESCAPE_SPACE/ }}
   ret=($(zvm_search_surround "${surround}"))
   if [[ ${#ret[@]} == 0 ]]; then
     zvm_select_vi_mode $ZVM_MODE_NORMAL
@@ -2063,6 +2149,7 @@ function zvm_change_surround_text_object() {
 # Repeat last change
 function zvm_repeat_change() {
   ZVM_REPEAT_MODE=true
+  ZVM_RESET_PROMPT_DISABLED=true
 
   local cmd=${ZVM_REPEAT_COMMANDS[2]}
 
@@ -2078,6 +2165,7 @@ function zvm_repeat_change() {
 
   zle redisplay
 
+  ZVM_RESET_PROMPT_DISABLED=false
   ZVM_REPEAT_MODE=false
 }
 
@@ -2354,6 +2442,10 @@ function zvm_switch_keyword() {
     if (( cpos < bpos )) || (( cpos >= epos )); then
       continue
     fi
+
+    # Save to history and only keep some recent records
+    zvm_switch_keyword_history+=("${handler}:${word}")
+    zvm_switch_keyword_history=("${zvm_switch_keyword_history[@]: -10}")
 
     BUFFER="${BUFFER:0:$bpos}${result[1]}${BUFFER:$epos}"
     CURSOR=$((bpos + ${#result[1]} - 1))
@@ -2723,13 +2815,38 @@ function zvm_switch_month() {
     fi
   fi
 
+  #####################
   # Abbreviation
-  if (( $#result == $#word )); then
-    result=${months[i]}
-  else
-    result=${months[i]:0:$#word}
+  local lastlen=0
+  local last="${zvm_switch_keyword_history[-1]}"
+  local funcmark="${funcstack[1]}:"
+  if [[ "$last" =~ "^${funcmark}" ]]; then
+    lastlen=$(($#last - $#funcmark))
   fi
 
+  # Use cases:
+  #
+  #  May -> June
+  #  Apr -> May -> Jun
+  #  April -> May -> June
+  #  January -> Feb(Munual changing) -> Mar
+  #  Jan -> February(Munual changing) -> March
+  #
+  if [[ "$result" == "may" ]]; then
+    if (($lastlen == 3)); then
+      result=${months[i]:0:3}
+    else
+      result=${months[i]}
+    fi
+  else
+    if (($#word == 3)); then
+      result=${months[i]:0:3}
+    else
+      result=${months[i]}
+    fi
+  fi
+
+  #####################
   # Transform the case
   if [[ $word =~ ^[A-Z]+$ ]]; then
     result=${(U)result}
@@ -2874,7 +2991,7 @@ function zvm_enter_insert_mode() {
 # Exit the vi insert mode
 function zvm_exit_insert_mode() {
   ZVM_INSERT_MODE=
-  zvm_select_vi_mode $ZVM_MODE_NORMAL
+  zvm_select_vi_mode $ZVM_MODE_NORMAL ${1:-true}
 }
 
 # Enter the vi operator pending mode
@@ -2934,14 +3051,14 @@ function zvm_select_vi_mode() {
   # Check if current mode is the same with the new mode
   if [[ $mode == "$ZVM_MODE" ]]; then
     zvm_update_cursor
-    mode=
+    return
   fi
 
   zvm_exec_commands 'before_select_vi_mode'
 
   # Some plugins would reset the prompt when we select the
-  # keymap, so here we disable the reset-prompt temporarily.
-  ZVM_RESET_PROMPT_DISABLED=true
+  # keymap, so here we postpone executing reset-prompt.
+  zvm_postpone_reset_prompt true
 
   # Exit operator pending mode
   if $ZVM_OPPEND_MODE; then
@@ -2979,8 +3096,8 @@ function zvm_select_vi_mode() {
   # update the cursor, prompt and so on.
   zvm_exec_commands 'after_select_vi_mode'
 
-  # Enable reset-prompt
-  ZVM_RESET_PROMPT_DISABLED=false
+  # Stop and trigger reset-prompt
+  $reset_prompt && zvm_postpone_reset_prompt false true
 
   # Start the lazy keybindings when the first time entering the
   # normal mode, when the mode is the same as last mode, we get
@@ -3002,10 +3119,40 @@ function zvm_select_vi_mode() {
   fi
 }
 
+# Postpone reset prompt
+function zvm_postpone_reset_prompt() {
+  local toggle=$1
+  local force=${2:-false}
+
+  if $force; then
+    ZVM_POSTPONE_RESET_PROMPT=1
+  fi
+
+  if $toggle; then
+    ZVM_POSTPONE_RESET_PROMPT=0
+  else
+    if (($ZVM_POSTPONE_RESET_PROMPT > 0)); then
+      ZVM_POSTPONE_RESET_PROMPT=-1
+      zle reset-prompt
+    else
+      ZVM_POSTPONE_RESET_PROMPT=-1
+    fi
+  fi
+}
+
 # Reset prompt
 function zvm_reset_prompt() {
-  $ZVM_RESET_PROMPT_DISABLED && return
-  
+  # Return if postponing is enabled
+  if (($ZVM_POSTPONE_RESET_PROMPT >= 0)); then
+    ZVM_POSTPONE_RESET_PROMPT=$(($ZVM_POSTPONE_RESET_PROMPT + 1))
+    return
+  fi
+
+  # Return if reset prompt is disabled
+  if [[ $ZVM_RESET_PROMPT_DISABLED == true ]]; then
+    return
+  fi
+
   local -i retval
   if [[ -z "$rawfunc" ]]; then
     zle .reset-prompt -- "$@"
@@ -3045,10 +3192,10 @@ function zvm_cursor_style() {
 
   case $term in
     # For xterm and rxvt and their derivatives use the same escape
-    # sequences as the VT520 terminal. And screen, konsole, alacritty
-    # and st implement a superset of VT100 and VT100, they support
+    # sequences as the VT520 terminal. And screen, konsole, alacritty,
+    # st and foot implement a superset of VT100 and VT100, they support
     # 256 colors the same way xterm does.
-    xterm*|rxvt*|screen*|tmux*|konsole*|alacritty*|st*)
+    xterm*|rxvt*|screen*|tmux*|konsole*|alacritty*|st*|foot*)
       case $style in
         $ZVM_CURSOR_BLOCK) style='\e[2 q';;
         $ZVM_CURSOR_UNDERLINE) style='\e[4 q';;
@@ -3214,6 +3361,7 @@ function zvm_zle-line-finish() {
   # by it.
   local shape=$(zvm_cursor_style $ZVM_CURSOR_USER_DEFAULT)
   zvm_set_cursor $shape
+  zvm_switch_keyword_history=()
 }
 
 # Initialize vi-mode for widgets, keybindings, etc.
@@ -3453,6 +3601,12 @@ function zvm_init() {
   # Since normally '^?' (backspace) is bound to vi-backward-delete-char
   zvm_bindkey viins '^?' backward-delete-char
 
+  # Initialize ZVM_MODE value
+  case ${ZVM_LINE_INIT_MODE:-$ZVM_MODE_INSERT} in
+    $ZVM_MODE_INSERT) ZVM_MODE=$ZVM_MODE_INSERT;;
+    *) ZVM_MODE=$ZVM_MODE_NORMAL;;
+  esac
+
   # Enable vi keymap
   bindkey -v
 
@@ -3481,6 +3635,68 @@ function zvm_exec_commands() {
     fi
     eval $cmd
   done
+}
+
+# Generate system report
+function zvm_system_report() {
+  # OS
+  local os_info=
+  case "$(uname -s)" in
+    Darwin)
+      local product="$(sw_vers -productName)"
+      local version="$(sw_vers -productVersion) ($(sw_vers -buildVersion))"
+      os_info="${product} ${version}"
+      ;;
+    *) os_info="$(uname -s) ($(uname -r) $(uname -v) $(uname -m) $(uname -o))";;
+  esac
+
+  # Terminal Program
+  local term_info="${TERM_PROGRAM:-unknown} ${TERM_PROGRAM_VERSION:-unknown}"
+  term_info="${term_info} (${TERM})"
+
+  # ZSH Frameworks
+  local zsh_frameworks=()
+
+  if zvm_exist_command "omz"; then
+    zsh_framworks+=("oh-my-zsh $(omz version)")
+  fi
+
+  if zvm_exist_command "starship"; then
+    zsh_framworks+=("$(starship --version | head -n 1)")
+  fi
+
+  if zvm_exist_command "antigen"; then
+    zsh_framworks+=("$(antigen version | head -n 1)")
+  fi
+
+  if zvm_exist_command "zplug"; then
+    zsh_framworks+=("zplug $(zplug --version | head -n 1)")
+  fi
+
+  if zvm_exist_command "zinit"; then
+    # As `zinit version` information includes term style, in order
+    # to acquire the pure text, we need to elimindate all the escape
+    # sequences.
+    local version=$(zinit version \
+      | head -n 1 \
+      | sed -E $'s/(\033\[[a-zA-Z0-9;]+ ?m)//g')
+    zsh_framworks+=("${version}")
+  fi
+
+  # Shell
+  local shell=$SHELL
+  if [[ -z $shell ]]; then
+    shell=zsh
+  fi
+
+  #################
+  # System Report
+  #################
+  print - "- Terminal program: ${term_info}"
+  print - "- Operating system: ${os_info}"
+  print - "- ZSH framework: ${(j:, :)zsh_framworks}"
+  print - "- ZSH version: $($shell --version)"
+  print - "- ZVM version: $(zvm_version | head -n 1)"
 }
 
 # Load config by calling the config function

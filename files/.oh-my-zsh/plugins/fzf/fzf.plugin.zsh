@@ -1,3 +1,12 @@
+function fzf_setup_using_fzf() {
+  (( ${+commands[fzf]} )) || return 1
+
+  local fzf_ver=${$(fzf --version)[1]}
+  is-at-least 0.48.0 $fzf_ver || return 1
+
+  eval "$(fzf --zsh)"
+}
+
 function fzf_setup_using_base_dir() {
   local fzf_base fzf_shell fzfdirs dir
 
@@ -8,6 +17,7 @@ function fzf_setup_using_base_dir() {
       "${HOME}/.fzf"
       "${HOME}/.nix-profile/share/fzf"
       "${XDG_DATA_HOME:-$HOME/.local/share}/fzf"
+      "${MSYSTEM_PREFIX}/share/fzf"
       "/usr/local/opt/fzf"
       "/opt/homebrew/opt/fzf"
       "/usr/share/fzf"
@@ -61,7 +71,7 @@ function fzf_setup_using_base_dir() {
 
 function fzf_setup_using_debian() {
   if (( ! $+commands[apt] && ! $+commands[apt-get] )); then
-    # Not a debian based distro 
+    # Not a debian based distro
     return 1
   fi
 
@@ -216,7 +226,8 @@ Please add `export FZF_BASE=/path/to/fzf/install/dir` to your .zshrc
 EOF
 }
 
-fzf_setup_using_openbsd \
+fzf_setup_using_fzf \
+  || fzf_setup_using_openbsd \
   || fzf_setup_using_debian \
   || fzf_setup_using_opensuse \
   || fzf_setup_using_cygwin \
