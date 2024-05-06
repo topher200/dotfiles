@@ -16,6 +16,11 @@
 
 <p align="center">
 
+  <a href="https://github.com/sponsors/jeffreytse">
+    <img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub&link=&color=greygreen"
+      alt="Donate (GitHub Sponsor)" />
+  </a>
+
   <a href="https://github.com/jeffreytse/zsh-vi-mode/releases">
     <img src="https://img.shields.io/github/v/release/jeffreytse/zsh-vi-mode?color=brightgreen"
       alt="Release Version" />
@@ -24,11 +29,6 @@
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg"
       alt="License: MIT" />
-  </a>
-
-  <a href="">
-    <img src=""
-      alt="" />
   </a>
 
   <a href="https://liberapay.com/jeffreytse">
@@ -168,6 +168,22 @@ Add `zsh-vi-mode` to your plugins file (e.g. `~/.zsh_plugins.txt`)
 jeffreytse/zsh-vi-mode
 ```
 
+#### Using [Zap](https://github.com/zap-zsh/zap)
+
+Load `zsh-vi-mode` as a plugin in your `.zshrc`
+
+```shell
+plug "jeffreytse/zsh-vi-mode"
+```
+
+#### Using [Zim](https://github.com/zimfw/zimfw)
+
+Load `zsh-vi-mode` as a plugin in your `.zimrc`
+
+```shell
+zmodule jeffreytse/zsh-vi-mode
+```
+  
 #### Using [Homebrew](https://brew.sh/)
 
 For Homebrew users, you can install it through the following command
@@ -206,7 +222,7 @@ source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 For users of Nix, as of [e7e3480530b34a9fe8cb52963ec2cf66e6707e15](https://github.com/NixOS/nixpkgs/commit/e7e3480530b34a9fe8cb52963ec2cf66e6707e15) you can source the plugin through the following configuration
 
-```shell
+```nix
 programs = {
   zsh = {
     interactiveShellInit = ''
@@ -218,13 +234,31 @@ programs = {
   
 Or if you prefer `home-manager`:
 
-```shell
+```nix
 home-manager.users.[your username] = { pkgs, ... }: {
   programs = {
     zsh = {
       initExtra = ''
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       '';
+    };
+  };
+};
+```
+
+You can also use `home-manager`'s built-in "plugin" feature:
+
+```nix
+home-manager.users.[your username] = { pkgs, ... }: {
+  programs = {
+    zsh = {
+      plugins = [
+        {
+          name = "vi-mode";
+          src = pkgs.zsh-vi-mode;
+          file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        }
+      ];
     };
   };
 };
@@ -266,6 +300,10 @@ Then source it in your `.zshrc` (or `.bashrc`)
 ```shell
 source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 ```
+
+## Packaging Status
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/zsh-vi-mode.svg)](https://repology.org/project/zsh-vi-mode/versions)
 
 ## 📚 Usage
 
