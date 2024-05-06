@@ -138,8 +138,6 @@ source "$HOME"/graphiterc
 source "$HOME"/condarc
 # shellcheck source=fzfrc
 source "$HOME"/fzfrc
-# shellcheck source=memfaultrc
-source "$HOME"/memfaultrc
 if [[ -f "$HOME"/Downloads/secretsrc ]]; then
 	# shellcheck disable=SC1090
 	source "$HOME"/Downloads/secretsrc
@@ -147,6 +145,10 @@ fi
 if [[ -f "$HOME"/Sync/secretsrc ]]; then
 	# shellcheck disable=SC1090
 	source "$HOME"/Sync/secretsrc
+fi
+if [[ -f "$HOME"/Sync/memfaultrc ]]; then
+	# shellcheck disable=SC1090
+	source "$HOME"/Sync/memfaultrc
 fi
 if [[ -f "$HOME"/systemrc ]]; then
 	# shellcheck disable=SC1090
