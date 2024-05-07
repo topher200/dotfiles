@@ -48,10 +48,7 @@ windows:
     panes:
       - shell_command:
           - cam
-          - psql $(INVOKE_RUN_ECHO=0 inv db.url)
-      - shell_command:
-          - cam
-          - psql $(INVOKE_RUN_ECHO=0 inv db.url --bind timescaledb)
+          - psql $(INVOKE_RUN_ECHO=0 inv db.url --bind postgres)
     layout: even-vertical
     start_directory: /home/topher/dev/memfault
   - window_name: ipython
