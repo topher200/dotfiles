@@ -60,6 +60,25 @@ windows:
           - cam
           - ipython
     start_directory: /home/topher/dev/memfault
+  - window_name: terraform
+    window_index: 7
+    options:
+      automatic-rename: off
+    panes:
+      - shell_command:
+          - cam
+          - aws-vault exec memfault-staging -- inv terraform.plan
+      - shell_command:
+          - cam
+          - aws-vault exec memfault-prod -- inv terraform.plan
+      - shell_command:
+          - cam
+          - aws-vault exec memfault-demo -- inv terraform.plan
+      - shell_command:
+          - cam
+          - aws-vault exec memfault-eu -- inv terraform.plan --region eu-central-1
+    layout: even-vertical
+    start_directory: /home/topher/dev/memfault
   - window_name: dotfiles
     window_index: 10
     options:
