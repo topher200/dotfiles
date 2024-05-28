@@ -79,24 +79,24 @@ function! copilot#panel#Accept(...) abort
     endif
   endfor
   if index > 0 && index <= len(state.items)
-    let solution = state.items[index - 1]
-    let lnum = solution.range.start.line + 1
+    let item = state.items[index - 1]
+    let lnum = item.range.start.line + 1
     if getbufline(state.bufnr, lnum) !=# [state.line]
       return 'echoerr "Buffer has changed since synthesizing completion"'
     endif
-    let lines = split(solution.insertText, "\n", 1)
-    let old_first = getbufline(state.bufnr, solution.range.start.line + 1)[0]
-    let lines[0] = strpart(old_first, 0, copilot#util#UTF16ToByteIdx(old_first, solution.range.start.character)) . lines[0]
-    let old_last = getbufline(state.bufnr, solution.range.end.line + 1)[0]
-    let lines[-1] .= strpart(old_last, copilot#util#UTF16ToByteIdx(old_last, solution.range.end.character))
-    call deletebufline(state.bufnr, solution.range.start.line + 1, solution.range.end.line + 1)
-    call appendbufline(state.bufnr, solution.range.start.line, lines)
-    call copilot#Request('workspace/executeCommand', solution.command)
+    let lines = split(item.insertText, "\n", 1)
+    let old_first = getbufline(state.bufnr, item.range.start.line + 1)[0]
+    let lines[0] = strpart(old_first, 0, copilot#util#UTF16ToByteIdx(old_first, item.range.start.character)) . lines[0]
+    let old_last = getbufline(state.bufnr, item.range.end.line + 1)[0]
+    let lines[-1] .= strpart(old_last, copilot#util#UTF16ToByteIdx(old_last, item.range.end.character))
+    call deletebufline(state.bufnr, item.range.start.line + 1, item.range.end.line + 1)
+    call appendbufline(state.bufnr, item.range.start.line, lines)
+    call copilot#Request('workspace/executeCommand', item.command)
     bwipeout
     let win = bufwinnr(state.bufnr)
     if win > 0
       exe win . 'wincmd w'
-      exe solution.range.start.line + len(lines)
+      exe item.range.start.line + len(lines)
       if state.was_insert
         startinsert!
       else
