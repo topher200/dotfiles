@@ -67,7 +67,7 @@ Most prompts are cluttered, ugly and slow. We wanted something visually pleasing
 
 ## Install
 
-Can be installed with `npm` or manually. Requires Git 2.15.2+ and ZSH 5.2+. Older versions of ZSH are known to work, but they are **not** recommended.
+Can be installed with `npm` (not `yarn`) or manually. Requires Git 2.15.2+ and ZSH 5.2+. Older versions of ZSH are known to work, but they are **not** recommended.
 
 ### npm
 
@@ -119,8 +119,8 @@ prompt pure
 | Option                           | Description                                                                                    | Default value  |
 | :------------------------------- | :--------------------------------------------------------------------------------------------- | :------------- |
 | **`PURE_CMD_MAX_EXEC_TIME`**     | The max execution time of a process before its run time is shown when it exits.                | `5` seconds    |
-| **`PURE_GIT_PULL=0`**            | Prevents Pure from checking whether the current Git remote has been updated.                   |                |
-| **`PURE_GIT_UNTRACKED_DIRTY=0`** | Do not include untracked files in dirtiness check. Mostly useful on large repos (like WebKit). |                |
+| **`PURE_GIT_PULL`**              | Prevents Pure from checking whether the current Git remote has been updated.                   | `1`            |
+| **`PURE_GIT_UNTRACKED_DIRTY`**   | Do not include untracked files in dirtiness check. Mostly useful on large repos (like WebKit). | `1`            |
 | **`PURE_GIT_DELAY_DIRTY_CHECK`** | Time in seconds to delay git dirty checking when `git status` takes > 5 seconds.               | `1800` seconds |
 | **`PURE_PROMPT_SYMBOL`**         | Defines the prompt symbol.                                                                     | `❯`            |
 | **`PURE_PROMPT_VICMD_SYMBOL`**   | Defines the prompt symbol used when the `vicmd` keymap is active (VI-mode).                    | `❮`            |
@@ -259,7 +259,7 @@ zplug mafredri/zsh-async, from:github
 zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 ```
 
-### [zinit](https://github.com/zdharma/zinit)
+### [zinit](https://github.com/zdharma-continuum/zinit)
 
 Update your `.zshrc` file with the following two lines (order matters):
 
@@ -267,6 +267,16 @@ Update your `.zshrc` file with the following two lines (order matters):
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 ```
+
+### [zi](https://wiki.zshell.dev)
+
+Update your `.zshrc` file with the following line:
+
+```sh
+zi light-mode for @sindresorhus/pure
+```
+
+See the [ZI wiki](https://wiki.zshell.dev/community/gallery/collection/themes#thp-sindresorhuspure) for more.
 
 ## FAQ
 

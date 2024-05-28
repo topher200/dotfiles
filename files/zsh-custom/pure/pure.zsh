@@ -330,6 +330,12 @@ prompt_pure_async_git_fetch() {
 	# Set SSH `BachMode` to disable all interactive SSH password prompting.
 	export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-"ssh"} -o BatchMode=yes"
 
+	# If gpg-agent is set to handle SSH keys for `git fetch`, make
+	# sure it doesn't corrupt the parent TTY.
+	# Setting an empty GPG_TTY forces pinentry-curses to close immediately rather
+	# than stall indefinitely waiting for user input.
+	export GPG_TTY=
+
 	local -a remote
 	if ((only_upstream)); then
 		local ref
@@ -557,13 +563,7 @@ prompt_pure_async_callback() {
 			[[ -n $info[top] ]] && [[ -z $prompt_pure_vcs_info[top] ]] && prompt_pure_async_refresh
 
 			# Always update branch, top-level and stash.
-			# TOPHER: add stgit patch output
-			local stgit_patch=$(stg top 2>/dev/null)
-			if [[ -n $stgit_patch ]]; then
-				prompt_pure_vcs_info[branch]=$stgit_patch@$info[branch]
-			else
-				prompt_pure_vcs_info[branch]=$info[branch]
-			fi
+			prompt_pure_vcs_info[branch]=$info[branch]
 			prompt_pure_vcs_info[top]=$info[top]
 			prompt_pure_vcs_info[action]=$info[action]
 
@@ -721,19 +721,21 @@ prompt_pure_state_setup() {
 	[[ $UID -eq 0 ]] && username='%F{$prompt_pure_colors[user:root]}%n%f'"$hostname"
 
 	typeset -gA prompt_pure_state
-	prompt_pure_state[version]="1.20.1"
+	prompt_pure_state[version]="1.23.0"
 	prompt_pure_state+=(
 		username "$username"
 		prompt	 "${PURE_PROMPT_SYMBOL:-❯}"
 	)
 }
 
-# Return true if executing inside a Docker, LXC or systemd-nspawn container.
+# Return true if executing inside a Docker, OCI, LXC, or systemd-nspawn container.
 prompt_pure_is_inside_container() {
 	local -r cgroup_file='/proc/1/cgroup'
 	local -r nspawn_file='/run/host/container-manager'
 	[[ -r "$cgroup_file" && "$(< $cgroup_file)" = *(lxc|docker)* ]] \
 		|| [[ "$container" == "lxc" ]] \
+		|| [[ "$container" == "oci" ]] \
+		|| [[ "$container" == "podman" ]] \
 		|| [[ -r "$nspawn_file" ]]
 }
 
