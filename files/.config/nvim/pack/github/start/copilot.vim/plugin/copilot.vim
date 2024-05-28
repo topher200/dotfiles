@@ -7,7 +7,7 @@ scriptencoding utf-8
 
 command! -bang -nargs=? -range=-1 -complete=customlist,copilot#CommandComplete Copilot exe copilot#Command(<line1>, <count>, +"<range>", <bang>0, "<mods>", <q-args>)
 
-if v:version < 800 || !exists('##CompleteChanged')
+if v:version < 800 || !exists('##InsertLeavePre')
   finish
 endif
 
@@ -26,7 +26,7 @@ function! s:MapTab() abort
   endif
   let tab_map = maparg('<Tab>', 'i', 0, 1)
   if !has_key(tab_map, 'rhs')
-    imap <script><silent><nowait><expr> <Tab> copilot#Accept()
+    imap <script><silent><nowait><expr> <Tab> empty(get(g:, 'copilot_no_tab_map')) ? copilot#Accept() : "\t"
   elseif tab_map.rhs !~# 'copilot'
     if tab_map.expr
       let tab_fallback = '{ -> ' . tab_map.rhs . ' }'
