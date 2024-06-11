@@ -28,6 +28,7 @@ plugins=(
 	zsh-vi-mode
 )
 # shellcheck source=.oh-my-zsh/oh-my-zsh.sh
+export ZSH_THEME=""
 source $ZSH/oh-my-zsh.sh
 
 # enable 'kitty' terminal emulator
