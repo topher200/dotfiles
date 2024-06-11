@@ -6,7 +6,7 @@ managed by GNU stow
 
 ```console
 sudo apt-get install git make vim
-git clone git@github.com:topher200/dotfiles.git
+git clone git@github.com:topher200/dotfiles.git ~/
 cd dotfiles
 make install-all-packages
 make
@@ -32,17 +32,14 @@ fs.inotify.max_user_instances = 1048576
 fs.inotify.max_user_watches = 1048576
 ```
 
+- install zoom. https://zoom.us/download?os=linux, download, `$ sudo apt install ~/Downloads/zoom...`
 - disable annoying zoom window setting:
 
 ```
 $ vim ~/snap/zoom-client/current/.config/zoomus.conf
+$ ... OR ...
+$ vim .config/zoomus.conf
 enableMiniWindow=false
-```
-
-- disable wayland in `/etc/gdm3/custom.conf` (may not work beyond 24.04):
-
-```
-WaylandEnable=false
 ```
 
 - grab graphite user config
