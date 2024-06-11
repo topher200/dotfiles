@@ -147,6 +147,13 @@ prompt_pure_preprompt_render() {
         preprompt_parts+=("${CONDA_DEFAULT_ENV//[$'\t\r\n']}")
 	fi
 
+	# TOPHER: adding result of last command here
+	if [[ $? -eq 0 ]]; then
+		preprompt_parts+=('%F{green}$?%f')
+	else
+		preprompt_parts+=('%F{red}$?%f')
+	fi
+
 	# Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
 	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
