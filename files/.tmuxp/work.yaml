@@ -14,9 +14,6 @@ windows:
       automatic-rename: off
     panes:
       - shell_command: cam
-      - shell_command:
-          - cam
-          - inv test.pyright --watch
     start_directory: /home/topher/dev/memfault
   - window_name: servers
     window_index: 3
