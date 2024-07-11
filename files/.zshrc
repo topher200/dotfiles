@@ -123,13 +123,6 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloa
 # shellcheck disable=SC1090
 if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-# shellcheck disable=SC1090
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-# shellcheck disable=SC1090
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 # include my non-shell-specific code
 # shellcheck source=topherrc
 source "$HOME"/topherrc
