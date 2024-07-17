@@ -1,20 +1,18 @@
-# full config list: https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
-
 git:
-  disableForcePushing: true
-  parseEmoji: true
-  skipRewordInEditorWarning: true
+    disableForcePushing: true
+    parseEmoji: true
+    skipRewordInEditorWarning: true
 gui:
-  theme:
-    selectedLineBgColor:
-      - underline
-    selectedRangeBgColor:
-      - underline
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
+    theme:
+        selectedLineBgColor:
+            - underline
+        selectedRangeBgColor:
+            - underline
+    paging:
+        colorArg: always
+        pager: delta --dark --paging=never
 quitOnTopLevelReturn: true
 keybinding:
-  universal:
-    return: q
-    quit:
+    universal:
+        return: q
+        quit: <disabled>

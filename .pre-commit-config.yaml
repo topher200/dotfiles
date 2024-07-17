@@ -1,5 +1,6 @@
 exclude: |
   (?x)^(
+      files/.config/lazygit/config.yml|
       files/.config/nvim/pack.*|
       files/.oh-my-zsh/.*|
       files/.tmux/plugins/.*|
