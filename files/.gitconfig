@@ -112,6 +112,7 @@
     reomi="!f() { git rebase origin/master -i 2>/dev/null || git rebase origin/main -i; }; f"
     s = status
     st = stash
+    st = "!f() { git diff --cached --quiet || staged='--staged'; git stash $staged; }; f"
     std = stash drop
     stp = stash pop
     stpa = stash --patch
