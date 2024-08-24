@@ -88,6 +88,15 @@ function rds_ip_address() {
 	aws rds describe-db-instances --output=json --region=us-east-1 |
 		jq ".DBInstances[] | select(.DBInstanceIdentifier==\"$1\") | .Endpoint.Address" -r
 }
+
+# rerun the previous command until it succeeds
+function rr {
+	trap "echo 'Interrupted'; return" INT
+	while ! eval "$(fc -ln -1)"; do
+		sleep 0.5
+	done
+}
+
 ### END COMMAND LINE ALIASES ###
 
 ### INSTALL AND CONFIGURE APPLICATIONS ###
