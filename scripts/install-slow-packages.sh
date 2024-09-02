@@ -48,15 +48,6 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	jq || true
 set -e
 
-# install viddy, from https://github.com/sachaos/viddy
-if [ ! -f /usr/local/bin/viddy ]; then
-	wget -O /tmp/viddy.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.0/viddy_0.3.0_Linux_x86_64.tar.gz
-	pushd /tmp || exit
-	tar xvf /tmp/viddy.tar.gz
-	sudo mv /tmp/viddy /usr/local/bin
-	popd || exit
-fi
-
 # install Linuxbrew
 install_brew() {
 	if ! command_exists brew; then
@@ -93,4 +84,5 @@ brew install \
 	jless \
 	knqyf263/pet/pet \
 	tmuxp \
-	tldr
+	tldr \
+	viddy
