@@ -48,12 +48,6 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	jq || true
 set -e
 
-# pet snippet manager
-if [ ! -f /tmp/pet.deb ]; then
-	wget https://github.com/knqyf263/pet/releases/download/v0.3.6/pet_0.3.6_linux_amd64.deb -O /tmp/pet.deb
-	sudo dpkg -i /tmp/pet.deb
-fi
-
 # install viddy, from https://github.com/sachaos/viddy
 if [ ! -f /usr/local/bin/viddy ]; then
 	wget -O /tmp/viddy.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.0/viddy_0.3.0_Linux_x86_64.tar.gz
@@ -97,5 +91,6 @@ brew install \
 	gcc \
 	jesseduffield/lazydocker/lazydocker \
 	jless \
+	knqyf263/pet/pet \
 	tmuxp \
 	tldr
