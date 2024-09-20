@@ -147,6 +147,11 @@ prompt_pure_preprompt_render() {
         preprompt_parts+=("${CONDA_DEFAULT_ENV//[$'\t\r\n']}")
 	fi
 
+	# TOPHER: adding python virtualenv here
+	if [[ -n $VIRTUAL_ENV ]]; then
+		preprompt_parts+=("${VIRTUAL_ENV:t}")
+	fi
+
 	# TOPHER: adding result of last command here
 	if [[ $? -eq 0 ]]; then
 		preprompt_parts+=('%F{green}$?%f')
