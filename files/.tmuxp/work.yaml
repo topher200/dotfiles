@@ -73,7 +73,7 @@ windows:
           - aws-vault exec memfault-demo -- inv terraform.plan
       - shell_command:
           - cam
-          - aws-vault exec memfault-eu -- inv terraform.plan --region eu-central-1
+          - aws-vault exec memfault-eu -- inv terraform.plan
     layout: even-vertical
     start_directory: /home/topher/dev/memfault
   - window_name: dotfiles
