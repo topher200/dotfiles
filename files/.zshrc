@@ -31,6 +31,8 @@ plugins=(
 # We must nullify ZSH_THEME, then source oh-my-zsh, then source pure.
 # https://github.com/sindresorhus/pure?tab=readme-ov-file#oh-my-zsh
 export ZSH_THEME=""
+# Disable oh-my-zsh update reminders (we have a script)
+zstyle ':omz:update' mode disabled
 # shellcheck source=.oh-my-zsh/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
 
