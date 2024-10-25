@@ -23,7 +23,6 @@ plugins=(
 	autojump
 	github
 	httpie
-	poetry
 	safe-paste
 	zsh-vi-mode
 )
