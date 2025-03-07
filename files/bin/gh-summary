@@ -1,0 +1,5 @@
+#!/bin/bash
+
+content=$(xsel -b)
+
+echo -e "<details><summary>Details</summary>\n\n\`\`\`\n$content\n\`\`\`\n\n</details>" | xsel -b
