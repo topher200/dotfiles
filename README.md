@@ -79,3 +79,10 @@ sudo su - $NEWUSER
   ```console
   rm -r files/zsh-custom/pure && git clone https://github.com/sindresorhus/pure files/zsh-custom/pure --depth 1 && rm -rf files/zsh-custom/pure/.git
   ```
+
+### Install Alacritty theme
+
+```
+$ mkdir -p ~/.config/alacritty/themes
+$ git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+```
