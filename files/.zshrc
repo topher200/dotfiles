@@ -132,8 +132,6 @@ if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/D
 source "$HOME"/topherrc
 # shellcheck source=graphiterc
 source "$HOME"/graphiterc
-# shellcheck source=condarc
-source "$HOME"/condarc
 # shellcheck source=fzfrc
 source "$HOME"/fzfrc
 if [[ -f "$HOME"/Downloads/secretsrc ]]; then
@@ -152,3 +150,32 @@ if [[ -f "$HOME"/systemrc ]]; then
 	# shellcheck disable=SC1090
 	source "$HOME"/systemrc
 fi
+
+alias cam='micromamba activate memfault'
+
+# Shell-GPT integration ZSH v0.2
+_sgpt_zsh() {
+	if [[ -n "$BUFFER" ]]; then
+		_sgpt_prev_cmd=$BUFFER
+		BUFFER+="⌛"
+		zle -I && zle redisplay
+		BUFFER=$(sgpt --shell --no-interaction <<<"$_sgpt_prev_cmd")
+		zle end-of-line
+	fi
+}
+zle -N _sgpt_zsh
+bindkey ^l _sgpt_zsh
+# Shell-GPT integration ZSH v0.2
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE='/home/topher/.local/bin/micromamba'
+export MAMBA_ROOT_PREFIX='/home/topher/micromamba'
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2>/dev/null)"
+if "$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" >/dev/null 2>&1; then
+	eval "$__mamba_setup"
+else
+	alias micromamba='$MAMBA_EXE' # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
