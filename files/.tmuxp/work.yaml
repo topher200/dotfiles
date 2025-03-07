@@ -38,27 +38,8 @@ windows:
     panes:
       - shell_command: overmind c
     start_directory: /home/topher/dev/memfault
-  - window_name: local-psql
-    window_index: 5
-    options:
-      automatic-rename: off
-    panes:
-      - shell_command:
-          - cam
-          - psql $(INVOKE_RUN_ECHO=0 inv db.url --bind postgres)
-    layout: even-vertical
-    start_directory: /home/topher/dev/memfault
-  - window_name: ipython
-    window_index: 6
-    options:
-      automatic-rename: off
-    panes:
-      - shell_command:
-          - cam
-          - ipython
-    start_directory: /home/topher/dev/memfault
   - window_name: terraform
-    window_index: 7
+    window_index: 9
     options:
       automatic-rename: off
     panes:
