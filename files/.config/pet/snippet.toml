@@ -79,18 +79,8 @@
   output = ""
 
 [[snippets]]
-  description = "conda update environment packages"
-  command = "conda env update --file ~/dev/memfault/environment.yml"
-  output = ""
-
-[[snippets]]
   description = "swap keyboard config"
   command = "/usr/local/bin/keyboard"
-  output = ""
-
-[[snippets]]
-  description = "start session memfault"
-  command = "cd ~/dev/memfault && conda activate memfault"
   output = ""
 
 [[snippets]]
@@ -276,4 +266,9 @@
 [[snippets]]
   description = "copy francois with the c"
   command = "echo 'François' | xsel -i"
+  output = ""
+
+[[snippets]]
+  description = "SSM into a named EC2 instance"
+  command = "export INSTANCE_NAME=coolify-control-plane-production && aws-vault exec memfault-prod -- aws ssm start-session --target $(aws-vault exec memfault-prod -- aws ec2 describe-instances --filters \"Name=tag:Name,Values=$INSTANCE_NAME\" \"Name=instance-state-name,Values=running\" --query \"Reservations[0].Instances[0].InstanceId\" --output text)"
   output = ""
