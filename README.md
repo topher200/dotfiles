@@ -14,6 +14,7 @@ make
 
 ### Optional
 
+- Set up pre-commit: `$ pre-commit install --hook-type pre-commit --hook-type commit-msg`
 - Start tmux and install tmux plugins: Prefix + I (`ctrl-a I`)
 - `$ scripts/install-chrome.sh`
 - `$ scripts/install-kitty.sh`
