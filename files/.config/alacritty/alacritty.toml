@@ -1,0 +1,20 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/solarized_light.toml"
+]
+
+[[keyboard.bindings]]
+chars = "\u0001n"
+key = "Tab"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u0001p"
+key = "Tab"
+mods = "Control|Shift"
+
+[selection]
+save_to_clipboard = true
+
+[window]
+dynamic_padding = true
