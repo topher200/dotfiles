@@ -4,8 +4,8 @@ version: 2.1
 executors:
   ubuntu:
     machine:
-      # packages here: https://circleci.com/developer/machine/image/ubuntu-2204
-      image: ubuntu-2204:2024.01.2
+      # packages here: https://circleci.com/developer/machine/image/ubuntu-2404
+      image: ubuntu-2404:2024.11.1
 
 jobs:
   test-lint:
@@ -14,7 +14,7 @@ jobs:
       - checkout
       - run: sudo apt update --yes
       - run: sudo apt install shellcheck
-      - run: sudo apt install snapd && sudo snap install shfmt
+      - run: curl -sS https://webi.sh/shfmt | sh; source ~/.config/envman/PATH.env
       - run: npm install --global prettier
       - run: pip3 install pre-commit
       - run: make lint
