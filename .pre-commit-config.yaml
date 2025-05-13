@@ -26,12 +26,6 @@ repos:
       - id: end-of-file-fixer # Ensures that a file is either empty, or ends with one newline.
       - id: trailing-whitespace # This hook trims trailing whitespace.
 
-  - repo: https://github.com/AleksaC/circleci-cli-py
-    rev: v0.1.16535
-    hooks:
-      - id: circle-ci-validator
-        files: \.circleci/.*\.yml$
-
   - repo: https://github.com/rbubley/mirrors-prettier
     rev: v3.5.3
     hooks:
