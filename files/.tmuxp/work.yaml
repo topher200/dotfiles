@@ -39,7 +39,7 @@ windows:
       - shell_command: overmind c
     start_directory: /home/topher/dev/memfault
   - window_name: terraform
-    window_index: 9
+    window_index: 5
     options:
       automatic-rename: off
     panes:
@@ -58,7 +58,7 @@ windows:
     layout: even-vertical
     start_directory: /home/topher/dev/memfault
   - window_name: dotfiles
-    window_index: 10
+    window_index: 6
     options:
       automatic-rename: off
     start_directory: /home/topher/dotfiles

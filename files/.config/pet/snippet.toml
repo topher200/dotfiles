@@ -272,3 +272,8 @@
   description = "SSM into a named EC2 instance"
   command = "export INSTANCE_NAME=coolify-control-plane-production && aws-vault exec memfault-prod -- aws ssm start-session --target $(aws-vault exec memfault-prod -- aws ec2 describe-instances --filters \"Name=tag:Name,Values=$INSTANCE_NAME\" \"Name=instance-state-name,Values=running\" --query \"Reservations[0].Instances[0].InstanceId\" --output text)"
   output = ""
+
+[[snippets]]
+  description = "connect to memfault docker container psql"
+  command = "docker exec -it $(docker ps --filter \"name=memfault-db-1\" --format \"{{.ID}}\") psql"
+  output = ""
