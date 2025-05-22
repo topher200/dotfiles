@@ -277,3 +277,8 @@
   description = "connect to memfault docker container psql"
   command = "docker exec -it $(docker ps --filter \"name=memfault-db-1\" --format \"{{.ID}}\") psql"
   output = ""
+
+[[snippets]]
+  description = "run basedpyright on files changed between master and here to update baseline"
+  command = "basedpyright --watch $(git diff --name-only master --diff-filter=ACMRTUXB | cat - <(git diff --name-only --cached) | sort -u | grep '\\.py$')"
+  output = ""
