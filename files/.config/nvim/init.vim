@@ -23,3 +23,6 @@ cmap w!! w !sudo tee > /dev/null %
 " this must come after plugins or it gets overridden.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
+" tell copilot where to find node
+let g:copilot_node_command = '/home/topher/micromamba/envs/memfault/.volta/tools/image/node/22.14.0/bin/node'
