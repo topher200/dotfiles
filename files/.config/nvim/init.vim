@@ -26,3 +26,16 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " tell copilot where to find node
 let g:copilot_node_command = '/home/topher/micromamba/envs/memfault/.volta/tools/image/node/22.14.0/bin/node'
+let g:copilot_filetypes = {
+      \ 'markdown': v:true,
+      \ 'text': v:true,
+      \ 'gitcommit': v:true,
+      \ 'javascript': v:true,
+      \ 'typescript': v:true,
+      \ 'javascriptreact': v:true,
+      \ 'typescriptreact': v:true,
+      \ 'html': v:true,
+      \ 'css': v:true,
+      \ 'scss': v:true,
+      \ 'less': v:true,
+      \ }
