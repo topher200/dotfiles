@@ -282,3 +282,8 @@
   description = "run basedpyright on files changed between master and here to update baseline"
   command = "basedpyright --watch $(git diff --name-only master --diff-filter=ACMRTUXB | cat - <(git diff --name-only --cached) | sort -u | grep '\\.py$')"
   output = ""
+
+[[snippets]]
+  description = "create graphite github pr without prompts"
+  command = "gt ss --no-interactive --publish -m"
+  output = ""
