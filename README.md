@@ -6,7 +6,9 @@ managed by GNU stow
 
 ```console
 sudo apt-get install git make vim
-git clone git@github.com:topher200/dotfiles.git ~/
+ssh-keygen -t ed25519 -C topher200@gmail.com
+cat <file>
+git clone git@github.com:topher200/dotfiles.git ~/dotfiles
 cd dotfiles
 make install-all-packages
 make
