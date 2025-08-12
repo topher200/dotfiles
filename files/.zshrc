@@ -122,14 +122,6 @@ export VISUAL=nvim
 # Experimental hack: let's add work's node to our PATH for Vim Copilot
 export PATH="/home/topher/micromamba/envs/memfault/.volta/bin:$PATH"
 
-# The next line updates PATH for the Google Cloud SDK.
-# shellcheck disable=SC1090
-if [ -f "$HOME/Downloads/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-# shellcheck disable=SC1090
-if [ -f "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
-
 # include my non-shell-specific code
 # shellcheck source=topherrc
 source "$HOME"/topherrc
