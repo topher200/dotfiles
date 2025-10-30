@@ -29,7 +29,7 @@
     autocorrect = prompt
 [user]
     name = Topher Brown
-    email = topher@memfault.com
+    email = topher.brown@nordicsemi.no
 
 [stgit]
     # docs: https://github.com/stacked-git/stgit/blob/master/examples/gitconfig
