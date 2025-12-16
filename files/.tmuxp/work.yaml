@@ -22,7 +22,7 @@ windows:
     panes:
       - shell_command:
           - cam
-          - rm ./.overmind.sock || LOG_RAW_SQL_QUERIES=1 inv dev
+          - inv dev
       - shell_command:
           - cam
           - inv ingress.dev
