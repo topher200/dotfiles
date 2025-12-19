@@ -4,6 +4,7 @@ node_modules
 package.json
 package-lock.json
 
+files/.config/alacritty/themes/
 files/.config/htop/htoprc
 files/.config/lazygit/state.yml
 files/.config/nvim/.netrwhist
