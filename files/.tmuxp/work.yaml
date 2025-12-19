@@ -59,6 +59,11 @@ windows:
     start_directory: /home/topher/dev/memfault
   - window_name: dotfiles
     window_index: 6
+    panes:
+      - shell_command:
+          - echo 'ls'
+      - shell_command:
+          - echo 'ls'
     options:
       automatic-rename: off
     start_directory: /home/topher/dotfiles
