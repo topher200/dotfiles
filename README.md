@@ -17,14 +17,15 @@ make
 ### Optional
 
 - Set up pre-commit: `$ pre-commit install --hook-type pre-commit --hook-type commit-msg`
+- Install Alacritty from the Ubuntu App Center
 - Start tmux and install tmux plugins: Prefix + I (`ctrl-a I`)
 - `$ scripts/install-chrome.sh`
 - `$ scripts/install-kitty.sh`
 - run `$ syncthing` and add the remote device. choose 'auto accept' and 'sync default folder'
   - This includes `secretsrc`
-- Install SaveDesktop (use Applications app), import saved archive from a different computer
+- Install SaveDesktop (use Ubuntu App Center), import saved archive from a different computer
 - Install Gnome extensions: `sudo apt install gnome-browser-connector`; https://extensions.gnome.org/local/
-- Install vim plugin: open Vim and run `:Copilot setup`
+- Install vim plugin: open Vim and run `:Copilot setup` (requires conda first, as of now)
 - Install VSCode: `$ sudo snap install code --classic`
 - `sudo apt install gnome-tweaks` (although the tweaks themselves get migrated
   already with SaveDesktop)
