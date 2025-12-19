@@ -13,8 +13,18 @@ chars = "\u0001p"
 key = "Tab"
 mods = "Control|Shift"
 
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Control|Shift"
+
 [selection]
 save_to_clipboard = true
 
 [window]
 dynamic_padding = true
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b\r"
