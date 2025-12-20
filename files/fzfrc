@@ -20,7 +20,7 @@ function zvm_after_init() {
 	# script from https://news.ycombinator.com/item?id=35256206
 	atuin-setup() {
 		if ! which atuin &>/dev/null; then return 1; fi
-		bindkey '^E' _atuin_search_widget
+		bindkey '^R' _atuin_search_widget
 
 		export ATUIN_NOBIND="true"
 		eval "$(atuin init zsh)"
@@ -52,7 +52,7 @@ function zvm_after_init() {
 			return $ret
 		}
 		zle -N fzf-atuin-history-widget
-		bindkey '^R' fzf-atuin-history-widget
+		bindkey '^E' fzf-atuin-history-widget
 	}
 	atuin-setup
 }
