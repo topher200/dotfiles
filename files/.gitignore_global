@@ -4,5 +4,5 @@ __pycache__
 diff.txt
 .envrc
 .vscode/memfault.code-snippets
-package-lock.json
 .aider*
+*.local.md
