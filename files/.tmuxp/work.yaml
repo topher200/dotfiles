@@ -45,16 +45,16 @@ windows:
     panes:
       - shell_command:
           - cam
-          - echo 'aws-vault exec memfault-staging -- inv terraform.plan'
+          - echo 'aws-vault exec memfault-staging -- inv terraform.apply'
       - shell_command:
           - cam
-          - echo 'aws-vault exec memfault-prod -- inv terraform.plan'
+          - echo 'aws-vault exec memfault-prod -- inv terraform.apply'
       - shell_command:
           - cam
-          - echo 'aws-vault exec memfault-demo -- inv terraform.plan'
+          - echo 'aws-vault exec memfault-demo -- inv terraform.apply'
       - shell_command:
           - cam
-          - echo 'aws-vault exec memfault-eu -- inv terraform.plan'
+          - echo 'aws-vault exec memfault-eu -- inv terraform.apply'
     layout: even-vertical
     start_directory: /home/topher/dev/memfault
   - window_name: dotfiles
