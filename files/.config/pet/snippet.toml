@@ -284,11 +284,6 @@
   output = ""
 
 [[snippets]]
-  description = "count number of basedpyright errors"
-  command = "jq '[.files | to_entries[] | .value | length] | add' /home/topher/memfault/.basedpyright/baseline.json"
-  output = ""
-
-[[snippets]]
   description = "run basedpyright on files changed between master and here to update baseline"
   command = "basedpyright --writebaseline $(git diff --name-only master --diff-filter=ACMRTUXB | cat - <(git diff --name-only --cached) | sort -u | grep '\\.py$')"
   output = ""
