@@ -285,7 +285,7 @@
 
 [[snippets]]
   description = "run basedpyright on files changed between master and here to update baseline"
-  command = "basedpyright --writebaseline $(git diff --name-only master --diff-filter=ACMRTUXB | cat - <(git diff --name-only --cached) | sort -u | grep '\\.py$')"
+  command = "basedpyright $(git diff --name-only master --diff-filter=ACMRTUXB | cat - <(git diff --name-only --cached) | sort -u | grep '\\.py$')"
   output = ""
 
 [[snippets]]
