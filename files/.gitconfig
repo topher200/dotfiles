@@ -48,10 +48,10 @@
     hidden = red_foreground
 
 [filter "lfs"]
-    process = git-lfs filter-process
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 
 [alias]
     a = add
@@ -117,7 +117,7 @@
     stp = stash pop
     stpa = stash --patch
     sts = stash show --patch
-    su = submodule update
+    su = submodule update --init --recursive
 [credential "https://github.com"]
 	helper =
 	helper = !gh auth git-credential
