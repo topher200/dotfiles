@@ -35,13 +35,6 @@ zstyle ':omz:update' mode disabled
 # shellcheck source=.oh-my-zsh/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
 
-# enable 'kitty' terminal emulator
-if command -v kitty >/dev/null; then
-	autoload -Uz compinit
-	compinit
-	kitty + complete setup zsh | source /dev/stdin
-fi
-
 # shellcheck disable=SC1090
 source $ZSH_CUSTOM/zsh-async/async.zsh
 # shellcheck disable=SC1090
