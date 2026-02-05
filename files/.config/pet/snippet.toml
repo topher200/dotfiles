@@ -114,11 +114,6 @@
   output = ""
 
 [[snippets]]
-  description = "resolve kitty ssh error on previous command. 'unknown terminal'"
-  command = "kitty +kitten ssh !!"
-  output = ""
-
-[[snippets]]
   description = "redis proxy to app.redsmin.com"
   command = "docker run -it --rm --name redsmin-proxy --network memfault_default -e REDSMIN_KEY=609056fb544e0c0f655afcdd -e REDIS_URI=\"redis://172.18.0.2:6379\" redsmin/proxy"
   output = ""

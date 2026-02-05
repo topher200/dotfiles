@@ -20,7 +20,6 @@ make
 - Install Alacritty from the Ubuntu App Center
 - Start tmux and install tmux plugins: Prefix + I (`ctrl-a I`)
 - `$ scripts/install-chrome.sh`
-- `$ scripts/install-kitty.sh`
 - run `$ syncthing` and add the remote device. choose 'auto accept' and 'sync default folder'
   - This includes `secretsrc`
 - Install SaveDesktop (use Ubuntu App Center), import saved archive from a different computer

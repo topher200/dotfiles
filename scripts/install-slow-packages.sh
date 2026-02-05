@@ -23,7 +23,6 @@ sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get install -y \
 	gron \
 	htop \
 	httpie \
-	kitty-terminfo \
 	moreutils \
 	neovim \
 	jq \
