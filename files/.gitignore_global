@@ -6,3 +6,4 @@ diff.txt
 .vscode/memfault.code-snippets
 .aider*
 *.local.md
+.claude/settings.local.json
