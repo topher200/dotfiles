@@ -230,7 +230,7 @@
 
 [[snippets]]
   description = "copy github PR url to clipboard"
-  command = "set -o pipefail; gh pr view --json url --jq .url 2>/dev/null | xsel"
+  command = "set -o pipefail; gh pr view --json url --jq .url 2>/dev/null | xsel || { echo 'Not found'; false; }"
   output = ""
 
 [[snippets]]
