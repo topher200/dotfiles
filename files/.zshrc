@@ -1,5 +1,6 @@
 #!/bin/zsh
 # shellcheck shell=bash
+# shellcheck disable=SC2262,SC2263
 
 export PATH=$HOME/bin:$HOME/go/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export ZSH=~/.oh-my-zsh
@@ -32,6 +33,7 @@ plugins=(
 export ZSH_THEME=""
 # Disable oh-my-zsh update reminders (we have a script)
 zstyle ':omz:update' mode disabled
+
 # shellcheck source=.oh-my-zsh/oh-my-zsh.sh
 source $ZSH/oh-my-zsh.sh
 
@@ -167,7 +169,7 @@ micromamba() {
 	if "$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" >/dev/null 2>&1; then
 		eval "$__mamba_setup"
 	else
-		micromamba() { "$MAMBA_EXE" "$@"; }
+		alias micromamba='$MAMBA_EXE'
 	fi
 	unset __mamba_setup
 	micromamba "$@"
