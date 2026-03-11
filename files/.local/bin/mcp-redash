@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper for Redash MCP server - update with: npm install -g @suthio/redash-mcp@latest
+NODE_BIN=$(find "$HOME/micromamba/envs/memfault/.volta/tools/image/node/" -mindepth 2 -maxdepth 2 -name bin -type d 2>/dev/null | tail -1)
+exec "$NODE_BIN/redash-mcp" "$@"
