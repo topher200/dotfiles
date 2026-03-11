@@ -1,289 +1,360 @@
-[[snippets]]
-  description = "open vim file with fzf"
+
+[[Snippets]]
+  Description = "open vim file with fzf"
+  Output = ""
+  Tag = []
   command = "vim -o `fzf`"
-  output = ""
 
-[[snippets]]
-  description = "what's my ip"
+[[Snippets]]
+  Description = "what's my ip"
+  Output = ""
+  Tag = []
   command = "curl -s icanhazip.com | tr -d '\\n' | tee >(xsel)"
-  output = ""
 
-[[snippets]]
-  description = "find from root"
+[[Snippets]]
+  Description = "find from root"
+  Output = ""
+  Tag = []
   command = "find / -name \"*FIX_ME*\" 2>/dev/null"
-  output = ""
 
-[[snippets]]
-  description = "copy last command"
+[[Snippets]]
+  Description = "copy last command"
+  Output = ""
+  Tag = []
   command = "echo \"\"\"!!\"\"\" | ansi2txt | tee >(xsel -b)"
-  output = ""
 
-[[snippets]]
-  description = "clear git rerere cache"
+[[Snippets]]
+  Description = "clear git rerere cache"
+  Output = ""
+  Tag = []
   command = "rm -rf .git/rr-cache"
-  output = ""
 
-[[snippets]]
-  description = "kill all tmux sessions"
+[[Snippets]]
+  Description = "kill all tmux sessions"
+  Output = ""
+  Tag = []
   command = "tmux list-sessions | cut -d: -f 1 | xargs -I {} tmux kill-session -t {}"
-  output = ""
 
-[[snippets]]
-  description = "git filename changes since last commit"
+[[Snippets]]
+  Description = "git filename changes since last commit"
+  Output = ""
+  Tag = []
   command = "git --no-pager diff --name-only HEAD^"
-  output = ""
 
-[[snippets]]
-  description = "tmux kill unattached sessions"
+[[Snippets]]
+  Description = "tmux kill unattached sessions"
+  Output = ""
+  Tag = []
   command = "tmux list-sessions | grep -v attached | cut -d: -f 1 | xargs -I {} tmux kill-session -t {}"
-  output = ""
 
-[[snippets]]
-  description = "list directories and their sizes, sorted and human readable"
+[[Snippets]]
+  Description = "list directories and their sizes, sorted and human readable"
+  Output = ""
+  Tag = []
   command = "du -h | sort -h"
-  output = ""
 
-[[snippets]]
-  description = "format json from the clipboard"
+[[Snippets]]
+  Description = "format json from the clipboard"
+  Output = ""
+  Tag = []
   command = "xsel -o | jq . | xsel"
-  output = ""
 
-[[snippets]]
-  description = "python dictionary to json"
+[[Snippets]]
+  Description = "python dictionary to json"
+  Output = ""
+  Tag = []
   command = "xsel | xargs -0 python -c 'import ast, json, sys ; out = ast.literal_eval(sys.argv[1]) ; print json.dumps(out)' | jq . | tee >(xsel)"
-  output = ""
 
-[[snippets]]
-  description = "list users of port 8000"
+[[Snippets]]
+  Description = "list users of port 8000"
+  Output = ""
+  Tag = []
   command = "lsof -nP -i4TCP:8000"
-  output = ""
 
-[[snippets]]
-  description = "kill all running docker containers"
+[[Snippets]]
+  Description = "kill all running docker containers"
+  Output = ""
+  Tag = []
   command = "docker ps -q | xargs docker kill"
-  output = ""
 
-[[snippets]]
-  description = "hg diff less with color"
+[[Snippets]]
+  Description = "hg diff less with color"
+  Output = ""
+  Tag = []
   command = "hg d --color on | less"
-  output = ""
 
-[[snippets]]
-  description = "make this a dotfiles tmux window"
+[[Snippets]]
+  Description = "make this a dotfiles tmux window"
+  Output = ""
+  Tag = []
   command = "tmux rename-window dotfiles && tmux move-window -t 10 && cd ~/dev/dotfiles && git status"
-  output = ""
 
-[[snippets]]
-  description = "connect to new tmux session, creating it if it doesn't exist"
+[[Snippets]]
+  Description = "connect to new tmux session, creating it if it doesn't exist"
+  Output = ""
+  Tag = []
   command = "tmux new-sess -A -s work"
-  output = ""
 
-[[snippets]]
-  description = "swap keyboard config"
+[[Snippets]]
+  Description = "swap keyboard config"
+  Output = ""
+  Tag = []
   command = "/usr/local/bin/keyboard"
-  output = ""
 
-[[snippets]]
-  description = "open window for current directory"
+[[Snippets]]
+  Description = "open window for current directory"
+  Output = ""
+  Tag = []
   command = "nautilus . &"
-  output = ""
 
-[[snippets]]
-  description = "rerun last command. upload stdout to gist and copy url to clipboard"
+[[Snippets]]
+  Description = "rerun last command. upload stdout to gist and copy url to clipboard"
+  Output = ""
+  Tag = []
   command = "!! | ansi2txt | gh gist create - | tee >(xsel -b)"
-  output = ""
 
-[[snippets]]
-  description = "rerun last command. copy output to clipboard"
+[[Snippets]]
+  Description = "rerun last command. copy output to clipboard"
+  Output = ""
+  Tag = []
   command = "!! | ansi2txt | tee >(xsel -b)"
-  output = ""
 
-[[snippets]]
-  description = "run black on changed modified files"
+[[Snippets]]
+  Description = "run black on changed modified files"
+  Output = ""
+  Tag = []
   command = "black $(git ls-files -m)"
-  output = ""
 
-[[snippets]]
-  description = "create gist from clipboard"
+[[Snippets]]
+  Description = "create gist from clipboard"
+  Output = ""
+  Tag = []
   command = "xsel -o | ansi2txt | gh gist create - | tee >(xsel)"
-  output = ""
 
-[[snippets]]
-  description = "delete git branches which are deleted on remote"
+[[Snippets]]
+  Description = "delete git branches which are deleted on remote"
+  Output = ""
+  Tag = []
   command = "git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | vipe | xargs git branch -D"
-  output = ""
 
-[[snippets]]
-  description = "redis proxy to app.redsmin.com"
+[[Snippets]]
+  Description = "redis proxy to app.redsmin.com"
+  Output = ""
+  Tag = []
   command = "docker run -it --rm --name redsmin-proxy --network memfault_default -e REDSMIN_KEY=609056fb544e0c0f655afcdd -e REDIS_URI=\"redis://172.18.0.2:6379\" redsmin/proxy"
-  output = ""
 
-[[snippets]]
-  description = "rdb connect to celery worker debug"
+[[Snippets]]
+  Description = "rdb connect to celery worker debug"
+  Output = ""
+  Tag = []
   command = "telnet localhost 6899 || telnet localhost 6900"
-  output = ""
 
-[[snippets]]
-  description = "run the same 'ag' but looking for hidden files"
+[[Snippets]]
+  Description = "run the same 'ag' but looking for hidden files"
+  Output = ""
+  Tag = []
   command = "ag workflow_dis --hidden"
-  output = ""
 
-[[snippets]]
-  description = "delete .tmp temp branches from git"
+[[Snippets]]
+  Description = "delete .tmp temp branches from git"
+  Output = ""
+  Tag = []
   command = "g b | grep \\\\.tmp | vipe | xargs git branch -D "
-  output = ""
 
-[[snippets]]
-  description = "update python dependencies"
+[[Snippets]]
+  Description = "update python dependencies"
+  Output = ""
+  Tag = []
   command = "invoke poetry.lock poetry.export "
-  output = ""
 
-[[snippets]]
-  description = "list all flask routes"
+[[Snippets]]
+  Description = "list all flask routes"
+  Output = ""
+  Tag = []
   command = "flask routes"
-  output = ""
 
-[[snippets]]
-  description = "postgres cleanup query from docker logs strip from clipboard"
+[[Snippets]]
+  Description = "postgres cleanup query from docker logs strip from clipboard"
+  Output = ""
+  Tag = []
   command = "xsel -b --output | sed -e 's/.*statement:\\s*//' -e 's/.*db_1\\s*|\\s*//' - | tee >(xsel -b)"
-  output = ""
 
-[[snippets]]
-  description = "reformat postgres sql query from clipboard"
+[[Snippets]]
+  Description = "reformat postgres sql query from clipboard"
+  Output = ""
+  Tag = []
   command = "xsel -b --output | sqlformat --reindent --indent_columns - | tee >(xsel -b)"
-  output = ""
 
-[[snippets]]
-  description = "bash print exit code success=0"
+[[Snippets]]
+  Description = "bash print exit code success=0"
+  Output = ""
+  Tag = []
   command = "echo $?"
-  output = ""
 
-[[snippets]]
-  description = "run terraform validate in all subdirectories"
+[[Snippets]]
+  Description = "run terraform validate in all subdirectories"
+  Output = ""
+  Tag = []
   command = "find . -type d -execdir sh -c \"pwd && terraform init && terraform validate\" \\;"
-  output = ""
 
-[[snippets]]
-  description = "absorb commits changes TODO: make work with graphite"
+[[Snippets]]
+  Description = "absorb commits changes TODO: make work with graphite"
+  Output = ""
+  Tag = []
   command = "git add . && git absorb --base $(stg id stgit-topher:{base}) ; stg repair && git restore --staged ."
-  output = ""
 
-[[snippets]]
-  description = "terraform fmt changed files"
+[[Snippets]]
+  Description = "terraform fmt changed files"
+  Output = ""
+  Tag = []
   command = "terraform fmt $(git diff --name-only HEAD^)"
-  output = ""
 
-[[snippets]]
-  description = "run autoflake remove unused imports"
+[[Snippets]]
+  Description = "run autoflake remove unused imports"
+  Output = ""
+  Tag = []
   command = "autoflake --in-place --remove-all-unused-imports example.py"
-  output = ""
 
-[[snippets]]
-  description = "redis docker pytest container cli"
+[[Snippets]]
+  Description = "redis docker pytest container cli"
+  Output = ""
+  Tag = []
   command = "redis-cli -p $(docker ps | grep pytest-master_redis_1 | perl -nE 'say/:(\\d+)-/')"
-  output = ""
 
-[[snippets]]
-  description = "psql into pytest docker container postgres"
+[[Snippets]]
+  Description = "psql into pytest docker container postgres"
+  Output = ""
+  Tag = []
   command = "psql \"postgresql://memfault:memfault@127.0.0.1:$($ docker ps | grep master_db | perl -ne '/0.0.0.0:(\\d+)/ && print \"$1\"')/memfault_db?sslmode=disable\""
-  output = ""
 
-[[snippets]]
-  description = "ssh into seedbox"
+[[Snippets]]
+  Description = "ssh into seedbox"
+  Output = ""
+  Tag = []
   command = "ssh_seedbox"
-  output = ""
 
-[[snippets]]
-  description = "print ubuntu version"
+[[Snippets]]
+  Description = "print ubuntu version"
+  Output = ""
+  Tag = []
   command = "lsb_release -a"
-  output = ""
 
-[[snippets]]
-  description = "print wifi qr code"
+[[Snippets]]
+  Description = "print wifi qr code"
+  Output = ""
+  Tag = []
   command = "nmcli dev wifi show-password"
-  output = ""
 
-[[snippets]]
-  description = "socat for telnet debugging"
+[[Snippets]]
+  Description = "socat for telnet debugging"
+  Output = ""
+  Tag = []
   command = "rlwrap socat - tcp:127.0.0.1:4444\\n"
-  output = ""
 
-[[snippets]]
-  description = "open pr in github dashboard chrome"
+[[Snippets]]
+  Description = "open pr in github dashboard chrome"
+  Output = ""
+  Tag = []
   command = "gh pr view --web"
-  output = ""
 
-[[snippets]]
-  description = "get all commits / PRs which are in master but not yet released to prod"
+[[Snippets]]
+  Description = "get all commits / PRs which are in master but not yet released to prod"
+  Output = ""
+  Tag = []
   command = "git log --oneline --no-decorate $(aws-vault exec memfault-prod -- inv sheriff.release-current)..origin/master"
-  output = ""
 
-[[snippets]]
-  description = "Source rust on PATH"
+[[Snippets]]
+  Description = "Source rust on PATH"
+  Output = ""
+  Tag = []
   command = "source \"$HOME/.cargo/env\""
-  output = ""
 
-[[snippets]]
-  description = "ssm caprover box ec2"
+[[Snippets]]
+  Description = "ssm caprover box ec2"
+  Output = ""
+  Tag = []
   command = "aws ssm --profile memfault-prod --region=us-east-1 start-session --target $(ec2_instance_id CapRover)"
-  output = ""
 
-[[snippets]]
-  description = "copy github PR url to clipboard"
+[[Snippets]]
+  Description = "copy github PR url to clipboard"
+  Output = ""
+  Tag = []
   command = "set -o pipefail; gh pr view --json url --jq .url 2>/dev/null | xsel || { echo 'Not found'; false; }"
-  output = ""
 
-[[snippets]]
-  description = "check out most recently edited updated git branch"
+[[Snippets]]
+  Description = "check out most recently edited updated git branch"
+  Output = ""
+  Tag = []
   command = "git checkout $(git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)' --count=1)"
-  output = ""
 
-[[snippets]]
-  description = "Remove newlines from clipboard text"
+[[Snippets]]
+  Description = "Remove newlines from clipboard text"
+  Output = ""
+  Tag = []
   command = "xsel -o | sed '/^$/d' | xsel"
-  output = ""
 
-[[snippets]]
-  description = "copy markdown image snippet PR"
+[[Snippets]]
+  Description = "copy markdown image snippet PR"
+  Output = ""
+  Tag = []
   command = "echo '![image](URL)' | xsel -i"
-  output = ""
 
-[[snippets]]
-  description = "copy details summary markdown github gh PR template"
+[[Snippets]]
+  Description = "copy details summary markdown github gh PR template"
+  Output = ""
+  Tag = []
   command = "echo '<details><summary>Summary</summary>\\n</details>' | xsel -i"
-  output = ""
 
-[[snippets]]
-  description = "copy francois with the c"
+[[Snippets]]
+  Description = "copy francois with the c"
+  Output = ""
+  Tag = []
   command = "echo 'François' | xsel -i"
-  output = ""
 
-[[snippets]]
-  description = "SSM into a named EC2 instance"
+[[Snippets]]
+  Description = "SSM into a named EC2 instance"
+  Output = ""
+  Tag = []
   command = "export INSTANCE_NAME=coolify-control-plane-production && aws-vault exec memfault-prod -- aws ssm start-session --target $(aws-vault exec memfault-prod -- aws ec2 describe-instances --filters \"Name=tag:Name,Values=$INSTANCE_NAME\" \"Name=instance-state-name,Values=running\" --query \"Reservations[0].Instances[0].InstanceId\" --output text)"
-  output = ""
 
-[[snippets]]
-  description = "connect to memfault docker container psql"
+[[Snippets]]
+  Description = "connect to memfault docker container psql"
+  Output = ""
+  Tag = []
   command = "docker exec -it $(docker ps --filter \"name=memfault-db-1\" --format \"{{.ID}}\") psql"
-  output = ""
 
-[[snippets]]
-  description = "create graphite github pr without prompts"
+[[Snippets]]
+  Description = "create graphite github pr without prompts"
+  Output = ""
+  Tag = []
   command = "gt ss --no-interactive --publish -m"
-  output = ""
 
-[[snippets]]
-  description = "print AWS EC2 instance refresh status for all autoscaling groups ASGs"
+[[Snippets]]
+  Description = "print AWS EC2 instance refresh status for all autoscaling groups ASGs"
+  Output = ""
+  Tag = []
   command = "( printf \"ASG\\tStatus\\tStartTime\\tLastUpdated\\tStatusReason\\n\"; for asg in $(aws-vault exec memfault-staging -- aws autoscaling describe-auto-scaling-groups --query 'AutoScalingGroups[].AutoScalingGroupName' --output text); do \\n info=$(aws-vault exec memfault-staging -- aws autoscaling describe-instance-refreshes \\\\n    --auto-scaling-group-name \"$asg\" \\\\n    --query \"sort_by(InstanceRefreshes[?Status==\\`Pending\\`||Status==\\`InProgress\\`||Status==\\`Canceling\\`||Status==\\`RollbackInProgress\\`], &StartTime)[-1].[Status,StartTime,EndTime,StatusReason]\" \\\\n    --output text); \\n if [ -z \"$info\" ] || [ \"$info\" = \"None\" ]; then info=$(aws-vault exec memfault-staging -- aws autoscaling describe-instance-refreshes \\\\n      --auto-scaling-group-name \"$asg\" \\\\n      --query \"sort_by(InstanceRefreshes[?Status==\\`Successful\\`||Status==\\`Cancelled\\`||Status==\\`Canceled\\`||Status==\\`Failed\\`||Status==\\`RollbackSuccessful\\`||Status==\\`RollbackFailed\\`], &StartTime)[-1].[Status,StartTime,EndTime,StatusReason]\" \\\\n      --output text); fi; if [ -z \"$info\" ] || [ \"$info\" = \"None\" ]; then printf \"%s\\tnone\\t-\\t-\\t-\\n\" \"$asg\"; else st=$(printf \"%s\" \"$info\" | awk '{print $1}'); start=$(printf \"%s\" \"$info\" | awk '{print $2}'); end=$(printf \"%s\" \"$info\" | awk '{print $3}'); reason=$(printf \"%s\" \"$info\" | cut -f4-); lu=\"$start\"; [ -n \"$end\" ] && [ \"$end\" != \"None\" ] && [ \"$end\" != \"-\" ] && lu=\"$end\"; printf \"%s\\t%s\\t%s\\t%s\\t%s\\n\" \"$asg\" \"$st\" \"$start\" \"$lu\" \"${reason:--}\"; fi; done ) | column -t\\n"
-  output = ""
 
-[[snippets]]
-  description = "run basedpyright on files changed between master and here to update baseline"
+[[Snippets]]
+  Description = "run basedpyright on files changed between master and here to update baseline"
+  Output = ""
+  Tag = []
   command = "basedpyright $(git diff --name-only master --diff-filter=ACMRTUXB | cat - <(git diff --name-only --cached) | sort -u | grep '\\.py$')"
-  output = ""
 
-[[snippets]]
-  description = "continuously fix python typing"
+[[Snippets]]
+  Description = "continuously fix python typing"
+  Output = ""
+  Tag = []
   command = "~/dev/continuous-claude/continuous_claude.sh --disable-commits --max-runs 25 -p \"Run this script to remove a file from basedpyright, then fix the typing issues reported in that file by basedpyright after the removal: '''REMOVED=$(jq -r '.files | keys | .[-1]' .basedpyright/baseline.json) && jq --indent 4 '.files |= (to_entries | .[:-1] | from_entries)' .basedpyright/baseline.json > tmp.jq && mv tmp.jq .basedpyright/baseline.json && echo Removed: $REMOVED'''. Fix typing issues in as reported by basedpyright, following the guidance from .claude/agents/python-typing-resolver.md and .cursor/rules/python-best-practices.mdc. At the end of each turn, record in the state file the file you fixed and how many errors were removed. At the start of each turn, choose a new file (do not check one already in the state file). There is no need to recheck previous work, just focus on your new file.\""
-  output = ""
+
+[[Snippets]]
+  Description = "print git status for subrepos from metarepo dir"
+  Output = ""
+  Tag = []
+  command = "for d in */; do s=$(git -C \"$d\" status --short 2>/dev/null); [ -n \"$s\" ] && printf \"\\033[1m${d%/}\\033[0m\\n$s\\n\"; done"
+
+[[Snippets]]
+  Description = "update local mcp servers"
+  Output = ""
+  Tag = []
+  command = "npm install -g @circleci/mcp-server-circleci@latest @playwright/mcp@latest @suthio/redash-mcp@latest\\n"
