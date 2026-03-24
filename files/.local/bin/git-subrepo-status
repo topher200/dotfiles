@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+for d in */; do
+	repo="${d%/}"
+	git -C "$d" rev-parse --git-dir &>/dev/null || continue
+
+	base=$(git -C "$d" symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+	if [ -z "$base" ]; then
+		git -C "$d" rev-parse --verify origin/main &>/dev/null && base="main" || base="master"
+	fi
+
+	commits=$(git -C "$d" log --oneline "origin/$base..HEAD" 2>/dev/null)
+	status=$(git -C "$d" status --short 2>/dev/null)
+
+	if [ -n "$commits" ] || [ -n "$status" ]; then
+		printf "\033[1m%s\033[0m\n" "$repo"
+		[ -n "$commits" ] && printf "\033[33m%s\033[0m\n" "$commits"
+		[ -n "$status" ] && printf "%s\n" "$status"
+		printf "\n"
+	fi
+done
