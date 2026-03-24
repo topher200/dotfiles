@@ -1,13 +1,13 @@
 ---
 name: update-dependency-for-cve
-description: Upgrade a dependency to resolve a CVE—prefer upgrading direct dependents, check release notes, verify codebase, then commit with Topher's style
+description: Upgrade a dependency to resolve a CVE—prefer upgrading direct dependents, check release notes, verify codebase, then commit
 argument-hint: "<vulnerable-package> <min-safe-version> (e.g. @remix-run/router 1.23.2)"
 allowed-tools: Bash(yarn *), Bash(git *), Bash(gt *), Read, Grep, WebSearch, mcp_web_fetch
 ---
 
 # Update a Dependency to Resolve a CVE
 
-Follow this workflow when Dependabot (or similar) reports a CVE in a transitive or direct dependency. The goal is to upgrade to a safe version, confirm the codebase is unaffected, and open a PR using Topher's commit style.
+Follow this workflow when Dependabot (or similar) reports a CVE in a transitive or direct dependency. The goal is to upgrade to a safe version, confirm the codebase is unaffected, and commit the fix.
 
 ## Usage
 
@@ -68,15 +68,13 @@ Use this summary later in the PR body (see Step 6).
 
 - If something breaks, either fix the code or choose a different upgrade path (e.g. a different minor version).
 
-### Step 5 — Commit with Topher's style
+### Step 5 — Commit
 
-- **Important:** Before creating the commit, **review the /topher-commit-style skill** and follow it. Read that skill’s full contents so the subject line, body sections (Issues Addressed, Summary, Test Plan), tone, and footer (Resolves: PLAT) match Topher’s style.
-- Stage the changed files (`package.json`(s) and `yarn.lock`), then create the branch/commit with `gt create --message "..."` using the template in Step 6.
-- **Do not** push or submit; only create the branch locally unless the user asks otherwise.
+- Stage the changed files (`package.json`(s) and `yarn.lock`) and commit using the template in Step 6.
 
-### Step 6 — Use this PR/commit template for CVE dependency upgrades
+### Step 6 — PR/commit template for CVE dependency upgrades
 
-**Review /topher-commit-style before drafting the commit** and apply its rules (conventional subject, required sections, tone, Resolves footer). Use the following as the **source of truth** for the commit message and PR description when the change is “upgrade dependency X to fix CVE in Y”:
+Use the following as the **source of truth** for the commit message and PR description when the change is “upgrade dependency X to fix CVE in Y”:
 
 ```
 chore: upgrade <direct-dependent> to fix <vulnerable-package> CVE
@@ -122,7 +120,7 @@ Resolves: PLAT
 - **Install**: `YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install` then `yarn dedupe`; confirmed in yarn.lock that @remix-run/router is 1.23.2.
 - **Release notes**: Checked 6.27 → 6.30; summarized security fix, stabilized APIs we don’t use, patchRoutesOnNavigation/dataStrategy breaking scope (we use BrowserRouter + Routes), useMatch decoding (we use it; change is desired).
 - **Codebase**: Confirmed UNSAFE*RouteContext still exported; no use of createBrowserRouter, loaders/actions, or unstable*\*; tsc and relevant vitest tests passed.
-- **Commit**: Used the template above with that summary and `gt create` (no push/submit).
+- **Commit**: Used the template above with that summary.
 
 ## Notes
 
