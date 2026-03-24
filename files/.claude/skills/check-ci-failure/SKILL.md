@@ -71,7 +71,8 @@ Call `mcp__github__search_pull_requests` (after loading it):
 { "query": "head:<BRANCH_NAME> repo:memfault/memfault is:open" }
 ```
 
-Record the PR number and title from the first result.
+Record the PR number and title from the first result. If no open PR exists,
+report this clearly to the user and stop.
 
 ---
 
