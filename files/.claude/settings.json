@@ -1,0 +1,39 @@
+{
+    "hooks": {
+        "PreCompact": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "bd prime --stealth"
+                    }
+                ]
+            }
+        ],
+        "SessionStart": [
+            {
+                "matcher": "",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "bd prime --stealth"
+                    }
+                ]
+            }
+        ],
+        "Notification": [
+            {
+                "matcher": "permission_prompt",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "timeout 0.02 speaker-test -t sine -f 600 2>/dev/null || true"
+                    }
+                ]
+            }
+        ]
+    },
+    "skipDangerousModePermissionPrompt": true,
+    "model": "opus[1m]"
+}
