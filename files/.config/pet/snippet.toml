@@ -357,4 +357,4 @@
   Description = "update local mcp servers"
   Output = ""
   Tag = []
-  command = "npm install -g @circleci/mcp-server-circleci@latest @playwright/mcp@latest @suthio/redash-mcp@latest\\n"
+  command = "npm install -g @circleci/mcp-server-circleci@latest @playwright/mcp@latest @suthio/redash-mcp@latest"
