@@ -10,10 +10,10 @@ Write commit messages that match Topher's established patterns from his commit h
 
 ## How to Create Commits
 
-Use the GitHub MCP's graphite tool to create commits:
+Use the Graphite MCP tool (`mcp__graphite__run_gt_cmd`) to create commits if available. If the Graphite MCP is unavailable, fall back to the `gt` CLI via Bash.
 
 1. **Stage files**: Use `git add <files>` to stage the changes
-2. **Create commit**: Use `mcp__graphite__run_gt_cmd` with `gt create --message "..."` to create the commit and branch
+2. **Create commit**: Use `gt create --message "..."` to create the commit and branch
 
 **IMPORTANT**: Do NOT push or submit. Only create the branch locally.
 
@@ -424,7 +424,7 @@ When creating a commit, follow this workflow:
 git add www/api/routes/devices.py www/api/routes/cohorts.py
 ```
 
-2. **Create the commit** using `mcp__graphite__run_gt_cmd`:
+2. **Create the commit** using the Graphite MCP (`mcp__graphite__run_gt_cmd`) if available:
 
 ```json
 {
@@ -438,6 +438,6 @@ git add www/api/routes/devices.py www/api/routes/cohorts.py
 }
 ```
 
-This workflow replaces the local command: `git add <files> && gt create`
+If the Graphite MCP is unavailable, run `gt create --message "..."` via Bash instead.
 
 **Note**: Do NOT use `gt submit` or push changes. Only create branches locally.
