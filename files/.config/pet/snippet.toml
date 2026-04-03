@@ -300,10 +300,10 @@
   command = "echo '![image](URL)' | xsel -i"
 
 [[Snippets]]
-  Description = "copy details summary markdown github gh PR template"
+  Description = "wrap clipboard contents in details summary markdown"
   Output = ""
   Tag = []
-  command = "echo '<details><summary>Summary</summary>\\n</details>' | xsel -i"
+  command = "L=$(printf '\\x3c'); R=$(printf '\\x3e'); printf '%sdetails%s%ssummary%sSummary%s/summary%s\\n\\n%s\\n%s/details%s' $L $R $L $R $L $R \"$(xsel -o)\" $L $R | xsel -i"
 
 [[Snippets]]
   Description = "copy francois with the c"
